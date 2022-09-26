@@ -104,7 +104,14 @@ public class JdbcBookDao implements BookDao{
 
     @Override
     public boolean deleteBook(int isbn) {
-        return false;
+        String sql = "DELETE FROM library WHERE isbn = ?";
+
+        try {
+            jdbcTemplate.update(sql);
+        } catch (DataAccessException e){
+            return false;
+        }
+        return true;
     }
 
     private Book mapRowToBook(SqlRowSet results){
