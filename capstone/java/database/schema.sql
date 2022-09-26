@@ -39,7 +39,6 @@ CREATE TABLE family_account (
 --NO MAXVALUE;
 
 CREATE TABLE library (
-    book_id int NOT NULL UNIQUE,
 	isbn int NOT NULL UNIQUE,
     book_title varchar (100) NOT NULL UNIQUE,
     book_author varchar (50) NOT NULL,
