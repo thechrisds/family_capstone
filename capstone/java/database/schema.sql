@@ -13,7 +13,7 @@ CREATE TABLE users (
 	user_id int NOT NULL DEFAULT nextval('seq_user_id'),
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
-	role varchar(50) NOT NULL,
+	role varchar(50) DEFAULT 'ROLE_USER',
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
@@ -39,10 +39,9 @@ CREATE TABLE familyAccount (
 --NO MAXVALUE;
 
 CREATE TABLE library (
-    book_id int NOT NULL, --DEFAULT nextval('seq_library_id'),
+    isbn int NOT NULL UNIQUE,
     book_title varchar (100) NOT NULL UNIQUE,
     book_author varchar (50) NOT NULL,
-    isbn int NOT NULL UNIQUE,
     cover_img varchar(200),
     genre varchar (50) NOT NULL,
     description varchar (200),
