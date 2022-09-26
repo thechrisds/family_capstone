@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users, familyAccount, library, reading_activity, prizes CASCADE;
 
 DROP SEQUENCE IF EXISTS seq_user_id, seq_family_id, seq_library_id, activity_id, prizes_id;
 
@@ -39,7 +39,8 @@ CREATE TABLE familyAccount (
 --NO MAXVALUE;
 
 CREATE TABLE library (
-    isbn int NOT NULL UNIQUE,
+    bood_id int NOT NULL UNIQUE,
+	isbn int NOT NULL UNIQUE,
     book_title varchar (100) NOT NULL UNIQUE,
     book_author varchar (50) NOT NULL,
     cover_img varchar(200),
@@ -54,8 +55,10 @@ CREATE TABLE reading_activity (
     isbn int NOT NULL,
     minutes_read int NOT NULL,
     date_read timestamp,
+    notes varchar (250),
     CONSTRAINT PK_reading_activity PRIMARY KEY (activity_id),
-    CONSTRAINT FK_familyAccount_users FOREIGN KEY (user_id) REFERENCES users (user_id)
+    CONSTRAINT FK_familyAccount_users FOREIGN KEY (user_id) REFERENCES users (user_id),
+	CONSTRAINT FK_library FOREIGN KEY (isbn) REFERENCES library (isbn)
 );
 
 CREATE TABLE prizes (
