@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 import com.techelevator.model.Activity;
+import com.techelevator.model.DetailedActivity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -36,12 +37,24 @@ public class JdbcActivityDao implements ActivityDao {
 
     @Override
     public Activity getActivityByActivityId(int activityId) {
-        return null;
+        Activity activity = null;
+        String sql = "SELECT * FROM reading_activity WHERE activity_id = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, activityId);
+        if (result.next()) {
+            activity = mapResultsToActivity(result);
+        }
+        return activity;
     }
 
     @Override
-    public List<Activity> getActivitiesByReaderId(int readerId) {
-        return null;
+    public List<DetailedActivity> getActivitiesByReaderId(int readerId) {
+        List<DetailedActivity> activityList = new ArrayList<>();
+        String sql = "SELECT u.username, b.book_title, a.date_read, a.minutes_read, a.completed, a.notes FROM reading_activity a JOIN users u ON a.user_id = u.user_id JOIN library b ON a.isbn = b.isbn WHERE a.user_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, readerId);
+        while (results.next()) {
+            activityList.add(mapResultsToDetailedActivity(results));
+        }
+        return activityList;
     }
 
     @Override
@@ -82,10 +95,19 @@ public class JdbcActivityDao implements ActivityDao {
         int timeInMinutes = results.getInt("minutes_read");
         String activityNotes = results.getString("notes");
         boolean isComplete = results.getBoolean("completed");
-
         Activity activity = new Activity(activityId,bookId,readerId,dateRead,timeInMinutes,activityNotes,isComplete);
-
         return activity;
+    }
+
+    private DetailedActivity mapResultsToDetailedActivity(SqlRowSet results) {
+        String userName = results.getString("username");
+        String bookTitle = results.getString("book_title");
+        Date dateRead = results.getDate("date_read");
+        int timeInMinutes = results.getInt("minutes_read");
+        boolean isComplete = results.getBoolean("completed");
+        String activityNotes = results.getString("notes");
+        DetailedActivity detailedActivity = new DetailedActivity(userName,bookTitle,dateRead,timeInMinutes,isComplete,activityNotes);
+        return detailedActivity;
     }
     //TODO
 }

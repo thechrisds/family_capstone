@@ -24,4 +24,16 @@ public class ActivityController {
         List<Activity> allActivity = activityDao.getAllReadingActivities();
         return allActivity;
     }
+
+    @RequestMapping(path = "/activity/{activityId}", method = RequestMethod.GET)
+    public Activity returnActivityByActivityId(@PathVariable int activityId) {
+        Activity activity = activityDao.getActivityByActivityId(activityId);
+        return activity;
+    }
+
+    @RequestMapping(path = "/activity/id/{readerId}", method = RequestMethod.GET)
+    public List<DetailedActivity> returnActivityByReaderId(@PathVariable int readerId) {
+        List<DetailedActivity> activityByUser = activityDao.getActivitiesByReaderId(readerId);
+        return activityByUser;
+    }
 }
