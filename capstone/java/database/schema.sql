@@ -47,8 +47,13 @@ CREATE TABLE library (
     CONSTRAINT PK_library PRIMARY KEY (isbn)
 );
 
+CREATE SEQUENCE seq_activity_id
+    INCREMENT BY 1
+    START WITH 3001
+    NO MAXVALUE;
+
 CREATE TABLE reading_activity (
-    activity_id int NOT NULL,
+    activity_id int NOT NULL DEFAULT nextval('seq_activity_id'),
     user_id int NOT NULL,
     isbn int NOT NULL,
     minutes_read int DEFAULT 0,
