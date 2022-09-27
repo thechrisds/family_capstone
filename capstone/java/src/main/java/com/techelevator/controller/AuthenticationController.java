@@ -61,6 +61,7 @@ public class AuthenticationController {
         } catch (UsernameNotFoundException e) {
             String role = "ROLE_USER";
             userDao.create(newUser.getUsername(),newUser.getPassword(), role);
+
         }
     }
 
