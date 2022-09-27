@@ -10,7 +10,7 @@ public interface BookDao {
 
     Book findBookByAuthor(String author);
 
-    Book findBookByISBN(int isbn);
+    Book findBookByISBN(long isbn);
 
     List<Book> findAll();
 
@@ -20,8 +20,8 @@ public interface BookDao {
 
     //boolean addBook(String bookTitle, String bookAuthor, int isbn, String bookType, String genre, String description);
     //db doesn't inclue bookType yet, quick/simple fix
-    boolean addBook(String bookTitle, String bookAuthor, int isbn, String genre, String description);
+    boolean addBook(String bookTitle, String bookAuthor, long isbn, String genre, String description);
 
-    boolean deleteBook(int isbn); //delete via isbn? idk
+    boolean deleteBook(long isbn); //delete via isbn? idk
 
 }

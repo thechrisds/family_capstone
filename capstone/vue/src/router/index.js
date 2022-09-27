@@ -5,7 +5,8 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-import ViewBook from '../views/ViewBook.vue'
+import ViewBooks from '../views/ViewBooks.vue'
+import AddBook from '../views/AddBook.vue'
 
 Vue.use(Router)
 
@@ -57,11 +58,20 @@ const router = new Router({
     {
       path: "/books",
       name: "books",
-      component: ViewBook,
+      component: ViewBooks,
+      meta: {
+        requiresAuth: false
+        }
+      },
+    {
+      path: "/books/add",
+      name: "addBook",
+      component: AddBook,
       meta: {
         requiresAuth: false
       }
     }
+  
   ]
 })
 
