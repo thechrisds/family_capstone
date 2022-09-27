@@ -104,18 +104,28 @@ public class JdbcBookDao implements BookDao{
 
     @Override
     public boolean deleteBook(int isbn) {
-        String sql = "DELETE FROM library WHERE isbn = ?";
+        boolean success = true;
+        String a = "";
+        a += isbn;
+        String sql;
 
-        try {
-            jdbcTemplate.update(sql);
-        } catch (DataAccessException e){
-            return false;
+        List<Book> bookList = findAll();
+        for (Book i : bookList){
+            if (i.getBookID() == isbn){
+                sql = "DELETE FROM library WHERE book_id = ?";
+                jdbcTemplate.update(sql, isbn);
+            } else if (i.getIsbn() == isbn){
+                sql = "DELETE FROM library WHERE isbn = ?";
+            } else {
+                success = false;
+            }
         }
-        return true;
+        return success;
     }
 
     private Book mapRowToBook(SqlRowSet results){
         Book book = new Book();
+        book.setBookID(results.getInt("book_id"));
         book.setIsbn(results.getInt("isbn"));
         book.setBookTitle(results.getString("book_title"));
         book.setBookAuthor(results.getString("book_author"));
