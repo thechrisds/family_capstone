@@ -38,7 +38,20 @@ public class AccountController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/account", method = RequestMethod.POST)
-    public void createNewUser(@Valid @RequestBody RegisterUserDTO newUser, LoginDTO loginDto) {
+    public void createNewChildUser(@Valid @RequestBody RegisterUserDTO newUser, LoginDTO loginDto) {
+        try {
+            User user = userDao.findByUsername(newUser.getUsername());
+            throw new UserAlreadyExistsException();
+        } catch (UsernameNotFoundException e) {
+            String role = "ROLE_USER";
+            userDao.createChild(newUser.getUsername(),newUser.getPassword(), role);
+            accountDao.updateFamilyId(loginDto.getUsername(), newUser.getUsername());
+        }
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(value = "/account", method = RequestMethod.POST)
+    public void createNewParentUser(@Valid @RequestBody RegisterUserDTO newUser, LoginDTO loginDto) {
         try {
             User user = userDao.findByUsername(newUser.getUsername());
             throw new UserAlreadyExistsException();
@@ -47,6 +60,12 @@ public class AccountController {
             userDao.create(newUser.getUsername(),newUser.getPassword(), role);
             accountDao.updateFamilyId(loginDto.getUsername(), newUser.getUsername());
         }
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/account/{id}", method = RequestMethod.DELETE)
+    public void deleteUser(@PathVariable int id) throws UserNotFoundException {
+        accountDao.deleteUser(id);
     }
 
 }
