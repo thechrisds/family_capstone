@@ -1,12 +1,14 @@
 <template>
-  <div>
-      
-  </div>
+  <account-list />
 </template>
 
 <script>
-export default {
+import AccountList from '@/components/AccountList'
 
+export default {
+  components: {
+    AccountList
+  }
 }
 </script>
 
