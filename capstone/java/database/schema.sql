@@ -2,19 +2,18 @@ BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS users, family_account, library, reading_activity, prizes CASCADE;
 
-DROP SEQUENCE IF EXISTS seq_user_id, seq_family_id, seq_library_id, activity_id, prizes_id;
+DROP SEQUENCE IF EXISTS seq_user_id, seq_family_id, seq_activity_id;
 
+CREATE TABLE family_account (
+    family_id serial,
+    family_name varchar(50) NOT NULL,
+    CONSTRAINT PK_family_account PRIMARY KEY (family_id)
+);
 
 CREATE SEQUENCE seq_family_id
 INCREMENT BY 1
 START WITH 1001
 NO MAXVALUE;
-
-CREATE TABLE family_account (
-    family_id int NOT NULL DEFAULT nextval('seq_family_id'),
-    family_name varchar(50) NOT NULL,
-    CONSTRAINT PK_family_account PRIMARY KEY (family_id)
-);
 
 CREATE SEQUENCE seq_user_id
     INCREMENT BY 1

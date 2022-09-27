@@ -2,7 +2,9 @@ package com.techelevator.dao;
 
 public interface AccountDao {
 
-    Boolean create(String familyName);
+    void create(String familyName);
+
+    void updateWhileCreate(String familyName);
 
     void updateFamilyName(String familyName, int familyId);
 

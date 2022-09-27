@@ -3,9 +3,11 @@ package com.techelevator.controller;
 import javax.validation.Valid;
 
 import com.techelevator.dao.AccountDao;
+import com.techelevator.model.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
@@ -15,14 +17,11 @@ import org.springframework.web.bind.annotation.*;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.techelevator.dao.UserDao;
-import com.techelevator.model.LoginDTO;
-import com.techelevator.model.RegisterUserDTO;
-import com.techelevator.model.User;
-import com.techelevator.model.UserAlreadyExistsException;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
 @RestController
+//@PreAuthorize("isAuthenticated()")
 @CrossOrigin
 public class AuthenticationController {
 
@@ -31,10 +30,13 @@ public class AuthenticationController {
     private UserDao userDao;
     private AccountDao accountDao;
 
-    public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao) {
+    public AuthenticationController(TokenProvider tokenProvider,
+                                    AuthenticationManagerBuilder authenticationManagerBuilder,
+                                    UserDao userDao, AccountDao accountDao) {
         this.tokenProvider = tokenProvider;
         this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.userDao = userDao;
+        this.accountDao = accountDao;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -64,6 +66,7 @@ public class AuthenticationController {
             String role = "ROLE_USER";
             userDao.create(newUser.getUsername(),newUser.getPassword(), role);
             accountDao.create(newUser.getUsername());
+            accountDao.updateWhileCreate(newUser.getUsername());
         }
     }
 

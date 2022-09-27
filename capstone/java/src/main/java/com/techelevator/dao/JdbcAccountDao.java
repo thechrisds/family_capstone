@@ -2,7 +2,9 @@ package com.techelevator.dao;
 import com.techelevator.model.Account;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
+@Component
 public class JdbcAccountDao implements AccountDao {
 
     private JdbcTemplate jdbcTemplate;
@@ -11,21 +13,21 @@ public class JdbcAccountDao implements AccountDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public JdbcAccountDao() {
-    }
-
     @Override
-    public Boolean create(String familyName) {
+    public void create(String familyName) {
         String sql = "INSERT INTO family_account " +
                 "(family_name) " +
                 "VALUES(?) " +
-                "RETURNING family_id;" +
+                "RETURNING family_id;";
+        jdbcTemplate.queryForObject(sql, Integer.class, familyName);
+    }
 
-                "UPDATE users " +
-                "SET family_id = (SELECT family_id FROM family_account WHERE family_name = ? " +
+    @Override
+    public void updateWhileCreate(String familyName) {
+        String sql2 = "UPDATE users " +
+                "SET family_id = (SELECT family_id FROM family_account WHERE family_name = ?) " +
                 "WHERE username = ?;";
-        jdbcTemplate.queryForObject(sql, Integer.class, familyName, familyName, familyName);
-        return true;
+        jdbcTemplate.update(sql2, familyName, familyName);
     }
 
     @Override
@@ -50,8 +52,6 @@ public class JdbcAccountDao implements AccountDao {
         jdbcTemplate.update(sql, userId);
 
     }
-
-
 
     private Account mapRowToAccount(SqlRowSet rowSet) {
         Account account = new Account();
