@@ -2,7 +2,11 @@ BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS users, family_account, library, reading_activity, prizes CASCADE;
 
+<<<<<<< HEAD
 DROP SEQUENCE IF EXISTS seq_user_id, seq_family_id, seq_activity_id;
+=======
+DROP SEQUENCE IF EXISTS seq_user_id, seq_family_id, seq_library_id, seq_activity_id, seq_prizes_id;
+>>>>>>> main
 
 CREATE TABLE family_account (
     family_id serial,
@@ -23,6 +27,7 @@ CREATE SEQUENCE seq_user_id
 CREATE TABLE users (
 	user_id int NOT NULL DEFAULT nextval('seq_user_id'),
 	family_id int,
+	is_parent boolean NOT NULL DEFAULT false,
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) DEFAULT 'ROLE_USER',
@@ -30,13 +35,13 @@ CREATE TABLE users (
 	CONSTRAINT FK_family_account_family_id FOREIGN KEY (family_id) REFERENCES family_account (family_id)
 );
 
---CREATE SEQUENCE seq_library_id
---INCREMENT BY 1
---START WITH 2001
---NO MAXVALUE;
+CREATE SEQUENCE seq_library_id
+INCREMENT BY 1
+START WITH 2001
+NO MAXVALUE;
 
 CREATE TABLE library (
-    book_id int NOT NULL UNIQUE,
+    book_id int NOT NULL DEFAULT nextval('seq_library_id'),
 	isbn int NOT NULL UNIQUE,
     book_title varchar (100) NOT NULL UNIQUE,
     book_author varchar (50) NOT NULL,
@@ -64,9 +69,14 @@ CREATE TABLE reading_activity (
 	CONSTRAINT FK_library FOREIGN KEY (isbn) REFERENCES library (isbn)
 );
 
+CREATE SEQUENCE seq_prizes_id
+    INCREMENT BY 1
+    START WITH 4001
+    NO MAXVALUE;
+
 CREATE TABLE prizes (
     family_id int NOT NULL,
-    prizes_id int NOT NULL UNIQUE,
+    prizes_id int NOT NULL DEFAULT nextval('seq_activity_id'),
     name varchar (50) NOT NULL,
     description varchar (200) NOT NULL,
     eligible int NOT NULL,

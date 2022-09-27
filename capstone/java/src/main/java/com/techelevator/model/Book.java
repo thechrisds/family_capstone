@@ -1,6 +1,7 @@
 package com.techelevator.model;
 
 public class Book {
+    private int bookID;
         private String bookTitle;
         private String bookAuthor;
         private int isbn;
@@ -11,6 +12,14 @@ public class Book {
 
     public String getCoverImg() {
         return coverImg;
+    }
+
+    public int getBookID() {
+        return bookID;
+    }
+
+    public void setBookID(int bookID) {
+        this.bookID = bookID;
     }
 
     public void setCoverImg(String coverImg) {

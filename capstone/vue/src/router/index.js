@@ -52,6 +52,13 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: "/books",
+      name: "books",
+      meta: {
+        requiresAuth: false
+      }
     }
   ]
 })
