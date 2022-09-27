@@ -31,13 +31,13 @@ CREATE TABLE users (
 	CONSTRAINT FK_family_account_family_id FOREIGN KEY (family_id) REFERENCES family_account (family_id)
 );
 
---CREATE SEQUENCE seq_library_id
---INCREMENT BY 1
---START WITH 2001
---NO MAXVALUE;
+CREATE SEQUENCE seq_library_id
+INCREMENT BY 1
+START WITH 2001
+NO MAXVALUE;
 
 CREATE TABLE library (
-    book_id int NOT NULL UNIQUE,
+    book_id int NOT NULL DEFAULT nextval('seq_library_id'),
 	isbn int NOT NULL UNIQUE,
     book_title varchar (100) NOT NULL UNIQUE,
     book_author varchar (50) NOT NULL,

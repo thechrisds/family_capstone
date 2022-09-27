@@ -32,17 +32,15 @@ public class BookController {
         }
     }
 
-    /*@RequestMapping(value = "/books", method = RequestMethod.DELETE)
-    public void deleteBook(@PathVariable int isbn){
-        List<Book> bookList = bookDao.findAll();
-        boolean exists = false;
-        for (Book i: bookList){
-            if (i.getIsbn() !=){
+    @RequestMapping(value = "/books/{isbn}", method = RequestMethod.DELETE)
+    public void deleteBook(@PathVariable int isbn) throws Exception { //can be isbn or book id technically
+//        if (!bookDao.deleteBook(isbn)){
+//            throw new Exception("Error deleting book.");
+//        }         Not working how I want it to
+        bookDao.deleteBook(isbn);
 
-            }
-        }
 
-    }*/
+    }
 
 
 }
