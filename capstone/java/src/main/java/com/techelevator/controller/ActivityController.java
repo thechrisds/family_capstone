@@ -15,18 +15,13 @@ import java.util.List;
 @CrossOrigin
 @PreAuthorize("isAuthenticated()")
 public class ActivityController {
+
     @Autowired
-    private ActivityDao ActivityDao;
-    private UserDao userDao;
+    private ActivityDao activityDao;
 
-    public ActivityController(ActivityDao ActivityDao, UserDao userDao) {
-        this.ActivityDao = ActivityDao;
-        this.userDao = userDao;
+    @RequestMapping(path = "/activity", method = RequestMethod.GET)
+    public List<Activity> returnAllActivity() {
+        List<Activity> allActivity = activityDao.getAllReadingActivities();
+        return allActivity;
     }
-
-    public ActivityController() {
-    }
-
-
-    //TODO
 }
