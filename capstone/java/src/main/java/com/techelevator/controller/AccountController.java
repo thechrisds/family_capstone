@@ -15,7 +15,6 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@PreAuthorize("isAuthenticated()")
 public class AccountController {
     @Autowired
     private AccountDao accountDao;
@@ -34,10 +33,9 @@ public class AccountController {
         return userDao.findAllByFamilyId(id);
     }
 
-    //@RequestMapping(path = "/account/{id}", method = RequestMethod.POST)
-
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/account", method = RequestMethod.POST)
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(value = "/account/newChild", method = RequestMethod.POST)
     public void createNewChildUser(@Valid @RequestBody RegisterUserDTO newUser, LoginDTO loginDto) {
         try {
             User user = userDao.findByUsername(newUser.getUsername());
@@ -49,8 +47,9 @@ public class AccountController {
         }
     }
 
+
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/account", method = RequestMethod.POST)
+    @RequestMapping(value = "/account/newParent", method = RequestMethod.POST)
     public void createNewParentUser(@Valid @RequestBody RegisterUserDTO newUser, LoginDTO loginDto) {
         try {
             User user = userDao.findByUsername(newUser.getUsername());
@@ -62,7 +61,9 @@ public class AccountController {
         }
     }
 
+
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/account/{id}", method = RequestMethod.DELETE)
     public void deleteUser(@PathVariable int id) throws UserNotFoundException {
         accountDao.deleteUser(id);
