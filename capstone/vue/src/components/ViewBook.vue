@@ -23,7 +23,7 @@ export default{
     created() {
         bookService.seeBooks().then( response => {
             this.books = response.data;
-            }).catch 
+            })
         }
     };
 </script>

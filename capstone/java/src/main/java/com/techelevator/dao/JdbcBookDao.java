@@ -40,7 +40,7 @@ public class JdbcBookDao implements BookDao{
     }
 
     @Override
-    public Book findBookByISBN(int isbn) {
+    public Book findBookByISBN(long isbn) {
         Book book = null;
         String sql = "SELECT * FROM library WHERE isbn = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, isbn);
@@ -91,7 +91,7 @@ public class JdbcBookDao implements BookDao{
     }
 
     @Override
-    public boolean addBook(String bookTitle, String bookAuthor, int isbn, String genre, String description) {
+    public boolean addBook(String bookTitle, String bookAuthor, long isbn, String genre, String description) {
         String sql = "INSERT INTO library (book_title, book_author, isbn, genre, description) " +
                 "VALUES (?, ?, ?, ?, ?)";
         try {
@@ -103,7 +103,7 @@ public class JdbcBookDao implements BookDao{
     }
 
     @Override
-    public boolean deleteBook(int isbn) {
+    public boolean deleteBook(long isbn) {
         boolean success = true;
         String a = "";
         a += isbn;
@@ -126,7 +126,7 @@ public class JdbcBookDao implements BookDao{
     private Book mapRowToBook(SqlRowSet results){
         Book book = new Book();
         book.setBookID(results.getInt("book_id"));
-        book.setIsbn(results.getInt("isbn"));
+        book.setIsbn(results.getLong("isbn"));
         book.setBookTitle(results.getString("book_title"));
         book.setBookAuthor(results.getString("book_author"));
         book.setCoverImg(results.getString("cover_img"));

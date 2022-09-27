@@ -38,7 +38,7 @@ NO MAXVALUE;
 
 CREATE TABLE library (
     book_id int NOT NULL DEFAULT nextval('seq_library_id'),
-	isbn int NOT NULL UNIQUE,
+	isbn numeric NOT NULL UNIQUE,
     book_title varchar (100) NOT NULL UNIQUE,
     book_author varchar (50) NOT NULL,
     cover_img varchar(200),
