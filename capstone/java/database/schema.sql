@@ -2,11 +2,7 @@ BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS users, family_account, library, reading_activity, prizes CASCADE;
 
-<<<<<<< HEAD
-DROP SEQUENCE IF EXISTS seq_user_id, seq_family_id, seq_activity_id;
-=======
 DROP SEQUENCE IF EXISTS seq_user_id, seq_family_id, seq_library_id, seq_activity_id, seq_prizes_id;
->>>>>>> main
 
 CREATE TABLE family_account (
     family_id serial,
