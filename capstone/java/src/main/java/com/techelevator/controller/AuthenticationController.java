@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import javax.validation.Valid;
 
+import com.techelevator.dao.AccountDao;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,7 @@ public class AuthenticationController {
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private UserDao userDao;
+    private AccountDao accountDao;
 
     public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao) {
         this.tokenProvider = tokenProvider;
@@ -61,7 +63,7 @@ public class AuthenticationController {
         } catch (UsernameNotFoundException e) {
             String role = "ROLE_USER";
             userDao.create(newUser.getUsername(),newUser.getPassword(), role);
-
+            accountDao.create(newUser.getUsername());
         }
     }
 

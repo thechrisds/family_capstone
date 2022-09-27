@@ -1,15 +1,13 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Account;
-
 public interface AccountDao {
 
-    boolean create(String familyName);
+    Boolean create(String familyName);
 
-    void updateFamilyName(String familyName);
+    void updateFamilyName(String familyName, int familyId);
 
-    Account getUserByAccount(String username);
+    void deleteUser(int userId);
 
-    Account getAllUsersByAccount(int familyId);
+    void updateFamilyId(String parent, String username);
 
 }

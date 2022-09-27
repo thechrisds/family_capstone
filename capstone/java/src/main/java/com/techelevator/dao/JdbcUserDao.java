@@ -63,6 +63,20 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
+    public List<User> findAllByFamilyId(int id) {
+        List<User> users = new ArrayList<>();
+        String sql = "SELECT username, role " +
+                "FROM users " +
+                "WHERE family_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            User user = mapRowToUser(results);
+            users.add(user);
+        }
+        return users;
+    }
+
+    @Override
     public User findByUsername(String username) {
         if (username == null) throw new IllegalArgumentException("Username cannot be null");
 
@@ -79,7 +93,6 @@ public class JdbcUserDao implements UserDao {
         String insertUserSql = "insert into users (username,password_hash,role) values (?,?,?)";
         String password_hash = new BCryptPasswordEncoder().encode(password);
         String ssRole = role.toUpperCase().startsWith("ROLE_") ? role.toUpperCase() : "ROLE_" + role.toUpperCase();
-
         return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole) == 1;
     }
 
