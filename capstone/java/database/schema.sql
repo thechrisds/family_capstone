@@ -59,6 +59,7 @@ CREATE TABLE reading_activity (
     minutes_read int DEFAULT 0,
     date_read timestamp,
     notes varchar (250),
+    format varchar (20) DEFAULT 'unspecified',
     completed boolean DEFAULT false,
     CONSTRAINT PK_reading_activity PRIMARY KEY (activity_id),
     CONSTRAINT FK_family_account_users FOREIGN KEY (user_id) REFERENCES users (user_id),

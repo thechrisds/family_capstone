@@ -11,9 +11,8 @@ public interface ActivityDao {
     List<Activity> getAllReadingActivities();
     Activity getActivityByActivityId(int activityId);
     List<DetailedActivity> getActivitiesByReaderId(int readerId);
-    List<Activity> getActivitiesByFamilyId(int familyId);
+    List<DetailedActivity> getActivitiesByFamilyId(int familyId);
     int getTotalReadingMinutesByReaderId(int readerId);
-    int getReaderMinutesByDate(Date dateRead);
     Boolean addActivity(Activity activityToAdd);
     void updateActivity(Activity activityToUpdate, int activityId);
     void deleteActivity(int activityId);

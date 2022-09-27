@@ -31,9 +31,22 @@ public class ActivityController {
         return activity;
     }
 
-    @RequestMapping(path = "/activity/id/{readerId}", method = RequestMethod.GET)
+    @RequestMapping(path = "/activity/rid/{readerId}", method = RequestMethod.GET)
     public List<DetailedActivity> returnActivityByReaderId(@PathVariable int readerId) {
         List<DetailedActivity> activityByUser = activityDao.getActivitiesByReaderId(readerId);
         return activityByUser;
+    }
+
+    @RequestMapping(path = "/activity/fid/{familyId}", method = RequestMethod.GET)
+    public List<DetailedActivity> returnActivityByFamilyId(@PathVariable int familyId) {
+        List<DetailedActivity> activityByUser = activityDao.getActivitiesByFamilyId(familyId);
+        return activityByUser;
+
+
+    }
+    @RequestMapping("/activity/minutes/{readerId}")
+    public int returnTotalMinsByReaderId(@PathVariable int readerId) {
+        int totalMins = activityDao.getTotalReadingMinutesByReaderId(readerId);
+        return totalMins;
     }
 }

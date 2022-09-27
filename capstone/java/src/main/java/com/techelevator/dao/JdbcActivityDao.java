@@ -58,17 +58,28 @@ public class JdbcActivityDao implements ActivityDao {
     }
 
     @Override
-    public List<Activity> getActivitiesByFamilyId(int familyId) {
-        return null;
+    public List<DetailedActivity> getActivitiesByFamilyId(int familyId) {
+        List<DetailedActivity> activityList = new ArrayList<>();
+        String sql = "SELECT u.username, b.book_title, a.date_read, a.minutes_read, a.completed, a.notes \n" +
+                "FROM reading_activity a \n" +
+                "JOIN users u ON a.user_id = u.user_id \n" +
+                "JOIN library b ON a.isbn = b.isbn\n" +
+                "WHERE a.user_id IN (SELECT user_id FROM users WHERE family_id = ?)";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, familyId);
+        while (results.next()) {
+            activityList.add(mapResultsToDetailedActivity(results));
+        }
+        return activityList;
     }
 
     @Override
     public int getTotalReadingMinutesByReaderId(int readerId) {
-        return 0;
-    }
-
-    @Override
-    public int getReaderMinutesByDate(Date dateRead) {
+        String sql = "SELECT SUM(time_in_mins) FROM reading_activities " +
+                "WHERE reader_id = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, readerId);
+        if (result.next()) {
+            return result.getInt("sum");
+        }
         return 0;
     }
 
