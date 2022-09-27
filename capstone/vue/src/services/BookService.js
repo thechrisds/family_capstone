@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-export default{
-seeBooks(){
-    return axios.get('/books');
+
+
+export default {
+    seeBooks(){
+      return axios.get('/books');
+    }
   }
-}

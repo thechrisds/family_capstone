@@ -1,13 +1,13 @@
 <template>
-    <add-book />
+    <view-book />
 </template>
 
 <script>
-import AddBook from '@/components/AddBook'
+import ViewBook from '@/components/ViewBook'
 
 export default ({
     components: {
-        AddBook
+        ViewBook
     }
 });
 </script>
