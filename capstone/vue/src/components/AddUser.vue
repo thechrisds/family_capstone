@@ -1,5 +1,6 @@
 <template>
   <div>
+    Add a member to your family:
     <form class="new-user-form">
       <input
         class="user-name"
@@ -35,7 +36,7 @@ export default {
         username: "",
         password: "",
         confirmPassword: "",
-        role: ""
+        role: "ROLE_USER"
       },
     };
   },
@@ -50,6 +51,7 @@ export default {
       this.user = {
         username: "",
         password: "",
+        role: "ROLE_USER"
       };
     },
   },

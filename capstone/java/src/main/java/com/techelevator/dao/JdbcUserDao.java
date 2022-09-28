@@ -110,7 +110,7 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public boolean createChild(String username, String password, String role) {
-        String insertUserSql = "insert into users (username,password_hash,role is_parent) values (?,?,?, false)";
+        String insertUserSql = "insert into users (username,password_hash,role,is_parent) values (?,?,?, false)";
         String password_hash = new BCryptPasswordEncoder().encode(password);
         String ssRole = role.toUpperCase().startsWith("ROLE_") ? role.toUpperCase() : "ROLE_" + role.toUpperCase();
         return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole) == 1;
@@ -131,4 +131,11 @@ public class JdbcUserDao implements UserDao {
         user.setActivated(true);
         return user;
     }
+    /*
+    private User mapRowToUserTwo(SqlRowSet rs) {
+        User user = new User();
+        return user;
+    }
+
+     */
 }
