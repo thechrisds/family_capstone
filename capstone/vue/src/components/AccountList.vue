@@ -1,11 +1,20 @@
 <template>
   <div>
-    <ul>
-      Family Members:
-      <li v-for="user in users" v-bind:key="user.id">
-        {{ user.username }}
-      </li>
-    </ul>
+    Family Members:
+    <div v-for="user in users" v-bind:key="user.id">
+      ----
+      Username: {{ user.username }}
+      ----
+      <br>
+      First name:
+      <br>
+      Last name:
+      <br>
+      Minutes read:
+      <p>
+
+      </p>
+    </div>
   </div>
 </template>
 

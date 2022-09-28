@@ -5,7 +5,7 @@
       <input
         class="user-name"
         type="text"
-        placeholder="UserName"
+        placeholder="Username"
         v-model="user.username"
       />
       <input
@@ -17,7 +17,7 @@
       <input
         class="confirm-password"
         type="text"
-        placeholder="ConfirmPassword"
+        placeholder="Confirm Password"
         v-model="user.confirmPassword"
       />
 
@@ -59,4 +59,16 @@ export default {
 </script>
 
 <style>
+.new-user-form {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  border: solid, 2px, gray;
+}
+
+.submitUser:hover {
+  background-image: '"../assets/bookturner-small.gif"';
+    background-size: contain;
+}
+
 </style>
