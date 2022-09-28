@@ -1,11 +1,17 @@
 <template>
      <div class="booklist-container">
+         <h2>Add a Book</h2>
          <form class="new-book-form" v-on:submit.prevent="saveBook">
          <input class="title-input" type="text" placeholder="Title" v-model="book.bookTitle" />
          <br />
          <input class="author-input" type="text" placeholder="Author" v-model="book.bookAuthor" />
          <br/>
          <input class="isbn-input" type="text" placeholder="ISBN" v-model.number="book.isbn" required="required"/>
+         <br/>
+         <input class="genre-input" type="text" placeholder="Genre" v-model.number="book.genre"/>
+         <br/>
+         <br/>
+         <textarea class="description-input" type="text" placeholder="Description..." v-model="book.description"/>
          <br/>
          <button class="submitBook" v-on:click="addBooks()">Save</button>
    </form>
@@ -36,8 +42,8 @@ export default{
                 bookTitle: "",
                 bookAuthor: "",
                 isbn: "",
-                genre: "z",
-                description: "No description given"
+                genre: "",
+                description: ""
             }
         }
     },
@@ -55,8 +61,8 @@ export default{
                 bookTitle: "",
                 bookAuthor: "",
                 isbn: "",
-                genre: "z",
-                description: "No description given"
+                genre: "",
+                description: ""
             }
             
         },
@@ -80,35 +86,78 @@ export default{
 
 <style>
 .booklist-container{
-    padding: 200px;
     margin: auto;
-    margin-top: 100px;
-    justify-content: center;
-    border:black 2px solid;
-    width: 35%;
-    height: 300px;
+    width: 50%;
+    height: 450px;
+    background-color: #f2f2f2;
+    
+    justify-content:center;
+    padding: 15px;
+    
 }
 .new-book-form{
     
 }
 
 .title-input{
-    border-top: none;
+    /* border-top: none;
     border-left: none;
-    border-right: none;
-    font-size: 16px;
-    font-weight: 500;
-    
+    border-right: none; */
+    display: block;
+    width: 50%;
+  background: #fff;
+  border-radius: 31px;
+  font-family: Ubuntu-Bold;
+  font-size: 18px;
+  padding: 0 0 0 10px;
 }
 
 .author-input{
-    margin: 10px auto;
-    box-shadow: 1px 1px 4px;
+    display: block;
+    width: 50%;
+  background: #fff;
+  border-radius: 31px;
+  font-family: Ubuntu-Bold;
+  font-size: 18px;
+  padding: 0 0 0 10px;
+    
+    
 }
 
 .isbn-input{
-    margin: 10px auto;
-    box-shadow: 1px 1px 4px;
+    display: block;
+    width: 50%;
+  background: #fff;
+  border-radius: 31px;
+  font-family: Ubuntu-Bold;
+  font-size: 18px;
+  line-height: 1.2;
+  padding: 0 0 0 10px;
+    
 
 }
-</style>
+
+.description-input {
+    box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
+    height: 100px;
+    padding: 0 0 0 10px;
+    width: 50%;
+    border-radius: 20px;
+}
+
+.genre-input {
+    display: block;
+    width: 50%;
+  background: #fff;
+  border-radius: 31px;
+  font-family: Ubuntu-Bold;
+  font-size: 18px;
+  line-height: 1.2;
+  padding: 0 0 0 10px;
+}
+
+h2{
+    text-align:center;
+    
+}
+ </style>
