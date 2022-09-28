@@ -111,7 +111,7 @@ public class JdbcActivityDao implements ActivityDao {
     private Activity mapResultsToActivity(SqlRowSet results) {
         int activityId = results.getInt("activity_id");
         int readerId = results.getInt("user_id");
-        long isbn = results.getInt("isbn");
+        long isbn = results.getLong("isbn");
         String format = results.getString("format");
         Date dateRead = results.getDate("date_read");
         int timeInMinutes = results.getInt("minutes_read");
