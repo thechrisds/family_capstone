@@ -13,25 +13,26 @@
 import accountService from '@/services/AccountService.js';
 export default {
     name: 'account-list',
-    props: ['users'],
+    //props: ['users'],
     data() {
         return {
             users: [],
-            id: ''
+            id: '',
+            username: this.$store.state.user.username
+        
         };
     },
     methods: {
 
     },
     created() {
-     
-          accountService.getFamilyId().then(response => {
+            console.log(this.username);
+          accountService.getFamilyId(this.username).then(response => {
+            console.log(response);
             this.id = response.data;
-          });
-        
-            //call another method to get the id from the user
-          
+            
             accountService.getAllFamily(this.id).then(response => {
+                console.log('getAllFamilyResponse: ', response);
                 if(response.status === 200) {
                     this.users = response.data;
                 }
@@ -43,6 +44,11 @@ export default {
                     "Error getting all Family Members."
                 }
             });
+        
+          });
+        
+          
+            
         }
     
 

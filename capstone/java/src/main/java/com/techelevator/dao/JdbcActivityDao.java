@@ -81,7 +81,7 @@ public class JdbcActivityDao implements ActivityDao {
         }
         return 0;
     }
-
+/*
     @Override
     public Boolean addActivity(Activity activityToAdd) {
         return true;
@@ -96,6 +96,8 @@ public class JdbcActivityDao implements ActivityDao {
     public void deleteActivity(int activityId) {
 
     }
+
+ */
 
     private Activity mapResultsToActivity(SqlRowSet results) {
         int activityId = results.getInt("activity_id");

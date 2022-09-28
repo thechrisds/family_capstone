@@ -1,17 +1,21 @@
 <template>
-  <account-list />
+  <div>
+    <account-list />
+    <add-user />
+  </div>
 </template>
 
 <script>
-import AccountList from '@/components/AccountList'
+import AccountList from "@/components/AccountList";
+import AddUser from "@/components/AddUser";
 
 export default {
   components: {
-    AccountList
-  }
-}
+    AccountList,
+    AddUser,
+  },
+};
 </script>
 
 <style>
-
 </style>

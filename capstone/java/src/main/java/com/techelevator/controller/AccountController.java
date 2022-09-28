@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -25,28 +26,30 @@ public class AccountController {
         this.userDao = userDao;
     }
 
-    public AccountController() {
-    }
-
     @RequestMapping(path = "/account/{id}", method = RequestMethod.GET)
     public List<User> getAllByFamilyId(@PathVariable int id) {
         return userDao.findAllByFamilyId(id);
     }
 
+    @RequestMapping(path = "/account/username/{username}", method = RequestMethod.GET)
+    @PreAuthorize("isAuthenticated()")
+    public int getFamilyIdByUsername(@PathVariable String username) {
+        return userDao.findFamilyIdByUsername(username);
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/account/newChild", method = RequestMethod.POST)
-    public void createNewChildUser(@Valid @RequestBody RegisterUserDTO newUser, LoginDTO loginDto) {
+    public void createNewChildUser(@Valid @RequestBody RegisterUserDTO newUser, Principal principal) {
         try {
             User user = userDao.findByUsername(newUser.getUsername());
             throw new UserAlreadyExistsException();
         } catch (UsernameNotFoundException e) {
             String role = "ROLE_USER";
             userDao.createChild(newUser.getUsername(),newUser.getPassword(), role);
-            accountDao.updateFamilyId(loginDto.getUsername(), newUser.getUsername());
+            accountDao.updateFamilyId(principal.getName(), newUser.getUsername());
         }
     }
-
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/account/newParent", method = RequestMethod.POST)
@@ -60,7 +63,6 @@ public class AccountController {
             accountDao.updateFamilyId(loginDto.getUsername(), newUser.getUsername());
         }
     }
-
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PreAuthorize("isAuthenticated()")

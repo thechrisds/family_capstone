@@ -2,10 +2,14 @@ import axios from 'axios';
 
 export default {
     getAllFamily(familyId) {
-        return axios.get(`/account/${familyId}`)
+        return axios.get(`/account/${familyId}`);
     },
     
-    getFamilyId() {
-        return axios.get(`/account/username`)
+    getFamilyId(username) {
+        return axios.get(`/account/username/${username}`);
+    },
+
+    addUser(user) {
+        return axios.post(`/account/newChild`, user);
     }
 }
