@@ -44,7 +44,7 @@ public class ActivityController {
 
 
     }
-    @RequestMapping("/activity/minutes/{readerId}")
+    @RequestMapping(path = "/activity/minutes/{readerId}", method = RequestMethod.GET)
     public int returnTotalMinsByReaderId(@PathVariable int readerId) {
         int totalMins = activityDao.getTotalReadingMinutesByReaderId(readerId);
         return totalMins;

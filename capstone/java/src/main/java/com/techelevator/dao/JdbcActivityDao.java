@@ -74,8 +74,7 @@ public class JdbcActivityDao implements ActivityDao {
 
     @Override
     public int getTotalReadingMinutesByReaderId(int readerId) {
-        String sql = "SELECT SUM(time_in_mins) FROM reading_activities " +
-                "WHERE reader_id = ?";
+        String sql = "SELECT SUM(minutes_read) FROM reading_activity WHERE user_id = ?";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, readerId);
         if (result.next()) {
             return result.getInt("sum");
@@ -106,7 +105,8 @@ public class JdbcActivityDao implements ActivityDao {
         int timeInMinutes = results.getInt("minutes_read");
         String activityNotes = results.getString("notes");
         boolean isComplete = results.getBoolean("completed");
-        Activity activity = new Activity(activityId,bookId,readerId,dateRead,timeInMinutes,activityNotes,isComplete);
+        String format = results.getString("format");
+        Activity activity = new Activity(activityId,bookId,readerId,dateRead,timeInMinutes,activityNotes,isComplete,format);
         return activity;
     }
 

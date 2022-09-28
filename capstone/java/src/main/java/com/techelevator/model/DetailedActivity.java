@@ -20,6 +20,8 @@ public class DetailedActivity {
         this.activityNotes = activityNotes;
     }
 
+    public DetailedActivity(){}
+
     public String getUserName() {
         return userName;
     }
