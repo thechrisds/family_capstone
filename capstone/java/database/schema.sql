@@ -57,7 +57,7 @@ CREATE TABLE reading_activity (
     user_id int NOT NULL,
     isbn numeric NOT NULL,
     minutes_read int DEFAULT 0,
-    date_read timestamp,
+    date_read  DATE NOT NULL DEFAULT CURRENT_DATE,
     notes varchar (250),
     format varchar (20) DEFAULT 'unspecified',
     completed boolean DEFAULT false,

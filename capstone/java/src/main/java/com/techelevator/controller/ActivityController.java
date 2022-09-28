@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.*;
 import com.techelevator.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,12 +20,20 @@ public class ActivityController {
     @Autowired
     private ActivityDao activityDao;
 
-
-    @RequestMapping(path = "/add-activity", method = RequestMethod.POST)
-    public Activity createActivity(@Valid @RequestBody Activity activity){
-        activityDao.createActivity(activity);
-        return activity;
+    public ActivityController(ActivityDao activityDao) {
+        this.activityDao = activityDao;
     }
+
+    @RequestMapping(path = "/activity/", method = RequestMethod.POST)
+    public void createActivity(@RequestBody Activity activity) throws Exception {
+        try {
+            activityDao.createActivity(activity);
+        } catch (DataAccessException e){
+            throw new Exception("Adding activity failed.");
+        }
+    }
+
+
 
     @RequestMapping(path = "/activity", method = RequestMethod.GET)
     public List<Activity> returnAllActivity() {
@@ -48,12 +57,12 @@ public class ActivityController {
     public List<Activity> returnActivityByFamilyId(@PathVariable int familyId) {
         List<Activity> activityByUser = activityDao.getActivitiesByFamilyId(familyId);
         return activityByUser;
-
-
     }
+
     @RequestMapping(path = "/activity/minutes/{readerId}", method = RequestMethod.GET)
     public int returnTotalMinsByReaderId(@PathVariable int readerId) {
         int totalMins = activityDao.getTotalReadingMinutesByReaderId(readerId);
         return totalMins;
     }
+
 }

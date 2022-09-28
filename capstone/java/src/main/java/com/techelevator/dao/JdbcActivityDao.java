@@ -2,6 +2,7 @@ package com.techelevator.dao;
 import com.techelevator.model.Activity;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -24,11 +25,26 @@ public class JdbcActivityDao implements ActivityDao {
 
 
     @Override
-    public Activity createActivity(Activity activity){
-        String sql = "INSERT INTO reading_activity(user_id, isbn, date_read, minutes_read) " +
-                "VALUES(?, ?, ?, ?)";
-        jdbcTemplate.update(sql, activity.getReaderId(), activity.getIsbn(), activity.getDateRead(), activity.getTimeInMinutes());
-        return activity;
+    public boolean createActivity(Activity activity){
+        String sql = "INSERT INTO reading_activity(user_id, isbn, minutes_read) " +
+                "VALUES(?, ?, ?)";
+        try {
+            jdbcTemplate.update(sql, activity.getReaderId(), activity.getIsbn(), activity.getTimeInMinutes());
+        } catch (DataAccessException e){
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean deleteActivity(int activityId){
+        String sql = "DELETE FROM reading_activity WHERE activity_id = ?";
+        try {
+            jdbcTemplate.update(sql, activityId);
+        } catch (DataAccessException e){
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -90,28 +106,11 @@ public class JdbcActivityDao implements ActivityDao {
         }
         return 0;
     }
-/*
-    @Override
-    public Boolean addActivity(Activity activityToAdd) {
-        return true;
-    }
-
-    @Override
-    public void updateActivity(Activity activityToUpdate, int activityId) {
-
-    }
-
-    @Override
-    public void deleteActivity(int activityId) {
-
-    }
-
- */
 
     private Activity mapResultsToActivity(SqlRowSet results) {
         int activityId = results.getInt("activity_id");
         int readerId = results.getInt("user_id");
-        long isbn = results.getLong("isbn");
+        long isbn = results.getInt("isbn");
         String format = results.getString("format");
         Date dateRead = results.getDate("date_read");
         int timeInMinutes = results.getInt("minutes_read");
