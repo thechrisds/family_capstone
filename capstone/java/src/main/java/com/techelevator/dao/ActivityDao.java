@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface ActivityDao {
 
-    Activity createActivity(Activity activity);
+    boolean createActivity(Activity activity);
+    boolean deleteActivity(int activityId);
     List<Activity> getAllReadingActivities();
     Activity getActivityByActivityId(int activityId);
     List<Activity> getActivitiesByReaderId(int readerId);
