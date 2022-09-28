@@ -38,8 +38,8 @@ NO MAXVALUE;
 
 CREATE TABLE library (
     book_id int NOT NULL DEFAULT nextval('seq_library_id'),
-	isbn numeric NOT NULL UNIQUE,
-    book_title varchar (100) NOT NULL UNIQUE,
+	isbn numeric NOT NULL,
+    book_title varchar (100) NOT NULL,
     book_author varchar (50) NOT NULL,
     cover_img varchar(200),
     genre varchar (50) NOT NULL,
@@ -72,13 +72,13 @@ CREATE SEQUENCE seq_prizes_id
     NO MAXVALUE;
 
 CREATE TABLE prizes (
-    family_id int NOT NULL,
+    family_id int NOT NULL DEFAULT 0, --changed to DEFAULT 0
     prizes_id int NOT NULL DEFAULT nextval('seq_activity_id'),
     name varchar (50) NOT NULL,
     description varchar (200) NOT NULL,
     eligible int NOT NULL,
     stock int NOT NULL,
-    start_date varchar (20) NOT NULL,
+    start_date varchar (20) NOT NULL, --change to DATE
     end_date varchar (20),
     CONSTRAINT PK_prizes PRIMARY KEY (prizes_id),
     CONSTRAINT FK_family_id FOREIGN KEY (family_id) REFERENCES family_account (family_id)
