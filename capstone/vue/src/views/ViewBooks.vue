@@ -1,7 +1,9 @@
 <template>
     <div>
     <view-book />
+    <div class="booklist">
     <router-link to="/books/add"> Add A Book To Library </router-link>
+    </div>
     </div>
 </template>
 
@@ -14,3 +16,9 @@ export default ({
     }
 });
 </script>
+
+<style>
+.booklist{
+    text-align:center;
+}
+</style>
