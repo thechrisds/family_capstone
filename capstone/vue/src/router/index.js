@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import ViewBooks from '../views/ViewBooks.vue'
+import AddActivity from '../views/AddActivity.vue'
 import AddBook from '../views/AddBook.vue'
 import FamilyAccount from '../views/FamilyAccount.vue'
 
@@ -78,6 +79,14 @@ const router = new Router({
       component: FamilyAccount,
       meta: {
         requiresAuth: true
+      }
+    },
+    {
+      path: "/add-activity",
+      name: "addActivity",
+      component: AddActivity,
+      meta: {
+        requiresAuth: false
       }
     }
   

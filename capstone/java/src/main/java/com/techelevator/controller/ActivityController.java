@@ -20,7 +20,7 @@ public class ActivityController {
     private ActivityDao activityDao;
 
 
-    @RequestMapping(path = "/addactivity", method = RequestMethod.POST)
+    @RequestMapping(path = "/add-activity", method = RequestMethod.POST)
     public Activity createActivity(@Valid @RequestBody Activity activity){
         activityDao.createActivity(activity);
         return activity;
