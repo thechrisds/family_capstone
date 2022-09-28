@@ -1,21 +1,24 @@
 package com.techelevator.model;
 
-import java.util.Date;
+import java.sql.Date;
+import java.time.LocalDate;
 
 public class Activity {
 
     private int activityId;
-    private int bookId;
     private int readerId;
+    private long isbn;
+    private String format;
     private Date dateRead;
     private int timeInMinutes;
     private String activityNotes;
     private boolean isComplete;
 
-    public Activity(int activityId, int bookId, int readerId, Date dateRead, int timeInMinutes, String activityNotes, boolean isComplete) {
+    public Activity(int activityId, int readerId, long isbn, String format, Date dateRead, int timeInMinutes, String activityNotes,  boolean isComplete) {
         this.activityId = activityId;
-        this.bookId = bookId;
         this.readerId = readerId;
+        this.isbn = isbn;
+        this.format = format;
         this.dateRead = dateRead;
         this.timeInMinutes = timeInMinutes;
         this.activityNotes = activityNotes;
@@ -30,20 +33,28 @@ public class Activity {
         this.activityId = activityId;
     }
 
-    public int getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
-    }
-
     public int getReaderId() {
         return readerId;
     }
 
     public void setReaderId(int readerId) {
         this.readerId = readerId;
+    }
+
+    public long getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(long isbn) {
+        this.isbn = isbn;
+    }
+
+    public String getFormat() {
+        return format;
+    }
+
+    public void setFormat(String format) {
+        this.format = format;
     }
 
     public Date getDateRead() {
@@ -82,14 +93,14 @@ public class Activity {
     public String toString() {
         return "Activity{" +
                 "activityId=" + activityId +
-                ", bookId=" + bookId +
                 ", readerId=" + readerId +
+                ", isbn=" + isbn +
+                ", format='" + format + '\'' +
                 ", dateRead=" + dateRead +
                 ", timeInMinutes=" + timeInMinutes +
                 ", activityNotes='" + activityNotes + '\'' +
                 ", isComplete=" + isComplete +
                 '}';
     }
-
     //TODO
 }

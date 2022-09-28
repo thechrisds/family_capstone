@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import ViewBooks from '../views/ViewBooks.vue'
 import AddBook from '../views/AddBook.vue'
+import FamilyAccount from '../views/FamilyAccount.vue'
 
 Vue.use(Router)
 
@@ -69,6 +70,14 @@ const router = new Router({
       component: AddBook,
       meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path: "/account",
+      name: "account",
+      component: FamilyAccount,
+      meta: {
+        requiresAuth: true
       }
     }
   

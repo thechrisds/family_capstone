@@ -18,6 +18,8 @@ public interface UserDao {
 
     List<User> findAllByFamilyId(int id);
 
+    int findFamilyIdByUsername(String username);
+
     boolean createChild(String username, String password, String role);
 
     void deleteUser(int userId);

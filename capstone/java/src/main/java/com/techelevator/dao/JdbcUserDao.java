@@ -49,6 +49,20 @@ public class JdbcUserDao implements UserDao {
 	}
 
     @Override
+    public int findFamilyIdByUsername(String username) {
+        if (username == null) throw new IllegalArgumentException("Username cannot be null");
+        String sql = "SELECT family_id FROM users WHERE username =?;";
+        int familyId;
+
+        try {
+            familyId = jdbcTemplate.queryForObject(sql, int.class, username);
+        } catch (EmptyResultDataAccessException e) {
+            throw new UsernameNotFoundException("User " + username + " was not found.");
+        }
+        return familyId;
+    }
+
+    @Override
     public List<User> findAll() {
         List<User> users = new ArrayList<>();
         String sql = "select * from users";
@@ -65,10 +79,8 @@ public class JdbcUserDao implements UserDao {
     @Override
     public List<User> findAllByFamilyId(int id) {
         List<User> users = new ArrayList<>();
-        String sql = "SELECT username, role " +
-                "FROM users " +
-                "WHERE family_id = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        String sql = "SELECT * FROM users WHERE family_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
         while (results.next()) {
             User user = mapRowToUser(results);
             users.add(user);
@@ -98,7 +110,7 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public boolean createChild(String username, String password, String role) {
-        String insertUserSql = "insert into users (username,password_hash,role) values (?,?,?)";
+        String insertUserSql = "insert into users (username,password_hash,role is_parent) values (?,?,?, false)";
         String password_hash = new BCryptPasswordEncoder().encode(password);
         String ssRole = role.toUpperCase().startsWith("ROLE_") ? role.toUpperCase() : "ROLE_" + role.toUpperCase();
         return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole) == 1;
