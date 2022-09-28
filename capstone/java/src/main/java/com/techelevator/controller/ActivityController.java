@@ -19,6 +19,13 @@ public class ActivityController {
     @Autowired
     private ActivityDao activityDao;
 
+
+    @RequestMapping(path = "/addactivity", method = RequestMethod.POST)
+    public Activity createActivity(@Valid @RequestBody Activity activity){
+        activityDao.createActivity(activity);
+        return activity;
+    }
+
     @RequestMapping(path = "/activity", method = RequestMethod.GET)
     public List<Activity> returnAllActivity() {
         List<Activity> allActivity = activityDao.getAllReadingActivities();
@@ -32,14 +39,14 @@ public class ActivityController {
     }
 
     @RequestMapping(path = "/activity/rid/{readerId}", method = RequestMethod.GET)
-    public List<DetailedActivity> returnActivityByReaderId(@PathVariable int readerId) {
-        List<DetailedActivity> activityByUser = activityDao.getActivitiesByReaderId(readerId);
+    public List<Activity> returnActivityByReaderId(@PathVariable int readerId) {
+        List<Activity> activityByUser = activityDao.getActivitiesByReaderId(readerId);
         return activityByUser;
     }
 
     @RequestMapping(path = "/activity/fid/{familyId}", method = RequestMethod.GET)
-    public List<DetailedActivity> returnActivityByFamilyId(@PathVariable int familyId) {
-        List<DetailedActivity> activityByUser = activityDao.getActivitiesByFamilyId(familyId);
+    public List<Activity> returnActivityByFamilyId(@PathVariable int familyId) {
+        List<Activity> activityByUser = activityDao.getActivitiesByFamilyId(familyId);
         return activityByUser;
 
 
