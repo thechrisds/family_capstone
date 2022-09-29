@@ -24,10 +24,10 @@ public class JdbcActivityDao implements ActivityDao {
 
     @Override
     public void createActivity(Activity activity){
-        String sql = "INSERT INTO reading_activity(user_id, isbn, minutes_read) " +
-                "VALUES(?, ?, ?)";
+        String sql = "INSERT INTO reading_activity(user_id, isbn, minutes_read, notes, format) " +
+                "VALUES(?, ?, ?, ?, ?)";
         try {
-            jdbcTemplate.update(sql, activity.getReaderId(), activity.getIsbn(), activity.getTimeInMinutes());
+            jdbcTemplate.update(sql, activity.getReaderId(), activity.getIsbn(), activity.getTimeInMinutes(), activity.getActivityNotes(), activity.getFormat());
         } catch (DataAccessException e){
             System.out.println("creation failed");
         }
@@ -46,7 +46,7 @@ public class JdbcActivityDao implements ActivityDao {
     @Override
     public List<Activity> getAllReadingActivities() {
         List<Activity> activityList = new ArrayList<>();
-        String sql = "SELECT * FROM reading_activity;";
+        String sql = "SELECT a.activity_id, a.user_id, u.username, a.isbn, b.book_title, a.format, a.date_read,  a.minutes_read, a.notes, a.completed FROM reading_activity a JOIN users u ON a.user_id = u.user_id JOIN library b ON a.isbn = b.isbn;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             activityList.add(mapResultsToActivity(results));
@@ -70,7 +70,7 @@ public class JdbcActivityDao implements ActivityDao {
     @Override
     public List<Activity> getActivitiesByReaderId(int readerId) {
         List<Activity> activityList = new ArrayList<>();
-        String sql = "SELECT u.username, b.book_title, a.date_read, a.minutes_read, a.completed, a.notes FROM reading_activity a JOIN users u ON a.user_id = u.user_id JOIN library b ON a.isbn = b.isbn WHERE a.user_id = ?";
+        String sql = "SELECT a.activity_id, a.user_id, u.username, a.isbn, b.book_title, a.format, a.date_read,  a.minutes_read, a.notes, a.completed FROM reading_activity a JOIN users u ON a.user_id = u.user_id JOIN library b ON a.isbn = b.isbn WHERE a.user_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, readerId);
         while (results.next()) {
             activityList.add(mapResultsToActivity(results));
@@ -94,7 +94,20 @@ public class JdbcActivityDao implements ActivityDao {
         return activityList;
     }
 
-
+    @Override
+    public List<Activity> getActivitiesByCurrentUser(int readerId) {
+        List<Activity> activityList = new ArrayList<>();
+        String sql = "SELECT a.activity_id, a.user_id, u.username, a.isbn, b.book_title, a.format, a.date_read,  a.minutes_read, a.notes, a.completed\n" +
+                "                FROM reading_activity a\n" +
+                "                JOIN users u ON a.user_id = u.user_id \n" +
+                "                JOIN library b ON a.isbn = b.isbn\n" +
+                "                WHERE a.user_id IN (SELECT user_id FROM users WHERE user_id = ?)";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, readerId);
+        while (results.next()) {
+            activityList.add(mapResultsToActivity(results));
+        }
+        return activityList;
+    }
     @Override
     public int getTotalReadingMinutesByReaderId(int readerId) {
         String sql = "SELECT SUM(minutes_read) FROM reading_activity WHERE user_id = ?";

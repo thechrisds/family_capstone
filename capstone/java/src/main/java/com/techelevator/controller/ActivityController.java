@@ -49,6 +49,13 @@ public class ActivityController {
         }
     }
 
+    @RequestMapping(path = "/activity/user", method = RequestMethod.GET)
+    public List<Activity> getActivitiesForCurrentUser(@RequestBody LoginDTO loginDTO) {
+        int readerId = userDao.findIdByUsername(loginDTO.getUsername());
+        List<Activity> activityByUser = activityDao.getActivitiesByCurrentUser(readerId);
+        return activityByUser;
+    }
+
     @RequestMapping(path = "/activity/family", method = RequestMethod.GET)
     public List<Activity> getActivitiesByFamilyId(@RequestBody LoginDTO loginDTO) {
         int familyId = userDao.findFamilyIdByUsername(loginDTO.getUsername());
