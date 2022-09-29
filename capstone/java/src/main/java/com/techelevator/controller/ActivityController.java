@@ -19,9 +19,20 @@ public class ActivityController {
 
     @Autowired
     private ActivityDao activityDao;
+    @Autowired
+    private BookDao bookDao;
+    @Autowired
+    private UserDao userDao;
 
-    public ActivityController(ActivityDao activityDao) {
+    public ActivityController(ActivityDao activityDao, BookDao bookDao, UserDao userDao) {
         this.activityDao = activityDao;
+        this.bookDao = bookDao;
+        this.userDao = userDao;
+    }
+
+    @RequestMapping(value = "/activity/d/{activityId}", method = RequestMethod.DELETE)
+    public void deleteActivity(@PathVariable int activityId){
+        activityDao.deleteActivity(activityId);
     }
 
     @RequestMapping(path = "/activity/", method = RequestMethod.POST)
@@ -31,6 +42,12 @@ public class ActivityController {
         } catch (DataAccessException e){
             throw new Exception("Adding activity failed.");
         }
+    }
+
+    @RequestMapping(path = "/activity/fid/{familyId}", method = RequestMethod.GET)
+    public List<Activity> returnActivityByFamilyId(@PathVariable int familyId) {
+        List<Activity> activityByUser = activityDao.getActivitiesByFamilyId(familyId);
+        return activityByUser;
     }
 
     @RequestMapping(path = "/activity", method = RequestMethod.GET)
@@ -51,16 +68,9 @@ public class ActivityController {
         return activityByUser;
     }
 
-    @RequestMapping(path = "/activity/fid/{familyId}", method = RequestMethod.GET)
-    public List<Activity> returnActivityByFamilyId(@PathVariable int familyId) {
-        List<Activity> activityByUser = activityDao.getActivitiesByFamilyId(familyId);
-        return activityByUser;
-    }
-
     @RequestMapping(path = "/activity/minutes/{readerId}", method = RequestMethod.GET)
     public int returnTotalMinsByReaderId(@PathVariable int readerId) {
         int totalMins = activityDao.getTotalReadingMinutesByReaderId(readerId);
         return totalMins;
     }
-
 }
