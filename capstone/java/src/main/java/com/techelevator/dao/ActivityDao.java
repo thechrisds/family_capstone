@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Activity;
+import com.techelevator.model.ActivityDetailed;
 
 import java.util.List;
 
@@ -14,6 +15,4 @@ public interface ActivityDao {
     List<Activity> getActivitiesByFamilyId(int familyId);
     int getTotalReadingMinutesByReaderId(int readerId);
 
-
-    //TODO
 }
