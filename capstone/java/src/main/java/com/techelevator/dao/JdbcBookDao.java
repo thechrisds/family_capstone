@@ -65,6 +65,19 @@ public class JdbcBookDao implements BookDao{
     }
 
     @Override
+    public List<Book> findBookByFamilyId(int familyId){
+        Book book = null;
+        List<Book> bookList = new ArrayList<>();
+        String sql = "SELECT * FROM library WHERE family_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, familyId);
+        while (results.next()){
+            book = mapRowToBook(results);
+            bookList.add(book);
+        }
+        return bookList;
+    }
+
+    @Override
     public List<Book> findBookByGenre(String genre) {
         Book book = null;
         List<Book> bookList = new ArrayList<>();
@@ -132,6 +145,7 @@ public class JdbcBookDao implements BookDao{
         book.setCoverImg(results.getString("cover_img"));
         book.setGenre(results.getString("genre"));
         book.setDescription(results.getString("description"));
+        book.setFamilyId(results.getInt("family_id"));
 
 
         return book;

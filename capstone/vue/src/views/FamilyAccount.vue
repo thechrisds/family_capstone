@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="family-account">
     <account-list />
     <add-user />
   </div>
@@ -18,5 +18,7 @@ export default {
 </script>
 
 <style>
-
+#family-account{
+  min-width:0;
+}
 </style>

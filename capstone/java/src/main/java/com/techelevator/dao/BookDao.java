@@ -14,6 +14,8 @@ public interface BookDao {
 
     List<Book> findAll();
 
+    List<Book> findBookByFamilyId(int familyId);
+
     List<Book> findBookByGenre(String genre);
 
     List<Book> findBookByType(String bookType);
