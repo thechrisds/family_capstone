@@ -12,6 +12,7 @@ import Activity from '@/components/Activity'
 
 export default ({
     components: {
+        // eslint-disable-next-line vue/no-unused-components
         Activity
     }
 });
