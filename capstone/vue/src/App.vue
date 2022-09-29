@@ -1,4 +1,5 @@
 <template>
+<div id="box">
   <div id="app">
     <div class="header-bar">
       <nav class="top-nav">
@@ -35,6 +36,7 @@
     <div id="container">
       <router-view />
     </div>
+  </div>
   </div>
 </template>
 
