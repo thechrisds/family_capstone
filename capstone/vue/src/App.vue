@@ -17,6 +17,7 @@
 #app{
   border-bottom: solid 2px black;
   height: 50px;
+  
 }
 
 #nav{

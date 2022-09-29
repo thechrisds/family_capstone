@@ -20,8 +20,8 @@ public class BookController {
         this.bookDao = bookDao;
     }
 
-    @RequestMapping(value = "/books", method = RequestMethod.GET)
-    public List<Book> getBooks(){
+    @RequestMapping(value = "/books/all", method = RequestMethod.GET)
+    public List<Book> getPublicBooks(){
         List<Book> bookList = new ArrayList<>();
         return bookList = bookDao.findAll();
     }
@@ -39,8 +39,12 @@ public class BookController {
 //            throw new Exception("Error deleting book.");
 //        }         Not working how I want it to
         bookDao.deleteBook(isbn);
+    }
 
-
+    @RequestMapping(value = "/books/family/{id}", method = RequestMethod.GET)
+    public List<Book> getBooks(@PathVariable int familyId){
+        List<Book> bookList = new ArrayList<>();
+        return bookList = bookDao.findAll();
     }
 
 

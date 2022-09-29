@@ -44,6 +44,8 @@ CREATE TABLE library (
     cover_img varchar(200),
     genre varchar (50) NOT NULL,
     description varchar (200),
+    family_id int,
+    CONSTRAINT FK_family_account_family_id FOREIGN KEY (family_id) REFERENCES family_account (family_id),
     CONSTRAINT PK_library PRIMARY KEY (isbn)
 );
 

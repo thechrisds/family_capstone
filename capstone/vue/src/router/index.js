@@ -5,10 +5,11 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-import ViewBooks from '../views/ViewBooks.vue'
+import ViewLibrary from '../views/ViewLibrary.vue'
 import AddActivity from '../views/AddActivity.vue'
 import AddBook from '../views/AddBook.vue'
 import FamilyAccount from '../views/FamilyAccount.vue'
+import InvalidPath from '../views/InvalidPath.vue'
 
 Vue.use(Router)
 
@@ -58,9 +59,9 @@ const router = new Router({
       }
     },
     {
-      path: "/books",
+      path: "/books/all",
       name: "books",
-      component: ViewBooks,
+      component: ViewLibrary,
       meta: {
         requiresAuth: false
         }
@@ -88,6 +89,12 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: "/:catchAll(.*)",
+      name: "dne",
+      component: InvalidPath
+
     }
   
   ]

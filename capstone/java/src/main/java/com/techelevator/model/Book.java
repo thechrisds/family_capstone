@@ -9,6 +9,15 @@ public class Book {
         private String bookType;
         private String genre;
         private String description;
+        private int familyId;
+
+    public int getFamilyId() {
+        return familyId;
+    }
+
+    public void setFamilyId(int familyId) {
+        this.familyId = familyId;
+    }
 
     public String getCoverImg() {
         return coverImg;

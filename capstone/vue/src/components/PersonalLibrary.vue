@@ -20,11 +20,17 @@ export default{
     name: 'view-book',
     data(){
         return {
-            books: []
+            books: [],
+            user: {
+        username: "",
+        password: "",
+        confirmPassword: "",
+        role: "ROLE_USER"
+      }
         };
     },
     created() {
-        bookService.seeOpenBooks().then( response => {
+        bookService.seeBooks().then( response => {
             this.books = response.data;
             }).catch 
         }
