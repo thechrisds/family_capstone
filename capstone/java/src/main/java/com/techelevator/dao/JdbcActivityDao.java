@@ -16,36 +16,34 @@ public class JdbcActivityDao implements ActivityDao {
 
     private JdbcTemplate jdbcTemplate;
 
-    @Autowired
-    BookDao bookDao;
-
     public JdbcActivityDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
 
+
     @Override
-    public boolean createActivity(Activity activity){
+    public void createActivity(Activity activity){
         String sql = "INSERT INTO reading_activity(user_id, isbn, minutes_read) " +
                 "VALUES(?, ?, ?)";
         try {
             jdbcTemplate.update(sql, activity.getReaderId(), activity.getIsbn(), activity.getTimeInMinutes());
         } catch (DataAccessException e){
-            return false;
+            System.out.println("creation failed");
         }
-        return true;
     }
 
+
     @Override
-    public boolean deleteActivity(int activityId){
+    public void deleteActivity(int activityId){
         String sql = "DELETE FROM reading_activity WHERE activity_id = ?";
         try {
             jdbcTemplate.update(sql, activityId);
         } catch (DataAccessException e){
-            return false;
+            System.out.println("deletion failed");
         }
-        return true;
     }
+
 
     @Override
     public List<Activity> getAllReadingActivities() {
@@ -59,7 +57,6 @@ public class JdbcActivityDao implements ActivityDao {
     }
 
 
-
     @Override
     public Activity getActivityByActivityId(int activityId) {
         Activity activity = null;
@@ -71,6 +68,7 @@ public class JdbcActivityDao implements ActivityDao {
         return activity;
     }
 
+
     @Override
     public List<Activity> getActivitiesByReaderId(int readerId) {
         List<Activity> activityList = new ArrayList<>();
@@ -81,6 +79,7 @@ public class JdbcActivityDao implements ActivityDao {
         }
         return activityList;
     }
+
 
     @Override
     public List<Activity> getActivitiesByFamilyId(int familyId) {
@@ -96,6 +95,7 @@ public class JdbcActivityDao implements ActivityDao {
         }
         return activityList;
     }
+
 
     @Override
     public int getTotalReadingMinutesByReaderId(int readerId) {
