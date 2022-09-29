@@ -1,31 +1,39 @@
 <template>
   <div id="app">
     <div class="header-bar">
-    <nav class="top-nav">
-      <router-link id="links" class="links1" v-bind:to="{ name: 'home' }"
-        >Home</router-link
-      >&nbsp;|&nbsp;
-      <router-link
-        id="links"
-        class="links2"
-        v-bind:to="{ name: 'account' }"
-        v-if="$store.state.token != ''"
-        >View Account</router-link
-      >&nbsp;|&nbsp;
-      <router-link id="links" class="links3" v-bind:to="{ name: 'books' }"
-        >Books</router-link
-      >&nbsp;|&nbsp;
-      <router-link id="links" class="links4" v-bind:to="{ name: 'addActivity' }"
-        >Add Activity</router-link
-      >&nbsp;|&nbsp;
-      <router-link
-        id="links"
-        class="links5"
-        v-bind:to="{ name: 'logout' }"
-        v-if="$store.state.token != ''"
-        >Logout</router-link>
-    </nav>
-    <h5>ICON GOES HERE</h5>
+      <nav class="top-nav">
+        <router-link id="links" class="links1" v-bind:to="{ name: 'home' }"
+          >Home</router-link
+        >
+        <router-link
+          id="links"
+          class="links2"
+          v-bind:to="{ name: 'account' }"
+          v-if="$store.state.token != ''"
+          >View Account</router-link
+        >
+        <router-link id="links" class="links3" v-bind:to="{ name: 'books' }"
+          >Books</router-link
+        >
+        <router-link
+          id="links"
+          class="links4"
+          v-bind:to="{ name: 'addActivity' }"
+          >Add Activity</router-link
+        >
+        <router-link
+          id="links"
+          class="links5"
+          v-bind:to="{ name: 'logout' }"
+          v-if="$store.state.token != ''"
+          >Logout</router-link
+        >
+      </nav>
+      <h4 class="title">Family Reader App</h4>
+    </div>
+    <br />
+    <div class="book-banner">
+      <img src="@/assets/bookbanner.png" class="banner" />
     </div>
     <div id="container">
       <router-view />
@@ -35,6 +43,15 @@
 
 <style>
 #app {
+}
+
+.banner {
+  padding-top: 12px;
+  width: 100%;
+  height: 50px;
+  opacity: 1;
+  position:fixed;
+  overflow: hidden;
 }
 .loading {
   display: flex;
@@ -46,9 +63,8 @@
 
 .header-bar {
   display: flex;
-  justify-content:space-evenly;
+  justify-content: center;
   align-items: center;
-  border-bottom: solid lightblue 3px;
   overflow: hidden;
   position: fixed;
   padding-top: 0px;
@@ -56,24 +72,30 @@
   padding-left: 5px;
   padding-right: 5px;
   width: 100%;
-  background-color: lightcoral;
+  height: 25px;
+  border-bottom: 2px solid lightskyblue;
 }
 
 .top-nav {
   display: flex;
   flex-basis: 80%;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
+  overflow: hidden;
   align-items: center;
+  color: rgb(42, 91, 107);
+  text-align: center;
+  font-size: 15px;
+  padding-bottom: 15px;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 #links {
-  display:flex;
-  color: rgb(42, 91, 107);
-  text-align: center;
+  display: flex;
   justify-content: center;
   padding-top: 15px;
   text-decoration: none;
-  font-size: 18px;
 }
 
 .links1:hover {
@@ -85,5 +107,13 @@
 }
 #container {
   padding-top: 100px;
+}
+
+.title {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  display:flex;
+  justify-content: center;
+  align-items: stretch;
 }
 </style>

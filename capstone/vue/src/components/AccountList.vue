@@ -63,5 +63,10 @@ export default {
 };
 </script>
 
+
 <style>
+.loading {
+  padding-top: 50px;
+  height: 100px;
+}
 </style>
