@@ -56,7 +56,7 @@ public class BookController {
     public List<Book> getBooks(Principal principal){
         List<Book> bookList = new ArrayList<>();
         int familyId = userDao.findFamilyIdByUsername(principal.getName());
-        return bookList = bookDao.findBookByFamilyId(familyId);
+        return bookList = bookDao.findBooksByFamilyId(familyId);
     }
 
 

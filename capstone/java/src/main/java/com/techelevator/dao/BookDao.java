@@ -14,11 +14,11 @@ public interface BookDao {
 
     List<Book> findAll();
 
-    List<Book> findBookByFamilyId(int familyId);
+    List<Book> findBooksByFamilyId(int familyId);
 
-    List<Book> findBookByGenre(String genre);
+    List<Book> findBooksByGenre(String genre);
 
-    List<Book> findBookByType(String bookType);
+    List<Book> findBooksByType(String bookType);
 
     //boolean addBook(String bookTitle, String bookAuthor, int isbn, String bookType, String genre, String description);
     //db doesn't inclue bookType yet, quick/simple fix

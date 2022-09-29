@@ -10,7 +10,7 @@ CREATE TABLE family_account (
     CONSTRAINT PK_family_account PRIMARY KEY (family_id)
 );
 
-CREATE SEQUENCE seq_family_id
+CREATE SEQUENCE seq_family_id --use for family instead of serial?
 INCREMENT BY 1
 START WITH 1001
 NO MAXVALUE;
@@ -33,7 +33,7 @@ CREATE TABLE users (
 
 CREATE SEQUENCE seq_library_id
 INCREMENT BY 1
-START WITH 2001
+START WITH 5001 --changed this from 2001 to 5001, just in case people add over 1000 books and hit the 3000 IDs
 NO MAXVALUE;
 
 CREATE TABLE library (
@@ -75,14 +75,14 @@ CREATE SEQUENCE seq_prizes_id
 
 CREATE TABLE prizes (
     family_id int NOT NULL DEFAULT 0, --changed to DEFAULT 0
-    prizes_id int NOT NULL DEFAULT nextval('seq_activity_id'),
+    prize_id int NOT NULL DEFAULT nextval('seq_prizes_id'), --was set to seq_activity_id for some reason
     name varchar (50) NOT NULL,
     description varchar (200) NOT NULL,
-    eligible int NOT NULL,
+    goal int NOT NULL, --eligible = goal? (in minutes) if so, will change name to goal/something else
     stock int NOT NULL,
-    start_date varchar (20) NOT NULL, --change to DATE
-    end_date varchar (20),
-    CONSTRAINT PK_prizes PRIMARY KEY (prizes_id),
+    start_date DATE NOT NULL DEFAULT CURRENT_DATE, --changed from varchar to DATE
+    end_date DATE NOT NULL DEFAULT CURRENT_DATE,
+    CONSTRAINT PK_prizes PRIMARY KEY (prize_id),
     CONSTRAINT FK_family_id FOREIGN KEY (family_id) REFERENCES family_account (family_id)
 );
 

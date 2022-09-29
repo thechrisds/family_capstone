@@ -65,7 +65,7 @@ public class JdbcBookDao implements BookDao{
     }
 
     @Override
-    public List<Book> findBookByFamilyId(int familyId){
+    public List<Book> findBooksByFamilyId(int familyId){
         Book book = null;
         List<Book> bookList = new ArrayList<>();
         String sql = "SELECT * FROM library WHERE family_id = ?";
@@ -78,7 +78,7 @@ public class JdbcBookDao implements BookDao{
     }
 
     @Override
-    public List<Book> findBookByGenre(String genre) {
+    public List<Book> findBooksByGenre(String genre) {
         Book book = null;
         List<Book> bookList = new ArrayList<>();
         String sql = "SELECT * FROM library WHERE book_genre = ?";
@@ -91,7 +91,7 @@ public class JdbcBookDao implements BookDao{
     }
 
     @Override
-    public List<Book> findBookByType(String bookType) {
+    public List<Book> findBooksByType(String bookType) {
         List<Book> bookList = new ArrayList<>();
         Book book = null;
         String sql = "SELECT * FROM library WHERE book_type = ?";
