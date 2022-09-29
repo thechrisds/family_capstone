@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -32,7 +33,11 @@ public class ActivityController {
 
     @RequestMapping(value = "/activity/d/{activityId}", method = RequestMethod.DELETE)
     public void deleteActivity(@PathVariable int activityId){
-        activityDao.deleteActivity(activityId);
+        try {
+            activityDao.deleteActivity(activityId);
+        } catch (DataAccessException e){
+            System.out.println("deletion failed.");
+            }
     }
 
     @RequestMapping(path = "/activity/", method = RequestMethod.POST)
@@ -40,14 +45,22 @@ public class ActivityController {
         try {
             activityDao.createActivity(activity);
         } catch (DataAccessException e){
-            throw new Exception("Adding activity failed.");
+            throw new Exception("Adding activity failed!");
         }
     }
 
-    @RequestMapping(path = "/activity/fid/{familyId}", method = RequestMethod.GET)
-    public List<Activity> returnActivityByFamilyId(@PathVariable int familyId) {
-        List<Activity> activityByUser = activityDao.getActivitiesByFamilyId(familyId);
+    @RequestMapping(path = "/activity/user", method = RequestMethod.GET)
+    public List<Activity> getActivitiesForCurrentUser(@RequestBody LoginDTO loginDTO) {
+        int readerId = userDao.findIdByUsername(loginDTO.getUsername());
+        List<Activity> activityByUser = activityDao.getActivitiesByCurrentUser(readerId);
         return activityByUser;
+    }
+
+    @RequestMapping(path = "/activity/family", method = RequestMethod.GET)
+    public List<Activity> getActivitiesByFamilyId(@RequestBody LoginDTO loginDTO) {
+        int familyId = userDao.findFamilyIdByUsername(loginDTO.getUsername());
+        List<Activity> activityByFamily = activityDao.getActivitiesByFamilyId(familyId);
+        return activityByFamily;
     }
 
     @RequestMapping(path = "/activity", method = RequestMethod.GET)
@@ -72,5 +85,10 @@ public class ActivityController {
     public int returnTotalMinsByReaderId(@PathVariable int readerId) {
         int totalMins = activityDao.getTotalReadingMinutesByReaderId(readerId);
         return totalMins;
+    }
+
+    private String getUserNameFromDTO(LoginDTO loginDTO) { return loginDTO.getUsername(); }
+    private String getUserNameFromPrincipal(Principal principal){
+        return principal.getName();
     }
 }

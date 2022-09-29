@@ -1,13 +1,27 @@
 <template>
   <div id="family-account">
     <div class="loading" v-if="isLoading">
-      <img class ="book-turner" src="../assets/bookturner-small.gif" />
+      <img class="book-turner" src="../assets/bookturner-small.gif" />
     </div>
-    <div v-else >
-    <div id="account-list"><account-list /></div>
-    <div id="family-library"></div>
-    <div id="add-user"><add-user /></div>
+    <div v-else id="main-family">
+      <div id="family-library"></div>
+      <div id="account-column">
+        <div id="account-list-box"><account-list /></div>
+        <div id="add-user-box"><add-user /></div>
+      </div>
     </div>
+    <p>asd</p>
+    <p>asd</p>
+    <p>asd</p>
+    <p>asd</p>
+    <p>asd</p>
+    <p>asd</p>
+    <p>asd</p>
+    <p>asd</p>
+    <p>asd</p>
+    <p>asd</p>
+    <p>asd</p>
+    <p>asd</p>
     
   </div>
 </template>
@@ -23,42 +37,66 @@ export default {
   },
   data() {
     return {
-      isLoading: true
-    }
+      isLoading: true,
+    };
   },
   created() {
     setTimeout(() => {
-            this.isLoading = false;
-          }, 1250);
-  }
+      this.isLoading = false;
+    }, 1250);
+  },
 };
 </script>
 
 <style>
-#family-account{
-  min-height:0;
+#family-account {
+}
+
+#main-family {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: flex-start;
 }
 
 .book-turner {
-  display:flex;
+  display: flex;
   justify-content: space-evenly;
   align-content: center;
   padding-top: 50px;
   height: auto;
   width: 150px;
+  margin: auto;
 }
 
-#account-list{
+#account-column {
+  display: flex;
+  flex-direction: column;
+}
+#account-list-box {
+  display: flex;
+  justify-content: left;
+  height: 300px;
+  min-height: 0;
+  overflow: auto;
+  width: 350px;
+  box-shadow: 10px 10px 5px rgb(89, 194, 230);
+  border: 10px solid rgb(128, 212, 240);
+}
+
+#family-library {
+  display: flex;
+  float: left;
+  box-shadow: 10px 10px 5px rgb(89, 194, 230);
+  border: 10px solid rgb(128, 212, 240);
+  width: 500px;
+  height: 200px;
+  margin-top: 20px;
+}
+
+#add-user-box {
   display: flex;
   flex-wrap: wrap;
-  height: 250px;
-  min-height:0;
-  overflow:auto;
-  width:350px;
-  float: right;
-}
-
-#family-list{
-  border: 2px solid;
+  box-shadow: 10px 10px 5px rgb(89, 194, 230);
+  border: 10px solid rgb(128, 212, 240);
 }
 </style>

@@ -60,7 +60,7 @@ CREATE TABLE reading_activity (
     isbn numeric NOT NULL,
     minutes_read int DEFAULT 0,
     date_read  DATE NOT NULL DEFAULT CURRENT_DATE,
-    notes varchar (250),
+    notes varchar (250) DEFAULT 'none',
     format varchar (20) DEFAULT 'unspecified',
     completed boolean DEFAULT false,
     CONSTRAINT PK_reading_activity PRIMARY KEY (activity_id),
