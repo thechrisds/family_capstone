@@ -7,17 +7,21 @@ public class Activity {
 
     private int activityId;
     private int readerId;
+    private String userName;
     private long isbn;
+    private String bookTitle;
     private String format;
     private Date dateRead;
     private int timeInMinutes;
     private String activityNotes;
     private boolean isComplete;
 
-    public Activity(int activityId, int readerId, long isbn, String format, Date dateRead, int timeInMinutes, String activityNotes,  boolean isComplete) {
+    public Activity(int activityId, int readerId, String userName, long isbn, String bookTitle, String format, Date dateRead, int timeInMinutes, String activityNotes, boolean isComplete) {
         this.activityId = activityId;
         this.readerId = readerId;
+        this.userName = userName;
         this.isbn = isbn;
+        this.bookTitle = bookTitle;
         this.format = format;
         this.dateRead = dateRead;
         this.timeInMinutes = timeInMinutes;
@@ -41,6 +45,14 @@ public class Activity {
         this.readerId = readerId;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     public long getIsbn() {
         return isbn;
     }
@@ -49,11 +61,21 @@ public class Activity {
         this.isbn = isbn;
     }
 
+    public String getBookTitle() {
+        return bookTitle;
+    }
+
+    public void setBookTitle(String bookTitle) {
+        this.bookTitle = bookTitle;
+    }
+
     public String getFormat() {
         return format;
     }
 
-    public void setFormat(String format) {this.format = format; }
+    public void setFormat(String format) {
+        this.format = format;
+    }
 
     public Date getDateRead() {
         return dateRead;
@@ -92,7 +114,9 @@ public class Activity {
         return "Activity{" +
                 "activityId=" + activityId +
                 ", readerId=" + readerId +
+                ", userName='" + userName + '\'' +
                 ", isbn=" + isbn +
+                ", bookTitle='" + bookTitle + '\'' +
                 ", format='" + format + '\'' +
                 ", dateRead=" + dateRead +
                 ", timeInMinutes=" + timeInMinutes +
@@ -100,5 +124,4 @@ public class Activity {
                 ", isComplete=" + isComplete +
                 '}';
     }
-    //TODO
 }
