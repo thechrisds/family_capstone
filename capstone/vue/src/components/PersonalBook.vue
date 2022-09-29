@@ -21,18 +21,16 @@ export default{
     data(){
         return {
             books: [],
-            user: {
-        username: "",
-        password: "",
-        confirmPassword: "",
-        role: "ROLE_USER"
+            users: [],
+        id: "",
+        username: this.$store.state.user.username
       }
-        };
     },
     created() {
         bookService.seeBooks().then( response => {
             this.books = response.data;
-            }).catch 
+            }).catch,
+        bookService.see
         }
     };
 </script>
