@@ -33,8 +33,6 @@ public class ActivityController {
         }
     }
 
-
-
     @RequestMapping(path = "/activity", method = RequestMethod.GET)
     public List<Activity> returnAllActivity() {
         List<Activity> allActivity = activityDao.getAllReadingActivities();

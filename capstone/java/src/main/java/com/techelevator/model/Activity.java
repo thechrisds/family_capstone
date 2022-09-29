@@ -53,9 +53,7 @@ public class Activity {
         return format;
     }
 
-    public void setFormat(String format) {
-        this.format = format;
-    }
+    public void setFormat(String format) {this.format = format; }
 
     public Date getDateRead() {
         return dateRead;

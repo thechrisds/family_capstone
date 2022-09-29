@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import ViewLibrary from '../views/ViewLibrary.vue'
 import AddActivity from '../views/AddActivity.vue'
+import Activity from '../views/Activity.vue'
 import AddBook from '../views/AddBook.vue'
 import FamilyAccount from '../views/FamilyAccount.vue'
 import InvalidPath from '../views/InvalidPath.vue'
@@ -83,7 +84,7 @@ const router = new Router({
       }
     },
     {
-      path: "/add-activity",
+      path: "/activity/",
       name: "addActivity",
       component: AddActivity,
       meta: {
@@ -96,7 +97,15 @@ const router = new Router({
       component: InvalidPath
 
     }
-  
+    ,
+    {
+      path: "/activity",
+      name: "Activity",
+      component: Activity,
+      meta: {
+        requiresAuth: false
+      }
+    }
   ]
 })
 
