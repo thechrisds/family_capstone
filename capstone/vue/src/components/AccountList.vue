@@ -1,9 +1,9 @@
 <template>
   <div id="account-list">
-  
-    
+    <div class="top-account-bar">
+      Family Members
+    </div>
     <div v-for="user in users" v-bind:key="user.id">
-      Family Members:
       ----
       Username: {{ user.username }}
       ----
@@ -60,6 +60,14 @@ export default {
 
 <style>
 
+#account-list {
+  display:flex;
+  flex-direction: column;
+}
+.top-account-bar{
+  height: 25px;
+  position:fixed;
+}
 
 
 </style>

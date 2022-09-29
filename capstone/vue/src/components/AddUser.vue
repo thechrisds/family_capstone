@@ -1,7 +1,8 @@
 <template>
-  <div>
-    Add a member to your family:
+  <div id="add-user">
+    
     <form class="new-user-form">
+      Add a member to your family:
       <input
         class="user-name"
         type="text"

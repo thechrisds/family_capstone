@@ -29,7 +29,7 @@
             >Logout</router-link
           >
         </nav>
-        <h4 class="title">Family Reader App</h4>
+        <h4 class="title">READITT.</h4>
       </div>
       <br />
       <div class="book-banner">
@@ -42,19 +42,24 @@
 </template>
 
 <style>
+body{
+  background-color: rgb(246, 247, 248) ;
+}
 #app {
-  max-width: 950px;
+  max-width: 1250px;
   margin: auto;
   align-content: center;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+.book-banner{
+  margin-left:20px;
+
+}
+
 .banner {
-  margin: auto;
   height: 50px;
-  position: fixed;
-  background-color: white;
 }
 
 .header-bar {
@@ -62,14 +67,11 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  position: fixed;
   padding-top: 0px;
-  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
-  margin: auto;
-  height: 25px;
-  border-bottom: 2px solid lightskyblue;
+  height: 30px;
+  margin-right: 40px;
   background-color: white;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -82,7 +84,9 @@
   align-items: center;
   flex-basis: auto;
   width: 750px;
-  padding-bottom: 25px;
+  padding-bottom: 5px;
+  font-weight: 700;
+  color:lightblue;
 }
 
 
@@ -91,6 +95,7 @@
   justify-content: center;
   padding-top: 15px;
   text-decoration: none;
+  color:rgb(114, 204, 235);
 }
 
 .links1:hover {
@@ -103,17 +108,18 @@
 #container {
   display: flex;
   flex-direction: column;
-  padding-top: 10px;
-  margin-top: 100px;
   flex-wrap: wrap;
+  
 }
 
 .title {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 10px;
+  padding-top: 10px;
+  font-weight: 900;
+  color: rgb(128, 212, 240);
+  font-size: 25px;
+  text-shadow: 5px 5px lightgray;
+  margin-left:40px;
 }
 </style>
