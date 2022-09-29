@@ -7,6 +7,6 @@ export default {
     },
     
     addActivity(activity){
-        return axios.post('/add-activity', activity);
+        return axios.post('/activity/', activity);
     }
   }
