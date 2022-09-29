@@ -18,8 +18,8 @@
         <router-link
           id="links"
           class="links4"
-          v-bind:to="{ name: 'addActivity' }"
-          >Add Activity</router-link
+          v-bind:to="{ name: 'Activity' }"
+          >Activity</router-link
         >
         <router-link
           id="links"
