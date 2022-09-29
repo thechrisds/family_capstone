@@ -23,4 +23,6 @@ public interface UserDao {
     boolean createChild(String username, String password, String role);
 
     void deleteUser(int userId);
+
+    int findFamilyIdByUserId(int userId);
 }

@@ -37,6 +37,11 @@ public class AccountController {
         return userDao.findFamilyIdByUsername(username);
     }
 
+    @RequestMapping(path = "/account/userid/{familyid}", method = RequestMethod.GET)
+    public int getFamilyIdByUserId(@PathVariable int userId) {
+        return userDao.findFamilyIdByUserId(userId);
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/account/newChild", method = RequestMethod.POST)

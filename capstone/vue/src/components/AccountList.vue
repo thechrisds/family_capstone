@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="account-list">
     <div class="loading" v-if="isLoading">
       <img src="../assets/bookturner-small.gif" />
     </div>
@@ -68,5 +68,10 @@ export default {
 .loading {
   padding-top: 50px;
   height: 100px;
+}
+
+#account-list{
+  min-width:0;
+  
 }
 </style>

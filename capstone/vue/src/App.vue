@@ -15,10 +15,7 @@
         <router-link id="links" class="links3" v-bind:to="{ name: 'books' }"
           >Books</router-link
         >
-        <router-link
-          id="links"
-          class="links4"
-          v-bind:to="{ name: 'Activity' }"
+        <router-link id="links" class="links4" v-bind:to="{ name: 'Activity' }"
           >Activity</router-link
         >
         <router-link
@@ -43,15 +40,17 @@
 
 <style>
 #app {
+  max-width: 950px;
+  margin: auto;
 }
 
 .banner {
-  padding-top: 12px;
+  padding-top: 20px;
   width: 100%;
   height: 50px;
-  opacity: 1;
-  position:fixed;
-  overflow: hidden;
+  position: fixed;
+  
+  background-color: white;
 }
 .loading {
   display: flex;
@@ -74,18 +73,19 @@
   width: 100%;
   height: 25px;
   border-bottom: 2px solid lightskyblue;
+  background-color: white;
 }
 
 .top-nav {
   display: flex;
   flex-basis: 80%;
   justify-content: space-evenly;
-  overflow: hidden;
+  
   align-items: center;
   color: rgb(42, 91, 107);
   text-align: center;
   font-size: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 25px;
   font-weight: 600;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -106,14 +106,19 @@
   color: #1b1fe7;
 }
 #container {
-  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  margin-top: 100px;
+  flex-wrap:wrap;
 }
 
 .title {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: stretch;
+  padding-bottom: 10px;
 }
 </style>

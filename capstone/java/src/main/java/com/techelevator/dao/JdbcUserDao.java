@@ -89,6 +89,20 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
+    public int findFamilyIdByUserId(int userId) {
+        //if (userId === null) throw new IllegalArgumentException("User ID cannot be null");
+        String sql = "SELECT family_id FROM users WHERE user_id =?;";
+        int familyId;
+
+        try {
+            familyId = jdbcTemplate.queryForObject(sql, int.class, userId);
+        } catch (EmptyResultDataAccessException e) {
+            throw new UsernameNotFoundException("User ID " + userId + " was not found.");
+        }
+        return familyId;
+    }
+
+    @Override
     public User findByUsername(String username) {
         if (username == null) throw new IllegalArgumentException("Username cannot be null");
 
