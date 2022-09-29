@@ -11,6 +11,7 @@ import Activity from '../views/Activity.vue'
 import AddBook from '../views/AddBook.vue'
 import FamilyAccount from '../views/FamilyAccount.vue'
 import InvalidPath from '../views/InvalidPath.vue'
+import PersonalLibrary from '../views/PersonalLibrary.vue'
 
 Vue.use(Router)
 
@@ -72,7 +73,15 @@ const router = new Router({
       name: "addBook",
       component: AddBook,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/books",
+      name: "showBooks",
+      component: PersonalLibrary,
+      meta: {
+        requiresAuth: true
       }
     },
     {

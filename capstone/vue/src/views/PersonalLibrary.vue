@@ -1,0 +1,24 @@
+<template>
+    <div>
+    <personal-book />
+    <div class="booklist">
+    <router-link to="/books/add"> Add A Book To Library </router-link>
+    </div>
+    </div>
+</template>
+
+<script>
+import PersonalBook from '@/components/PersonalBook'
+
+export default ({
+    components: {
+        PersonalBook
+    }
+});
+</script>
+
+<style>
+.booklist{
+    text-align:center;
+}
+</style>

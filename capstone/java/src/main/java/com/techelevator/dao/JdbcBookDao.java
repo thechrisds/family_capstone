@@ -104,11 +104,11 @@ public class JdbcBookDao implements BookDao{
     }
 
     @Override
-    public boolean addBook(String bookTitle, String bookAuthor, long isbn, String genre, String description) {
-        String sql = "INSERT INTO library (book_title, book_author, isbn, genre, description) " +
-                "VALUES (?, ?, ?, ?, ?)";
+    public boolean addBook(String bookTitle, String bookAuthor, long isbn, String genre, String description, int family_id) {
+        String sql = "INSERT INTO library (book_title, book_author, isbn, genre, description, family_id) " +
+                "VALUES (?, ?, ?, ?, ?, ?)";
         try {
-            jdbcTemplate.update(sql, bookTitle, bookAuthor, isbn, genre, description);
+            jdbcTemplate.update(sql, bookTitle, bookAuthor, isbn, genre, description, family_id);
         } catch (DataAccessException e){
             return false;
         }

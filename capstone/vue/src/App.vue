@@ -1,65 +1,60 @@
 <template>
-<div id="box">
-  <div id="app">
-    <div class="header-bar">
-      <nav class="top-nav">
-        <router-link id="links" class="links1" v-bind:to="{ name: 'home' }"
-          >Home</router-link
-        >
-        <router-link
-          id="links"
-          class="links2"
-          v-bind:to="{ name: 'account' }"
-          v-if="$store.state.token != ''"
-          >View Account</router-link
-        >
-        <router-link id="links" class="links3" v-bind:to="{ name: 'books' }"
-          >Books</router-link
-        >
-        <router-link id="links" class="links4" v-bind:to="{ name: 'Activity' }"
-          >Activity</router-link
-        >
-        <router-link
-          id="links"
-          class="links5"
-          v-bind:to="{ name: 'logout' }"
-          v-if="$store.state.token != ''"
-          >Logout</router-link
-        >
-      </nav>
-      <h4 class="title">Family Reader App</h4>
+    <div id="app">
+      <div class="header-bar">
+        <nav class="top-nav">
+          <router-link id="links" class="links1" v-bind:to="{ name: 'home' }"
+            >Home</router-link
+          >
+          <router-link
+            id="links"
+            class="links2"
+            v-bind:to="{ name: 'account' }"
+            v-if="$store.state.token != ''"
+            >View Account</router-link
+          >
+          <router-link id="links" class="links3" v-bind:to="{ name: 'books' }"
+            >Books</router-link
+          >
+          <router-link
+            id="links"
+            class="links4"
+            v-bind:to="{ name: 'Activity' }"
+            >Activity</router-link
+          >
+          <router-link
+            id="links"
+            class="links5"
+            v-bind:to="{ name: 'logout' }"
+            v-if="$store.state.token != ''"
+            >Logout</router-link
+          >
+        </nav>
+        <h4 class="title">Family Reader App</h4>
+      </div>
+      <br />
+      <div class="book-banner">
+        <img src="@/assets/bookbanner3.png" class="banner" />
+      </div>
+      <div id="container">
+        <router-view />
+      </div>
     </div>
-    <br />
-    <div class="book-banner">
-      <img src="@/assets/bookbanner.png" class="banner" />
-    </div>
-    <div id="container">
-      <router-view />
-    </div>
-  </div>
-  </div>
 </template>
 
 <style>
 #app {
   max-width: 950px;
   margin: auto;
+  align-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .banner {
-  padding-top: 20px;
-  width: 100%;
+  margin: auto;
   height: 50px;
   position: fixed;
-  
   background-color: white;
-}
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  height: auto;
 }
 
 .header-bar {
@@ -72,26 +67,24 @@
   padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
-  width: 100%;
+  margin: auto;
   height: 25px;
   border-bottom: 2px solid lightskyblue;
   background-color: white;
-}
-
-.top-nav {
-  display: flex;
-  flex-basis: 80%;
-  justify-content: space-evenly;
-  
-  align-items: center;
-  color: rgb(42, 91, 107);
-  text-align: center;
-  font-size: 15px;
-  padding-bottom: 25px;
-  font-weight: 600;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
+
+.top-nav {
+  display:flex;
+  float:left;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-basis: auto;
+  width: 750px;
+  padding-bottom: 25px;
+}
+
 
 #links {
   display: flex;
@@ -112,7 +105,7 @@
   flex-direction: column;
   padding-top: 10px;
   margin-top: 100px;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
 }
 
 .title {
@@ -120,7 +113,7 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   display: flex;
   justify-content: center;
-  align-items: stretch;
+  align-items: center;
   padding-bottom: 10px;
 }
 </style>
