@@ -1,10 +1,8 @@
 <template>
   <div id="account-list">
-    <div class="loading" v-if="isLoading">
-      <img src="../assets/bookturner-small.gif" />
-    </div>
+  
     
-    <div v-else v-for="user in users" v-bind:key="user.id">
+    <div v-for="user in users" v-bind:key="user.id">
       Family Members:
       ----
       Username: {{ user.username }}
@@ -33,7 +31,6 @@ export default {
       users: [],
       id: "",
       username: this.$store.state.user.username,
-      isLoading: true
     };
   },
   methods: {},
@@ -42,9 +39,6 @@ export default {
     accountService.getFamilyId(this.username).then((response) => {
       console.log(response);
       this.id = response.data;
-      setTimeout(() => {
-            this.isLoading = false;
-          }, 1500);
       accountService
         .getAllFamily(this.id)
         .then((response) => {
@@ -65,13 +59,7 @@ export default {
 
 
 <style>
-.loading {
-  padding-top: 50px;
-  height: 100px;
-}
 
-#account-list{
-  min-width:0;
-  
-}
+
+
 </style>
