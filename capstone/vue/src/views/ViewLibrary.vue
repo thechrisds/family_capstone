@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="all-books">
     <view-book />
     <div class="booklist">
     <router-link to="/books/add"> Add A Book To Library </router-link>
