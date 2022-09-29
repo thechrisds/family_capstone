@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+      <div class="header">
       <div class="header-bar">
         <nav class="top-nav">
           <router-link id="links" class="links1" v-bind:to="{ name: 'home' }"
@@ -31,9 +32,9 @@
         </nav>
         <h4 class="title">READITT.</h4>
       </div>
-      <br />
       <div class="book-banner">
-        <img src="@/assets/bookbanner3.png" class="banner" />
+        <img src="@/assets/bookbanner5.png" class="banner" />
+      </div>
       </div>
       <div id="container">
         <router-view />
@@ -42,26 +43,44 @@
 </template>
 
 <style>
-body{
-  background-color: rgb(246, 247, 248) ;
+body {
+
 }
 #app {
-  max-width: 1250px;
+  min-width: 450px;
   margin: auto;
   align-content: center;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    max-width: 1800px;
 }
 
 .book-banner{
+  display:flex;
   margin-left:20px;
-
+  justify-content: center;
+  padding-bottom: 15px;
 }
 
 .banner {
-  height: 50px;
+  height: 75px;
+  width: 1300px;
+}
+#family-account{
+  min-height: 0;
+  padding-top: 10px;
 }
 
+#all-books {
+  min-height: 0;
+  padding-top: 10px;
+}
+
+.header {
+    background-color: rgb(254, 254, 255);
+    border-right:5px solid lightgrey;
+
+}
 .header-bar {
   display: flex;
   justify-content: center;
@@ -72,7 +91,6 @@ body{
   padding-right: 5px;
   height: 30px;
   margin-right: 40px;
-  background-color: white;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
@@ -83,32 +101,61 @@ body{
   justify-content: space-evenly;
   align-items: center;
   flex-basis: auto;
-  width: 750px;
+  width: 1000px;
   padding-bottom: 5px;
   font-weight: 700;
   color:lightblue;
 }
-
 
 #links {
   display: flex;
   justify-content: center;
   padding-top: 15px;
   text-decoration: none;
-  color:rgb(114, 204, 235);
+  
+ 
+}
+.links1{
+  color: rgb(95, 165, 189);
 }
 
 .links1:hover {
   color: #c71a1a;
 }
 
+.links2{
+  color: rgb(95, 165, 189);
+}
+.links2:hover {
+  color: #07be16;
+}
+
+.links3{
+  color: rgb(95, 165, 189);
+}
 .links3:hover {
   color: #1b1fe7;
 }
+
+.links4{
+  color: rgb(95, 165, 189);
+}
+.links4:hover {
+  color: #e77e1b;
+}
+
+.links5{
+  color: rgb(95, 165, 189);
+}
+.links5:hover {
+  color:magenta;
+}
+
 #container {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  justify-content: space-evenly;
   
 }
 

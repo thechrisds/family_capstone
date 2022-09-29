@@ -10,3 +10,13 @@ export default {
   name: "home"
 };
 </script>
+
+<style>
+.home {
+display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  max-width: 1800px;
+}
+</style>

@@ -10,6 +10,19 @@
         <div id="add-user-box"><add-user /></div>
       </div>
     </div>
+    <p>asd</p>
+    <p>asd</p>
+    <p>asd</p>
+    <p>asd</p>
+    <p>asd</p>
+    <p>asd</p>
+    <p>asd</p>
+    <p>asd</p>
+    <p>asd</p>
+    <p>asd</p>
+    <p>asd</p>
+    <p>asd</p>
+    
   </div>
 </template>
 
@@ -52,6 +65,7 @@ export default {
   padding-top: 50px;
   height: auto;
   width: 150px;
+  margin: auto;
 }
 
 #account-column {

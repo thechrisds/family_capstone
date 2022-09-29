@@ -3,10 +3,10 @@
     <div class="top-account-bar">
       Family Members
     </div>
-    <div v-for="user in users" v-bind:key="user.id">
+    <div class="family-members" v-for="user in users" v-bind:key="user.id">
       ----
-      Username: {{ user.username }}
-      ----
+      <h3>Username: {{ user.username }}</h3>
+      
       <br>
       First name:
       <br>
@@ -59,14 +59,23 @@ export default {
 
 
 <style>
-
+body {
+  overflow: hidden;
+  font-weight: 700;
+  font-size: 12px;
+}
 #account-list {
   display:flex;
   flex-direction: column;
 }
 .top-account-bar{
   height: 25px;
-  position:fixed;
+  background-color: lightpink;
+ width: 100%;
+}
+
+.family-members{
+  align-items: center;
 }
 
 
