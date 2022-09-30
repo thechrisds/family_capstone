@@ -10,7 +10,7 @@ public interface PrizeDao {
 
     List<Prize> findPrizesByFamilyId(int familyId); //grabs all prizes related to familyId
 
-    Prize addPrize(int familyId, String name, String description, int goal, int stock, Date start_date, Date end_date);
+    boolean addPrize(int familyId, String name, String description, int goal, int stock, Date start_date, Date end_date);
 
     void updatePrize(Prize prize);
 
