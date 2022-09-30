@@ -51,7 +51,7 @@ public class AccountController {
             throw new UserAlreadyExistsException();
         } catch (UsernameNotFoundException e) {
             String role = "ROLE_USER";
-            userDao.createChild(newUser.getUsername(),newUser.getPassword(), role);
+            userDao.create(newUser.getUsername(),newUser.getFirstname(), newUser.getLastname(), newUser.getPassword(), role);
             accountDao.updateFamilyId(principal.getName(), newUser.getUsername());
         }
     }
@@ -64,7 +64,7 @@ public class AccountController {
             throw new UserAlreadyExistsException();
         } catch (UsernameNotFoundException e) {
             String role = "ROLE_USER";
-            userDao.create(newUser.getUsername(),newUser.getPassword(), role);
+            userDao.create(newUser.getUsername(),newUser.getPassword(), newUser.getFirstname(), newUser.getLastname(), role);
             accountDao.updateFamilyId(loginDto.getUsername(), newUser.getUsername());
         }
     }

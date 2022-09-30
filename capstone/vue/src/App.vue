@@ -30,7 +30,8 @@
             >Logout</router-link
           >
         </nav>
-        <h4 class="title">READITT.</h4>
+        <h4 class="title">READITT. </h4> 
+        <img class="book-cover" src="@/assets/bookcover1.png">
       </div>
       <div class="book-banner">
         <img src="@/assets/bookbanner5.png" class="banner" />
@@ -44,31 +45,37 @@
 
 <style>
 body {
-
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
 }
 #app {
   min-width: 450px;
   margin: auto;
-  align-content: center;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    max-width: 1800px;
+  max-width: 1500;
+  border-top: 10px solid black;
+    border-radius: 10px;
 }
 
 .book-banner{
   display:flex;
-  margin-left:20px;
   justify-content: center;
   padding-bottom: 15px;
+  margin-top:15px;
 }
 
 .banner {
   height: 75px;
   width: 1300px;
+  opacity: 1;
+  box-shadow: 10px 10px 5px rgb(127, 131, 133);
+  
 }
 #family-account{
   min-height: 0;
   padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #all-books {
@@ -78,33 +85,44 @@ body {
 
 .header {
     background-color: rgb(254, 254, 255);
-    border-right:5px solid lightgrey;
+  
+    
+    
 
 }
 .header-bar {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
   padding-top: 0px;
   padding-left: 5px;
   padding-right: 5px;
   height: 30px;
   margin-right: 40px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  
 }
 
 .top-nav {
   display:flex;
-  float:left;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-basis: auto;
+  justify-content: space-between;
   width: 1000px;
   padding-bottom: 5px;
-  font-weight: 700;
   color:lightblue;
+  margin-right: 40px;
+}
+.title {
+  font-weight: 900;
+  color: rgb(128, 212, 240);
+  font-size: 25px;
+  text-shadow: 3px 3px rgb(192, 230, 243);
+  margin-left:40px;
+}
+
+.book-cover{
+  width: 25px;
+  height: 35px;
+  padding-left: 5px;
+  box-shadow: 5px 5px 5px rgb(127, 131, 133);
 }
 
 #links {
@@ -112,8 +130,8 @@ body {
   justify-content: center;
   padding-top: 15px;
   text-decoration: none;
-  
- 
+  font-size: 14px;
+  padding-bottom: 10px;
 }
 .links1{
   color: rgb(95, 165, 189);
@@ -154,19 +172,13 @@ body {
 #container {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content: space-evenly;
+  background-color:rgb(207, 81, 106);
+  border-right:5px solid lightgrey;
+    border-left:5px solid lightgrey;
+  
   
 }
 
-.title {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  padding-top: 10px;
-  font-weight: 900;
-  color: rgb(128, 212, 240);
-  font-size: 25px;
-  text-shadow: 5px 5px lightgray;
-  margin-left:40px;
-}
+
 </style>

@@ -1,21 +1,17 @@
 <template>
   <div id="account-list">
-    <div class="top-account-bar">
-      Family Members
-    </div>
+    <div class="top-account-bar">Family Members</div>
     <div class="family-members" v-for="user in users" v-bind:key="user.id">
-      ----
       <h3>Username: {{ user.username }}</h3>
-      
-      <br>
-      First name:
-      <br>
-      Last name:
-      <br>
-      Minutes read:
-      <p>
 
-      </p>
+      First name: {{ user.firstname }}
+      <br />
+      Last name: {{ user.lastname }}
+      <br />
+      Minutes read:
+      <div class="card-avatar">
+        <button class="delete-user">Delete Member</button>
+      </div>
     </div>
   </div>
 </template>
@@ -31,11 +27,14 @@ export default {
       users: [],
       id: "",
       username: this.$store.state.user.username,
+      firstname: this.$store.state.user.firstname,
+      lastname: this.$store.state.user.lastname,
     };
   },
   methods: {},
   created() {
     console.log(this.username);
+    console.log("firstname: ", this.firstname);
     accountService.getFamilyId(this.username).then((response) => {
       console.log(response);
       this.id = response.data;
@@ -60,23 +59,32 @@ export default {
 
 <style>
 body {
-  overflow: hidden;
   font-weight: 700;
   font-size: 12px;
 }
 #account-list {
-  display:flex;
+  display: flex;
   flex-direction: column;
+  height: 100%;
+  align-content: center;
+  justify-content: space-evenly;
+  padding-bottom: 25px;
 }
-.top-account-bar{
+.top-account-bar {
+  overflow: hidden;
   height: 25px;
   background-color: lightpink;
- width: 100%;
+  width: 100%;
+  font-size: 16px;;
+  
 }
 
-.family-members{
-  align-items: center;
+.family-members {
+  width: 300px;
+  
+  border: solid 3px lavender;
+  box-shadow: 5px 5px 3px lavender;
+  border-radius: 10px;
+  padding-bottom: 10px;
 }
-
-
 </style>

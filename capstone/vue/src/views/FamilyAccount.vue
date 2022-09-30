@@ -4,25 +4,16 @@
       <img class="book-turner" src="../assets/bookturner-small.gif" />
     </div>
     <div v-else id="main-family">
-      <div id="family-library"></div>
+      <div id="family-library">
+        <div class="family-library-title">
+        Family Library
+        </div>
+      </div>
       <div id="account-column">
         <div id="account-list-box"><account-list /></div>
         <div id="add-user-box"><add-user /></div>
       </div>
     </div>
-    <p>asd</p>
-    <p>asd</p>
-    <p>asd</p>
-    <p>asd</p>
-    <p>asd</p>
-    <p>asd</p>
-    <p>asd</p>
-    <p>asd</p>
-    <p>asd</p>
-    <p>asd</p>
-    <p>asd</p>
-    <p>asd</p>
-    
   </div>
 </template>
 
@@ -49,23 +40,24 @@ export default {
 </script>
 
 <style>
-#family-account {
-}
 
 #main-family {
   display: flex;
   justify-content: space-evenly;
-  align-content: flex-start;
+ 
 }
 
 .book-turner {
   display: flex;
   justify-content: space-evenly;
   align-content: center;
-  padding-top: 50px;
   height: auto;
-  width: 150px;
+  width: 250px;
   margin: auto;
+  border: 5px solid lightblue;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px;
+  margin-bottom: 25px;
 }
 
 #account-column {
@@ -74,29 +66,37 @@ export default {
 }
 #account-list-box {
   display: flex;
-  justify-content: left;
+  justify-content: center;
   height: 300px;
   min-height: 0;
-  overflow: auto;
   width: 350px;
-  box-shadow: 10px 10px 5px rgb(89, 194, 230);
-  border: 10px solid rgb(128, 212, 240);
+  box-shadow: 10px 10px 5px rgb(153, 46, 46);
+  border: 10px solid rgb(116, 38, 38);
+  height: 100%;
+  border-radius: 10px;
+  padding-bottom: 25px;
+  background-color:white;
 }
 
 #family-library {
   display: flex;
   float: left;
-  box-shadow: 10px 10px 5px rgb(89, 194, 230);
-  border: 10px solid rgb(128, 212, 240);
-  width: 500px;
-  height: 200px;
+  box-shadow: 10px 10px 5px rgb(44, 55, 201);
+  border: 10px solid rgb(15, 29, 90);
+  width: 600px;
+  height: 350px;
   margin-top: 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  background-color:white;
 }
 
 #add-user-box {
   display: flex;
   flex-wrap: wrap;
-  box-shadow: 10px 10px 5px rgb(89, 194, 230);
-  border: 10px solid rgb(128, 212, 240);
+  box-shadow: 10px 10px 5px rgb(36, 114, 40);
+  border: 10px solid rgb(12, 107, 9);
+  border-radius: 10px;
+  background-color:white;
 }
 </style>

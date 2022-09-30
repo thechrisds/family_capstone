@@ -48,7 +48,7 @@ public class AuthenticationController {
         Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = tokenProvider.createToken(authentication, false);
-        
+
         User user = userDao.findByUsername(loginDto.getUsername());
 
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -64,7 +64,7 @@ public class AuthenticationController {
             throw new UserAlreadyExistsException();
         } catch (UsernameNotFoundException e) {
             String role = "ROLE_USER";
-            userDao.create(newUser.getUsername(),newUser.getPassword(), role);
+            userDao.create(newUser.getUsername(),newUser.getFirstname(), newUser.getLastname(), newUser.getPassword(), role);
             accountDao.create(newUser.getUsername());
             accountDao.updateWhileCreate(newUser.getUsername());
         }
@@ -93,13 +93,13 @@ public class AuthenticationController {
         }
 
         @JsonProperty("user")
-		public User getUser() {
-			return user;
-		}
+        public User getUser() {
+            return user;
+        }
 
-		public void setUser(User user) {
-			this.user = user;
-		}
+        public void setUser(User user) {
+            this.user = user;
+        }
     }
 }
 

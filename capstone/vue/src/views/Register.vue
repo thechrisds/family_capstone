@@ -15,6 +15,26 @@
         required
         autofocus
       />
+      <label for="firstname" class="sr-only">Firstname</label>
+      <input
+        type="text"
+        id="firstname"
+        class="form-control"
+        placeholder="firstname"
+        v-model="user.firstname"
+        required
+        autofocus
+      />
+      <label for="lastname" class="sr-only">Lastname</label>
+      <input
+        type="text"
+        id="lastname"
+        class="form-control"
+        placeholder="lastname"
+        v-model="user.lastname"
+        required
+        autofocus
+      />
       <label for="password" class="sr-only">Password</label>
       <input
         type="password"
@@ -49,6 +69,8 @@ export default {
     return {
       user: {
         username: '',
+        firstname:'',
+        lastname:'',
         password: '',
         confirmPassword: '',
         role: 'user',

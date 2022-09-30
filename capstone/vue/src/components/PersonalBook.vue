@@ -38,7 +38,6 @@ export default{
 <style>
 .container {
     display:flex;
-    margin-left: 200px;
     flex-wrap:wrap;
     
 }

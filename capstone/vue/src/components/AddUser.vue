@@ -1,6 +1,5 @@
 <template>
   <div id="add-user">
-    
     <form class="new-user-form">
       Add a member to your family:
       <input
@@ -8,6 +7,18 @@
         type="text"
         placeholder="Username"
         v-model="user.username"
+      />
+      <input
+        class="first-name"
+        type="text"
+        placeholder="Firstname"
+        v-model="user.firstname"
+      />
+      <input
+        class="last-name"
+        type="text"
+        placeholder="Lastname"
+        v-model="user.lastname"
       />
       <input
         class="password"
@@ -35,6 +46,8 @@ export default {
     return {
       user: {
         username: "",
+        firstname: "",
+        lastname: "",
         password: "",
         confirmPassword: "",
         role: "ROLE_USER"
@@ -51,6 +64,8 @@ export default {
       });
       this.user = {
         username: "",
+        firstname: "",
+        lastname: "",
         password: "",
         role: "ROLE_USER"
       };
@@ -60,16 +75,21 @@ export default {
 </script>
 
 <style>
-.new-user-form {
+#add-user {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   width: 200px;
   border: solid, 2px, gray;
+  margin-left:25px;
+  padding-bottom: 10px;
+
 }
 
 .submitUser:hover {
   background-image: '"../assets/bookturner-small.gif"';
     background-size: contain;
 }
+
+
 
 </style>

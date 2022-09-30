@@ -34,8 +34,10 @@ export default{
 <style>
 .container {
     display:flex;
-    margin-left: 200px;
     flex-wrap:wrap;
+    justify-content: space-evenly;
+    min-width:450px;
+    
     
 }
 .bookList {
@@ -45,6 +47,7 @@ export default{
     height: 375px;
     margin: 20px;
     text-align:center;
+    background-color:white;
 }
 
 .bookList.read {

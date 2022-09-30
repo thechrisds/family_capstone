@@ -14,13 +14,13 @@ public interface UserDao {
 
     int findIdByUsername(String username);
 
-    boolean create(String username, String password, String role);
+    boolean create(String username, String firstname, String lastname, String password, String role);
 
     List<User> findAllByFamilyId(int id);
 
     int findFamilyIdByUsername(String username);
 
-    boolean createChild(String username, String password, String role);
+    boolean createChild(String username, String firstname, String lastname, String password, String role);
 
     void deleteUser(int userId);
 

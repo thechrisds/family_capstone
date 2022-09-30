@@ -37,16 +37,16 @@ public class JdbcUserDao implements UserDao {
         return userId;
     }
 
-	@Override
-	public User getUserById(int userId) {
-		String sql = "SELECT * FROM users WHERE user_id = ?";
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
-		if (results.next()) {
-			return mapRowToUser(results);
-		} else {
-			throw new UserNotFoundException();
-		}
-	}
+    @Override
+    public User getUserById(int userId) {
+        String sql = "SELECT * FROM users WHERE user_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        if (results.next()) {
+            return mapRowToUser(results);
+        } else {
+            throw new UserNotFoundException();
+        }
+    }
 
     @Override
     public int findFamilyIdByUsername(String username) {
@@ -115,19 +115,19 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
-    public boolean create(String username, String password, String role) {
-        String insertUserSql = "insert into users (username,password_hash,role, is_parent) values (?,?,?, true)";
+    public boolean create(String username, String firstname, String lastname, String password, String role) {
+        String insertUserSql = "insert into users (username, firstname, lastname, password_hash,role, is_parent) values (?,?,?,?,?, true)";
         String password_hash = new BCryptPasswordEncoder().encode(password);
         String ssRole = role.toUpperCase().startsWith("ROLE_") ? role.toUpperCase() : "ROLE_" + role.toUpperCase();
-        return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole) == 1;
+        return jdbcTemplate.update(insertUserSql, username, firstname, lastname, password_hash, ssRole) == 1;
     }
 
     @Override
-    public boolean createChild(String username, String password, String role) {
-        String insertUserSql = "insert into users (username,password_hash,role,is_parent) values (?,?,?, false)";
+    public boolean createChild(String username, String firstname, String lastname, String password, String role) {
+        String insertUserSql = "insert into users (username, firstname, lastname, password_hash,role, is_parent) values (?,?,?,?,?, false)";
         String password_hash = new BCryptPasswordEncoder().encode(password);
         String ssRole = role.toUpperCase().startsWith("ROLE_") ? role.toUpperCase() : "ROLE_" + role.toUpperCase();
-        return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole) == 1;
+        return jdbcTemplate.update(insertUserSql, username, firstname, lastname, password_hash, ssRole) == 1;
     }
 
     @Override
@@ -140,6 +140,8 @@ public class JdbcUserDao implements UserDao {
         User user = new User();
         user.setId(rs.getInt("user_id"));
         user.setUsername(rs.getString("username"));
+        user.setFirstname(rs.getString("firstname"));
+        user.setLastname(rs.getString("lastname"));
         user.setPassword(rs.getString("password_hash"));
         user.setAuthorities(Objects.requireNonNull(rs.getString("role")));
         user.setActivated(true);
