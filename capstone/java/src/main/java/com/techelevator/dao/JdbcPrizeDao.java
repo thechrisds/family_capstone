@@ -50,7 +50,9 @@ public class JdbcPrizeDao implements PrizeDao{
     }
 
     @Override
-    public void updatePrize(Prize prize) {
+    public void updatePrize(Prize prize) { //Add new Prize object to database, delete old one
+        String sql = "UPDATE prizes SET name = ?, description = ?, goal = ?, stock = ?, start_date = ?, end_date = ?\n" +
+                "WHERE prize_id = ?";
 
     }
 
