@@ -20,17 +20,8 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    books: []
-  },
-  activity: {
-    activityId: 0,
-    readerId: 0,
-    username: '',
-    isbn: 0,
-    bookTitle: '',
-    dateRead: '',
-    activityNotes: '',
-    isComplete: ''
+    books: [],
+    activities: [] 
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {

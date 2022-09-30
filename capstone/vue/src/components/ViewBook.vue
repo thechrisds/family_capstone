@@ -37,8 +37,7 @@ export default{
     flex-wrap:wrap;
     justify-content: space-evenly;
     min-width:450px;
-    
-    
+    margin-top:200px;
 }
 .bookList {
     border: 2px black solid;

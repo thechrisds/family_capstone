@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export default {
 
-    seeActivity(){
-      return axios.get('/activity');
+    seeUserActivity(){
+      return axios.get('/activity/user');
     },
     
     addActivity(activity){
@@ -11,6 +11,6 @@ export default {
     },
 
     seeFamilyActivity(){
-      return axios.get('/activity/family')
+      return axios.get('/activity/family');
     }
   }

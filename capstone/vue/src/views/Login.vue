@@ -74,3 +74,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+#login {
+  display:flex;
+  justify-content: space-evenly;
+  margin-top:200px;
+}
+</style>

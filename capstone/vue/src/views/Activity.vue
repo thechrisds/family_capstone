@@ -1,15 +1,24 @@
 <template>
-<div>
+  <div id="activity">
     <activity />
-</div>
+    <div class="activities">
+      <router-link to="/activity/add"> Add Activity </router-link>
+    </div>
+  </div>
 </template>
 
 <script>
-import Activity from '@/components/Activity'
+import Activity from "@/components/Activity";
 
 export default ({
-    components: {
-        Activity
-    }
+  components: {
+    Activity
+  }
 });
 </script>
+
+<style>
+.activities{
+    text-align:center;
+}
+</style>

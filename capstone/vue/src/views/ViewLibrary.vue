@@ -18,6 +18,15 @@ export default ({
 </script>
 
 <style>
+
+#all-books {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  min-height: 0;
+  padding-top: 10px;
+}
+
 .booklist{
     text-align:center;
 }
