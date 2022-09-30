@@ -18,6 +18,7 @@
             v-bind:to="{ name: 'activity' }"
             >Reading Activity</router-link
           >
+          
           <router-link
             id="links"
             class="links5"
@@ -25,6 +26,12 @@
             v-if="$store.state.token != ''"
             >Logout</router-link
           >
+
+          <router-link v-else id="links" class="links6" v-bind:to="{ name: 'login' }"
+            >Login</router-link
+          >
+
+
         </nav>
         <h4 class="title">READITT.</h4>
         <img class="book-cover" src="@/assets/bookcover1.png" />
@@ -84,6 +91,7 @@ body {
   border-top: 10px solid black;
   border-radius: 10px;
 }
+
 .header-bar {
   display: flex;
   justify-content: center;
@@ -100,14 +108,16 @@ body {
   justify-content: space-between;
   width: 1000px;
   padding-bottom: 5px;
-  color: lightblue;
+  color: rgb(104, 32, 32);
   margin-right: 40px;
+  margin-left: 40px;
 }
+
 .title {
   font-weight: 900;
-  color: rgb(128, 212, 240);
+  color: rgb(104, 32, 32);
   font-size: 25px;
-  text-shadow: 3px 3px rgb(192, 230, 243);
+  text-shadow: 3px 3px rgb(175, 154, 125);
   margin-left: 40px;
 }
 
@@ -127,7 +137,7 @@ body {
   padding-bottom: 10px;
 }
 .links1 {
-  color: rgb(95, 165, 189);
+  color: rgb(104, 32, 32);
 }
 
 .links1:hover {
@@ -135,30 +145,37 @@ body {
 }
 
 .links2 {
-  color: rgb(95, 165, 189);
+  color: rgb(104, 32, 32);
 }
 .links2:hover {
   color: #07be16;
 }
 
 .links3 {
-  color: rgb(95, 165, 189);
+  color: rgb(104, 32, 32);
 }
 .links3:hover {
   color: #1b1fe7;
 }
 
 .links4 {
-  color: rgb(95, 165, 189);
+  color: rgb(104, 32, 32);
 }
 .links4:hover {
   color: #e77e1b;
 }
 
 .links5 {
-  color: rgb(95, 165, 189);
+  color: rgb(104, 32, 32);
 }
 .links5:hover {
+  color: magenta;
+}
+
+.links6 {
+  color: rgb(95, 165, 189);
+}
+.links6:hover {
   color: magenta;
 }
 
