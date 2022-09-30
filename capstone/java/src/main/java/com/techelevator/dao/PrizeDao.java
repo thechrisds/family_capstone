@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface PrizeDao {
 
+
     List<Prize> findPrizesByFamilyId(int familyId); //grabs all prizes related to familyId
 
     Prize addPrize(int familyId, String name, String description, int goal, int stock, Date start_date, Date end_date);
@@ -20,7 +21,10 @@ public interface PrizeDao {
 
     void deletePrize(int prizeId); //different from deleteExpiredPrize--will have button on prize_info 'page' that allows you to delete a prize that has been added
 
-    
+    List<Prize> findActivePrizes(int familyId); //take the username from Principal, userDao.findFamilyIdByUsername for familyId
+    //probably something like -- select * from prizes where current_date >= start_date and current_date <= end_date
+
+
 
 
 

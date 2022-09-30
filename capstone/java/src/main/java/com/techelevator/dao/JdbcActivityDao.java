@@ -24,10 +24,10 @@ public class JdbcActivityDao implements ActivityDao {
 
     @Override
     public void createActivity(Activity activity){
-        String sql = "INSERT INTO reading_activity(user_id, isbn, minutes_read, notes, format) " +
+        String sql = "INSERT INTO reading_activity(user_id, isbn, minutes_read, notes, format_id) " +
                 "VALUES(?, ?, ?, ?, ?)";
         try {
-            jdbcTemplate.update(sql, activity.getReaderId(), activity.getIsbn(), activity.getTimeInMinutes(), activity.getActivityNotes(), activity.getFormat());
+            jdbcTemplate.update(sql, activity.getReaderId(), activity.getIsbn(), activity.getTimeInMinutes(), activity.getActivityNotes(), activity.getFormatId());
         } catch (DataAccessException e){
             System.out.println("creation failed");
         }
@@ -46,7 +46,7 @@ public class JdbcActivityDao implements ActivityDao {
     @Override
     public List<Activity> getAllReadingActivities() {
         List<Activity> activityList = new ArrayList<>();
-        String sql = "SELECT a.activity_id, a.user_id, u.username, a.isbn, b.book_title, a.format, a.date_read,  a.minutes_read, a.notes, a.completed FROM reading_activity a JOIN users u ON a.user_id = u.user_id JOIN library b ON a.isbn = b.isbn;";
+        String sql = "SELECT a.activity_id, a.user_id, u.username, a.isbn, b.book_title, a.format_id, a.date_read,  a.minutes_read, a.notes, a.completed FROM reading_activity a JOIN users u ON a.user_id = u.user_id JOIN library b ON a.isbn = b.isbn;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             activityList.add(mapResultsToActivity(results));
@@ -70,7 +70,7 @@ public class JdbcActivityDao implements ActivityDao {
     @Override
     public List<Activity> getActivitiesByReaderId(int readerId) {
         List<Activity> activityList = new ArrayList<>();
-        String sql = "SELECT a.activity_id, a.user_id, u.username, a.isbn, b.book_title, a.format, a.date_read,  a.minutes_read, a.notes, a.completed FROM reading_activity a JOIN users u ON a.user_id = u.user_id JOIN library b ON a.isbn = b.isbn WHERE a.user_id = ?";
+        String sql = "SELECT a.activity_id, a.user_id, u.username, a.isbn, b.book_title, a.format_id, a.date_read,  a.minutes_read, a.notes, a.completed FROM reading_activity a JOIN users u ON a.user_id = u.user_id JOIN library b ON a.isbn = b.isbn WHERE a.user_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, readerId);
         while (results.next()) {
             activityList.add(mapResultsToActivity(results));
@@ -82,7 +82,7 @@ public class JdbcActivityDao implements ActivityDao {
     @Override
     public List<Activity> getActivitiesByFamilyId(int familyId) {
         List<Activity> activityList = new ArrayList<>();
-        String sql = "SELECT a.activity_id, a.user_id, u.username, a.isbn, b.book_title, a.format, a.date_read,  a.minutes_read, a.notes, a.completed\n" +
+        String sql = "SELECT a.activity_id, a.user_id, u.username, a.isbn, b.book_title, a.format_id, a.date_read,  a.minutes_read, a.notes, a.completed\n" +
                 "                FROM reading_activity a\n" +
                 "                JOIN users u ON a.user_id = u.user_id \n" +
                 "                JOIN library b ON a.isbn = b.isbn\n" +
@@ -97,7 +97,7 @@ public class JdbcActivityDao implements ActivityDao {
     @Override
     public List<Activity> getActivitiesByCurrentUser(int readerId) {
         List<Activity> activityList = new ArrayList<>();
-        String sql = "SELECT a.activity_id, a.user_id, u.username, a.isbn, b.book_title, a.format, a.date_read,  a.minutes_read, a.notes, a.completed\n" +
+        String sql = "SELECT a.activity_id, a.user_id, u.username, a.isbn, b.book_title, a.format_id, a.date_read,  a.minutes_read, a.notes, a.completed\n" +
                 "                FROM reading_activity a\n" +
                 "                JOIN users u ON a.user_id = u.user_id \n" +
                 "                JOIN library b ON a.isbn = b.isbn\n" +
@@ -124,11 +124,11 @@ public class JdbcActivityDao implements ActivityDao {
         String userName = results.getString("username");
         long isbn = results.getLong("isbn");
         String bookTitle = results.getString("book_title");
-        String format = results.getString("format");
+        int formatId = results.getInt("format_id");
         Date dateRead = results.getDate("date_read");
         int timeInMinutes = results.getInt("minutes_read");
         String activityNotes = results.getString("notes");
         boolean isComplete = results.getBoolean("completed");
-        return new Activity(activityId,readerId,userName,isbn,bookTitle,format,dateRead,timeInMinutes,activityNotes,isComplete);
+        return new Activity(activityId,readerId,userName,isbn,bookTitle,formatId,dateRead,timeInMinutes,activityNotes,isComplete);
     }
 }

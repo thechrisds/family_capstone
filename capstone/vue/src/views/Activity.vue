@@ -1,15 +1,18 @@
 <template>
-<div>
+  <div id="activity">
     <activity />
-</div>
+    <div class="familyactivity">
+      <router-link to="/activity/user"> Add activity! </router-link>
+    </div>
+  </div>
 </template>
 
 <script>
-import Activity from '@/components/Activity'
+import Activity from "@/components/Activity";
 
-export default ({
-    components: {
-        Activity
-    }
-});
+export default {
+  components: {
+    Activity,
+  },
+};
 </script>

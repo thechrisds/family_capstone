@@ -10,19 +10,19 @@ public class Activity {
     private String userName;
     private long isbn;
     private String bookTitle;
-    private String format;
+    private int formatId;
     private Date dateRead;
     private int timeInMinutes;
     private String activityNotes;
     private boolean isComplete;
 
-    public Activity(int activityId, int readerId, String userName, long isbn, String bookTitle, String format, Date dateRead, int timeInMinutes, String activityNotes, boolean isComplete) {
+    public Activity(int activityId, int readerId, String userName, long isbn, String bookTitle, int formatId, Date dateRead, int timeInMinutes, String activityNotes, boolean isComplete) {
         this.activityId = activityId;
         this.readerId = readerId;
         this.userName = userName;
         this.isbn = isbn;
         this.bookTitle = bookTitle;
-        this.format = format;
+        this.formatId = formatId;
         this.dateRead = dateRead;
         this.timeInMinutes = timeInMinutes;
         this.activityNotes = activityNotes;
@@ -69,12 +69,12 @@ public class Activity {
         this.bookTitle = bookTitle;
     }
 
-    public String getFormat() {
-        return format;
+    public int getFormatId() {
+        return formatId;
     }
 
-    public void setFormat(String format) {
-        this.format = format;
+    public void setFormatId(int formatId) {
+        this.formatId = formatId;
     }
 
     public Date getDateRead() {
@@ -117,7 +117,7 @@ public class Activity {
                 ", userName='" + userName + '\'' +
                 ", isbn=" + isbn +
                 ", bookTitle='" + bookTitle + '\'' +
-                ", format='" + format + '\'' +
+                ", formatId='" + formatId + '\'' +
                 ", dateRead=" + dateRead +
                 ", timeInMinutes=" + timeInMinutes +
                 ", activityNotes='" + activityNotes + '\'' +

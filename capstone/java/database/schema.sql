@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, family_account, library, reading_activity, prizes CASCADE;
+DROP TABLE IF EXISTS users, family_account, format, library, reading_activity, prizes CASCADE;
 
 DROP SEQUENCE IF EXISTS seq_user_id, seq_family_id, seq_library_id, seq_activity_id, seq_prizes_id;
 
@@ -38,6 +38,12 @@ INCREMENT BY 1
 START WITH 5001 --changed this from 2001 to 5001, just in case people add over 1000 books and hit the 3000 IDs
 NO MAXVALUE;
 
+CREATE TABLE format (
+    format_id int NOT NULL DEFAULT 0,
+    format_type varchar (30) DEFAULT 'unspecified',
+    CONSTRAINT PK_format PRIMARY KEY (format_id)
+);
+
 CREATE TABLE library (
     book_id int NOT NULL DEFAULT nextval('seq_library_id'),
 	isbn numeric NOT NULL,
@@ -63,10 +69,11 @@ CREATE TABLE reading_activity (
     minutes_read int DEFAULT 0,
     date_read  DATE NOT NULL DEFAULT CURRENT_DATE,
     notes varchar (250) DEFAULT 'none',
-    format varchar (20) DEFAULT 'unspecified',
+    format_id int DEFAULT 0,
     completed boolean DEFAULT false,
     CONSTRAINT PK_reading_activity PRIMARY KEY (activity_id),
     CONSTRAINT FK_family_account_users FOREIGN KEY (user_id) REFERENCES users (user_id),
+    CONSTRAINT FK_format FOREIGN KEY (format_id) REFERENCES format (format_id),
 	CONSTRAINT FK_library FOREIGN KEY (isbn) REFERENCES library (isbn)
 );
 

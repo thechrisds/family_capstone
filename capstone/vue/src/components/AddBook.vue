@@ -51,6 +51,7 @@ export default{
         addBooks(){
             bookService.addBooks(this.book).then(response =>{
                 if(response.status === 200){
+                    console.log(response);
                     alert("Success!");
                     this.$router.push({name: 'books'})
                 } else if (response.status === 500){
