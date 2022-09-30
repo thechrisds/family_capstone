@@ -10,8 +10,7 @@
             id="links"
             class="links2"
             v-bind:to="{ name: 'account' }"
-            v-if="$store.state.token != ''"
-            >View Account</router-link
+            >Dashboard</router-link
           >
           <router-link id="links" class="links3" v-bind:to="{ name: 'books' }"
             >Books</router-link

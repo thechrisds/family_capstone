@@ -29,12 +29,12 @@ export default {
   background-size: 100%;;
   width:100%;
   justify-content:center;
-
+  margin-top:150px;
 }
 .home-title-box{
   background-color: white;
   width:100%;
-  margin-top:150px;
+
 }
 .home-title {
   font-weight: 900;
@@ -49,8 +49,7 @@ export default {
   font-size: 25px;
 }
 #app-info-box{
-  background-color: white;
-  margin-top:50px;
+  background-color: white;;
 }
 
 .home-page-link{

@@ -112,4 +112,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+#register {
+  display:flex;
+  justify-content: space-evenly;
+  margin-top:200px;
+}
+</style>

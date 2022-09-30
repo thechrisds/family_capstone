@@ -33,7 +33,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -97,7 +97,7 @@ const router = new Router({
       name: "activity",
       component: Activity,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -105,7 +105,7 @@ const router = new Router({
       name: "addActivity",
       component: AddActivity,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
