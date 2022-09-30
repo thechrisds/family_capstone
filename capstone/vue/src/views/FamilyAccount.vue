@@ -54,6 +54,7 @@ export default {
   height: auto;
   width: 250px;
   margin: auto;
+  margin-top:100px;
   border: 5px solid lightblue;
   border-radius: 10px;
   box-shadow: 10px 10px 10px;

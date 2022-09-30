@@ -1,6 +1,6 @@
 <template>
-    <div id="app">
-      <div class="header">
+  <div id="app">
+    <div class="header">
       <div class="header-bar">
         <nav class="top-nav">
           <router-link id="links" class="links1" v-bind:to="{ name: 'home' }"
@@ -16,7 +16,10 @@
           <router-link id="links" class="links3" v-bind:to="{ name: 'books' }"
             >Books</router-link
           >
-          <router-link id="links" class="links4" v-bind:to="{ name: 'activity' }"
+          <router-link
+            id="links"
+            class="links4"
+            v-bind:to="{ name: 'activity' }"
             >Reading Activity</router-link
           >
           <router-link
@@ -27,17 +30,17 @@
             >Logout</router-link
           >
         </nav>
-        <h4 class="title">READITT. </h4> 
-        <img class="book-cover" src="@/assets/bookcover1.png">
+        <h4 class="title">READITT.</h4>
+        <img class="book-cover" src="@/assets/bookcover1.png" />
       </div>
       <div class="book-banner">
         <img src="@/assets/bookbanner5.png" class="banner" />
       </div>
-      </div>
-      <div id="container">
-        <router-view />
-      </div>
     </div>
+    <div id="container">
+      <router-view />
+    </div>
+  </div>
 </template>
 
 <style>
@@ -48,31 +51,33 @@ body {
   font-size: 12px;
 }
 #app {
+  display: flex;
+  flex-direction: column;
   min-width: 450px;
   margin: auto;
   max-width: 1500;
-  border-top: 10px solid black;
-    border-radius: 10px;
 }
 
-.book-banner{
-  display:flex;
+.book-banner {
+  display: flex;
   justify-content: center;
   padding-bottom: 15px;
-  margin-top:15px;
+  margin-top: 15px;
+  max-width: 100%;
+  height: auto;
 }
 
 .banner {
   height: 75px;
-  width: 1300px;
+  width: 1500px;
   opacity: 1;
   box-shadow: 10px 10px 5px rgb(127, 131, 133);
-  
 }
-#family-account{
+#family-account {
   min-height: 0;
   padding-top: 10px;
   padding-bottom: 10px;
+  margin-top:100px;
 }
 
 #all-books {
@@ -81,11 +86,12 @@ body {
 }
 
 .header {
-    background-color: rgb(254, 254, 255);
-  
-    
-    
-
+  background-color: rgb(254, 254, 255);
+  position: fixed;
+  width: 100%;
+  margin: -10px;
+  border-top: 10px solid black;
+  border-radius: 10px;
 }
 .header-bar {
   display: flex;
@@ -96,15 +102,14 @@ body {
   padding-right: 5px;
   height: 30px;
   margin-right: 40px;
-  
 }
 
 .top-nav {
-  display:flex;
+  display: flex;
   justify-content: space-between;
   width: 1000px;
   padding-bottom: 5px;
-  color:lightblue;
+  color: lightblue;
   margin-right: 40px;
 }
 .title {
@@ -112,10 +117,10 @@ body {
   color: rgb(128, 212, 240);
   font-size: 25px;
   text-shadow: 3px 3px rgb(192, 230, 243);
-  margin-left:40px;
+  margin-left: 40px;
 }
 
-.book-cover{
+.book-cover {
   width: 25px;
   height: 35px;
   padding-left: 5px;
@@ -130,7 +135,7 @@ body {
   font-size: 14px;
   padding-bottom: 10px;
 }
-.links1{
+.links1 {
   color: rgb(95, 165, 189);
 }
 
@@ -138,44 +143,37 @@ body {
   color: #c71a1a;
 }
 
-.links2{
+.links2 {
   color: rgb(95, 165, 189);
 }
 .links2:hover {
   color: #07be16;
 }
 
-.links3{
+.links3 {
   color: rgb(95, 165, 189);
 }
 .links3:hover {
   color: #1b1fe7;
 }
 
-.links4{
+.links4 {
   color: rgb(95, 165, 189);
 }
 .links4:hover {
   color: #e77e1b;
 }
 
-.links5{
+.links5 {
   color: rgb(95, 165, 189);
 }
 .links5:hover {
-  color:magenta;
+  color: magenta;
 }
 
 #container {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color:rgb(207, 81, 106);
-  border-right:5px solid lightgrey;
-    border-left:5px solid lightgrey;
-  
-  
 }
-
-
 </style>
