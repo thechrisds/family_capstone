@@ -6,10 +6,7 @@
           <router-link id="links" class="links1" v-bind:to="{ name: 'home' }"
             >Home</router-link
           >
-          <router-link
-            id="links"
-            class="links2"
-            v-bind:to="{ name: 'account' }"
+          <router-link id="links" class="links2" v-bind:to="{ name: 'account' }"
             >Dashboard</router-link
           >
           <router-link id="links" class="links3" v-bind:to="{ name: 'books' }"
@@ -76,7 +73,7 @@ body {
   min-height: 0;
   padding-top: 10px;
   padding-bottom: 10px;
-  margin-top:100px;
+  margin-top: 100px;
 }
 
 .header {

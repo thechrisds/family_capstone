@@ -101,7 +101,7 @@ const router = new Router({
       }
     },
     {
-      path: "/activity/user",
+      path: "/activity/add",
       name: "addActivity",
       component: AddActivity,
       meta: {

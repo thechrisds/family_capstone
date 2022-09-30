@@ -31,6 +31,7 @@ public class ActivityController {
         this.userDao = userDao;
     }
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/activity/d/{activityId}", method = RequestMethod.DELETE)
     public void deleteActivity(@PathVariable int activityId){
         try {
@@ -40,6 +41,7 @@ public class ActivityController {
             }
     }
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/activity/", method = RequestMethod.POST)
     public void createActivity(@RequestBody Activity activity) throws Exception {
         try {
@@ -49,42 +51,48 @@ public class ActivityController {
         }
     }
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/activity/user", method = RequestMethod.GET)
     public List<Activity> getActivitiesForCurrentUser(@RequestBody LoginDTO loginDTO) {
         int readerId = userDao.findIdByUsername(loginDTO.getUsername());
-        List<Activity> activityByUser = activityDao.getActivitiesByCurrentUser(readerId);
-        return activityByUser;
+        List<Activity> activityList = activityDao.getActivitiesByCurrentUser(readerId);
+        return activityList;
     }
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/activity/family", method = RequestMethod.GET)
-    public List<Activity> getActivitiesByFamilyId(@RequestBody LoginDTO loginDTO) {
-        int familyId = userDao.findFamilyIdByUsername(loginDTO.getUsername());
-        List<Activity> activityByFamily = activityDao.getActivitiesByFamilyId(familyId);
-        return activityByFamily;
+    public List<Activity> getActivitiesByFamilyId(Principal principal) {
+        int familyId = userDao.findFamilyIdByUsername(principal.getName());
+        List<Activity> activityList = activityDao.getActivitiesByFamilyId(familyId);
+        return activityList;
     }
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/activity", method = RequestMethod.GET)
     public List<Activity> returnAllActivity() {
-        List<Activity> allActivity = activityDao.getAllReadingActivities();
-        return allActivity;
+        List<Activity> activityList = activityDao.getAllReadingActivities();
+        return activityList;
     }
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/activity/{activityId}", method = RequestMethod.GET)
     public Activity returnActivityByActivityId(@PathVariable int activityId) {
         Activity activity = activityDao.getActivityByActivityId(activityId);
         return activity;
     }
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/activity/rid/{readerId}", method = RequestMethod.GET)
     public List<Activity> returnActivityByReaderId(@PathVariable int readerId) {
-        List<Activity> activityByUser = activityDao.getActivitiesByReaderId(readerId);
-        return activityByUser;
+        List<Activity> activityList = activityDao.getActivitiesByReaderId(readerId);
+        return activityList;
     }
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/activity/minutes/{readerId}", method = RequestMethod.GET)
     public int returnTotalMinsByReaderId(@PathVariable int readerId) {
-        int totalMins = activityDao.getTotalReadingMinutesByReaderId(readerId);
-        return totalMins;
+        int totalMinutes = activityDao.getTotalReadingMinutesByReaderId(readerId);
+        return totalMinutes;
     }
 
     private String getUserNameFromDTO(LoginDTO loginDTO) { return loginDTO.getUsername(); }

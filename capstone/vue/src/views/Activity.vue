@@ -1,8 +1,8 @@
 <template>
   <div id="activity">
     <activity />
-    <div class="familyactivity">
-      <router-link to="/activity/user"> Add activity! </router-link>
+    <div class="activities">
+      <router-link to="/activity/add"> Add Activity </router-link>
     </div>
   </div>
 </template>
@@ -10,9 +10,15 @@
 <script>
 import Activity from "@/components/Activity";
 
-export default {
+export default ({
   components: {
-    Activity,
-  },
-};
+    Activity
+  }
+});
 </script>
+
+<style>
+.activities{
+    text-align:center;
+}
+</style>
