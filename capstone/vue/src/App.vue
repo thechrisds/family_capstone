@@ -79,11 +79,6 @@ body {
   margin-top:100px;
 }
 
-#all-books {
-  min-height: 0;
-  padding-top: 10px;
-}
-
 .header {
   background-color: rgb(254, 254, 255);
   position: fixed;
@@ -170,9 +165,5 @@ body {
   color: magenta;
 }
 
-#container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
+
 </style>
