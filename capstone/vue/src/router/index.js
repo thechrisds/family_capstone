@@ -6,8 +6,8 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import ViewLibrary from '../views/ViewLibrary.vue'
-import AddActivity from '../views/AddActivity.vue'
 import Activity from '../views/Activity.vue'
+import AddActivity from '../views/AddActivity.vue'
 import AddBook from '../views/AddBook.vue'
 import FamilyAccount from '../views/FamilyAccount.vue'
 import InvalidPath from '../views/InvalidPath.vue'
@@ -93,7 +93,15 @@ const router = new Router({
       }
     },
     {
-      path: "/activity/",
+      path: "/activity/family",
+      name: "activity",
+      component: Activity,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/activity/user",
       name: "addActivity",
       component: AddActivity,
       meta: {
@@ -105,16 +113,7 @@ const router = new Router({
       name: "dne",
       component: InvalidPath
 
-    }
-    ,
-    {
-      path: "/activity",
-      name: "Activity",
-      component: Activity,
-      meta: {
-        requiresAuth: false
-      }
-    }
+    },
   ]
 })
 

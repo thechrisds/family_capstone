@@ -16,11 +16,8 @@
           <router-link id="links" class="links3" v-bind:to="{ name: 'books' }"
             >Books</router-link
           >
-          <router-link
-            id="links"
-            class="links4"
-            v-bind:to="{ name: 'Activity' }"
-            >Activity</router-link
+          <router-link id="links" class="links4" v-bind:to="{ name: 'activity' }"
+            >Reading Activity</router-link
           >
           <router-link
             id="links"
