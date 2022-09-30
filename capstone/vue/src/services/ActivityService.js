@@ -8,5 +8,9 @@ export default {
     
     addActivity(activity){
         return axios.post('/activity/', activity);
+    },
+
+    seeFamilyActivity(){
+      return axios.get('/activity/family')
     }
   }
