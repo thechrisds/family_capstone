@@ -25,6 +25,8 @@ CREATE TABLE users (
 	family_id int,
 	is_parent boolean NOT NULL DEFAULT false,
 	username varchar(50) NOT NULL UNIQUE,
+	firstname varchar (50),
+    lastname varchar (50),
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) DEFAULT 'ROLE_USER',
 	CONSTRAINT PK_user PRIMARY KEY (user_id),
