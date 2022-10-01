@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h2>activity</h2>
     <div
       class="activityList"
       v-for="activity in activities"
@@ -25,17 +26,31 @@ export default {
       activities: [],
       users: [],
       id: "",
-      username: this.$store.state.user.username
+      username: this.$store.state.user.username,
     };
   },
   created() {
     activityService.seeFamilyActivity().then((response) => {
       this.activities = response.data;
     }).catch,
-    activityService.see
+      activityService.see;
   },
 };
 </script>
 
-<style scoped>
+<style>
+h2 {
+  text-align: center;
+}
+
+.activityList {
+  border: 2px rgb(161, 75, 41) solid;
+  border-radius: 10px;
+  width: 175px;
+  margin: 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-align: center;
+  background-color: rgb(255, 242, 233);
+}
 </style>
