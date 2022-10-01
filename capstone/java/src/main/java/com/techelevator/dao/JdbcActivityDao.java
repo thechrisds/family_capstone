@@ -24,10 +24,10 @@ public class JdbcActivityDao implements ActivityDao {
 
     @Override
     public void createActivity(Activity activity){
-        String sql = "INSERT INTO reading_activity(user_id, isbn, minutes_read, notes, format_id) " +
-                "VALUES(?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO reading_activity(user_id, isbn, minutes_read, notes) " +
+                "VALUES(?, ?, ?, ?)";
         try {
-            jdbcTemplate.update(sql, activity.getReaderId(), activity.getIsbn(), activity.getTimeInMinutes(), activity.getActivityNotes(), activity.getFormatId());
+            jdbcTemplate.update(sql, activity.getReaderId(), activity.getIsbn(), activity.getTimeInMinutes(), activity.getActivityNotes());
         } catch (DataAccessException e){
             System.out.println("creation failed");
         }

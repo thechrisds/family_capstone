@@ -68,7 +68,7 @@ CREATE SEQUENCE seq_activity_id
 CREATE TABLE reading_activity (
     activity_id int NOT NULL DEFAULT nextval('seq_activity_id'),
     user_id int NOT NULL,
-    isbn numeric NOT NULL,
+    isbn numeric,
     minutes_read int DEFAULT 0,
     date_read  DATE NOT NULL DEFAULT CURRENT_DATE,
     notes varchar (250) DEFAULT 'none',

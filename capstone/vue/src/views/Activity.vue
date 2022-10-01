@@ -20,5 +20,7 @@ export default ({
 <style>
 .activities{
     text-align:center;
+    margin-top: 200px;
+    border: 2px;
 }
 </style>

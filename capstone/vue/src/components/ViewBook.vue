@@ -36,8 +36,8 @@ export default{
     display:flex;
     flex-wrap:wrap;
     justify-content: space-evenly;
-    min-width:450px;
-    margin-top:200px;
+    align-content:center;
+
 }
 .bookList {
     border: 2px black solid;

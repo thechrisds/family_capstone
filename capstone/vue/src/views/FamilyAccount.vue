@@ -8,6 +8,9 @@
         <div class="family-library-title">
         Family Library
         </div>
+        <div class="family-library-books">
+
+        </div>
       </div>
       <div id="account-column">
         <div id="account-list-box"><account-list /></div>
@@ -55,9 +58,8 @@ export default {
   width: 250px;
   margin: auto;
   margin-top:100px;
-  border: 5px solid lightblue;
-  border-radius: 10px;
-  box-shadow: 10px 10px 10px;
+ 
+  
   margin-bottom: 25px;
 }
 
@@ -71,19 +73,28 @@ export default {
   height: 300px;
   min-height: 0;
   width: 350px;
-  box-shadow: 10px 10px 5px rgb(153, 46, 46);
-  border: 10px solid rgb(116, 38, 38);
+  box-shadow: 10px 10px 25px rgb(153, 46, 46);
+  border: 1px solid rgb(116, 38, 38);
   height: 100%;
   border-radius: 10px;
   padding-bottom: 25px;
   background-color:white;
 }
 
+#add-user-box {
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 10px 10px 25px rgb(36, 114, 40);
+  border: 1px solid rgb(12, 107, 9);
+  border-radius: 10px;
+  background-color:white;
+}
+
 #family-library {
   display: flex;
-  float: left;
-  box-shadow: 10px 10px 5px rgb(44, 55, 201);
-  border: 10px solid rgb(15, 29, 90);
+  flex-direction: column;
+  box-shadow: 10px 10px 25px rgb(44, 55, 201);
+  border: 1px solid rgb(15, 29, 90);
   width: 600px;
   height: 350px;
   margin-top: 20px;
@@ -92,12 +103,20 @@ export default {
   background-color:white;
 }
 
-#add-user-box {
-  display: flex;
-  flex-wrap: wrap;
-  box-shadow: 10px 10px 5px rgb(36, 114, 40);
-  border: 10px solid rgb(12, 107, 9);
-  border-radius: 10px;
-  background-color:white;
+.family-library-title {
+  background-color: rgb(166, 166, 228);
+  width: 90%;
+  align-self: center;
 }
+
+.family-library-books {
+  align-self: center;
+  width: 95%;
+  height: 340px;
+  overflow-x:scroll;
+  border: 2px solid grey;
+
+}
+
+
 </style>
