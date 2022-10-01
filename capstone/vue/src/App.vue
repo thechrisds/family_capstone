@@ -33,8 +33,12 @@
 
 
         </nav>
+        <router-link class="img-link" v-bind:to="{ name: 'home' }">
         <h4 class="title">READITT.</h4>
-        <img class="book-cover" src="@/assets/bookcover1.png" />
+        </router-link>
+        <router-link v-bind:to="{ name: 'home' }">
+          <img class="book-cover" src="@/assets/bookcover1.png" />
+          </router-link>
       </div>
       <div class="book-banner">
         <img src="@/assets/bookbanner5.png" class="banner" />
@@ -48,9 +52,7 @@
 
 <style>
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-weight: 700;
+  font-family: 'Raleway', sans-serif;
   font-size: 12px;
 }
 #app {
@@ -142,20 +144,23 @@ body {
 
 .links1:hover {
   color: #c71a1a;
+  text-shadow: 3px 3px 3px gray
 }
 
 .links2 {
   color: rgb(104, 32, 32);
 }
 .links2:hover {
-  color: #07be16;
+  color: #358a3c;
+  text-shadow: 3px 3px 3px gray;
 }
 
 .links3 {
   color: rgb(104, 32, 32);
 }
 .links3:hover {
-  color: #1b1fe7;
+  color: #3537cc;
+  text-shadow: 3px 3px 3px gray
 }
 
 .links4 {
@@ -163,21 +168,27 @@ body {
 }
 .links4:hover {
   color: #e77e1b;
+  text-shadow: 3px 3px 3px gray
 }
 
 .links5 {
   color: rgb(104, 32, 32);
 }
 .links5:hover {
-  color: magenta;
+  color: rgb(155, 13, 155);
+  text-shadow: 3px 3px 3px gray
 }
 
 .links6 {
   color: rgb(95, 165, 189);
 }
 .links6:hover {
-  color: magenta;
+  color: rgb(155, 13, 155);
+  text-shadow: 3px 3px 3px gray
 }
 
+.img-link {
+  text-decoration: none;
+}
 
 </style>

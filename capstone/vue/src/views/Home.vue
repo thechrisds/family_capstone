@@ -2,6 +2,7 @@
   <div class="home">
     
     <div id="box-1" class="home-title-box">
+
       <h1 class="home-title">
         <a href="#box-2" class="link-style">READITT.</a>
       </h1>
@@ -13,24 +14,20 @@
       <h1 class="home-title">
         <a href="#box-3" class="link-style">How it works</a>
       </h1>
+    </div>
 
+       
       <div class="how-it-works-container">
-
         <div class="library-card">
-          <h3 class="library-title" align="center">Choose some books!</h3>
-          <p class="library-p" align="center">
-            Choose any of our family recommended books to add to your own family
-            library. Our library is comprised of books chosen by our families!
-          </p>
+          <h3 class="card-title" align="center">Add books to your family library!</h3>
+          
           <img src="@/assets/bookexample2.png" class="library-img" />
         </div>
 
         <div class="record-activities-container">
           <div class="record-card">
-            <h3 class="record-title" align="center">Record your reading!</h3>
-            <p class="record-p" align="center">
-              Sit, relax, read! When you're done, log those minutes.
-            </p>
+            <h3 class="card-title" align="center">Record your reading!</h3>
+            
           </div>
           <div class="minutes-div">
             <img src="@/assets/minutes.png" class="minutes-img" />
@@ -39,10 +36,8 @@
 
         <div class="prizes-container">
           <div class="prizes-info">
-            <h3 class="prizes-title" align="center">Win Prizes!</h3>
-            <p class="record-p" align="center">
-              As you log more minutes, earn more prizes!
-            </p>
+            <h3 class="card-title" align="center">Win Prizes!</h3>
+            
           </div>
           <div class="prizesimg-div">
             <img src="@/assets/prizefinal1.png" class="prizes-img" />
@@ -50,14 +45,12 @@
         </div>
 
         <div class="dash-card">
-          <h3 class="dash-title" align="center">Keep track with your family dashboard!</h3>
-          <p class="dash-p" align="center">
-            Personalized dashboard with all family members, your family library, prizes, and more!
-          </p>
+          <h3 class="card-title" align="center">Keep track with your family dashboard!</h3>
+          
           <img src="@/assets/dashboard.png" class="dash-img" />
         </div>
-      </div>
-    </div>
+        </div>
+      
 
     <div id="box-3">
       <h1 class="home-title">
@@ -77,7 +70,7 @@
       
       <div class="members">
         <img src="@/assets/team.jpg" class="team-pic">
-        <h2>James Cagle | Chris Schriver | Daniel Song</h2>
+        <h2>James Cagle | Chris Shriver | Daniel Song</h2>
       </div>
       
     </div>
@@ -96,7 +89,7 @@ export default {
 .home {
   background-color: white;
   background-image: url("../assets/books.jpg");
-  height: 10000px;
+  height: 5000px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -111,7 +104,7 @@ export default {
   text-align:initial;
 }
 .home-title {
-  font-weight: 900;
+  font-weight: bolder;
   color: rgb(19, 57, 70);
   font-size: 50px;
   text-shadow: 3px 3px rgb(175, 154, 125);
@@ -124,9 +117,9 @@ export default {
 }
 
 .sub-title {
-  font-family: "Poppins", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-align: center;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .sub-title2 {
@@ -147,13 +140,31 @@ export default {
 #box-2 {
   background-color: white;
   margin-top: 750px;
+  padding-bottom: 3px;
 }
-
+.card-title{
+  font-size: 20px;
+  color: rgb(33, 33, 129);
+  text-shadow: 3px 3px 10px tomato;
+}
+.card-p {
+  font-size: 14px;
+}
 .how-it-works-container {
   display: flex;
-  justify-content: space-evenly;
+  flex-wrap:nowrap;
   align-content: center;
-  flex-wrap: wrap;
+  overflow-x:scroll;
+  overflow-y:hidden;
+  height: 380px;
+  width: 95%;
+  align-self: center;
+  border: 1px solid;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  margin-left:35px;
+  margin-top:25px;
+  
 }
 
 .library-card {
@@ -164,30 +175,20 @@ export default {
   padding: 20px;
   height: 250px;
   width: 350px;
+  background-color: white;
 }
 
-.library-text {
-  border: solid 2px lightgray;
-  border-radius: 10px;
-  margin-bottom: 30px;
-  margin-left: 40px;
-  padding: 20px;
-  height: 175px;
-  width: 300px;
-}
 
 .library-img {
   width: 350px;
   height: auto;
-
 }
 
 .record-activities-container {
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-evenly;
+ align-content: center;
   border: solid 2px lightgray;
   border-radius: 10px;
   margin-bottom: 30px;
@@ -195,16 +196,20 @@ export default {
   padding: 20px;
   height: 250px;
   width: 350px;
+  background-color: white;
 }
 
 .record-card {
-  width: 100px;
+  width: 300px;
+  margin-bottom: 20px;
 }
 
 .minutes-img {
   width: 150px;
   height: auto;
-  
+  align-content: center;
+  margin-bottom: 30px;
+  margin-left:75px;
 }
 
 .minutes-img:hover {
@@ -229,10 +234,6 @@ export default {
 
 .prizes-container {
   display: flex;
-  justify-content: space-between;
-  align-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
   border: solid 2px lightgray;
   border-radius: 10px;
   margin-bottom: 30px;
@@ -240,6 +241,7 @@ export default {
   padding: 20px;
   height: 250px;
   width: 350px;
+  background-color: white;
 }
 
 .prizes-info {
@@ -252,17 +254,24 @@ export default {
 }
 
 .dash-card {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
   border: solid 2px lightgray;
   border-radius: 10px;
   margin-bottom: 30px;
   margin-left: 40px;
-  padding: 20px;
+  margin-right: 40px;
+  padding: 15px;
   height: 250px;
   width: 350px;
+    background-color: white;
+    
+
 }
 
 .dash-img {
-  width:350px;
+  width:300px;
 
 }
 
@@ -304,11 +313,14 @@ export default {
   height: 175px;
 }
 
-
 .team-pic {
   width:400px;
   display: block;
   margin-left:auto;
   margin-right:auto;
+}
+
+.members {
+  padding-bottom: 20px;;
 }
 </style>
