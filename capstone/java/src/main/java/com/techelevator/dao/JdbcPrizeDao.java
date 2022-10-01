@@ -4,9 +4,11 @@ import com.techelevator.model.Prize;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
 
 import javax.xml.crypto.Data;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +21,7 @@ public class JdbcPrizeDao implements PrizeDao{
     public JdbcPrizeDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+    private LocalDate now;
 
 
     @Override
@@ -51,24 +54,53 @@ public class JdbcPrizeDao implements PrizeDao{
 
     @Override
     public void updatePrize(Prize prize) { //Add new Prize object to database, delete old one
-        String sql = "UPDATE prizes SET name = ?, description = ?, goal = ?, stock = ?, start_date = ?, end_date = ?\n" +
+        String sql = "UPDATE prizes SET family_id = ?, name = ?, description = ?, goal = ?, stock = ?, start_date = ?, end_date = ? " +
                 "WHERE prize_id = ?";
-
+        jdbcTemplate.update(sql, prize.getFamily_id(), prize.getName(), prize.getDescription(), prize.getGoal(), prize.getStock(), prize.getStart_date(), prize.getEnd_date(), prize.getPrize_id());
     }
 
     @Override
-    public List<Prize> findExpiredPrizesFamilyId(int familyId) {
-        return null;
+    public List<Prize> findInactivePrizes(int familyId) {
+        now = LocalDate.now();
+        List<Prize> prizeList = new ArrayList<>();
+        Prize prize = null;
+        String sql = "SELECT DISTINCT * FROM prizes " +
+                "JOIN family_account fa on fa.family_id = prizes.family_id " +
+                "WHERE ? >= end_date AND fa.family_id = ?";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, now, familyId);
+        while (results.next()){
+            prize = mapRowToPrize(results);
+            prizeList.add(prize);
+        }
+
+
+        return prizeList;
     }
 
     @Override
     public void deletePrize(int prizeId) {
-
+        String sql = "DELETE FROM prizes WHERE prize_id = ?";
+        jdbcTemplate.update(sql, prizeId);
     }
 
     @Override
     public List<Prize> findActivePrizes(int familyId) {
-        return null;
+        now = LocalDate.now();
+        List<Prize> prizeList = new ArrayList<>();
+        Prize prize = null;
+        String sql = "SELECT DISTINCT * FROM prizes " +
+                "JOIN family_account fa on fa.family_id = prizes.family_id " +
+                "WHERE ? <= end_date AND fa.family_id = ?";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, now, familyId);
+        while (results.next()){
+            prize = mapRowToPrize(results);
+            prizeList.add(prize);
+        }
+
+
+        return prizeList;
     }
 
     private Prize mapRowToPrize(SqlRowSet rs){

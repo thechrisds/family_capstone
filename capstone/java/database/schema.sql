@@ -4,16 +4,19 @@ DROP TABLE IF EXISTS users, family_account, format, library, reading_activity, p
 
 DROP SEQUENCE IF EXISTS seq_user_id, seq_family_id, seq_library_id, seq_activity_id, seq_prizes_id;
 
+CREATE SEQUENCE seq_family_id --use for family instead of serial?
+    INCREMENT BY 1
+    START WITH 1001
+    NO MAXVALUE;
+
+
 CREATE TABLE family_account (
-    family_id serial,
+    family_id int NOT NULL DEFAULT nextval('seq_family_id'),
     family_name varchar(50) NOT NULL,
     CONSTRAINT PK_family_account PRIMARY KEY (family_id)
 );
 
-CREATE SEQUENCE seq_family_id --use for family instead of serial?
-INCREMENT BY 1
-START WITH 1001
-NO MAXVALUE;
+
 
 CREATE SEQUENCE seq_user_id
     INCREMENT BY 1
@@ -35,7 +38,7 @@ CREATE TABLE users (
 
 CREATE SEQUENCE seq_library_id
 INCREMENT BY 1
-START WITH 5001 --changed this from 2001 to 5001, just in case people add over 1000 books and hit the 3000 IDs
+START WITH 9001 --changed this from 2001 to 9001, just in case people add a lot of books
 NO MAXVALUE;
 
 CREATE TABLE format (

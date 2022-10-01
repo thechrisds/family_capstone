@@ -39,4 +39,33 @@ public class PrizeController {
 
     }
 
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(value = "/prizes", method = RequestMethod.PUT)
+    public void updatePrize(@RequestBody Prize prize, Principal principal) throws Exception {
+        prize.setFamily_id(userDao.findFamilyIdByUsername(principal.getName()));
+        prizeDao.updatePrize(prize);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(value = "/prizes/{prizeId}", method = RequestMethod.DELETE)
+    public void deletePrize(@PathVariable int prizeId){
+        prizeDao.deletePrize(prizeId);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(value = "/prizes/active", method = RequestMethod.GET)
+    public List<Prize> activePrizes(Principal principal){
+        List<Prize> prizeList = new ArrayList<>();
+        int familyId = userDao.findFamilyIdByUsername(principal.getName());
+        return prizeList = prizeDao.findActivePrizes(familyId);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(value = "/prizes/inactive", method = RequestMethod.GET)
+    public List<Prize> inactivePrizes(Principal principal){
+        List<Prize> prizeList = new ArrayList<>();
+        int familyId = userDao.findFamilyIdByUsername(principal.getName());
+        return prizeList = prizeDao.findInactivePrizes(familyId);
+    }
+
 }
