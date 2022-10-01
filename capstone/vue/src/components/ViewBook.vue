@@ -1,10 +1,9 @@
-
 <template>
     <div class="container">
         <div class="bookList" v-for="book in books" v-bind:key="book.bookID" v-bind:book="book">
             <h2 class="book-title">{{book.bookTitle}}</h2>
             <h3 class="book-author">{{ book.bookAuthor }}</h3>
-            <img class="book-img" v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" />
+            <img v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" />
             <p class="book-description">{{ book.description }}</p>
             <p class="null-description" v-if="!book.description"> No description given</p>
             
@@ -40,14 +39,12 @@ export default{
 
 }
 .bookList {
-    border: 2px black solid;
-    border-radius: 10px;
+   
     width: 250px;
     height: 375px;
     margin: 20px;
     text-align:center;
     background-color:white;
-    word-wrap: break-word;
 }
 
 .bookList.read {

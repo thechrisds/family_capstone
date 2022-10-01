@@ -3,12 +3,12 @@
     <div class="top-account-bar">Family Members</div>
     <div class="family-members" v-for="user in users" v-bind:key="user.id">
       <h3>Username: {{ user.username }}</h3>
-
-      First name: {{ user.firstname }}
-      <br />
-      Last name: {{ user.lastname }}
-      <br />
-      Minutes read:
+      
+      Name: {{ user.firstname }} {{ user.lastname }}
+      <br>
+      <br>
+      Total minutes read:
+      <br>
       <div class="card-avatar">
         <button class="delete-user">Delete Member</button>
       </div>
@@ -86,5 +86,17 @@ body {
   box-shadow: 5px 5px 3px lavender;
   border-radius: 10px;
   padding-bottom: 10px;
+}
+
+.delete-user{
+  background-color: white;
+  border-radius: 5px;
+  border:lightgray 2px solid;
+  box-shadow: 2px 2px 2px grey;
+  font-size: 12px;
+}
+
+.delete-user:hover {
+  background-color: rgb(226, 37, 37);
 }
 </style>

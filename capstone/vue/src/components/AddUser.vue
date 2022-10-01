@@ -33,7 +33,7 @@
         v-model="user.confirmPassword"
       />
 
-      <button class="submitUser" v-on:click="addUser()">Save</button>
+      <button class="submitUser" v-on:click="addUser()">Add member</button>
     </form>
   </div>
 </template>
@@ -85,9 +85,16 @@ export default {
 
 }
 
+.submitUser{
+    background-color: white;
+  border-radius: 5px;
+  border:lightgray 2px solid;
+  box-shadow: 2px 2px 2px grey;
+  font-size: 12px;
+}
+
 .submitUser:hover {
-  background-image: '"../assets/bookturner-small.gif"';
-    background-size: contain;
+  background-color: rgb(37, 226, 78);
 }
 
 

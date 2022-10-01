@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    
     <div id="box-1" class="home-title-box">
       <h1 class="home-title">
         <a href="#box-2" class="link-style">READITT.</a>
@@ -15,65 +14,65 @@
       </h1>
     </div>
 
-       
-      <div class="how-it-works-container">
-        <div class="library-card">
-          <h3 class="card-title" align="center">Add books to your family library!</h3>
-          
-          <img src="@/assets/bookexample2.png" class="library-img" />
-        </div>
+    <div class="how-it-works-container">
+      <div class="library-card">
+        <h3 class="card-title" align="center">
+          Add books to your family library!
+        </h3>
+        <img src="@/assets/bookexample2.png" class="library-img" />
+      </div>
 
-        <div class="record-activities-container">
-          <div class="record-card">
-            <h3 class="card-title" align="center">Record your reading!</h3>
-            
-          </div>
-          <div class="minutes-div">
-            <img src="@/assets/minutes.png" class="minutes-img" />
-          </div>
+      <div class="record-activities-container">
+        <div class="record-card">
+          <h3 class="card-title" align="center">Record your reading!</h3>
         </div>
+        <div class="minutes-div">
+          <img src="@/assets/minutes.png" class="minutes-img" />
+        </div>
+      </div>
 
-        <div class="prizes-container">
-          <div class="prizes-info">
-            <h3 class="card-title" align="center">Win Prizes!</h3>
-            
-          </div>
-          <div class="prizesimg-div">
-            <img src="@/assets/prizefinal1.png" class="prizes-img" />
-          </div>
+      <div class="prizes-container">
+        <div class="prizes-info">
+          <h3 class="card-title" align="center">Win Prizes!</h3>
         </div>
+        <div class="prizesimg-div">
+          <img src="@/assets/prizefinal1.png" class="prizes-img" />
+        </div>
+      </div>
 
-        <div class="dash-card">
-          <h3 class="card-title" align="center">Keep track with your family dashboard!</h3>
-          
-          <img src="@/assets/dashboard.png" class="dash-img" />
-        </div>
-        </div>
-      
+      <div class="dash-card">
+        <h3 class="card-title" align="center">
+          Keep track with your family dashboard!
+        </h3>
+        <img src="@/assets/dashboard.png" class="dash-img" />
+      </div>
+    </div>
 
     <div id="box-3">
       <h1 class="home-title">
         <br /><br /><br />
         <a href="#box-4" class="link-style">Get started today!</a>
       </h1>
-      <p class="sub-title2"> <router-link id="register-or-login" class="links1" v-bind:to="{ name: 'login' }"
-            >Register | Login</router-link
-          ></p>
+      <p class="sub-title2">
+        <router-link
+          id="register-or-login"
+          class="links1"
+          v-bind:to="{ name: 'login' }"
+          >Register | Login</router-link
+        >
+      </p>
     </div>
 
     <div id="box-4">
       <h1 class="home-title">
+        <br><br>
         <a href="#box-1" class="link-style">Team Members</a>
       </h1>
-      
       <div class="members">
-        <img src="@/assets/team.jpg" class="team-pic">
+        <img src="@/assets/team.jpg" class="team-pic" />
         <h2>James Cagle | Chris Shriver | Daniel Song</h2>
       </div>
-      
     </div>
-    
-    
   </div>
 </template>
 
@@ -98,8 +97,8 @@ export default {
   width: 100%;
   height: 100px;
   margin-top: 200px;
-  padding-bottom:100px;
-  text-align:initial;
+  padding-bottom: 100px;
+  text-align: initial;
 }
 .home-title {
   font-weight: bolder;
@@ -112,7 +111,7 @@ export default {
 .link-style {
   text-decoration: none;
   color: rgb(57, 56, 143);
-  font-family: 'Seaweed Script', cursive;
+  font-family: "Seaweed Script", cursive;
   font-size: 80px;
 }
 
@@ -141,7 +140,7 @@ export default {
   margin-top: 750px;
   padding-bottom: 3px;
 }
-.card-title{
+.card-title {
   font-size: 20px;
   color: rgb(33, 33, 129);
   text-shadow: 3px 3px 10px tomato;
@@ -152,19 +151,17 @@ export default {
 
 .how-it-works-container {
   display: flex;
-  flex-wrap:nowrap;
+  flex-wrap: nowrap;
   align-content: center;
-  overflow-x:scroll;
-  overflow-y:hidden;
+  overflow-x: scroll;
+  overflow-y: hidden;
   height: 380px;
   width: 95%;
   align-self: center;
-  border: 1px solid;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  margin-left:35px;
-  margin-top:25px;
-  
+  margin-left: 35px;
+  margin-top: 25px;
 }
 
 .library-card {
@@ -178,17 +175,16 @@ export default {
   background-color: white;
 }
 
-
 .library-img {
   width: 350px;
   height: auto;
 }
 
 .record-activities-container {
- display: flex;
- flex-direction: column;
- justify-content: space-evenly;
- align-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-content: center;
   border: solid 2px lightgray;
   border-radius: 10px;
   margin-bottom: 30px;
@@ -209,7 +205,7 @@ export default {
   height: auto;
   align-content: center;
   margin-bottom: 30px;
-  margin-left:75px;
+  margin-left: 75px;
 }
 
 .minutes-img:hover {
@@ -217,19 +213,40 @@ export default {
   animation-iteration-count: infinite;
 }
 
-
 @keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
 }
 
 .prizes-container {
@@ -246,11 +263,11 @@ export default {
 
 .prizes-info {
   width: 100px;
-  height:auto;
+  height: auto;
 }
 
 .prizes-img {
-  width:250px;
+  width: 250px;
 }
 
 .dash-card {
@@ -265,14 +282,11 @@ export default {
   padding: 15px;
   height: 250px;
   width: 350px;
-    background-color: white;
-    
-
+  background-color: white;
 }
 
 .dash-img {
-  width:300px;
-
+  width: 300px;
 }
 
 #box-3 {
@@ -282,7 +296,9 @@ export default {
 }
 #box-4 {
   background-color: white;
-  margin-top: 1000px;
+  margin-top: 1100px;
+  padding-top:5px;
+  
 }
 .box3-content {
   display: flex;
@@ -314,13 +330,14 @@ export default {
 }
 
 .team-pic {
-  width:400px;
+  width: 400px;
   display: block;
-  margin-left:auto;
-  margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .members {
-  padding-bottom: 20px;;
+  padding-top:20px;
+  padding-bottom: 20px;
 }
 </style>
