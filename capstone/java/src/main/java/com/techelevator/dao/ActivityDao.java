@@ -15,5 +15,6 @@ public interface ActivityDao {
     List<Activity> getActivitiesByReaderId(int readerId);
     List<Activity> getActivitiesByFamilyId(int familyId);
     int getTotalReadingMinutesByReaderId(int readerId);
+    int getTotalReadingMinutesByFamily(int familyId);
 
 }

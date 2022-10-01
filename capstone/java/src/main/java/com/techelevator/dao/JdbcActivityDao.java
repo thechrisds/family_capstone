@@ -1,4 +1,5 @@
 package com.techelevator.dao;
+
 import com.techelevator.model.Activity;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,24 +22,23 @@ public class JdbcActivityDao implements ActivityDao {
     }
 
 
-
     @Override
-    public void createActivity(Activity activity){
-        String sql = "INSERT INTO reading_activity(user_id, isbn, minutes_read, notes) " +
-                "VALUES(?, ?, ?, ?)";
+    public void createActivity(Activity activity) {
+        String sql = "INSERT INTO reading_activity(user_id, isbn, minutes_read, format_id, notes) " +
+                "VALUES(?, ?, ?, ?, ?)";
         try {
-            jdbcTemplate.update(sql, activity.getReaderId(), activity.getIsbn(), activity.getTimeInMinutes(), activity.getActivityNotes());
-        } catch (DataAccessException e){
+            jdbcTemplate.update(sql, activity.getReaderId(), activity.getIsbn(), activity.getTimeInMinutes(), activity.getFormatId(), activity.getActivityNotes());
+        } catch (DataAccessException e) {
             System.out.println("creation failed");
         }
     }
 
     @Override
-    public void deleteActivity(int activityId){
+    public void deleteActivity(int activityId) {
         String sql = "DELETE FROM reading_activity WHERE activity_id = ?";
         try {
             jdbcTemplate.update(sql, activityId);
-        } catch (DataAccessException e){
+        } catch (DataAccessException e) {
             System.out.println("deletion failed");
         }
     }
@@ -108,10 +108,25 @@ public class JdbcActivityDao implements ActivityDao {
         }
         return activityList;
     }
+
     @Override
     public int getTotalReadingMinutesByReaderId(int readerId) {
         String sql = "SELECT SUM(minutes_read) FROM reading_activity WHERE user_id = ?";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, readerId);
+        if (result.next()) {
+            return result.getInt("sum");
+        }
+        return 0;
+    }
+
+    @Override
+    public int getTotalReadingMinutesByFamily(int familyId) {
+        String sql = "SELECT SUM(a.minutes_read)\n" +
+                "                FROM reading_activity a\n" +
+                "                JOIN users u ON a.user_id = u.user_id \n" +
+                "                JOIN library b ON a.isbn = b.isbn\n" +
+                "                WHERE a.user_id IN (SELECT user_id FROM users WHERE family_id = ?)";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, familyId);
         if (result.next()) {
             return result.getInt("sum");
         }
@@ -129,6 +144,6 @@ public class JdbcActivityDao implements ActivityDao {
         int timeInMinutes = results.getInt("minutes_read");
         String activityNotes = results.getString("notes");
         boolean isComplete = results.getBoolean("completed");
-        return new Activity(activityId,readerId,userName,isbn,bookTitle,formatId,dateRead,timeInMinutes,activityNotes,isComplete);
+        return new Activity(activityId, readerId, userName, isbn, bookTitle, formatId, dateRead, timeInMinutes, activityNotes, isComplete);
     }
 }

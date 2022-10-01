@@ -1,17 +1,17 @@
 <template>
   <div class="container">
-    <h2>activity</h2>
+    <h2>Logged Family Reading</h2>
     <div
       class="activityList"
       v-for="activity in activities"
       v-bind:key="activity.userName"
       v-bind:activity="activity"
     >
-      <h2 class="activity-reader">{{ activity.userName }}</h2>
-      <h3 class="activity-book">{{ activity.bookTitle }}</h3>
-      <p class="activity-date">{{ activity.dateRead }}</p>
-      <p class="activity-minutes">{{ activity.timeInMinutes }}</p>
-      <p class="activity-notes">{{ activity.activityNotes }}</p>
+      <h2 class="activity-reader">{{ "User: " +activity.userName }}</h2>
+      <h3 class="activity-book">{{ "Book: " +activity.bookTitle }}</h3>
+      <p class="activity-date">{{ "Date Logged: " +activity.dateRead }}</p>
+      <p class="activity-minutes">{{ "Minutes Read: " +activity.timeInMinutes }}</p>
+      <p class="activity-notes">{{ "Notes Taken: " + activity.activityNotes }}</p>
       <p class="null-notes" v-if="!activity.activityNotes">No notes taken</p>
     </div>
   </div>
@@ -41,6 +41,11 @@ export default {
 <style>
 h2 {
   text-align: center;
+}
+
+.container{
+  margin-top:120px;
+  
 }
 
 .activityList {

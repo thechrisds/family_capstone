@@ -32,14 +32,14 @@
         />
         <br />
         <label for="read-type">How did you read?</label>
-        <select name="read-type" id="type" v-model="activity.formatId">
+        <select name="read-type" type="number" id="type" v-model="activity.formatId">
           <option value="" disabled selected>Please Select Type</option>
-          <option value="Audiobook">Audiobook</option>
-          <option value="Digital">Digital</option>
-          <option value="Paper">Paper</option>
-          <option value="Read-Aloud (Reader)">Read-Aloud(Reader)</option>
-          <option value="Read-Aloud (Listener)">Read-Aloud(Listener)</option>
-          <option value="Other">Other</option>
+          <option value="1">Paper</option>
+          <option value="2">Digital</option>
+          <option value="3">Audiobook</option>
+          <option value="4">Read-Aloud(Reader)</option>
+          <option value="5">Read-Aloud(Listener)</option>
+          <option value="0">Other</option>
         </select>
         <label for="notes"></label>
         <input
@@ -66,6 +66,7 @@ export default {
         readerId: "",
         isbn: "",
         timeInMinutes: 0,
+        formatId: 0,
         activityNotes: "",
       },
     };
@@ -78,6 +79,7 @@ export default {
         readerId: this.activity.readerId,
         isbn: this.activity.isbn,
         timeInMinutes: this.activity.timeInMinutes,
+        formatId: this.activity.formatId,
         activityNotes: this.activity.activityNotes,
       };
       window.alert("Activity Saved!"), window.location.reload();

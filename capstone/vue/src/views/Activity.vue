@@ -1,7 +1,7 @@
 <template>
   <div id="activity">
     <activity />
-    <div class="activities">
+    <div id="activities">
       <router-link to="/activity/add"> Add Activity </router-link>
     </div>
   </div>
@@ -18,9 +18,13 @@ export default ({
 </script>
 
 <style>
+
+.activity{
+  margin-top:100px;
+}
 .activities{
     text-align:center;
-    margin-top: 200px;
-    border: 2px;
+    margin-top: 400px;
+    border: 5px;
 }
 </style>
