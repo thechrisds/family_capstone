@@ -4,9 +4,11 @@
       <img class="book-turner" src="../assets/bookturner-small.gif" />
     </div>
     <div v-else id="main-family">
+      <div class="activities-column">
       <div id="family-library">
-        <div class="family-library-title">Family Library</div>
+        <div class="family-library-title">Library</div>
         <div class="family-library-books">
+          <div class="show-books">
           <div
             class="books"
             v-for="book in books"
@@ -27,12 +29,22 @@
             </p>
           </div>
         </div>
+    </div>
+    </div>
+     <div class="prizes-box">
+      <div class="prizes-title">Prizes</div>
+      <div class="prizes-board">
+      </div>
+    </div>
       </div>
       <div id="account-column">
         <div id="account-list-box"><account-list /></div>
         <div id="add-user-box"><add-user /></div>
       </div>
     </div>
+
+
+
   </div>
 </template>
 
@@ -83,6 +95,7 @@ export default {
 #account-column {
   display: flex;
   flex-direction: column;
+  margin-top:19px;
 }
 #account-list-box {
   display: flex;
@@ -134,12 +147,14 @@ export default {
   justify-content: space-evenly;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  width:690px;
+  width:95%;
   height: auto;
   overflow-x: scroll;
   overflow-y: hidden;
-  border: 2px solid grey;
-  margin-top: 50px;
+  border: solid 3px lavender;
+  box-shadow: 5px 5px 3px lavender;
+  margin-top: 40px;
+  border-radius: 5px;
 }
 
 .fa-book-title {
@@ -159,21 +174,53 @@ export default {
 }
 
 .books {
-  border: 2px black solid;
-  border-radius: 10px;
-  min-width: 150px;
-  height: 225px;
-  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  border-top: 10px rgb(207, 193, 0) solid;
+  border-right: 10px goldenrod solid;
+  border-bottom: 10px solid rgb(175, 133, 25);
+  border-left: 10px solid rgb(255, 233, 107);
+  box-shadow: 5px 5px 15px rgb(155, 132, 3);
+  min-width: 200px;
+  max-width:200px;
+  height: 265px;
+  margin: 25px;
   text-align: center;
   background-color: white;
   word-wrap: break-word;
   padding:10px;  
+  
 }
 
-.book-img{
-  width: 80%;
+.fa-book-img{
+  width: 140px;
+  align-self: center;
 }
 
+.show-books {
+  display: flex;
+  margin-left:1950px;
+  height:350px;
+  flex-wrap: nowrap;
+}
 
+.prizes-box {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 10px 10px 25px rgb(248, 170, 81);
+  border: 1px solid rgb(15, 29, 90);
+  width: 700px;
+  height: 400px;
+  margin-top: 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  background-color: white;
+}
+
+.prizes-title {
+  background-color: rgb(243, 189, 128);
+  width: 90%;
+  align-self: center;
+}
 
 </style>
