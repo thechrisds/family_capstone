@@ -37,11 +37,11 @@
         <h4 class="title">READITT.</h4>
         </router-link>
         <router-link v-bind:to="{ name: 'home' }">
-          <img class="book-cover" src="@/assets/bookcover1.png" />
+          <img class="book-cover" src="@/assets/title2.png" />
           </router-link>
       </div>
       <div class="book-banner">
-        <img src="@/assets/bookbanner5.png" class="banner" />
+        <img src="@/assets/banner3.png" class="banner" />
       </div>
     </div>
     <div id="container">
@@ -52,7 +52,8 @@
 
 <style>
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: bolder;
   font-size: 12px;
 }
 #app {
@@ -73,10 +74,11 @@ body {
 }
 
 .banner {
-  height: 75px;
-  width: 1500px;
+  height: 60px;
+  width: 1300px;
   opacity: 1;
   box-shadow: 10px 10px 5px rgb(127, 131, 133);
+  border-radius: 10px;
 }
 #family-account {
   min-height: 0;
@@ -110,24 +112,28 @@ body {
   justify-content: space-between;
   width: 1000px;
   padding-bottom: 5px;
-  color: rgb(104, 32, 32);
+  color: rgb(52, 45, 146);
   margin-right: 40px;
   margin-left: 40px;
 }
 
 .title {
   font-weight: 900;
-  color: rgb(104, 32, 32);
+  color: rgb(52, 45, 146);
   font-size: 25px;
-  text-shadow: 3px 3px rgb(175, 154, 125);
+  text-shadow: 3px 3px 3px rgb(175, 154, 125);
   margin-left: 40px;
+  font-family: 'Seaweed Script', cursive;
+  
 }
 
 .book-cover {
   width: 25px;
   height: 35px;
   padding-left: 5px;
-  box-shadow: 5px 5px 5px rgb(127, 131, 133);
+  box-shadow: 5px 5px 3px rgb(127, 131, 133);
+  border-radius: 3px;
+  margin-left:5px;
 }
 
 #links {
@@ -139,7 +145,7 @@ body {
   padding-bottom: 10px;
 }
 .links1 {
-  color: rgb(104, 32, 32);
+  color: rgb(52, 45, 146);
 }
 
 .links1:hover {
@@ -148,7 +154,7 @@ body {
 }
 
 .links2 {
-  color: rgb(104, 32, 32);
+  color: rgb(52, 45, 146);
 }
 .links2:hover {
   color: #358a3c;
@@ -156,7 +162,7 @@ body {
 }
 
 .links3 {
-  color: rgb(104, 32, 32);
+  color: rgb(52, 45, 146);
 }
 .links3:hover {
   color: #3537cc;
@@ -164,7 +170,7 @@ body {
 }
 
 .links4 {
-  color: rgb(104, 32, 32);
+  color: rgb(52, 45, 146);
 }
 .links4:hover {
   color: #e77e1b;
@@ -172,7 +178,7 @@ body {
 }
 
 .links5 {
-  color: rgb(104, 32, 32);
+  color: rgb(52, 45, 146);
 }
 .links5:hover {
   color: rgb(155, 13, 155);
@@ -180,7 +186,7 @@ body {
 }
 
 .links6 {
-  color: rgb(95, 165, 189);
+  color: rgb(52, 45, 146);
 }
 .links6:hover {
   color: rgb(155, 13, 155);

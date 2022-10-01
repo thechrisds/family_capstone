@@ -2,7 +2,6 @@
   <div class="home">
     
     <div id="box-1" class="home-title-box">
-
       <h1 class="home-title">
         <a href="#box-2" class="link-style">READITT.</a>
       </h1>
@@ -64,7 +63,6 @@
 
     <div id="box-4">
       <h1 class="home-title">
-        <br /><br /><br />
         <a href="#box-1" class="link-style">Team Members</a>
       </h1>
       
@@ -88,7 +86,7 @@ export default {
 <style>
 .home {
   background-color: white;
-  background-image: url("../assets/books.jpg");
+  background-image: url("../assets/bookcolumn1.png");
   height: 5000px;
   background-attachment: fixed;
   background-position: center;
@@ -100,24 +98,25 @@ export default {
   width: 100%;
   height: 100px;
   margin-top: 200px;
-  padding-bottom:50px;
+  padding-bottom:100px;
   text-align:initial;
 }
 .home-title {
   font-weight: bolder;
   color: rgb(19, 57, 70);
   font-size: 50px;
-  text-shadow: 3px 3px rgb(175, 154, 125);
+  text-shadow: 3px 3px 5px rgb(170, 160, 145);
   text-align: center;
 }
 
 .link-style {
   text-decoration: none;
-  color: rgb(104, 32, 32);
+  color: rgb(57, 56, 143);
+  font-family: 'Seaweed Script', cursive;
+  font-size: 80px;
 }
 
 .sub-title {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-align: center;
   font-size: 20px;
 }
@@ -150,6 +149,7 @@ export default {
 .card-p {
   font-size: 14px;
 }
+
 .how-it-works-container {
   display: flex;
   flex-wrap:nowrap;

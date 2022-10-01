@@ -5,11 +5,27 @@
     </div>
     <div v-else id="main-family">
       <div id="family-library">
-        <div class="family-library-title">
-        Family Library
-        </div>
+        <div class="family-library-title">Family Library</div>
         <div class="family-library-books">
-
+          <div
+            class="books"
+            v-for="book in books"
+            v-bind:key="book.bookID"
+            v-bind:book="book"
+          >
+            <h2 class="fa-book-title">{{ book.bookTitle }}</h2>
+            <h3 class="fa-book-author">{{ book.bookAuthor }}</h3>
+            <img class="fa-book-img" 
+              v-if="book.isbn"
+              v-bind:src="
+                'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'
+              "
+            />
+            <p class="fa-book-description">{{ book.description }}</p>
+            <p class="fa-null-description" v-if="!book.description">
+              No description given
+            </p>
+          </div>
         </div>
       </div>
       <div id="account-column">
@@ -23,6 +39,7 @@
 <script>
 import AccountList from "@/components/AccountList";
 import AddUser from "@/components/AddUser";
+import bookService from "@/services/BookService.js";
 
 export default {
   components: {
@@ -38,16 +55,18 @@ export default {
     setTimeout(() => {
       this.isLoading = false;
     }, 1250);
+
+    bookService.seeOpenBooks().then((response) => {
+      this.books = response.data;
+    }).catch;
   },
 };
 </script>
 
 <style>
-
 #main-family {
   display: flex;
   justify-content: space-evenly;
- 
 }
 
 .book-turner {
@@ -57,9 +76,7 @@ export default {
   height: auto;
   width: 250px;
   margin: auto;
-  margin-top:100px;
- 
-  
+  margin-top: 100px;
   margin-bottom: 25px;
 }
 
@@ -78,7 +95,7 @@ export default {
   height: 100%;
   border-radius: 10px;
   padding-bottom: 25px;
-  background-color:white;
+  background-color: white;
 }
 
 #add-user-box {
@@ -87,7 +104,7 @@ export default {
   box-shadow: 10px 10px 25px rgb(36, 114, 40);
   border: 1px solid rgb(12, 107, 9);
   border-radius: 10px;
-  background-color:white;
+  background-color: white;
 }
 
 #family-library {
@@ -95,12 +112,12 @@ export default {
   flex-direction: column;
   box-shadow: 10px 10px 25px rgb(44, 55, 201);
   border: 1px solid rgb(15, 29, 90);
-  width: 600px;
-  height: 350px;
+  width: 700px;
+  height: 500px;
   margin-top: 20px;
   border-radius: 10px;
   font-size: 18px;
-  background-color:white;
+  background-color: white;
 }
 
 .family-library-title {
@@ -110,13 +127,53 @@ export default {
 }
 
 .family-library-books {
+  display: flex;
   align-self: center;
-  width: 95%;
-  height: 340px;
-  overflow-x:scroll;
+  align-content: center;
+  flex-wrap:nowrap;
+  justify-content: space-evenly;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  width:690px;
+  height: auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
   border: 2px solid grey;
+  margin-top: 50px;
+}
+
+.fa-book-title {
+  font-size: 15px;;
+}
+.fa-book-author {
+  font-size: 10px;
+}
+
+.fa-book-description {
+  font-size: 10px;
+}
+
+.fa-null-description{
+    font-size: 10px;
 
 }
+
+.books {
+  border: 2px black solid;
+  border-radius: 10px;
+  min-width: 150px;
+  height: 225px;
+  margin: 15px;
+  text-align: center;
+  background-color: white;
+  word-wrap: break-word;
+  padding:10px;  
+}
+
+.book-img{
+  width: 80%;
+}
+
 
 
 </style>
