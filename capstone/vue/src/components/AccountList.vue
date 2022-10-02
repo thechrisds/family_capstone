@@ -10,7 +10,7 @@
       Total minutes read:
       <br>
       <div class="card-avatar">
-        <button class="delete-user">Delete Member</button>
+        <button class="delete-user" v-on:click="deleteUser(user.id)">Delete Member</button>
       </div>
     </div>
   </div>
@@ -31,7 +31,20 @@ export default {
       lastname: this.$store.state.user.lastname,
     };
   },
-  methods: {},
+  methods: {
+    deleteUser(id) {
+      accountService.deleteUser(id).then(response => {
+        if(response.status === 200) {
+          alert('Member successfully deleted')
+        }
+      })
+      .catch((error) => {
+        if(error.response) {
+          this.errorMsg = "Error deleting member."
+        }
+      }); 
+    }
+  },
   created() {
     console.log(this.username);
     console.log("firstname: ", this.firstname);
