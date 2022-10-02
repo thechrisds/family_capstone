@@ -1,20 +1,28 @@
 <template>
      <div class="booklist-container">
          <h2>Add a Book</h2>
-         <form class="new-book-form" v-on:submit.prevent="saveBook">
-         <input class="title-input" type="text" placeholder="Title" v-model="book.bookTitle" />
+         <br/>
+         <b-form class="new-book-form" @submit.prevent="saveBook">
+             <div class="col-sm-5">
+         <b-form-input class="title-input" type="text" placeholder="Title" v-model="book.bookTitle" />
          <br />
-         <input class="author-input" type="text" placeholder="Author" v-model="book.bookAuthor" />
+
+         <b-form-input class="author-input" type="text" placeholder="Author" v-model="book.bookAuthor" />
          <br/>
-         <input class="isbn-input" type="text" placeholder="ISBN" v-model.number="book.isbn" required="required"/>
+
+         <b-form-input class="isbn-input" type="text" placeholder="ISBN" v-model.number="book.isbn"/>
          <br/>
-         <input class="genre-input" type="text" placeholder="Genre" v-model.number="book.genre"/>
+            </div>
+         <!-- <b-form-input class="genre-input" type="text" placeholder="Genre" v-model.number="book.genre"/>
          <br/>
+         <br/> -->
+        <b-form-select v-model="genre" :options="options"></b-form-select>
+        <br/>
+        <br/>
+         <b-textarea rows="5" max-rows="10" class="description-input" type="text" placeholder="Description..." v-model="book.description"/>
          <br/>
-         <textarea class="description-input" type="text" placeholder="Description..." v-model="book.description"/>
-         <br/>
-         <button class="submitBook" v-on:click="addBooks()">Save</button>
-   </form>
+         <b-button type="submit" v-on:click="addBooks()">Save</b-button>
+   </b-form>
          </div>
 </template>
 
@@ -44,7 +52,29 @@ export default{
                 isbn: "",
                 genre: "",
                 description: ""
-            }
+            },
+            genre: "Genre",
+            options: [
+                {value: "Genre", text: "Select a Genre", disabled: true},
+                {value: 'Fiction', text: 'Fiction'},
+                {value: 'Non-Fiction', text: 'Non-Fiction'},
+                {value: 'Fantasy', text: 'Fantasy'},
+                {value: 'Science Fiction', text: 'Science Fiction'},
+                {value: 'Action & Adventure', text: 'Action & Adventure'},
+                {value: 'Mystery', text: 'Mystery'},
+                {value: 'Horror', text: 'Horror'},
+                {value: 'Thriller/Suspense', text: 'Thriller/Suspense'},
+                {value: 'Romance', text: 'Romance'},
+                {value: 'Graphic Novel', text: 'Graphic Novel'},
+                {value: 'Biography', text: 'Biography'},
+                {value: 'Art & Photography', text: 'Art & Photography'},
+                {value: 'Food & Drink', text: 'Food & Drink'},
+                {value: 'History', text: 'History'},
+                {value: 'Travel', text: 'Travel'},
+                {value: 'Comedy', text: 'Comedy'},
+                {value: 'True Crime', text: 'True Crime'},
+                {value: 'Science & Technology', text: 'Science & Technology'},
+            ]
         }
     },
     methods: {
@@ -89,7 +119,7 @@ export default{
 .booklist-container{
     margin: auto;
     width: 50%;
-    height: 450px;
+    height: 550px;
     background-color: #f2f2f2;
     margin-top: 200px;
     justify-content:center;
@@ -101,60 +131,25 @@ export default{
 }
 
 .title-input{
-    /* border-top: none;
-    border-left: none;
-    border-right: none; */
-    display: block;
-    width: 50%;
-  background: #fff;
-  border-radius: 31px;
-  font-family: Ubuntu-Bold;
-  font-size: 18px;
-  padding: 0 0 0 10px;
+    
 }
 
 .author-input{
-    display: block;
-    width: 50%;
-  background: #fff;
-  border-radius: 31px;
-  font-family: Ubuntu-Bold;
-  font-size: 18px;
-  padding: 0 0 0 10px;
     
     
 }
 
 .isbn-input{
-    display: block;
-    width: 50%;
-  background: #fff;
-  border-radius: 31px;
-  font-family: Ubuntu-Bold;
-  font-size: 18px;
-  line-height: 1.2;
-  padding: 0 0 0 10px;
     
 
 }
 
 .description-input {
-    box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
-    height: 100px;
-    padding: 0 0 0 10px;
-    width: 50%;
-    border-radius: 20px;
+    
 }
 
 .genre-input {
-    display: block;
-    width: 50%;
-  background: #fff;
-  border-radius: 31px;
-  font-family: Ubuntu-Bold;
-  font-size: 18px;
-  line-height: 1.2;
-  padding: 0 0 0 10px;
+    
 }
 
 h2{
