@@ -55,44 +55,45 @@ public class ActivityController {
     @RequestMapping(path = "/activity/user", method = RequestMethod.GET)
     public List<Activity> getActivitiesForCurrentUser(@RequestBody LoginDTO loginDTO) {
         int readerId = userDao.findIdByUsername(loginDTO.getUsername());
-        List<Activity> activityList = activityDao.getActivitiesByCurrentUser(readerId);
-        return activityList;
+        return activityDao.getActivitiesByCurrentUser(readerId);
     }
 
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/activity/family", method = RequestMethod.GET)
     public List<Activity> getActivitiesByFamilyId(Principal principal) {
         int familyId = userDao.findFamilyIdByUsername(principal.getName());
-        List<Activity> activityList = activityDao.getActivitiesByFamilyId(familyId);
-        return activityList;
+        return activityDao.getActivitiesByFamilyId(familyId);
     }
 
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/activity", method = RequestMethod.GET)
     public List<Activity> returnAllActivity() {
-        List<Activity> activityList = activityDao.getAllReadingActivities();
-        return activityList;
+        return activityDao.getAllReadingActivities();
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(path = "/activity/minutes", method = RequestMethod.GET)
+    public int returnFamilyMinutes(Principal principal) {
+        int familyId = userDao.findFamilyIdByUsername(principal.getName());
+        return activityDao.getTotalReadingMinutesByFamily(familyId);
     }
 
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/activity/{activityId}", method = RequestMethod.GET)
     public Activity returnActivityByActivityId(@PathVariable int activityId) {
-        Activity activity = activityDao.getActivityByActivityId(activityId);
-        return activity;
+        return activityDao.getActivityByActivityId(activityId);
     }
 
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/activity/rid/{readerId}", method = RequestMethod.GET)
     public List<Activity> returnActivityByReaderId(@PathVariable int readerId) {
-        List<Activity> activityList = activityDao.getActivitiesByReaderId(readerId);
-        return activityList;
+        return activityDao.getActivitiesByReaderId(readerId);
     }
 
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/activity/minutes/{readerId}", method = RequestMethod.GET)
     public int returnTotalMinsByReaderId(@PathVariable int readerId) {
-        int totalMinutes = activityDao.getTotalReadingMinutesByReaderId(readerId);
-        return totalMinutes;
+        return activityDao.getTotalReadingMinutesByReaderId(readerId);
     }
 
     private String getUserNameFromDTO(LoginDTO loginDTO) { return loginDTO.getUsername(); }
