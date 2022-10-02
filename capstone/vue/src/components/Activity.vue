@@ -1,7 +1,7 @@
 <template>
   <div class="logged-activity-container">
     <div class="la-title">
-    <h2>Logged Family Reading</h2>
+      <h2>Logged Family Reading</h2>
     </div>
     <div
       class="activityList"
@@ -9,12 +9,13 @@
       v-bind:key="activity.userName"
       v-bind:activity="activity"
     >
-      <h2 class="activity-reader">{{ activity.userName }}</h2>
-      <h3 class="activity-book">{{ activity.bookTitle }}</h3>
-      <p class="activity-date">{{ activity.dateRead }}</p>
-      <p class="activity-minutes">{{ activity.timeInMinutes }}</p>
-      <p class="activity-notes">{{ activity.activityNotes }}</p>
-      <p class="null-notes" v-if="!activity.activityNotes">No notes taken</p>
+      <h2 class="activity-reader">{{ "User: " + activity.userName }}</h2>
+      <h3 class="activity-book">{{ "Book: " + activity.bookTitle }}</h3>
+      <h3 class="activity-date">{{ "Date Read: " + activity.dateRead }}</h3>
+      <h3 class="activity-minutes">
+        {{ "Minutes Read: " + activity.timeInMinutes }}
+      </h3>
+      <p class="activity-notes">{{ "Notes: " + activity.activityNotes }}</p>
     </div>
   </div>
 </template>
@@ -42,24 +43,22 @@ export default {
 </script>
 
 <style>
-
-.logged-activity-container{
-  margin-top:150px;
-  
+.logged-activity-container {
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.la-title{
-  background-color:rgb(115, 115, 180);
+.la-title {
+  background-color: rgb(115, 115, 180);
 }
 
 .activityList {
-  border: 2px rgb(161, 75, 41) solid;
-  border-radius: 10px;
-  width: 175px;
+  border: 2px rgb(98, 154, 219) solid;
+  border-radius: 20px;
+  width: 300px;
   margin: 20px;
-  margin-bottom: 20px;
-  margin-top: 20px;
- 
-  background-color: rgb(255, 242, 233);
+  min-width: 200px;
+  text-align: center;
+  background-color: rgb(232, 250, 255);
 }
 </style>
