@@ -3,14 +3,6 @@
     <h2 class="add-activity-title">Record your minutes!</h2>
     <div class="add-activity-form-container">
       <form v-on:submit.prevent="submitForm" class="new-activity-form">
-        <label for="userName">Reader: </label>
-        <input
-          type="text"
-          placeholder="UserId"
-          name="readerId"
-          id="readerId"
-          v-model="activity.readerId"
-        />
 
         <label for="title">What did you read?</label>
 
@@ -65,7 +57,6 @@ export default {
   data() {
     return {
       activity: {
-        readerId: "",
         isbn: "",
         timeInMinutes: 0,
         formatId: 0,

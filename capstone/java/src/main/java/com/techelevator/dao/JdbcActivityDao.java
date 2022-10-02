@@ -2,12 +2,14 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Activity;
 
+import com.techelevator.model.LoginDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.security.Principal;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
 @Component
 public class JdbcActivityDao implements ActivityDao {
 
+    private UserDao userDao;
     private JdbcTemplate jdbcTemplate;
 
     public JdbcActivityDao(JdbcTemplate jdbcTemplate) {

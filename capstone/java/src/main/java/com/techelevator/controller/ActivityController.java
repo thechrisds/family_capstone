@@ -43,7 +43,9 @@ public class ActivityController {
 
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/activity/", method = RequestMethod.POST)
-    public void createActivity(@RequestBody Activity activity) throws Exception {
+    public void createActivity(@RequestBody Activity activity, Principal principal) throws Exception {
+        int userId = userDao.findIdByUsername(principal.getName());
+        activity.setReaderId(userId);
         try {
             activityDao.createActivity(activity);
         } catch (DataAccessException e){
