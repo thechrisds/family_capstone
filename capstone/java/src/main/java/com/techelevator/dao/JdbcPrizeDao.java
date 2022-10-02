@@ -6,7 +6,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
-
 import javax.xml.crypto.Data;
 import java.time.LocalDate;
 import java.util.ArrayList;
