@@ -11,5 +11,10 @@ export default {
 
     addUser(user) {
         return axios.post('/account/newChild', user);
+    },
+
+    deleteUser(id) {
+        return axios.delete(`/account/${id}`)
     }
+
 }

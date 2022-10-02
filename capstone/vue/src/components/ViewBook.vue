@@ -1,4 +1,3 @@
-
 <template>
     <div class="container">
         <div class="bookList" v-for="book in books" v-bind:key="book.bookID" v-bind:book="book">
@@ -40,8 +39,7 @@ export default{
 
 }
 .bookList {
-    border: 2px black solid;
-    border-radius: 10px;
+   
     width: 250px;
     height: 375px;
     margin: 20px;

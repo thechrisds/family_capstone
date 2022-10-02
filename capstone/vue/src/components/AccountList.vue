@@ -3,15 +3,15 @@
     <div class="top-account-bar">Family Members</div>
     <div class="family-members" v-for="user in users" v-bind:key="user.id">
       <h3>Username: {{ user.username }}</h3>
-
-      First name: {{ user.firstname }}
-      <br />
-      Last name: {{ user.lastname }}
-      <br />
-      Minutes read:
-      <div class="card-avatar">
-        <button class="delete-user">Delete Member</button>
-      </div>
+      
+      Name: {{ user.firstname }} {{ user.lastname }}
+      <br>
+      <br>
+      Total minutes read:
+      <br>
+     
+        <button class="delete-user" v-on:click="deleteMember(user.id)">Delete Member</button>
+      
     </div>
   </div>
 </template>
@@ -25,13 +25,27 @@ export default {
   data() {
     return {
       users: [],
-      id: "",
       username: this.$store.state.user.username,
       firstname: this.$store.state.user.firstname,
       lastname: this.$store.state.user.lastname,
+      id: this.$store.state.user.id,
     };
   },
-  methods: {},
+  methods: {
+    deleteMember(id) {
+      accountService.deleteUser(id).then(response => {
+        console.log("delete response: ", response);
+        if(response.status === 204) {
+          alert('Member successfully deleted')
+        }
+      })
+      .catch((error) => {
+        if(error.response) {
+          this.errorMsg = "Error deleting member."
+        }
+      }); 
+    }
+  },
   created() {
     console.log(this.username);
     console.log("firstname: ", this.firstname);
@@ -86,5 +100,17 @@ body {
   box-shadow: 5px 5px 3px lavender;
   border-radius: 10px;
   padding-bottom: 10px;
+}
+
+.delete-user{
+  background-color: white;
+  border-radius: 5px;
+  border:lightgray 2px solid;
+  box-shadow: 2px 2px 2px grey;
+  font-size: 12px;
+}
+
+.delete-user:hover {
+  background-color: rgb(226, 37, 37);
 }
 </style>

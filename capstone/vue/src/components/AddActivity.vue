@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
-    <h2>Record your minutes!</h2>
-    <div class="activity-form-container">
+  <div class="add-activity-container">
+    <h2 class="add-activity-title">Record your minutes!</h2>
+    <div class="add-activity-form-container">
       <form v-on:submit.prevent="submitForm" class="new-activity-form">
         <label for="userName">Reader: </label>
         <input
@@ -32,25 +32,27 @@
         />
         <br />
         <label for="read-type">How did you read?</label>
-        <select name="read-type" id="type" v-model="activity.formatId">
+        <select name="read-type" type="number" id="type" v-model="activity.formatId">
           <option value="" disabled selected>Please Select Type</option>
-          <option value="Audiobook">Audiobook</option>
-          <option value="Digital">Digital</option>
-          <option value="Paper">Paper</option>
-          <option value="Read-Aloud (Reader)">Read-Aloud(Reader)</option>
-          <option value="Read-Aloud (Listener)">Read-Aloud(Listener)</option>
-          <option value="Other">Other</option>
+          <option value="1">Paper</option>
+          <option value="2">Digital</option>
+          <option value="3">Audiobook</option>
+          <option value="4">Read-Aloud(Reader)</option>
+          <option value="5">Read-Aloud(Listener)</option>
+          <option value="0">Other</option>
         </select>
         <label for="notes"></label>
         <input
           type="text"
           placeholder="Enter any notes (Optional)"
           name="notes"
-          id="notes"
+          id="add-activity-notes"
           v-model="activity.activityNotes"
         />
-        <input type="submit" />
-        <input type="reset" />
+        <div class="activity-sub-reset-buttons">
+        <input class="add-activity-submit" type="submit" />
+        <input class="add-activity-reset" type="reset" />
+        </div>
       </form>
     </div>
   </div>
@@ -66,6 +68,7 @@ export default {
         readerId: "",
         isbn: "",
         timeInMinutes: 0,
+        formatId: 0,
         activityNotes: "",
       },
     };
@@ -78,6 +81,7 @@ export default {
         readerId: this.activity.readerId,
         isbn: this.activity.isbn,
         timeInMinutes: this.activity.timeInMinutes,
+        formatId: this.activity.formatId,
         activityNotes: this.activity.activityNotes,
       };
       window.alert("Activity Saved!"), window.location.reload();
@@ -86,23 +90,74 @@ export default {
       });
     },
   },
+  created(){
+      setTimeout(() => {
+      this.isLoading = false;
+    }, 1250);
+  },
 };
 </script>
 
 <style scoped>
-.container {
+
+#readerId {
+  box-shadow: 1px 1px 2px gray;
+}
+
+#current-book{
+  box-shadow: 1px 1px 2px gray;
+}
+
+#logged-minutes{
+  box-shadow: 1px 1px 2px gray;
+}
+
+#type{
+  box-shadow: 1px 1px 2px gray;
+}
+
+#add-activity-notes {
+  box-shadow: 1px 1px 2px gray;
+}
+
+.add-activity-title{
+  background-color: rgb(152, 230, 152);
+  text-shadow: 1px 1px 3px gray;
+}
+
+.activity-sub-reset-buttons {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-content: center;
+  justify-content: space-evenly;
+}
+
+.add-activity-submit{
+  box-shadow: 2px 2px 2px gray;
+}
+
+.add-activity-reset {
+    box-shadow: 2px 2px 2px gray;
+}
+
+.add-activity-container {
+  display: flex;
+  justify-content: space-evenly;
+  
   flex-direction: column;
+  width: 90%;
+  margin-left:22px;
 }
 
 .activity-form-container {
   display: flex;
   flex-direction: column;
-  border: 2px solid rgb(138, 29, 29);
+   border-top: 10px rgb(44, 179, 78) solid;
+  border-right: 10px rgb(22, 119, 46) solid;
+  border-bottom: 10px solid rgb(15, 80, 18);
+  border-left: 10px solid rgb(141, 228, 148);
+  box-shadow: 5px 5px 15px rgb(155, 132, 3);
   text-align: center;
-  max-width: 50%;
+  max-width: 70%;
   padding: 15px;
 }
 
