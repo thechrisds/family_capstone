@@ -42,17 +42,18 @@ export default {
   margin-top: 150px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+
 }
 
 .activity-sub {
-  width: 650px;
-  height: 450px;
+  height: 275px;
+  background-color:rgb(242, 255, 254);
   border: solid 1px rgb(48, 48, 124);
   box-shadow: 5px 5px 15px rgb(58, 58, 97);
 }
 
 #add-activities {
+  flex:center;
   text-align: center;
   border: solid 1px rgb(48, 124, 58);
   box-shadow: 5px 5px 15px rgb(58, 97, 66);
