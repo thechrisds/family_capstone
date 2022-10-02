@@ -9,9 +9,9 @@
       <br>
       Total minutes read:
       <br>
-      <div class="card-avatar">
-        <button class="delete-user" v-on:click="deleteUser(user.id)">Delete Member</button>
-      </div>
+     
+        <button class="delete-user" v-on:click="deleteMember(user.id)">Delete Member</button>
+      
     </div>
   </div>
 </template>
@@ -25,16 +25,17 @@ export default {
   data() {
     return {
       users: [],
-      id: "",
       username: this.$store.state.user.username,
       firstname: this.$store.state.user.firstname,
       lastname: this.$store.state.user.lastname,
+      id: this.$store.state.user.id,
     };
   },
   methods: {
-    deleteUser(id) {
+    deleteMember(id) {
       accountService.deleteUser(id).then(response => {
-        if(response.status === 200) {
+        console.log("delete response: ", response);
+        if(response.status === 204) {
           alert('Member successfully deleted')
         }
       })

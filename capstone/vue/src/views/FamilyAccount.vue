@@ -103,7 +103,7 @@ export default {
   height: 300px;
   min-height: 0;
   width: 350px;
-  box-shadow: 10px 10px 25px rgb(153, 46, 46);
+  box-shadow: 5px 5px 15px rgb(153, 46, 46);
   border: 1px solid rgb(116, 38, 38);
   height: 100%;
   border-radius: 10px;
@@ -114,7 +114,7 @@ export default {
 #add-user-box {
   display: flex;
   flex-wrap: wrap;
-  box-shadow: 10px 10px 25px rgb(36, 114, 40);
+  box-shadow: 5px 5px 15px rgb(36, 114, 40);
   border: 1px solid rgb(12, 107, 9);
   border-radius: 10px;
   background-color: white;
@@ -123,7 +123,7 @@ export default {
 #family-library {
   display: flex;
   flex-direction: column;
-  box-shadow: 10px 10px 25px rgb(44, 55, 201);
+  box-shadow: 5px 5px 15px rgb(58, 58, 97);
   border: 1px solid rgb(15, 29, 90);
   width: 700px;
   height: 500px;
@@ -207,7 +207,7 @@ export default {
 .prizes-box {
   display: flex;
   flex-direction: column;
-  box-shadow: 10px 10px 25px rgb(248, 170, 81);
+  box-shadow: 5px 5px 15px rgb(248, 170, 81);
   border: 1px solid rgb(15, 29, 90);
   width: 700px;
   height: 400px;
