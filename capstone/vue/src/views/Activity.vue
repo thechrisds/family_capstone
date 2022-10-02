@@ -42,6 +42,7 @@ export default {
   margin-top: 150px;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
 
 }
 

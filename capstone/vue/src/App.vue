@@ -34,15 +34,10 @@
 
         </nav>
         <router-link class="img-link" v-bind:to="{ name: 'home' }">
-        <h4 class="title">READITT.</h4>
+        <h4 class="title">Readitt.</h4>
         </router-link>
-        <router-link v-bind:to="{ name: 'home' }">
-          <img class="book-cover" src="@/assets/title2.png" />
-          </router-link>
       </div>
-      <div class="book-banner">
-        <img src="@/assets/banner3.png" class="banner" />
-      </div>
+     
     </div>
     <div id="container">
       <router-view />
@@ -53,6 +48,7 @@
 <style>
 body {
   font-family: 'Source Sans Pro', sans-serif;
+  font-family: mer;
   font-weight: bolder;
   font-size: 12px;
 }
@@ -88,12 +84,14 @@ body {
 }
 
 .header {
-  background-color: rgb(254, 254, 255);
+  background-color: rgb(221, 221, 221);
   position: fixed;
   width: 100%;
+  height: 60px;
   margin: -10px;
   border-top: 10px solid black;
-  border-radius: 10px;
+  
+  
 }
 
 .header-bar {
@@ -119,11 +117,11 @@ body {
 
 .title {
   font-weight: 900;
-  color: rgb(52, 45, 146);
-  font-size: 25px;
-  text-shadow: 3px 3px 3px rgb(175, 154, 125);
+  color: rgb(28, 95, 196);
+  font-size: 28px;
+ text-shadow: 2px 2px 2px gray;
   margin-left: 40px;
-  font-family: 'Seaweed Script', cursive;
+  font-family: 'Lora', serif;
   
 }
 
@@ -139,13 +137,13 @@ body {
 #links {
   display: flex;
   justify-content: center;
-  padding-top: 15px;
+  padding-top: 20px;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 16px;
   padding-bottom: 10px;
 }
 .links1 {
-  color: rgb(52, 45, 146);
+  color: rgb(28, 95, 196);
 }
 
 .links1:hover {
@@ -154,7 +152,7 @@ body {
 }
 
 .links2 {
-  color: rgb(52, 45, 146);
+  color: rgb(28, 95, 196);
 }
 .links2:hover {
   color: #358a3c;
@@ -162,32 +160,28 @@ body {
 }
 
 .links3 {
-  color: rgb(52, 45, 146);
-}
+  color: rgb(28, 95, 196);}
 .links3:hover {
   color: #3537cc;
   text-shadow: 3px 3px 3px gray
 }
 
 .links4 {
-  color: rgb(52, 45, 146);
-}
+  color: rgb(28, 95, 196);}
 .links4:hover {
   color: #e77e1b;
   text-shadow: 3px 3px 3px gray
 }
 
 .links5 {
-  color: rgb(52, 45, 146);
-}
+  color: rgb(28, 95, 196);}
 .links5:hover {
   color: rgb(155, 13, 155);
   text-shadow: 3px 3px 3px gray
 }
 
 .links6 {
-  color: rgb(52, 45, 146);
-}
+  color: rgb(28, 95, 196);}
 .links6:hover {
   color: rgb(155, 13, 155);
   text-shadow: 3px 3px 3px gray
