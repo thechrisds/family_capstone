@@ -38,7 +38,7 @@
     </div>
       </div>
       <div id="account-column">
-        <div id="account-list-box"><account-list /></div>
+        <div id="account-list-box"><account-list :key="accountKey"/></div>
         <div id="add-user-box"><add-user /></div>
       </div>
     </div>
@@ -61,7 +61,13 @@ export default {
   data() {
     return {
       isLoading: true,
+      accountKey: 0,
     };
+  },
+  methods: {
+    forRerender() {
+      this.accountKey+=1;
+    }
   },
   created() {
     setTimeout(() => {
@@ -76,6 +82,13 @@ export default {
 </script>
 
 <style>
+#family-account {
+  min-height: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 50px;
+}
+
 #main-family {
   display: flex;
   justify-content: space-evenly;
@@ -100,6 +113,8 @@ export default {
 #account-list-box {
   display: flex;
   justify-content: center;
+    align-content: flex-start;
+
   height: 300px;
   min-height: 0;
   width: 350px;
@@ -189,6 +204,7 @@ export default {
   background-color: white;
   word-wrap: break-word;
   padding:10px;  
+
   
 }
 
@@ -199,7 +215,7 @@ export default {
 
 .show-books {
   display: flex;
-  margin-left:1950px;
+  margin-left:1630px;
   height:350px;
   flex-wrap: nowrap;
 }

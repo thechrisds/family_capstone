@@ -1,17 +1,19 @@
 <template>
   <div id="account-list">
     <div class="top-account-bar">Family Members</div>
-    <div class="family-members" v-for="user in users" v-bind:key="user.id">
-      <h3>Username: {{ user.username }}</h3>
-      
-      Name: {{ user.firstname }} {{ user.lastname }}
-      <br>
-      <br>
-      Total minutes read:
-      <br>
-     
-        <button class="delete-user" v-on:click="deleteMember(user.id)">Delete Member</button>
-      
+    <div class="fm-cards">
+      <div class="family-members" v-for="user in users" v-bind:key="user.id">
+        <h3>Username: {{ user.username }}</h3>
+
+        Name: {{ user.firstname }} {{ user.lastname }}
+        <br />
+        <br />
+        Total minutes read:
+        <br /><br>
+        <button class="delete-user" v-on:click="deleteMember(user.id)">
+          Delete Member
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -33,18 +35,22 @@ export default {
   },
   methods: {
     deleteMember(id) {
-      accountService.deleteUser(id).then(response => {
-        console.log("delete response: ", response);
-        if(response.status === 204) {
-          alert('Member successfully deleted')
-        }
-      })
-      .catch((error) => {
-        if(error.response) {
-          this.errorMsg = "Error deleting member."
-        }
-      }); 
-    }
+      accountService
+        .deleteUser(id)
+        .then((response) => {
+          console.log("delete response: ", response);
+          this.$mount;
+          if (response.status === 204) {
+            alert("Member successfully deleted");
+            this.$router.go('/account');
+          }
+        })
+        .catch((error) => {
+          if (error.response) {
+            this.errorMsg = "Error deleting member.";
+          }
+        });
+    },
   },
   created() {
     console.log(this.username);
@@ -76,36 +82,32 @@ body {
   font-weight: 700;
   font-size: 12px;
 }
-#account-list {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  align-content: center;
-  justify-content: space-evenly;
-  padding-bottom: 25px;
-}
+
 .top-account-bar {
   overflow: hidden;
   height: 25px;
   background-color: lightpink;
   width: 100%;
-  font-size: 16px;;
-  
+  font-size: 16px;
 }
 
 .family-members {
   width: 300px;
-  
   border: solid 3px lavender;
   box-shadow: 5px 5px 3px lavender;
   border-radius: 10px;
   padding-bottom: 10px;
 }
 
-.delete-user{
+.fm-cards{
+  display: flex;
+  flex-direction: column;
+
+}
+.delete-user {
   background-color: white;
   border-radius: 5px;
-  border:lightgray 2px solid;
+  border: lightgray 2px solid;
   box-shadow: 2px 2px 2px grey;
   font-size: 12px;
 }

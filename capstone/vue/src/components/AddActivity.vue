@@ -3,14 +3,6 @@
     <h2 class="add-activity-title">Record your minutes!</h2>
     <div class="add-activity-form-container">
       <form v-on:submit.prevent="submitForm" class="new-activity-form">
-        <label for="userName">Reader: </label>
-        <input
-          type="text"
-          placeholder="UserId"
-          name="readerId"
-          id="readerId"
-          v-model="activity.readerId"
-        />
 
         <label for="title">What did you read?</label>
 
@@ -49,7 +41,7 @@
           id="add-activity-notes"
           v-model="activity.activityNotes"
         />
-        <div class="activity-sub-reset-buttons">
+        <div class="add-activity-sub-reset-buttons">
         <input class="add-activity-submit" type="submit" />
         <input class="add-activity-reset" type="reset" />
         </div>
@@ -65,7 +57,6 @@ export default {
   data() {
     return {
       activity: {
-        readerId: "",
         isbn: "",
         timeInMinutes: 0,
         formatId: 0,
@@ -125,7 +116,7 @@ export default {
   text-shadow: 1px 1px 3px gray;
 }
 
-.activity-sub-reset-buttons {
+.add-activity-sub-reset-buttons {
   display: flex;
   align-content: center;
   justify-content: space-evenly;
@@ -141,24 +132,26 @@ export default {
 
 .add-activity-container {
   display: flex;
-  justify-content: space-evenly;
-  
   flex-direction: column;
   width: 90%;
-  margin-left:22px;
+  height:auto;
+ margin-left:auto;
+ margin-right:auto;
 }
 
-.activity-form-container {
+.add-activity-form-container {
   display: flex;
   flex-direction: column;
-   border-top: 10px rgb(44, 179, 78) solid;
+  border-top: 10px rgb(44, 179, 78) solid;
   border-right: 10px rgb(22, 119, 46) solid;
   border-bottom: 10px solid rgb(15, 80, 18);
   border-left: 10px solid rgb(141, 228, 148);
   box-shadow: 5px 5px 15px rgb(155, 132, 3);
   text-align: center;
-  max-width: 70%;
+  max-width: 85%;
   padding: 15px;
+  margin:auto;
+  margin-top:10px;
 }
 
 input[type="text"],

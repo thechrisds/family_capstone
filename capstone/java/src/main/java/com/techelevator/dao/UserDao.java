@@ -25,4 +25,6 @@ public interface UserDao {
     void deleteUser(int userId);
 
     int findFamilyIdByUserId(int userId);
+
+    boolean getParentStatusById(int userId);
 }

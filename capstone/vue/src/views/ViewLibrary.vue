@@ -6,23 +6,29 @@
     <div v-else id="all-books">
       <view-book />
 
-      <router-link to="/books/add" class="add-book">
+      <div class="add-book">
+      <button v-on:click.prevent="showForm = true">
         Add A Book To Library
-      </router-link>
+     </button>
+      <add-book v-if="showForm" />
+    </div>
     </div>
   </div>
 </template>
 
 <script>
 import ViewBook from "@/components/ViewBook";
+import AddBook from "@/components/AddBook";
 
 export default {
   components: {
     ViewBook,
+    AddBook,
   },
   data() {
     return {
       isLoading: true,
+      showForm: false,
     };
   },
   created() {
@@ -37,10 +43,11 @@ export default {
 #all-books {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   justify-content: space-evenly;
   align-content: center;
-  min-width: 450px;
-  margin-top: 150px;
+  min-width: 600px;
+  margin-top: 100px;
   margin-bottom: 20px;
   padding-bottom: 20px;
   box-shadow: 10px 10px 25px rgb(153, 46, 46);
@@ -50,7 +57,7 @@ export default {
   color: black;
   text-decoration: none;
   font-size: 15px;
-  position: relative;
+  
   text-shadow: 2px 2px 5px rgb(153, 46, 46);
 }
 

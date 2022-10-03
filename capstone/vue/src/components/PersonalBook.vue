@@ -1,22 +1,22 @@
 
 <template>
-  <div class="container">
+  <div class="pb-container">
     <div
-      class="bookList"
+      class="pb-bookList"
       v-for="book in books"
       v-bind:key="book.bookID"
       v-bind:book="book"
     >
-      <h2 class="book-title">{{ book.bookTitle }}</h2>
-      <h3 class="book-author">{{ book.bookAuthor }}</h3>
+      <h2 class="pb-book-title">{{ book.bookTitle }}</h2>
+      <h3 class="pb-book-author">{{ book.bookAuthor }}</h3>
       <img
         v-if="book.isbn"
         v-bind:src="
           'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'
         "
       />
-      <p class="book-description">{{ book.description }}</p>
-      <p class="null-description" v-if="!book.description">
+      <p class="pb-book-description">{{ book.description }}</p>
+      <p class="pb-null-description" v-if="!book.description">
         No description given
       </p>
     </div>
@@ -45,44 +45,36 @@ export default {
 </script>
 
 <style>
-.container {
+.pb-container {
   display: flex;
   flex-wrap: wrap;
   margin-top:200px;
 }
-.bookList {
-  border-top: 10px rgb(207, 193, 0) solid;
-  border-right: 10px goldenrod solid;
-  border-bottom: 10px solid rgb(175, 133, 25);
-  border-left: 10px solid rgb(255, 233, 107);
-  box-shadow: 5px 5px 15px rgb(155, 132, 3);
-  width: 250px;
-  height: 375px;
-  margin: 20px;
-  text-align: center;
-}
 
-.bookList.read {
+
+.pb-bookList.read {
   background-color: lightgray;
 }
 
-.bookList .book-title {
+.pb-bookList .book-title {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   padding:5px;
 }
 
-.bookList .book-author {
+.pb-bookList .book-author {
 }
-.bookList > img {
+.pb-bookList > img {
   height: 180px;
   width: 150px;
 }
 
-.book-description {
+.pb-book-description {
     word-wrap: break-word;
     padding:5px;
+    overflow-x:hidden;
+    overflow-y:auto;
 
 }
 </style>

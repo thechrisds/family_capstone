@@ -73,7 +73,10 @@ public class AccountController {
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/account/{id}", method = RequestMethod.DELETE)
     public void deleteUser(@PathVariable int id) throws UserNotFoundException {
-        accountDao.deleteUser(id);
+        boolean result = userDao.getParentStatusById(id);
+        
+            accountDao.deleteUser(id);
+
     }
 
 }

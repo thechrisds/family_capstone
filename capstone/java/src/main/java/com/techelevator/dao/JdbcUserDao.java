@@ -49,6 +49,12 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
+    public boolean getParentStatusById(int userId) {
+        String sql = "SELECT is_parent FROM users WHERE user_id = ?";
+        return jdbcTemplate.queryForObject(sql, boolean.class, userId);
+    }
+
+    @Override
     public int findFamilyIdByUsername(String username) {
         if (username == null) throw new IllegalArgumentException("Username cannot be null");
         String sql = "SELECT family_id FROM users WHERE username =?;";

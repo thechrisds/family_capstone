@@ -30,19 +30,14 @@
           <router-link v-else id="links" class="links6" v-bind:to="{ name: 'login' }"
             >Login</router-link
           >
-
-
         </nav>
+        <div class="title-link">
         <router-link class="img-link" v-bind:to="{ name: 'home' }">
-        <h4 class="title">READITT.</h4>
+        <h4 class="title">Readitt.</h4>
         </router-link>
-        <router-link v-bind:to="{ name: 'home' }">
-          <img class="book-cover" src="@/assets/title2.png" />
-          </router-link>
+        </div>
       </div>
-      <div class="book-banner">
-        <img src="@/assets/banner3.png" class="banner" />
-      </div>
+     
     </div>
     <div id="container">
       <router-view />
@@ -53,6 +48,7 @@
 <style>
 body {
   font-family: 'Source Sans Pro', sans-serif;
+  font-family: mer;
   font-weight: bolder;
   font-size: 12px;
 }
@@ -64,36 +60,17 @@ body {
   max-width: 1500;
 }
 
-.book-banner {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 15px;
-  margin-top: 15px;
-  max-width: 100%;
-  height: auto;
-}
 
-.banner {
-  height: 60px;
-  width: 1300px;
-  opacity: 1;
-  box-shadow: 10px 10px 5px rgb(127, 131, 133);
-  border-radius: 10px;
-}
-#family-account {
-  min-height: 0;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 100px;
-}
+
 
 .header {
-  background-color: rgb(254, 254, 255);
+  background-color: rgb(214, 205, 205);
   position: fixed;
   width: 100%;
-  margin: -10px;
+  height: 60px;
+  margin: -2px;
   border-top: 10px solid black;
-  border-radius: 10px;
+  z-index: 1000;
 }
 
 .header-bar {
@@ -104,26 +81,27 @@ body {
   padding-left: 5px;
   padding-right: 5px;
   height: 30px;
-  margin-right: 40px;
+  margin-right: 10px;
+  margin-top:5px;
 }
 
 .top-nav {
   display: flex;
   justify-content: space-between;
-  width: 1000px;
+  width: 800px;
   padding-bottom: 5px;
   color: rgb(52, 45, 146);
-  margin-right: 40px;
-  margin-left: 40px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .title {
   font-weight: 900;
-  color: rgb(52, 45, 146);
-  font-size: 25px;
-  text-shadow: 3px 3px 3px rgb(175, 154, 125);
-  margin-left: 40px;
-  font-family: 'Seaweed Script', cursive;
+  color: rgb(28, 95, 196);
+  font-size: 28px;
+ text-shadow: 2px 2px 2px gray;
+  margin-left: 20px;
+  font-family: 'Lora', serif;
   
 }
 
@@ -139,22 +117,24 @@ body {
 #links {
   display: flex;
   justify-content: center;
-  padding-top: 15px;
+  padding-top: 20px;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 700;
   padding-bottom: 10px;
+  text-shadow: 1px 1px 3px gray;
 }
 .links1 {
-  color: rgb(52, 45, 146);
+  color: rgb(28, 95, 196);
 }
 
 .links1:hover {
   color: #c71a1a;
-  text-shadow: 3px 3px 3px gray
+  text-shadow: 1px 1px black;
 }
 
 .links2 {
-  color: rgb(52, 45, 146);
+  color: rgb(28, 95, 196);
 }
 .links2:hover {
   color: #358a3c;
@@ -162,32 +142,28 @@ body {
 }
 
 .links3 {
-  color: rgb(52, 45, 146);
-}
+  color: rgb(28, 95, 196);}
 .links3:hover {
   color: #3537cc;
   text-shadow: 3px 3px 3px gray
 }
 
 .links4 {
-  color: rgb(52, 45, 146);
-}
+  color: rgb(28, 95, 196);}
 .links4:hover {
   color: #e77e1b;
   text-shadow: 3px 3px 3px gray
 }
 
 .links5 {
-  color: rgb(52, 45, 146);
-}
+  color: rgb(28, 95, 196);}
 .links5:hover {
   color: rgb(155, 13, 155);
   text-shadow: 3px 3px 3px gray
 }
 
 .links6 {
-  color: rgb(52, 45, 146);
-}
+  color: rgb(28, 95, 196);}
 .links6:hover {
   color: rgb(155, 13, 155);
   text-shadow: 3px 3px 3px gray
@@ -195,6 +171,23 @@ body {
 
 .img-link {
   text-decoration: none;
+}
+
+.title-link{
+  margin-left:40px;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(159, 159, 173);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+}
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
 }
 
 </style>

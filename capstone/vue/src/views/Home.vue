@@ -1,56 +1,121 @@
 <template>
   <div class="home">
-    <div id="box-1" class="home-title-box">
-      <h1 class="home-title">
-        <a href="#box-2" class="link-style">READITT.</a>
-      </h1>
-      <p class="sub-title">A family that reads together, stays together</p>
+    <div id="box-1" class="box-1">
+      <div class="home-title-box">
+        <h1 class="home-title">
+          <a href="#box-2" class="link-style">Readitt.</a>
+        </h1>
+        <p class="sub-title">A family that reads together, stays together</p>
+      </div>
     </div>
 
     <div id="box-2">
-      <br /><br /><br /><br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br />
       <h1 class="home-title">
         <a href="#box-3" class="link-style">How it works</a>
       </h1>
     </div>
 
     <div class="how-it-works-container">
-      <div class="library-card">
-        <h3 class="card-title" align="center">
-          Add books to your family library!
-        </h3>
-        <img src="@/assets/bookexample2.png" class="library-img" />
-      </div>
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide"
+        data-bs-ride="true"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="3"
+            aria-label="Slide 4"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="library-card">
+              <h3 class="card-title" align="center">
+                Add books to your family library!
+              </h3>
+              <img src="@/assets/bookexample2.png" class="library-img" />
+            </div>
+          </div>
 
-      <div class="record-activities-container">
-        <div class="record-card">
-          <h3 class="card-title" align="center">Record your reading!</h3>
-        </div>
-        <div class="minutes-div">
-          <img src="@/assets/minutes.png" class="minutes-img" />
-        </div>
-      </div>
+          <div class="carousel-item">
+            <div class="record-activities-container">
+              <div class="record-card">
+                <h3 class="card-title" align="center">Record your reading!</h3>
+              </div>
+              <div class="minutes-div">
+                <img src="@/assets/minutes.png" class="minutes-img" />
+              </div>
+            </div>
+          </div>
 
-      <div class="prizes-container">
-        <div class="prizes-info">
-          <h3 class="card-title" align="center">Win Prizes!</h3>
-        </div>
-        <div class="prizesimg-div">
-          <img src="@/assets/prizefinal1.png" class="prizes-img" />
-        </div>
-      </div>
+          <div class="carousel-item">
+            <div class="prizes-container">
+              <div class="prizes-info">
+                <h3 class="card-title" align="center">Win Prizes!</h3>
+              </div>
+              <div class="prizesimg-div">
+                <img src="@/assets/prizefinal1.png" class="prizes-img" />
+              </div>
+            </div>
+          </div>
 
-      <div class="dash-card">
-        <h3 class="card-title" align="center">
-          Keep track with your family dashboard!
-        </h3>
-        <img src="@/assets/dashboard.png" class="dash-img" />
+          <div class="carousel-item">
+            <div class="dash-card">
+              <h3 class="card-title" align="center">
+                Keep track with your family dashboard!
+              </h3>
+              <img src="@/assets/dashboard.png" class="dash-img" />
+            </div>
+          </div>
+        </div>
+
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     </div>
 
     <div id="box-3">
       <h1 class="home-title">
-        <br /><br /><br />
+        <br /><br />
         <a href="#box-4" class="link-style">Get started today!</a>
       </h1>
       <p class="sub-title2">
@@ -65,20 +130,24 @@
 
     <div id="box-4">
       <h1 class="home-title">
-        <br><br>
-        <a href="#box-1" class="link-style">Team Members</a>
+        <br>
+        <a href="#box-1" class="link-style" id="team-members">Team R.O.T.R</a>
       </h1>
+      <p>Readers of the Roundtable</p>
       <div class="members">
         <img src="@/assets/team.jpg" class="team-pic" />
         <h2>James Cagle | Chris Shriver | Daniel Song</h2>
       </div>
     </div>
+
+    
   </div>
 </template>
 
 <script>
 export default {
   name: "home",
+  components: {},
 };
 </script>
 
@@ -90,19 +159,28 @@ export default {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  margin-top: 150px;
+  margin-top: 100px;
 }
-.home-title-box {
+.box-1 {
   background-color: white;
   width: 100%;
   height: 100px;
-  margin-top: 200px;
+  margin-top: 120px;
   padding-bottom: 100px;
-  text-align: initial;
+  display: flex;
+  justify-content: center;
+
+}
+
+.home-title-box{
+ display: flex;
+ flex-direction: column;
+ justify-content: space-evenly;
+ align-items: center; 
 }
 .home-title {
   font-weight: bolder;
-  color: rgb(19, 57, 70);
+  color: rgb(28, 95, 196);
   font-size: 50px;
   text-shadow: 3px 3px 5px rgb(170, 160, 145);
   text-align: center;
@@ -110,8 +188,8 @@ export default {
 
 .link-style {
   text-decoration: none;
-  color: rgb(57, 56, 143);
-  font-family: "Seaweed Script", cursive;
+  color: rgb(28, 95, 196);
+  font-family: "Lora", serif;
   font-size: 80px;
 }
 
@@ -130,11 +208,6 @@ export default {
   font-weight: 600;
 }
 
-#box-1 {
-  background-color: white;
-  margin-top: 150px;
-}
-
 #box-2 {
   background-color: white;
   margin-top: 750px;
@@ -150,29 +223,25 @@ export default {
 }
 
 .how-it-works-container {
-  display: flex;
-  flex-wrap: nowrap;
-  align-content: center;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  height: 380px;
-  width: 95%;
+  height: 350px;
+  width: 70%;
   align-self: center;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  margin-left: 35px;
-  margin-top: 25px;
+  margin: auto;
 }
 
 .library-card {
   border: solid 2px lightgray;
   border-radius: 10px;
   margin-bottom: 30px;
-  margin-left: 40px;
   padding: 20px;
   height: 250px;
-  width: 350px;
+  width: 400px;
   background-color: white;
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .library-img {
@@ -188,7 +257,8 @@ export default {
   border: solid 2px lightgray;
   border-radius: 10px;
   margin-bottom: 30px;
-  margin-left: 40px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 20px;
   height: 250px;
   width: 350px;
@@ -254,7 +324,8 @@ export default {
   border: solid 2px lightgray;
   border-radius: 10px;
   margin-bottom: 30px;
-  margin-left: 40px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 20px;
   height: 250px;
   width: 350px;
@@ -277,8 +348,8 @@ export default {
   border: solid 2px lightgray;
   border-radius: 10px;
   margin-bottom: 30px;
-  margin-left: 40px;
-  margin-right: 40px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 15px;
   height: 250px;
   width: 350px;
@@ -291,14 +362,17 @@ export default {
 
 #box-3 {
   background-color: white;
-  margin-top: 1000px;
+  margin-top: 1200px;
   padding-bottom: 30px;
 }
 #box-4 {
   background-color: white;
   margin-top: 1100px;
-  padding-top:5px;
-  
+  padding-top: 5px;
+}
+
+#team-members {
+  font-size: 50px;
 }
 .box3-content {
   display: flex;
@@ -337,7 +411,8 @@ export default {
 }
 
 .members {
-  padding-top:20px;
+  padding-top: 20px;
   padding-bottom: 20px;
 }
+
 </style>
