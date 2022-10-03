@@ -30,12 +30,12 @@
           <router-link v-else id="links" class="links6" v-bind:to="{ name: 'login' }"
             >Login</router-link
           >
-
-
         </nav>
+        <div class="title-link">
         <router-link class="img-link" v-bind:to="{ name: 'home' }">
         <h4 class="title">Readitt.</h4>
         </router-link>
+        </div>
       </div>
      
     </div>
@@ -60,22 +60,7 @@ body {
   max-width: 1500;
 }
 
-.book-banner {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 15px;
-  margin-top: 15px;
-  max-width: 100%;
-  height: auto;
-}
 
-.banner {
-  height: 60px;
-  width: 1300px;
-  opacity: 1;
-  box-shadow: 10px 10px 5px rgb(127, 131, 133);
-  border-radius: 10px;
-}
 #family-account {
   min-height: 0;
   padding-top: 10px;
@@ -84,14 +69,12 @@ body {
 }
 
 .header {
-  background-color: rgb(221, 221, 221);
+  background-color: rgb(212, 199, 199);
   position: fixed;
   width: 100%;
   height: 60px;
-  margin: -10px;
+  margin: -2px;
   border-top: 10px solid black;
-  
-  
 }
 
 .header-bar {
@@ -102,17 +85,17 @@ body {
   padding-left: 5px;
   padding-right: 5px;
   height: 30px;
-  margin-right: 40px;
+  margin-right: 10px;
 }
 
 .top-nav {
   display: flex;
   justify-content: space-between;
-  width: 1000px;
+  width: 800px;
   padding-bottom: 5px;
   color: rgb(52, 45, 146);
-  margin-right: 40px;
-  margin-left: 40px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .title {
@@ -120,7 +103,7 @@ body {
   color: rgb(28, 95, 196);
   font-size: 28px;
  text-shadow: 2px 2px 2px gray;
-  margin-left: 40px;
+  margin-left: 20px;
   font-family: 'Lora', serif;
   
 }
@@ -140,7 +123,9 @@ body {
   padding-top: 20px;
   text-decoration: none;
   font-size: 16px;
+  font-weight: 700;
   padding-bottom: 10px;
+  text-shadow: 1px 1px 3px gray;
 }
 .links1 {
   color: rgb(28, 95, 196);
@@ -148,7 +133,7 @@ body {
 
 .links1:hover {
   color: #c71a1a;
-  text-shadow: 3px 3px 3px gray
+  text-shadow: 1px 1px black;
 }
 
 .links2 {
@@ -189,6 +174,10 @@ body {
 
 .img-link {
   text-decoration: none;
+}
+
+.title-link{
+  margin-left:40px;
 }
 
 </style>
