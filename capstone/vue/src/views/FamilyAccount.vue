@@ -5,46 +5,48 @@
     </div>
     <div v-else id="main-family">
       <div class="activities-column">
-      <div id="family-library">
-        <div class="family-library-title">Library</div>
-        <div class="family-library-books">
-          <div class="show-books">
-          <div
-            class="books"
-            v-for="book in books"
-            v-bind:key="book.bookID"
-            v-bind:book="book"
-          >
-            <h2 class="fa-book-title">{{ book.bookTitle }}</h2>
-            <h3 class="fa-book-author">{{ book.bookAuthor }}</h3>
-            <img class="fa-book-img" 
-              v-if="book.isbn"
-              v-bind:src="
-                'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'
-              "
-            />
-            <p class="fa-book-description">{{ book.description }}</p>
-            <p class="fa-null-description" v-if="!book.description">
-              No description given
-            </p>
+        <div id="family-library">
+          <div class="family-library-title">Library</div>
+          <div class="family-library-books">
+            <div class="show-books">
+              <div
+                class="books"
+                v-for="book in books"
+                v-bind:key="book.bookID"
+                v-bind:book="book"
+              >
+                <h2 class="fa-book-title">{{ book.bookTitle }}</h2>
+                <h3 class="fa-book-author">{{ book.bookAuthor }}</h3>
+                <img
+                  class="fa-book-img"
+                  v-if="book.isbn"
+                  v-bind:src="
+                    'http://covers.openlibrary.org/b/isbn/' +
+                    book.isbn +
+                    '-M.jpg'
+                  "
+                />
+                <p class="fa-book-description">{{ book.description }}</p>
+                <p class="fa-null-description" v-if="!book.description">
+                  No description given
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-    </div>
-    </div>
-     <div class="prizes-box">
-      <div class="prizes-title">Prizes</div>
-      <div class="prizes-board">
-      </div>
-    </div>
+        <div class="prizes-box">
+          <div class="prizes-title">Prizes</div>
+          <div class="fa-prize-table">
+            <prize-table />
+          </div>
+          <div class="prizes-board"></div>
+        </div>
       </div>
       <div id="account-column">
-        <div id="account-list-box"><account-list :key="accountKey"/></div>
+        <div id="account-list-box"><account-list /></div>
         <div id="add-user-box"><add-user /></div>
       </div>
     </div>
-
-
-
   </div>
 </template>
 
@@ -52,22 +54,18 @@
 import AccountList from "@/components/AccountList";
 import AddUser from "@/components/AddUser";
 import bookService from "@/services/BookService.js";
+import PrizeTable from "@/components/PrizeTable";
 
 export default {
   components: {
     AccountList,
     AddUser,
+    PrizeTable,
   },
   data() {
     return {
       isLoading: true,
-      accountKey: 0,
     };
-  },
-  methods: {
-    forRerender() {
-      this.accountKey+=1;
-    }
   },
   created() {
     setTimeout(() => {
@@ -108,12 +106,12 @@ export default {
 #account-column {
   display: flex;
   flex-direction: column;
-  margin-top:19px;
+  margin-top: 19px;
 }
 #account-list-box {
   display: flex;
   justify-content: center;
-    align-content: flex-start;
+  align-content: flex-start;
 
   height: 300px;
   min-height: 0;
@@ -158,11 +156,11 @@ export default {
   display: flex;
   align-self: center;
   align-content: center;
-  flex-wrap:nowrap;
+  flex-wrap: nowrap;
   justify-content: space-evenly;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  width:95%;
+  width: 95%;
   height: auto;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -173,7 +171,7 @@ export default {
 }
 
 .fa-book-title {
-  font-size: 15px;;
+  font-size: 15px;
 }
 .fa-book-author {
   font-size: 10px;
@@ -183,9 +181,8 @@ export default {
   font-size: 10px;
 }
 
-.fa-null-description{
-    font-size: 10px;
-
+.fa-null-description {
+  font-size: 10px;
 }
 
 .books {
@@ -197,26 +194,24 @@ export default {
   border-left: 10px solid rgb(255, 233, 107);
   box-shadow: 5px 5px 15px rgb(155, 132, 3);
   min-width: 200px;
-  max-width:200px;
+  max-width: 200px;
   height: 265px;
   margin: 25px;
   text-align: center;
   background-color: white;
   word-wrap: break-word;
-  padding:10px;  
-
-  
+  padding: 10px;
 }
 
-.fa-book-img{
+.fa-book-img {
   width: 140px;
   align-self: center;
 }
 
 .show-books {
   display: flex;
-  margin-left:1630px;
-  height:350px;
+  margin-left: 50px;
+  height: 350px;
   flex-wrap: nowrap;
 }
 
@@ -239,4 +234,8 @@ export default {
   align-self: center;
 }
 
+.fa-prize-table {
+  width: 650px;
+  align-self: center;
+}
 </style>

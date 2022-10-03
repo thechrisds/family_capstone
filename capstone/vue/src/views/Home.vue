@@ -133,7 +133,7 @@
         <br>
         <a href="#box-1" class="link-style" id="team-members">Team R.O.T.R</a>
       </h1>
-      <p>Readers of the Roundtable</p>
+      <p class="team-name" align="center">Readers of the Roundtable</p>
       <div class="members">
         <img src="@/assets/team.jpg" class="team-pic" />
         <h2>James Cagle | Chris Shriver | Daniel Song</h2>
@@ -413,6 +413,13 @@ export default {
 .members {
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.team-name{
+  font-weight: 800;
+  font-size: 20px;
+  color: rgb(67, 89, 185);
+  text-shadow:2px 2px 12px blueviolet;
 }
 
 </style>

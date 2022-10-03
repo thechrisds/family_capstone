@@ -51,6 +51,7 @@ export default {
 .logged-activity-container {
   display: flex;
   justify-content: space-evenly;
+  align-content: center;
 }
 
 
@@ -60,10 +61,30 @@ export default {
   border-bottom: 10px solid rgb(65, 15, 80);
   border-left: 10px solid rgb(217, 161, 255);
   box-shadow: 5px 5px 15px rgb(107, 3, 155);  
-  width: 300px;
-  margin-bottom:40px;
+  width: 250px;
   min-width: 200px;
   text-align: center;
   background-color: rgb(255, 255, 255);
+  margin-top:50px;
+  margin-left:40px;
+  margin-right: 40px;
 }
+
+.activity-reader{
+  font-size:25px;
+}
+
+.activity-book{
+  font-size: 20px;
+}
+
+.activity-date{
+  font-size: 20px;
+}
+
+.activity-minutes{
+  font-size: 20px;
+}
+
+
 </style>

@@ -12,7 +12,7 @@
           class="carousel slide"
           data-bs-ride="true"
         >
-          <div class="carousel-inner">
+          <div class="activity-carousel-inner">
             <div v-for="activity in activities" :key="activity.id">
               <div class="carousel-item active">
                 <activity v-bind="activity" />
@@ -91,8 +91,9 @@ export default {
 }
 
 .activities-carousel{
-  border:2px solid black;
   height: 325px;
+  background-color: rgb(168, 140, 182);
+  margin-top:70px;
 }
 
 .activity-sub {
@@ -107,7 +108,6 @@ export default {
 .activity-main-loaded{
   display: flex;
   flex-direction: column;
-
 }
 
 #add-activities {
@@ -118,7 +118,14 @@ export default {
   height: auto;
   padding-bottom:30px;
   margin-left: auto;
-  margin-right:auto;
-  
+  margin-right:auto; 
 }
+
+.activity-carousel-inner{
+  display:flex;
+  justify-content: center;
+  margin-top:-40px;
+}
+
+
 </style>
