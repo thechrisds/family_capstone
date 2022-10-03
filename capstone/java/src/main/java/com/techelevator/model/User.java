@@ -12,6 +12,7 @@ public class User {
    private String username;
    private String firstname;
    private String lastname;
+   private int totalMinutes;
    @JsonIgnore
    private String password;
    @JsonIgnore
@@ -83,6 +84,10 @@ public class User {
    public void setAuthorities(Set<Authority> authorities) {
       this.authorities = authorities;
    }
+
+   public int getTotalMinutes() {return totalMinutes;}
+
+   public void setTotalMinutes(int totalMinutes) { this.totalMinutes = totalMinutes; }
 
    public void setAuthorities(String authorities) {
       String[] roles = authorities.split(",");

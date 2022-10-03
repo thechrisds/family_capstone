@@ -8,7 +8,7 @@
         Name: {{ user.firstname }} {{ user.lastname }}
         <br />
         <br />
-        Total minutes read:
+        Total minutes read: {{ user.totalMinutes }} minutes.
         <br /><br>
         <button class="delete-user" v-on:click="deleteMember(user.id)">
           Delete Member
@@ -30,6 +30,7 @@ export default {
       username: this.$store.state.user.username,
       firstname: this.$store.state.user.firstname,
       lastname: this.$store.state.user.lastname,
+      totalminutes: this.$store.state.user.totalminutes,
       id: this.$store.state.user.id,
     };
   },
