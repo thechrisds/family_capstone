@@ -133,7 +133,6 @@ export default {
 .add-activity-container {
   display: flex;
   justify-content: space-evenly;
-  
   flex-direction: column;
   width: 90%;
   margin-left:22px;
