@@ -28,7 +28,7 @@ public class PrizeController {
         List<Prize> prizeList = new ArrayList<>();
         return prizeList = prizeDao.findPrizesByFamilyId(userDao.findFamilyIdByUsername(principal.getName()));
     }
-
+    
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/prizes", method = RequestMethod.POST)
     public void addPrize(@RequestBody Prize prize, Principal principal) throws Exception {

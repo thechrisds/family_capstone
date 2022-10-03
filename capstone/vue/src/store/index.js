@@ -21,7 +21,8 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     books: [],
-    activities: [] 
+    activities: [] ,
+    prize: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -39,6 +40,10 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    SET_PRIZE(state, prize){
+      state.prize = prize;
+
     }
   }
 })

@@ -13,7 +13,8 @@ import FamilyAccount from '../views/FamilyAccount.vue'
 import InvalidPath from '../views/InvalidPath.vue'
 import PersonalLibrary from '../views/PersonalLibrary.vue'
 import Prizes from '../views/Prizes.vue'
-
+import AddPrize from '../views/AddPrize.vue'
+import EditPrize from '../views/EditPrize.vue'
 Vue.use(Router)
 
 /**
@@ -116,6 +117,16 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: "/prizes/add",
+      name: "add-prize",
+      component: AddPrize
+    },
+    {
+      path: "/prizes/edit/:id",
+      name: "edit-prize",
+      component: EditPrize
     },
     {
       path: "/:catchAll(.*)",
