@@ -9,6 +9,7 @@
         :items="prizes"
         :fields="fields"
         @row-clicked="clickDeleteID"
+        class="prizes-table"
       >
       </b-table>
     </div>
@@ -89,5 +90,9 @@ export default {
   margin-top: 100px;
   margin-left: 100px;
   margin-right: 100px;
+}
+
+.prizes-table{
+    font-size: 1.3vw;
 }
 </style>

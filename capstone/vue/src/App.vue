@@ -47,24 +47,20 @@
 
 <style>
 body {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-family: mer;
-  font-weight: bolder;
+  font-family: 'Lora', serif;
   font-size: 12px;
 }
 #app {
   display: flex;
   flex-direction: column;
-  min-width: 450px;
+  min-width: 1000px;
   margin: auto;
   max-width: 1500;
+  background-color: #f4f7f6;
 }
 
-
-
-
 .header {
-  background-color: rgb(214, 205, 205);
+  background-color: #24305e;
   position: fixed;
   width: 100%;
   height: 60px;
@@ -75,7 +71,7 @@ body {
 
 .header-bar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding-top: 0px;
   padding-left: 5px;
@@ -88,20 +84,21 @@ body {
 .top-nav {
   display: flex;
   justify-content: space-between;
-  width: 800px;
+  width: 500px;
   padding-bottom: 5px;
-  color: rgb(52, 45, 146);
+  color: white;
   margin-right: 10px;
   margin-left: 10px;
 }
 
 .title {
   font-weight: 900;
-  color: rgb(28, 95, 196);
+  color: rgb(255, 255, 255);
   font-size: 28px;
  text-shadow: 2px 2px 2px gray;
   margin-left: 20px;
   font-family: 'Lora', serif;
+  margin-top:13px;
   
 }
 
@@ -120,12 +117,12 @@ body {
   padding-top: 20px;
   text-decoration: none;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   padding-bottom: 10px;
-  text-shadow: 1px 1px 3px gray;
+  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .links1 {
-  color: rgb(28, 95, 196);
+  color: white;
 }
 
 .links1:hover {
@@ -134,7 +131,7 @@ body {
 }
 
 .links2 {
-  color: rgb(28, 95, 196);
+  color: white;
 }
 .links2:hover {
   color: #358a3c;
@@ -142,28 +139,28 @@ body {
 }
 
 .links3 {
-  color: rgb(28, 95, 196);}
+  color: white;}
 .links3:hover {
   color: #3537cc;
   text-shadow: 3px 3px 3px gray
 }
 
 .links4 {
-  color: rgb(28, 95, 196);}
+  color: white;}
 .links4:hover {
   color: #e77e1b;
   text-shadow: 3px 3px 3px gray
 }
 
 .links5 {
-  color: rgb(28, 95, 196);}
+  color: white;}
 .links5:hover {
   color: rgb(155, 13, 155);
   text-shadow: 3px 3px 3px gray
 }
 
 .links6 {
-  color: rgb(28, 95, 196);}
+  color: white;}
 .links6:hover {
   color: rgb(155, 13, 155);
   text-shadow: 3px 3px 3px gray

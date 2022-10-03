@@ -6,7 +6,7 @@
     <div v-else id="main-family">
       <div class="activities-column">
         <div id="family-library">
-          <div class="family-library-title">Library</div>
+          <div class="family-library-title">Library.</div>
           <div class="family-library-books">
             <div class="show-books">
               <div
@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="prizes-box">
-          <div class="prizes-title">Prizes</div>
+          <div class="prizes-title">Prizes.</div>
           <div class="fa-prize-table">
             <prize-table />
           </div>
@@ -81,6 +81,7 @@ export default {
 
 <style>
 #family-account {
+  
   min-height: 0;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -112,42 +113,39 @@ export default {
   display: flex;
   justify-content: center;
   align-content: flex-start;
-
   height: 300px;
   min-height: 0;
   width: 350px;
-  box-shadow: 5px 5px 15px rgb(153, 46, 46);
-  border: 1px solid rgb(116, 38, 38);
   height: 100%;
   border-radius: 10px;
   padding-bottom: 25px;
-  background-color: white;
+  background-color: #F76c6c;
+  margin-bottom:20px;
 }
 
 #add-user-box {
   display: flex;
   flex-wrap: wrap;
-  box-shadow: 5px 5px 15px rgb(36, 114, 40);
-  border: 1px solid rgb(12, 107, 9);
   border-radius: 10px;
-  background-color: white;
+  background-color:#24305e;
 }
 
 #family-library {
   display: flex;
   flex-direction: column;
-  box-shadow: 5px 5px 15px rgb(58, 58, 97);
-  border: 1px solid rgb(15, 29, 90);
   width: 700px;
-  height: 500px;
+  height: 350px;
   margin-top: 20px;
   border-radius: 10px;
   font-size: 18px;
-  background-color: white;
+  background-color: #a8d0e6;
+  color:white;
+  font-weight: 600;
 }
 
 .family-library-title {
-  background-color: rgb(166, 166, 228);
+   margin-top:15px;
+  margin-left:-15px;
   width: 90%;
   align-self: center;
 }
@@ -164,25 +162,24 @@ export default {
   height: auto;
   overflow-x: scroll;
   overflow-y: hidden;
-  border: solid 3px lavender;
-  box-shadow: 5px 5px 3px lavender;
-  margin-top: 40px;
+  
+  margin-top: 20px;
   border-radius: 5px;
 }
 
 .fa-book-title {
-  font-size: 15px;
+  font-size: 1vw;
 }
 .fa-book-author {
-  font-size: 10px;
+  font-size: .8vw;
 }
 
 .fa-book-description {
-  font-size: 10px;
+  font-size: .7vw;
 }
 
 .fa-null-description {
-  font-size: 10px;
+  font-size: .7vw;
 }
 
 .books {
@@ -193,9 +190,9 @@ export default {
   border-bottom: 10px solid rgb(175, 133, 25);
   border-left: 10px solid rgb(255, 233, 107);
   box-shadow: 5px 5px 15px rgb(155, 132, 3);
-  min-width: 200px;
+  min-width: 150px;
   max-width: 200px;
-  height: 265px;
+  height: 200px;
   margin: 25px;
   text-align: center;
   background-color: white;
@@ -204,38 +201,51 @@ export default {
 }
 
 .fa-book-img {
-  width: 140px;
+  width: 60px;
   align-self: center;
 }
 
 .show-books {
   display: flex;
   margin-left: 50px;
-  height: 350px;
+  height: 250x;
   flex-wrap: nowrap;
 }
 
 .prizes-box {
   display: flex;
   flex-direction: column;
-  box-shadow: 5px 5px 15px rgb(248, 170, 81);
-  border: 1px solid rgb(15, 29, 90);
   width: 700px;
   height: 400px;
   margin-top: 20px;
   border-radius: 10px;
   font-size: 18px;
-  background-color: white;
+  background-color: #374785;
 }
 
 .prizes-title {
-  background-color: rgb(243, 189, 128);
+
   width: 90%;
   align-self: center;
+    color:white;
+  font-weight: 600;
+   margin-top:15px;
+  margin-left:-15px;
 }
 
 .fa-prize-table {
   width: 650px;
+  display: flex;
   align-self: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  width: 95%;
+  height: 350px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  margin-top: 20px;
 }
 </style>

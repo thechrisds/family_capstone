@@ -1,9 +1,9 @@
 <template>
   <div id="account-list">
-    <div class="top-account-bar">Family Members</div>
+    <div class="top-account-bar">Family.</div>
     <div class="fm-cards">
       <div class="family-members" v-for="user in users" v-bind:key="user.id">
-        <h3>Username: {{ user.username }}</h3>
+        <h5>Username: {{ user.username }}</h5>
 
         Name: {{ user.firstname }} {{ user.lastname }}
         <br />
@@ -86,22 +86,32 @@ body {
 .top-account-bar {
   overflow: hidden;
   height: 25px;
-  background-color: lightpink;
+  margin-top:15px;
+  margin-left:-15px;
   width: 100%;
   font-size: 16px;
+  color:white;
+  font-weight:600;
 }
 
 .family-members {
-  width: 300px;
-  border: solid 3px lavender;
-  box-shadow: 5px 5px 3px lavender;
+  width: 250px;
+  background-color: white;
   border-radius: 10px;
   padding-bottom: 10px;
+  margin-top: 20px;
+  margin-left:auto;
+  margin-right:auto;
+  padding-left:20px;
+  padding-top:5px;
 }
 
 .fm-cards{
   display: flex;
   flex-direction: column;
+  font-size:1vw;
+  justify-content: space-evenly;
+  margin: 10px;
 
 }
 .delete-user {

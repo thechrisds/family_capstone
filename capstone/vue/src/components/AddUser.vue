@@ -1,7 +1,9 @@
 <template>
   <div id="add-user">
     <form class="new-user-form">
-      Add a member to your family:
+      <h4 class="add-user-title">
+      Add.
+      </h4>
       <input
         class="user-name"
         type="text"
@@ -79,7 +81,7 @@ export default {
   display: flex;
   align-items: center;
   width: 200px;
-  border: solid, 2px, gray;
+  
   margin-left:25px;
   padding-bottom: 10px;
 
@@ -97,6 +99,13 @@ export default {
   background-color: rgb(37, 226, 78);
 }
 
+.add-user-title {
+  color:white;
+  font-weight:600;
+  font-size: 16px;
+   margin-top:15px;
+  margin-left:0;
+}
 
 
 </style>
