@@ -61,20 +61,16 @@ body {
 }
 
 
-#family-account {
-  min-height: 0;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 100px;
-}
+
 
 .header {
-  background-color: rgb(212, 199, 199);
+  background-color: rgb(214, 205, 205);
   position: fixed;
   width: 100%;
   height: 60px;
   margin: -2px;
   border-top: 10px solid black;
+  z-index: 1000;
 }
 
 .header-bar {
@@ -86,6 +82,7 @@ body {
   padding-right: 5px;
   height: 30px;
   margin-right: 10px;
+  margin-top:5px;
 }
 
 .top-nav {
@@ -178,6 +175,19 @@ body {
 
 .title-link{
   margin-left:40px;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(159, 159, 173);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+}
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
 }
 
 </style>

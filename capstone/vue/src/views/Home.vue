@@ -131,8 +131,9 @@
     <div id="box-4">
       <h1 class="home-title">
         <br>
-        <a href="#box-1" class="link-style" id="team-members">Team Members</a>
+        <a href="#box-1" class="link-style" id="team-members">Team R.O.T.R</a>
       </h1>
+      <p>Readers of the Roundtable</p>
       <div class="members">
         <img src="@/assets/team.jpg" class="team-pic" />
         <h2>James Cagle | Chris Shriver | Daniel Song</h2>
@@ -413,4 +414,5 @@ export default {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
 </style>

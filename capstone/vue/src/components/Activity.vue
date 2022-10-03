@@ -1,43 +1,48 @@
 <template>
   <div class="logged-activity-container">
-    <div class="la-title">
-      <h2>Logged Family Reading</h2>
-    </div>
+
     <div
       class="activityList"
-      v-for="activity in activities"
-      v-bind:key="activity.userName"
-      v-bind:activity="activity"
     >
-      <h2 class="activity-reader">{{ "User: " + activity.userName }}</h2>
-      <h3 class="activity-book">{{ "Book: " + activity.bookTitle }}</h3>
-      <h3 class="activity-date">{{ "Date Read: " + activity.dateRead }}</h3>
+      <h2 class="activity-reader"> {{ "User: " + userName }}</h2>
+      <h3 class="activity-book">{{ "Book: " + bookTitle }}</h3>
+      <h3 class="activity-date">{{ "Date Read: " + dateRead }}</h3>
       <h3 class="activity-minutes">
-        {{ "Minutes Read: " + activity.timeInMinutes }}
+        {{ "Minutes Read: " + timeInMinutes }}
       </h3>
-      <p class="activity-notes">{{ "Notes: " + activity.activityNotes }}</p>
+      <p class="activity-notes">{{ "Notes: " + activityNotes }}</p>
     </div>
   </div>
 </template>
 
 <script>
-import activityService from "@/services/ActivityService.js";
+//import activityService from "@/services/ActivityService.js";
 export default {
   name: "view-activity",
+  props:{
+    userName: String,
+    bookTitle: String,
+    dateRead: String,
+    timeInMinutes: Number,
+    activityNotes: String,
+    testProp: String,
+    },
   data() {
     return {
-      activities: [],
-      users: [],
-      id: "",
+     // activities: [],
+      //users: [],
+      //id: "",
       username: this.$store.state.user.username,
     };
   },
   created() {
-    activityService.seeFamilyActivity().then((response) => {
+    console.log(this.testProp);
+    /*activityService.seeFamilyActivity().then((response) => {
       console.log(response);
       this.activities = response.data;
     }).catch,
       activityService.see;
+      */
   },
 };
 </script>
@@ -48,17 +53,17 @@ export default {
   justify-content: space-evenly;
 }
 
-.la-title {
-  background-color: rgb(115, 115, 180);
-}
 
 .activityList {
-  border: 2px rgb(98, 154, 219) solid;
-  border-radius: 20px;
+  border-top: 10px rgb(221, 105, 250) solid;
+  border-right: 10px rgb(133, 60, 161) solid;
+  border-bottom: 10px solid rgb(65, 15, 80);
+  border-left: 10px solid rgb(217, 161, 255);
+  box-shadow: 5px 5px 15px rgb(107, 3, 155);  
   width: 300px;
-  margin: 20px;
+  margin-bottom:40px;
   min-width: 200px;
   text-align: center;
-  background-color: rgb(232, 250, 255);
+  background-color: rgb(255, 255, 255);
 }
 </style>
