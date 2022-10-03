@@ -5,7 +5,7 @@
     </div>
     <div v-else class="activity-main-loaded">
       <div class="activity-sub">
-        <h2 class="la-title">Logged Reading Activities</h2>
+        <h2 class="la-title">Logged Family Reading Activities</h2>
         <div class="activities-carousel">
         <div
           id="carouselExampleIndicators"

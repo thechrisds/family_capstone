@@ -3,6 +3,14 @@
     <h2 class="add-activity-title">Record your minutes!</h2>
     <div class="add-activity-form-container">
       <form v-on:submit.prevent="submitForm" class="new-activity-form">
+        <label for="userName">Reader: </label>
+        <input
+          type="text"
+          placeholder="UserId"
+          name="readerId"
+          id="readerId"
+          v-model="activity.readerId"
+        />
 
         <label for="title">What did you read?</label>
 
@@ -24,7 +32,12 @@
         />
         <br />
         <label for="read-type">How did you read?</label>
-        <select name="read-type" type="number" id="type" v-model="activity.formatId">
+        <select
+          name="read-type"
+          type="number"
+          id="type"
+          v-model="activity.formatId"
+        >
           <option value="" disabled selected>Please Select Type</option>
           <option value="1">Paper</option>
           <option value="2">Digital</option>
@@ -42,8 +55,8 @@
           v-model="activity.activityNotes"
         />
         <div class="add-activity-sub-reset-buttons">
-        <input class="add-activity-submit" type="submit" />
-        <input class="add-activity-reset" type="reset" />
+          <input class="add-activity-submit" type="submit" />
+          <input class="add-activity-reset" type="reset" />
         </div>
       </form>
     </div>
@@ -81,8 +94,8 @@ export default {
       });
     },
   },
-  created(){
-      setTimeout(() => {
+  created() {
+    setTimeout(() => {
       this.isLoading = false;
     }, 1250);
   },
@@ -90,20 +103,19 @@ export default {
 </script>
 
 <style scoped>
-
 #readerId {
   box-shadow: 1px 1px 2px gray;
 }
 
-#current-book{
+#current-book {
   box-shadow: 1px 1px 2px gray;
 }
 
-#logged-minutes{
+#logged-minutes {
   box-shadow: 1px 1px 2px gray;
 }
 
-#type{
+#type {
   box-shadow: 1px 1px 2px gray;
 }
 
@@ -111,7 +123,7 @@ export default {
   box-shadow: 1px 1px 2px gray;
 }
 
-.add-activity-title{
+.add-activity-title {
   background-color: rgb(152, 230, 152);
   text-shadow: 1px 1px 3px gray;
 }
@@ -122,21 +134,21 @@ export default {
   justify-content: space-evenly;
 }
 
-.add-activity-submit{
+.add-activity-submit {
   box-shadow: 2px 2px 2px gray;
 }
 
 .add-activity-reset {
-    box-shadow: 2px 2px 2px gray;
+  box-shadow: 2px 2px 2px gray;
 }
 
 .add-activity-container {
   display: flex;
   flex-direction: column;
   width: 90%;
-  height:auto;
- margin-left:auto;
- margin-right:auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .add-activity-form-container {
@@ -150,8 +162,8 @@ export default {
   text-align: center;
   max-width: 85%;
   padding: 15px;
-  margin:auto;
-  margin-top:10px;
+  margin: auto;
+  margin-top: 10px;
 }
 
 input[type="text"],

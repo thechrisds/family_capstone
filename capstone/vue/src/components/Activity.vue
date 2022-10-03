@@ -4,7 +4,7 @@
     <div
       class="activityList"
     >
-      <h2 class="activity-reader"> {{ "User: " + userName }}</h2>
+      <h2 class="activity-reader"> {{ "Reader: " + userName }}</h2>
       <h3 class="activity-book">{{ "Book: " + bookTitle }}</h3>
       <h3 class="activity-date">{{ "Date Read: " + dateRead }}</h3>
       <h3 class="activity-minutes">

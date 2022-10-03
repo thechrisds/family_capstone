@@ -3,14 +3,14 @@ BEGIN TRANSACTION;
 INSERT INTO family_account (family_name) VALUES ('Smith');
 INSERT INTO family_account (family_name) VALUES ('Apple');
 
-INSERT INTO users (username,is_parent,family_id,password_hash,role) VALUES ('Tom',true,1001,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,is_parent,family_id,password_hash,role) VALUES ('user1',true,1001,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,is_parent,family_id,password_hash,role) VALUES ('user2',true,1002,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,is_parent,family_id,password_hash,role) VALUES ('user3',true,1002,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,is_parent,family_id,password_hash,role) VALUES ('Edward',true,1002,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,is_parent,family_id,password_hash,role) VALUES ('Jane',false, 1001, '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,is_parent,family_id,password_hash,role) VALUES ('Chunk',false,1001,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,is_parent,family_id,password_hash,role) VALUES ('admin',true,1002,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
+INSERT INTO users (username,is_parent,family_id, total_minutes, password_hash,role) VALUES ('Tom',true,1001,5,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,is_parent,family_id, total_minutes, password_hash,role) VALUES ('user1',true,1001,25,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,is_parent,family_id, total_minutes, password_hash,role) VALUES ('user2',true,1002,100,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,is_parent,family_id, total_minutes, password_hash,role) VALUES ('user3',true,1002,3000,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,is_parent,family_id, total_minutes, password_hash,role) VALUES ('Edward',true,1002,5,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,is_parent,family_id, total_minutes, password_hash,role) VALUES ('Jane',false, 1001,15, '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,is_parent,family_id, total_minutes, password_hash,role) VALUES ('Chunk',false,1001,25,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,is_parent,family_id, total_minutes, password_hash,role) VALUES ('admin',true,1001,100,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
 INSERT INTO library (isbn,book_title,book_author,cover_img,genre, family_id) VALUES (9780439708180, 'Harry Potter and the Wizard Stone Thing', 'J.K. Rowling', 'www.picture.com','wizards!', 1001);
 INSERT INTO library (isbn,book_title,book_author,cover_img,genre, family_id) VALUES (9780345538987, 'DinoSaur Park', 'Mike Chrichton', 'www.picture.com','pretty okay, they made a movie', 1002);
