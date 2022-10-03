@@ -189,6 +189,7 @@ export default {
   background-color: white;
   word-wrap: break-word;
   padding:10px;  
+
   
 }
 
@@ -199,7 +200,7 @@ export default {
 
 .show-books {
   display: flex;
-  margin-left:1950px;
+  margin-left:1630px;
   height:350px;
   flex-wrap: nowrap;
 }
