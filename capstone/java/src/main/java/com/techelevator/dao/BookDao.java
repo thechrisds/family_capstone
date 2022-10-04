@@ -25,5 +25,7 @@ public interface BookDao {
 
     boolean addBook(String bookTitle, String bookAuthor, long isbn, String genre, String description, int family_id);
 
-    boolean deleteBook(long isbn); //delete via isbn? idk
+    void deleteBook(Book book); //delete via isbn? idk
+
+    void editBook(Book book);
 }

@@ -68,7 +68,7 @@ public class JdbcBookDao implements BookDao{
     public List<Book> findBooksByFamilyId(int familyId){
         Book book = null;
         List<Book> bookList = new ArrayList<>();
-        String sql = "SELECT * FROM library WHERE family_id = ?";
+        String sql = "SELECT * FROM library WHERE family_id = ? AND deleted = false";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, familyId);
         while (results.next()){
             book = mapRowToBook(results);
@@ -116,24 +116,18 @@ public class JdbcBookDao implements BookDao{
     }
 
     @Override
-    public boolean deleteBook(long isbn) {
-        boolean success = true;
-        String a = "";
-        a += isbn;
-        String sql;
+    public void deleteBook(Book book) {
+        String sql = "UPDATE library SET isbn = ?, book_title = ?, book_author = ?, genre = ?, description = ?, deleted = ? WHERE book_id = ?";
+        book.setDeleted(true);
+        jdbcTemplate.update(sql, book.getIsbn(), book.getBookTitle(), book.getBookAuthor(), book.getGenre(), book.getDescription(), book.isDeleted(), book.getBookID());
 
-        List<Book> bookList = findAll();
-        for (Book i : bookList){
-            if (i.getBookID() == isbn){
-                sql = "DELETE FROM library WHERE book_id = ?";
-                jdbcTemplate.update(sql, isbn);
-            } else if (i.getIsbn() == isbn){
-                sql = "DELETE FROM library WHERE isbn = ?";
-            } else {
-                success = false;
-            }
-        }
-        return success;
+
+    }
+
+    @Override
+    public void editBook(Book book){
+        String sql = "UPDATE library SET isbn = ?, book_title = ?, book_author = ?, genre = ?, description = ? WHERE book_id = ?";
+        jdbcTemplate.update(sql, book.getIsbn(), book.getBookTitle(), book.getBookAuthor(), book.getGenre(), book.getDescription(), book.getBookID());
     }
 
     private Book mapRowToBook(SqlRowSet results){
@@ -146,6 +140,7 @@ public class JdbcBookDao implements BookDao{
         book.setGenre(results.getString("genre"));
         book.setDescription(results.getString("description"));
         book.setFamilyId(results.getInt("family_id"));
+        book.setDeleted(results.getBoolean("deleted"));
 
 
         return book;

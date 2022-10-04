@@ -18,6 +18,7 @@ import java.util.List;
 public class BookController {
     @Autowired
     private BookDao bookDao;
+    @Autowired
     private UserDao userDao;
 
 
@@ -42,13 +43,13 @@ public class BookController {
         }
     }
 
-    @PreAuthorize("isAuthenticated()")
-    @RequestMapping(value = "/books/{isbn}", method = RequestMethod.DELETE)
-    public void deleteBook(@PathVariable int isbn) throws Exception { //can be isbn or book id technically
+
+    @RequestMapping(value = "/books/delete", method = RequestMethod.PUT)
+    public void deleteBook(@RequestBody Book book){ //can be isbn or book id technically
 //        if (!bookDao.deleteBook(isbn)){
 //            throw new Exception("Error deleting book.");
 //        }         Not working how I want it to
-        bookDao.deleteBook(isbn);
+        bookDao.deleteBook(book);
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -57,6 +58,12 @@ public class BookController {
         List<Book> bookList = new ArrayList<>();
         int familyId = userDao.findFamilyIdByUsername(principal.getName());
         return bookList = bookDao.findBooksByFamilyId(familyId);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(value="/books", method = RequestMethod.PUT)
+    public void editBook(@RequestBody Book book){
+        bookDao.editBook(book);
     }
 
 

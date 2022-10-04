@@ -4,7 +4,7 @@
       <img class="book-turner" src="../assets/bookturner-small.gif" />
     </div>
     <div v-else id="all-books">
-      <view-book />
+      <global-book />
 
       <div class="add-book">
       <button v-on:click.prevent="showForm = true">
@@ -17,13 +17,14 @@
 </template>
 
 <script>
-import ViewBook from "@/components/ViewBook";
+import GlobalBook from "@/components/GlobalBook";
 import AddBook from "@/components/AddBook";
+
 
 export default {
   components: {
-    ViewBook,
-    AddBook,
+    GlobalBook,
+    AddBook
   },
   data() {
     return {

@@ -18,5 +18,13 @@ export default {
     
     googleBook(isbn){
       return axios.get('https://www.googleapis.com/books/v1/volumes?q=' + isbn);
+    },
+    
+    editBook(book){
+      return axios.put('/books', book);
+    },
+
+    deleteBook(book){
+      return axios.put('/books/delete', book);
     }
   }

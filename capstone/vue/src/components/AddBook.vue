@@ -83,7 +83,7 @@ export default{
                 if(response.status === 200){
                     console.log(response);
                     alert("Success!");
-                    this.$router.push({name: 'books'})
+                    this.$router.push({name: 'showBooks'})
                 } else if (response.status === 500){
                     alert("Adding book failed!")
                 }
