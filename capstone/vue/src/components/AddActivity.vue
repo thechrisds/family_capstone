@@ -16,7 +16,7 @@
 
         <input
           type="text"
-          placeholder="ISBN"
+          placeholder="Book Id"
           name="current-book"
           id="current-book"
           v-model="activity.isbn"
