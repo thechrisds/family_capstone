@@ -1,6 +1,6 @@
 <template>
     <div class="tb-container" v-b-modal.modal-1>
-        <div class="tb-bookList" v-for="book in books" v-bind:key="book.bookID" v-bind:book="book" @click="()=>{setOldBook(book);setbook(book)}" @mouseover="hover = true">
+        <div class="tb-bookList" v-for="book in books" v-bind:key="book.bookID" v-bind:book="book" @click="()=>{setbook(book)}" @mouseover="hover = true">
             <div class="wrapper" >
 <div class="book">
   <div class="inner-book">
@@ -98,6 +98,7 @@ export default{
               bookId: "",
               deleted: false
             },
+            newBook: {},
             options: [
                 {value: "Genre", text: "Select a Genre", disabled: true},
                 {value: 'Fiction', text: 'Fiction'},
@@ -136,9 +137,18 @@ export default{
           },
           setbook(item, book){
             this.book = item;
-            console.log(item)
-            console.log(book)
-            console.log(book.bookAuthor)
+            console.log(item, book)
+            this.oldBook.bookAuthor = item.bookAuthor;
+            this.oldBook.bookID = item.bookID;
+            this.oldBook.bookTitle = item.bookTitle;
+            this.oldBook.bookType = item.bookType;
+            this.oldBook.deleted = item.deleted;
+            this.oldBook.description = item.description;
+            this.oldBook.familyId = item.familyId;
+            this.oldBook.genre = item.genre;
+            this.oldBook.isbn = item.isbn;
+            console.log(this.oldBook);
+            console.log(item.bookAuthor)
                      
           },
           saveBook(){
@@ -151,8 +161,9 @@ export default{
              this.boxOne = '';
              this.$bvModal.msgBoxConfirm("Are you sure you want to delete this book?").then(value =>{
                if (value === true){
+                 console.log(this.oldBook)
                  bookService.deleteBook(this.oldBook).then(response =>{
-                   console.log(response);
+                   console.log(this.oldBook.bookID, response);
                    this.$router.go({name: "showBooks"})
                  })
                }
