@@ -113,8 +113,26 @@ body {
   font-size:1vw;
   justify-content: space-evenly;
   margin: 10px;
-
+  padding-right:5px;
+  padding-top:10px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 500px;
 }
+
+.fm-cards::-webkit-scrollbar {
+  width: 8px;               /* width of the entire scrollbar */
+}
+
+.fm-cards::-webkit-scrollbar-thumb {
+  background-color: rgb(159, 159, 173);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+}
+.fm-cards::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
 .delete-user {
   background-color: white;
   border-radius: 5px;

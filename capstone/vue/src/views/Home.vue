@@ -129,7 +129,6 @@
     <div id="box-3">
       <div class="box3-title-box">
         <h1 class="home-title">
-          <br /><br />
           <a href="#box-4" class="link-style">Get started today!</a>
         </h1>
         <p class="sub-title2">
@@ -148,26 +147,24 @@
       <a href="#box-4" class="body-link"> About Us</a>
     </div>
 
-        <div class="white-space4">
+    <div id="box-4">
+      <div class="box4-title-box">
+        <h1 class="home-title">
+          <br />
+          <a href="#box-1" class="link-style" id="team-members">Team R.O.T.R</a>
+        </h1>
+        <p class="team-name" align="center">Readers of the Roundtable</p>
+        <div class="members">
+          <img src="@/assets/team.jpg" class="team-pic" />
+          <h2>James Cagle | Chris Shriver | Daniel Song</h2>
+        </div>
+      </div>
+    </div>
+    <div class="white-space4">
       <a href="#box-1" class="body-link"> Top of the page</a>
       <a href="#box-2" class="body-link"> How it works</a>
       <a href="#box-3" class="body-link"> Register|Login</a>
     </div>
-
-    <div id="box-4">
-      <div class="box4-title-box">
-      <h1 class="home-title">
-        <br />
-        <a href="#box-1" class="link-style" id="team-members">Team R.O.T.R</a>
-      </h1>
-      <p class="team-name" align="center">Readers of the Roundtable</p>
-      <div class="members">
-        <img src="@/assets/team.jpg" class="team-pic" />
-        <h2>James Cagle | Chris Shriver | Daniel Song</h2>
-      </div>
-      </div>
-    </div>
-
   </div>
 </template>
 
@@ -180,7 +177,7 @@ export default {
 
 <style>
 .home {
-  height: 5000px;
+  height: 3500px;
   margin-top: 100px;
   min-width: 1000px;
 }
@@ -216,12 +213,12 @@ export default {
 .white-space4 {
   display: flex;
   justify-content: space-evenly;
-  height: 200px;
+  height: 50px;
   width: 60%;
   margin: auto;
-  margin-top:2000px;
+  margin-top:-80px;
   background-color: #f4f7f6;
-  margin-bottom: -100px;
+
 }
 
 .body-link {
@@ -243,7 +240,7 @@ export default {
 #box-2 {
   background-image: url("../assets/bookcolumn2-2.png");
   background-repeat: no-repeat;
-  
+
   padding-bottom: 3px;
   height: 700px;
 }
@@ -252,27 +249,39 @@ export default {
   background-image: url("../assets/bookcolumn2-3.png");
   background-color: white;
   background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  margin-top:400px;
 }
 
 .box3-title-box {
-  margin-right: 600px;
+  width: 650px;
+}
+
+.sub-title2 {
+  text-align: center;
+}
+
+#register-or-login {
+  font-size: 30px;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 #box-4 {
   background-image: url("../assets/bookcolumn2-4.png");
-  background-color: white;
+  background-color: #f4f7f6;
   background-repeat: no-repeat;
-  background-color: white;
   padding-top: 5px;
   height: 500px;
 }
 
-.box4-title-box{
+.box4-title-box {
   display: flex;
   flex-direction: column;
-  margin-right:600px;
-  margin-top:-70px;
-
+  margin-right: 600px;
+  margin-top: -70px;
 }
 
 .home-title {
@@ -284,20 +293,14 @@ export default {
 }
 
 .home-title-box {
-  display: flex;
-  flex-direction: column;
+  width: 500px;
   margin-right: 600px;
   padding-top: 200px;
-}
-.home-title-box2 {
-  display: flex;
-  flex-direction: column;
-  margin-right: 600px;
 }
 
 .link-style {
   text-decoration: none;
-  color: rgb(28, 95, 196);
+  color: #24305e;
   font-family: "Lora", serif;
   font-size: 80px;
 }
@@ -305,16 +308,6 @@ export default {
 .sub-title {
   text-align: center;
   font-size: 20px;
-}
-
-.sub-title2 {
-  text-align: center;
-}
-
-#register-or-login {
-  font-size: 30px;
-  text-decoration: none;
-  font-weight: 600;
 }
 
 .card-title {
@@ -328,12 +321,17 @@ export default {
 
 .how-it-works-container {
   height: 350px;
-  width: 50%;
+  width: 500px;
   align-self: center;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   margin: auto;
-  margin-left: 30px;
+  margin-left: 50px;
+}
+.home-title-box2 {
+  margin-right: 600px;
+  margin-left: 20px;
+  width: 550px;
 }
 
 .library-card {

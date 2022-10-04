@@ -112,8 +112,6 @@ export default {
 #account-list-box {
   display: flex;
   justify-content: center;
-  align-content: flex-start;
-  height: 300px;
   min-height: 0;
   width: 350px;
   height: 100%;
@@ -162,9 +160,21 @@ export default {
   height: auto;
   overflow-x: scroll;
   overflow-y: hidden;
-  
   margin-top: 20px;
   border-radius: 5px;
+}
+
+.family-library-books::-webkit-scrollbar {
+  width: 8px;               /* width of the entire scrollbar */
+}
+
+.family-library-books::-webkit-scrollbar-thumb {
+  background-color: rgb(159, 159, 173);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+}
+.family-library-books::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
 }
 
 .fa-book-title {
@@ -198,6 +208,7 @@ export default {
   background-color: white;
   word-wrap: break-word;
   padding: 10px;
+  color:black;
 }
 
 .fa-book-img {
