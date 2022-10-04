@@ -57,6 +57,7 @@ CREATE TABLE library (
     genre varchar (50) NOT NULL,
     description varchar (200),
     family_id int,
+    deleted boolean DEFAULT (false),
     CONSTRAINT FK_family_account_family_id FOREIGN KEY (family_id) REFERENCES family_account (family_id),
     CONSTRAINT PK_library PRIMARY KEY (book_id)
 );

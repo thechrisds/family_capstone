@@ -1,7 +1,7 @@
 <template>
-    <div class="tb-container">
-        <div class="tb-bookList" v-for="book in books" v-bind:key="book.bookID" v-bind:book="book">
-            <div class="wrapper">
+    <div class="tb-container" v-b-modal.modal-1>
+        <div class="tb-bookList" v-for="book in books" v-bind:key="book.bookID" v-bind:book="book" @click="()=>{setOldBook(book);setbook(book)}" @mouseover="hover = true">
+            <div class="wrapper" >
 <div class="book">
   <div class="inner-book">
     <div class="img" style="padding-top: calc(1.07 * 100%)">
@@ -31,6 +31,39 @@
             <h2 class="tb-book-title">{{book.bookTitle}}</h2>
             <h3 class="tb-book-author">{{ book.bookAuthor }}</h3>
         </div>
+
+        <b-modal id="modal-1" hide-footer title="Book Info">
+          <img id="cover"
+        v-if="book.isbn"
+        v-bind:src="
+          'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-L.jpg'"
+          />
+          <br/>
+          <br/>
+          Title:
+          <b-form-input v-model="oldBook.bookTitle" placeholder="Title"/>
+          <br/>
+          Author:
+          <b-form-input v-model="oldBook.bookAuthor" placeholder="Author"/>
+          <br/>
+          Description:
+          <b-form-input v-model="oldBook.description" placeholder="Description"/>
+          <br/>
+          Genre:
+          <br/>
+          <b-form-select v-model="oldBook.genre" :options="options"></b-form-select>
+          <br/>
+          <br/>
+          ISBN: (This will change the cover art!)
+          <b-form-input v-model="oldBook.isbn" placeholder="ISBN"/>
+          <br/>
+          <div class="save-delete">
+          <b-button> CANCEL </b-button>
+          <b-button id="delete" @click="confirmDelete"> DELETE </b-button>
+          <b-button id="save" @click="saveBook"> SAVE </b-button>
+          </div>
+          
+        </b-modal>
         
      
     </div>
@@ -38,22 +71,112 @@
 
 <script>
 import bookService from '@/services/BookService.js';
+
 export default{
     name: 'view-book',
     data(){
         return {
-            books: []
+          boxOne: '',
+            books: [],
+            book: {
+              bookAuthor: "",
+              bookTitle: "",
+              description: "",
+              familyId: 0,
+              genre: "",
+              isbn: 0,
+              bookId: "",
+              deleted: false
+            },
+            oldBook: {
+              bookAuthor: "",
+              bookTitle: "",
+              description: "",
+              familyId: 0,
+              genre: "",
+              isbn: 0,
+              bookId: "",
+              deleted: false
+            },
+            options: [
+                {value: "Genre", text: "Select a Genre", disabled: true},
+                {value: 'Fiction', text: 'Fiction'},
+                {value: 'Non-Fiction', text: 'Non-Fiction'},
+                {value: 'Fantasy', text: 'Fantasy'},
+                {value: 'Science Fiction', text: 'Science Fiction'},
+                {value: 'Action & Adventure', text: 'Action & Adventure'},
+                {value: 'Mystery', text: 'Mystery'},
+                {value: 'Horror', text: 'Horror'},
+                {value: 'Thriller/Suspense', text: 'Thriller/Suspense'},
+                {value: 'Romance', text: 'Romance'},
+                {value: 'Graphic Novel', text: 'Graphic Novel'},
+                {value: 'Biography', text: 'Biography'},
+                {value: 'Art & Photography', text: 'Art & Photography'},
+                {value: 'Food & Drink', text: 'Food & Drink'},
+                {value: 'History', text: 'History'},
+                {value: 'Travel', text: 'Travel'},
+                {value: 'Comedy', text: 'Comedy'},
+                {value: 'True Crime', text: 'True Crime'},
+                {value: 'Science & Technology', text: 'Science & Technology'},
+            ]
         };
     },
     created() {
-        bookService.seeOpenBooks().then( response => {
+        bookService.seeBooks().then( response => {
             this.books = response.data;
             }).catch 
+        },
+        methods: {
+          click(){
+            this.$router.push({name: "home"})
+          },
+          setOldBook(item, book){
+            this.oldBook = item;
+            console.log(book);
+          },
+          setbook(item, book){
+            this.book = item;
+            console.log(item)
+            console.log(book)
+            console.log(book.bookAuthor)
+                     
+          },
+          saveBook(){
+            bookService.editBook(this.oldBook).then(response => {
+              console.log(response);
+              this.$router.go({name: "showBooks"})
+            })
+          },
+          confirmDelete(){
+             this.boxOne = '';
+             this.$bvModal.msgBoxConfirm("Are you sure you want to delete this book?").then(value =>{
+               if (value === true){
+                 bookService.deleteBook(this.oldBook).then(response =>{
+                   console.log(response);
+                   this.$router.go({name: "showBooks"})
+                 })
+               }
+             })
+          }
         }
     };
 </script>
 
 <style>
+
+#modal-1{
+  
+}
+
+.save-delete{
+  display:flex;
+  justify-content: space-between;
+}
+
+#cover{
+  height: 300px;
+  width: 200px;
+}
 
 .wrapper {
   width: 100%;
@@ -85,7 +208,7 @@ export default{
 
 .inner-book {
     width: 235px;
-    height: 250px;
+    height: 300px;
   display: flex;
   align-items: center;
   transform-style: preserve-3d;
@@ -187,6 +310,7 @@ export default{
     
 
 }
+
 .tb-bookList {
     display: flex;
     flex-direction: column;
@@ -195,12 +319,28 @@ export default{
     height: 350px;
     margin: 20px;
     text-align:center;
-    background-color:white;
     
+    
+}
+.tb-bookList {
+  cursor:pointer;
+  pointer-events:inherit;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.tb-bookList:hover, .tb-bookList:focus, .tb-bookList:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .tb-bookList.read {
-    background-color: lightgray;
+    
 }
 
 .tb-bookList .tb-book-title {
@@ -210,9 +350,11 @@ export default{
     margin-left:5px;
     margin-right:5px;
     
+    
 }
-.tb-bookList .vb-book-author {
+.tb-bookList .tb-book-author {
     font-size: 14px;
+    
 }
 .tb-bookList > img{
     height: auto;

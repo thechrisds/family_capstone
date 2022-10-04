@@ -9,7 +9,7 @@
           <router-link id="links" class="links2" v-bind:to="{ name: 'account' }"
             >Dashboard</router-link
           >
-          <router-link id="links" class="links3" v-bind:to="{ name: 'books' }"
+          <router-link id="links" class="links3" v-bind:to="{ name: 'showBooks' }"
             >Books</router-link
           >
           <router-link

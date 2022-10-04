@@ -10,6 +10,15 @@ public class Book {
         private String genre;
         private String description;
         private int familyId;
+        private boolean deleted;
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 
     public int getFamilyId() {
         return familyId;
