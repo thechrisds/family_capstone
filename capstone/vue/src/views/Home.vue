@@ -222,11 +222,18 @@ export default {
 }
 
 .body-link {
-  text-decoration: none;
+  text-decoration: underline solid transparent;
+  transition: text-decoration 1s ease;
+
   font-weight: 700;
   color: rgb(28, 95, 196);
-  font-family: "Lora", serif;
+  font-family: 'Montserrat', sans-serif;
   margin-top: 20px;
+}
+
+.body-link:hover {
+  text-decoration: underline solid rgb(28, 95, 196);
+
 }
 
 .box-1 {
@@ -290,6 +297,7 @@ export default {
   font-size: 50px;
   text-shadow: 3px 3px 5px rgb(170, 160, 145);
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .home-title-box {
@@ -301,7 +309,7 @@ export default {
 .link-style {
   text-decoration: none;
   color: #24305e;
-  font-family: "Lora", serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 80px;
 }
 
@@ -488,6 +496,6 @@ export default {
   font-weight: 800;
   font-size: 20px;
   color: rgb(67, 89, 185);
-  text-shadow: 2px 2px 12px blueviolet;
+ 
 }
 </style>

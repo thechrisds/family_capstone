@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div class="prizes-main-container">
+        
         <prize-table />
         <div id="delete">
         <!-- <b-button v-b-modal.modal-1 v-on:click="deletePrize()" hide-footer> Delete Selected Prize? </b-button> -->
@@ -77,11 +78,20 @@ export default {
 </script>
 
 <style>
+.prizes-main-container{
+    
+}
+
 .test{
     margin-top:200px;
 }
 
 #delete{
+    display:flex;
+    justify-content: space-between;
+
+    max-width: 350px;
+    margin-top:-10px;
     margin-left:100px;
 }
 </style>
