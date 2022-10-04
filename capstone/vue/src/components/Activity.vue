@@ -1,9 +1,12 @@
 <template>
-  <div class="logged-activity-container">
-
-    <div
-      class="activityList"
-    >
+<div>
+  <td>{{username}}</td>
+      <td>{{bookTitle}}</td>
+      <td>{{dateRead}}</td>
+      <td>{{timeInMinutes}}</td>
+      <td>{{activityNotes}}</td>
+  </div>
+</template>
       <h2 class="activity-reader"> {{ "Reader: " + userName }}</h2>
       <h3 class="activity-book">{{ "Book: " + bookTitle }}</h3>
       <h3 class="activity-date">{{ "Date Read: " + dateRead }}</h3>
@@ -11,10 +14,6 @@
         {{ "Minutes Read: " + timeInMinutes }}
       </h3>
       <p class="activity-notes">{{ "Notes: " + activityNotes }}</p>
-    </div>
-  </div>
-</template>
-
 <script>
 //import activityService from "@/services/ActivityService.js";
 export default {
@@ -55,12 +54,8 @@ export default {
 }
 
 
-.activityList {
-  border-top: 10px rgb(221, 105, 250) solid;
-  border-right: 10px rgb(133, 60, 161) solid;
-  border-bottom: 10px solid rgb(65, 15, 80);
-  border-left: 10px solid rgb(217, 161, 255);
-  box-shadow: 5px 5px 15px rgb(107, 3, 155);  
+/* .activityList {
+ 
   width: 250px;
   min-width: 200px;
   text-align: center;
@@ -84,7 +79,7 @@ export default {
 
 .activity-minutes{
   font-size: 20px;
-}
+} */
 
 
 </style>

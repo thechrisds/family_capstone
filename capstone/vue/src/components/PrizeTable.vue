@@ -1,17 +1,20 @@
 <template>
-  <div class="prize-table">
-    <div class="pt-table">
-      <b-table
-        selectable
-        striped
-        hover
-        :select-mode="'single'"
-        :items="prizes"
-        :fields="fields"
-        @row-clicked="clickDeleteID"
-        class="prizes-table"
-      >
-      </b-table>
+  <div class="prize-table-container">
+    <div class="pt-table-main">
+      
+      <div class="pt-table">
+        <b-table
+          selectable
+          striped
+          hover
+          :select-mode="'single'"
+          :items="prizes"
+          :fields="fields"
+          @row-clicked="clickDeleteID"
+          class="prizes-table"
+        >
+        </b-table>
+      </div>
     </div>
   </div>
 </template>
@@ -86,13 +89,30 @@ export default {
 
 
 <style>
-.prize-table {
+.prize-table-container {
   margin-top: 100px;
   margin-left: 100px;
   margin-right: 100px;
 }
 
-.prizes-table{
-    font-size: 1.3vw;
+.prizes-table {
+  font-size: 1vw;
+  background-color: #a8d0e6;
+}
+
+.pt-title-box {
+  display: flex;
+  justify-content: space-between;
+  background-color: #24305e;
+  color: white;
+}
+
+.pt-title {
+  margin-left: 10px;
+}
+
+.pt-description {
+  margin-right: 10px;
+  margin-top: 6px;
 }
 </style>

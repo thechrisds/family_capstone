@@ -6,40 +6,33 @@
     <div v-else class="activity-main-loaded">
       <div class="activity-sub">
         <h2 class="la-title">Logged Family Reading Activities</h2>
-        <div class="activities-carousel">
-        <div
-          id="carouselExampleIndicators"
-          class="carousel slide"
-          data-bs-ride="true"
-        >
-          <div class="activity-carousel-inner">
-            <div v-for="activity in activities" :key="activity.id">
-              <div class="carousel-item active">
-                <activity v-bind="activity" />
-              </div>
-            </div>
-          </div>
-
-          <button
-            class="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-        </div>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Reader</th>
+              <th scope="col">Book</th>
+              <th scope="col">Date Read</th>
+              <th scope="col">Minutes Read</th>
+              <th scope="col">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="displayActivity in displayActivities" :key="displayActivity.id">
+              <td>{{ displayActivity.userName }}</td>
+              <td>{{ displayActivity.bookTitle }}</td>
+              <td>{{ displayActivity.dateRead }}</td>
+              <td>{{ displayActivity.timeInMinutes }}</td>
+              <td>{{ displayActivity.activityNotes }}</td>
+            </tr>
+          </tbody>
+        </table>
+      <nav>
+        <ul class="pagination">
+          <li class="page-item" v-for="page in pages" :key="page">
+            <a class="page-link" href="#" @click="changePage(page)">{{ page }}</a>
+          </li>
+        </ul>
+      </nav>
       </div>
       <div id="add-activities">
         <add-activity />
@@ -49,7 +42,6 @@
 </template>
 
 <script>
-import Activity from "@/components/Activity";
 import AddActivity from "@/components/AddActivity";
 import activityService from "@/services/ActivityService.js";
 
@@ -58,11 +50,16 @@ export default {
     return {
       isLoading: true,
       activities: [],
+      activitiesCount: 0,
+      activitiesPerPage: 2,
+      displayActivities: [],
+      currentPageNumber: 1,
+      totalPages: 0,
+      pages: [],
     };
   },
 
   components: {
-    Activity,
     AddActivity,
   },
   created() {
@@ -72,9 +69,25 @@ export default {
     activityService.seeFamilyActivity().then((response) => {
       console.log("response: ", response.data);
       this.activities = response.data;
+      this.activitiesCount = this.activities.length;
+      this.totalPages = Math.ceil(this.activitiesCount / this.activitiesPerPage);
+      this.displayActivities = this.activities.slice(0, 2);
+      this.pages = [...Array(this.totalPages+1).keys()]
+      this.pages.shift()
+      // for(let i = 1; i <= this.totalPages.length; i++) {
+      //   console.log('i: ', i)
+      //   this.pages.push(i);
+      // }
     }).catch,
       activityService.see;
   },
+  methods: {
+    changePage: function (page) {
+      this.displayActivities = 
+      this.activities.slice((page*this.activitiesPerPage - this.activitiesPerPage), page*this.activitiesPerPage)
+      console.log("page: ", page);
+    }
+  }
 };
 </script>
 
@@ -83,29 +96,19 @@ export default {
   margin-top: 70px;
 }
 
-.la-title{
+.la-title {
   background-color: plum;
   width: 90%;
   align-self: center;
-  margin:auto;
-}
-
-.activities-carousel{
-  height: 325px;
-  background-color: rgb(168, 140, 182);
-  margin-top:70px;
+  margin: auto;
 }
 
 .activity-sub {
   background-color: hsl(0, 0%, 100%);
-  border: solid 1px rgb(117, 48, 150);
-  box-shadow: 5px 5px 15px rgb(117, 48, 150);
   width: 85%;
-  align-self: center;
-  height: 450px;
 }
 
-.activity-main-loaded{
+.activity-main-loaded {
   display: flex;
   flex-direction: column;
 }
@@ -116,16 +119,14 @@ export default {
   box-shadow: 5px 5px 15px rgb(58, 97, 66);
   width: 450px;
   height: auto;
-  padding-bottom:30px;
+  padding-bottom: 30px;
   margin-left: auto;
-  margin-right:auto; 
+  margin-right: auto;
 }
 
-.activity-carousel-inner{
-  display:flex;
+.activity-carousel-inner {
+  display: flex;
   justify-content: center;
-  margin-top:-40px;
+  margin-top: -40px;
 }
-
-
 </style>

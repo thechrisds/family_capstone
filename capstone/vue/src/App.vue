@@ -47,7 +47,7 @@
 
 <style>
 body {
-  font-family: 'Lora', serif;
+  font-family:'Montserrat', sans-serif;
   font-size: 12px;
 }
 #app {
@@ -95,9 +95,10 @@ body {
   font-weight: 900;
   color: rgb(255, 255, 255);
   font-size: 28px;
- text-shadow: 2px 2px 2px gray;
+
   margin-left: 20px;
-  font-family: 'Lora', serif;
+  font-weight: 200;
+  font-family: 'Montserrat', sans-serif;
   margin-top:13px;
   
 }
@@ -115,11 +116,13 @@ body {
   display: flex;
   justify-content: center;
   padding-top: 20px;
-  text-decoration: none;
+  text-decoration: underline solid transparent;
+  transition: color 0.3s ease-in-out;
+
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 200;
   padding-bottom: 10px;
-  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family:'Montserrat', sans-serif;
 }
 .links1 {
   color: white;
@@ -127,7 +130,7 @@ body {
 
 .links1:hover {
   color: #c71a1a;
-  text-shadow: 1px 1px black;
+  text-decoration: underline solid white;
 }
 
 .links2 {
@@ -135,35 +138,30 @@ body {
 }
 .links2:hover {
   color: #358a3c;
-  text-shadow: 3px 3px 3px gray;
 }
 
 .links3 {
   color: white;}
 .links3:hover {
   color: #3537cc;
-  text-shadow: 3px 3px 3px gray
 }
 
 .links4 {
   color: white;}
 .links4:hover {
   color: #e77e1b;
-  text-shadow: 3px 3px 3px gray
 }
 
 .links5 {
   color: white;}
 .links5:hover {
   color: rgb(155, 13, 155);
-  text-shadow: 3px 3px 3px gray
 }
 
 .links6 {
   color: white;}
 .links6:hover {
   color: rgb(155, 13, 155);
-  text-shadow: 3px 3px 3px gray
 }
 
 .img-link {
