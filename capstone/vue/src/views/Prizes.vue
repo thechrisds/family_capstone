@@ -79,19 +79,19 @@ export default {
 
 <style>
 .prizes-main-container{
-    
+    margin-top:100px;
+    display:flex;
+  flex-direction: column;
 }
 
-.test{
-    margin-top:200px;
-}
+
 
 #delete{
     display:flex;
     justify-content: space-between;
 
     max-width: 350px;
-    margin-top:-10px;
+    margin-top:20px;
     margin-left:100px;
 }
 </style>

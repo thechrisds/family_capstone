@@ -1,7 +1,6 @@
 <template>
   <div class="prize-table-container">
     <div class="pt-table-main">
-      
       <div class="pt-table">
         <b-table
           selectable
@@ -90,29 +89,27 @@ export default {
 
 <style>
 .prize-table-container {
-  margin-top: 100px;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  width:85%;
+  
 }
 
 .prizes-table {
   font-size: 1vw;
   background-color: #a8d0e6;
+  border-radius: 10px;
+  
+  width:500px;
 }
 
-.pt-title-box {
+.pt-table-main {
   display: flex;
   justify-content: space-between;
   background-color: #24305e;
   color: white;
+  border-radius: 10px;
+  padding:20px;
 }
 
-.pt-title {
-  margin-left: 10px;
-}
-
-.pt-description {
-  margin-right: 10px;
-  margin-top: 6px;
-}
 </style>

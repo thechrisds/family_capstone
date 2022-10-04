@@ -1,15 +1,7 @@
 <template>
   <div id="add-user">
+    <h4 class="add-user-title">Add.</h4>
     <form class="new-user-form">
-      <h4 class="add-user-title">
-      Add.
-      </h4>
-      <input
-        class="user-name"
-        type="text"
-        placeholder="Username"
-        v-model="user.username"
-      />
       <input
         class="first-name"
         type="text"
@@ -23,7 +15,14 @@
         v-model="user.lastname"
       />
       <input
-        class="password"
+        class="user-name"
+        type="text"
+        placeholder="Username"
+        v-model="user.username"
+      />
+
+      <input
+        class="password"  
         type="text"
         placeholder="Password"
         v-model="user.password"
@@ -52,7 +51,7 @@ export default {
         lastname: "",
         password: "",
         confirmPassword: "",
-        role: "ROLE_USER"
+        role: "ROLE_USER",
       },
     };
   },
@@ -69,7 +68,7 @@ export default {
         firstname: "",
         lastname: "",
         password: "",
-        role: "ROLE_USER"
+        role: "ROLE_USER",
       };
     },
   },
@@ -80,17 +79,18 @@ export default {
 #add-user {
   display: flex;
   align-items: center;
-  width: 200px;
-  
-  margin-left:25px;
+  width: 350px;
+  flex-direction: column;
   padding-bottom: 10px;
-
+  border-radius: 10px;
+  background-color:#24305e;
+  height:300px;
 }
 
-.submitUser{
-    background-color: white;
+.submitUser {
+  background-color: white;
   border-radius: 5px;
-  border:lightgray 2px solid;
+  border: lightgray 2px solid;
   box-shadow: 2px 2px 2px grey;
   font-size: 12px;
 }
@@ -100,12 +100,19 @@ export default {
 }
 
 .add-user-title {
-  color:white;
-  font-weight:600;
+  color: white;
+  font-weight: 600;
   font-size: 16px;
-   margin-top:15px;
-  margin-left:0;
+  margin-top: 15px;
+  margin-right: 250px;
 }
 
-
+.new-user-form{
+  display: flex;
+  flex-direction: column;
+ margin: auto;
+ width:70%;
+ padding-bottom:20px;
+ border-radius: 10px;
+}
 </style>

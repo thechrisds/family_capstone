@@ -4,7 +4,7 @@
       <img class="book-turner" src="../assets/bookturner-small.gif" />
     </div>
     <div v-else id="main-family">
-      <div class="activities-column">
+      <div class="row-1">
         <div id="family-library">
           <div class="family-library-title">Library.</div>
           <div class="family-library-books">
@@ -34,18 +34,19 @@
             </div>
           </div>
         </div>
-        <div class="prizes-box">
+        
+      </div>
+      <div id="row-2">
+        <div id="account-list-box"><account-list class="account-list-component"/></div>
+        <div id="add-user-box"><add-user /></div>
+      </div>
+      <div class="row-3">
           <div class="prizes-title">Prizes.</div>
           <div class="fa-prize-table">
             <prize-table />
           </div>
           <div class="prizes-board"></div>
         </div>
-      </div>
-      <div id="account-column">
-        <div id="account-list-box"><account-list /></div>
-        <div id="add-user-box"><add-user /></div>
-      </div>
     </div>
   </div>
 </template>
@@ -80,17 +81,16 @@ export default {
 </script>
 
 <style>
-#family-account {
-  
-  min-height: 0;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 50px;
-}
 
 #main-family {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.row-1{
+  margin-top:60px;
+  display: flex;
+  justify-content: center;
 }
 
 .book-turner {
@@ -104,34 +104,10 @@ export default {
   margin-bottom: 25px;
 }
 
-#account-column {
-  display: flex;
-  flex-direction: column;
-  margin-top: 19px;
-}
-#account-list-box {
-  display: flex;
-  justify-content: center;
-  min-height: 0;
-  width: 350px;
-  height: 100%;
-  border-radius: 10px;
-  padding-bottom: 25px;
-  background-color: #F76c6c;
-  margin-bottom:20px;
-}
-
-#add-user-box {
-  display: flex;
-  flex-wrap: wrap;
-  border-radius: 10px;
-  background-color:#24305e;
-}
-
 #family-library {
   display: flex;
   flex-direction: column;
-  width: 700px;
+  width: 90%;
   height: 350px;
   margin-top: 20px;
   border-radius: 10px;
@@ -165,16 +141,16 @@ export default {
 }
 
 .family-library-books::-webkit-scrollbar {
-  width: 8px;               /* width of the entire scrollbar */
+  width: 3px;               /* width of the entire scrollbar */
 }
 
 .family-library-books::-webkit-scrollbar-thumb {
-  background-color: rgb(159, 159, 173);    /* color of the scroll thumb */
-  border-radius: 20px;       /* roundness of the scroll thumb */
+  background-color: rgb(221, 221, 233);    /* color of the scroll thumb */
+  border-radius: 3px;       /* roundness of the scroll thumb */
 }
 .family-library-books::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
+  box-shadow: inset 0 0 3px rgb(202, 182, 182);
+  border-radius: 3px;
 }
 
 .fa-book-title {
@@ -223,40 +199,65 @@ export default {
   flex-wrap: nowrap;
 }
 
-.prizes-box {
+#row-2 {
   display: flex;
-  flex-direction: column;
-  width: 700px;
+  flex-direction: row;
+  margin-top: 19px;
+  margin-left:auto;
+  margin-right:auto;
+  justify-content: space-between;
+  width:90%
+}
+
+#account-list-box{
+  height: 30%;
+}
+
+#add-user-box{
+  height: 300px;
+}
+
+.row-3{
+  width: 90%;
   height: 400px;
   margin-top: 20px;
   border-radius: 10px;
   font-size: 18px;
   background-color: #374785;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom:30px;
 }
 
 .prizes-title {
-
-  width: 90%;
-  align-self: center;
-    color:white;
+  color:white;
   font-weight: 600;
-   margin-top:15px;
-  margin-left:-15px;
+  margin-left:40px;
+  padding-top:10px;
 }
 
 .fa-prize-table {
   width: 650px;
-  display: flex;
   align-self: center;
-  align-content: center;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
-  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  width: 95%;
+  width: 90%;
   height: 350px;
-  overflow-x: scroll;
+  overflow-x: hidden;
   overflow-y: scroll;
-  margin-top: 20px;
+  margin-top:20px;
 }
+
+.fa-prize-table::-webkit-scrollbar {
+  width: 5px;               /* width of the entire scrollbar */
+}
+
+.fa-prize-table::-webkit-scrollbar-thumb {
+  background-color: rgb(221, 221, 233);    /* color of the scroll thumb */
+  border-radius: 3px;       /* roundness of the scroll thumb */
+}
+.fa-prize-table::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px rgb(202, 182, 182);
+  border-radius: 3px;
+}
+
 </style>
