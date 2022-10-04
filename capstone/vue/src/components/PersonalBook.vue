@@ -122,7 +122,7 @@ export default{
         };
     },
     created() {
-        bookService.seeOpenBooks().then( response => {
+        bookService.seeBooks().then( response => {
             this.books = response.data;
             }).catch 
         },
