@@ -58,7 +58,7 @@ CREATE TABLE library (
     description varchar (200),
     family_id int,
     CONSTRAINT FK_family_account_family_id FOREIGN KEY (family_id) REFERENCES family_account (family_id),
-    CONSTRAINT PK_library PRIMARY KEY (isbn)
+    CONSTRAINT PK_library PRIMARY KEY (book_id)
 );
 
 CREATE SEQUENCE seq_activity_id
@@ -69,7 +69,7 @@ CREATE SEQUENCE seq_activity_id
 CREATE TABLE reading_activity (
     activity_id int NOT NULL DEFAULT nextval('seq_activity_id'),
     user_id int NOT NULL,
-    isbn numeric,
+    book_id int,
     minutes_read int DEFAULT 0,
     date_read  DATE NOT NULL DEFAULT CURRENT_DATE,
     notes varchar (250) DEFAULT 'none',
@@ -78,7 +78,7 @@ CREATE TABLE reading_activity (
     CONSTRAINT PK_reading_activity PRIMARY KEY (activity_id),
     CONSTRAINT FK_family_account_users FOREIGN KEY (user_id) REFERENCES users (user_id),
     CONSTRAINT FK_format FOREIGN KEY (format_id) REFERENCES format (format_id),
-	CONSTRAINT FK_library FOREIGN KEY (isbn) REFERENCES library (isbn)
+	CONSTRAINT FK_library FOREIGN KEY (book_id) REFERENCES library (book_id)
 );
 
 CREATE SEQUENCE seq_prizes_id

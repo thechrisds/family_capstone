@@ -26,9 +26,9 @@ INSERT INTO format (format_id, format_type) VALUES (3, 'audiobook');
 INSERT INTO format (format_id, format_type) VALUES (4, 'read-aloud (reader)');
 INSERT INTO format (format_id, format_type) VALUES (5, 'read-aloud (listener)');
 
-INSERT INTO reading_activity (user_id,isbn,minutes_read,format_id) VALUES (2, 9780439708180, 8, 0);
-INSERT INTO reading_activity (user_id,isbn,minutes_read,format_id) VALUES (1, 9780812979688, 9, 0);
-INSERT INTO reading_activity (user_id,isbn,minutes_read,format_id) VALUES (1, 9781603095020, 9, 0);
+INSERT INTO reading_activity (user_id,book_id,minutes_read,format_id) VALUES (2, 9001, 8, 0);
+INSERT INTO reading_activity (user_id,book_id,minutes_read,format_id) VALUES (1, 9004, 9, 0);
+INSERT INTO reading_activity (user_id,book_id,minutes_read,format_id) VALUES (1, 9005, 9, 0);
 
 INSERT INTO prizes (family_id,name, description, goal, stock, start_date, end_date) VALUES (1001,'Ice Cream', 'Creamy ice', 60, 3, '2022-09-20', '2022-09-30');
 INSERT INTO prizes (family_id,name, description, goal, stock, start_date, end_date) VALUES (1001,'Bike', 'Bihicular Vehicle', 300, 3, '2022-09-15', '2022-10-30');
