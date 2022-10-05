@@ -37,7 +37,7 @@
       </div>
       </div>
       <div id="add-activities">
-        <account-list class="activity-account-list"/>
+
         <add-activity />
       </div>
     </div>
@@ -47,7 +47,7 @@
 <script>
 import AddActivity from "@/components/AddActivity";
 import activityService from "@/services/ActivityService.js";
-import AccountList from "@/components/AccountList";
+
 
 
 export default {
@@ -66,7 +66,7 @@ export default {
 
   components: {
     AddActivity,
-    AccountList
+    
   },
   created() {
     setTimeout(() => {

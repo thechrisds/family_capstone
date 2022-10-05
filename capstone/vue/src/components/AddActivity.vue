@@ -4,11 +4,18 @@
     <div class="add-activity-form-container">
       <form v-on:submit.prevent="submitForm" class="new-activity-form">
         <label for="userName">Reader: </label>
+        
+        <select name="" id="username-dropdown">
+          <option value="" v-for="user in users"
+        v-bind:key="user.id">
+        Username: {{user.username}} | User ID: <p id="user-id">{{user.id}}</p>
+        </option>
+        </select>
         <input
           type="text"
-          placeholder="UserId"
+          placeholder="User Id"
           name="readerId"
-          id="readerId"
+          id="reader-Id"
           v-model="activity.readerId"
         />
 
@@ -65,6 +72,15 @@
 
 <script>
 import ActivityService from "@/services/ActivityService.js";
+import AccountService from "@/services/AccountService.js";
+
+// dropdown script
+// var userId = document.getElementById('user-id');
+// var readerId = document.getElementById('reader-Id');
+// userId.onchange = function() {
+//   readerId.value = userId.value;
+// } 
+
 export default {
   name: "add-activity",
   data() {
@@ -75,6 +91,12 @@ export default {
         formatId: 0,
         activityNotes: "",
       },
+      users: [],
+      username: this.$store.state.user.username,
+      firstname: this.$store.state.user.firstname,
+      lastname: this.$store.state.user.lastname,
+      totalminutes: this.$store.state.user.totalminutes,
+      id: this.$store.state.user.id,
     };
   },
   components: {},
@@ -83,7 +105,6 @@ export default {
     submitForm() {
       const activity = {
         readerId: this.activity.readerId,
-        isbn: this.activity.isbn,
         timeInMinutes: this.activity.timeInMinutes,
         formatId: this.activity.formatId,
         activityNotes: this.activity.activityNotes,
@@ -98,6 +119,25 @@ export default {
     setTimeout(() => {
       this.isLoading = false;
     }, 1250);
+    console.log(this.username);
+    console.log("firstname: ", this.firstname);
+    AccountService.getFamilyId(this.username).then((response) => {
+      console.log(response);
+      this.id = response.data;
+      AccountService
+        .getAllFamily(this.id)
+        .then((response) => {
+          console.log("getAllFamilyResponse: ", response);
+          if (response.status === 200) {
+            this.users = response.data;
+          }
+        })
+        .catch((error) => {
+          if (error.response) {
+            this.errorMsg = "Error getting all Family Members.";
+          }
+        });
+    });
   },
 };
 </script>
@@ -163,7 +203,7 @@ color:#24305e;
   height: auto;
   margin-left: auto;
   margin-right: auto;
-  background-color:#a8d0e6;
+  background-color:#24305e;
   border-radius: 10px;
 }
 
@@ -183,9 +223,7 @@ select,
 textarea {
   width: 100%;
   padding: 12px;
-  
   border-radius: 10px;
-
   resize: vertical;
 }
 

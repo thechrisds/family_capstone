@@ -4,7 +4,7 @@
       <img class="book-turner" src="../assets/bookturner-small.gif" />
     </div>
     <div v-else id="main-family">
-      <div class="row-1">
+      <!-- <div class="row-1">
         <div id="family-library">
           <div class="family-library-title">Library.</div>
           <div class="family-library-books-container">
@@ -14,7 +14,7 @@
           </div>
         </div>
         
-      </div>
+      </div> -->
       <div id="row-2">
         <div id="account-list-box"><account-list class="account-list-component"/></div>
         <div id="add-user-box"><add-user /></div>
@@ -39,14 +39,14 @@ import AccountList from "@/components/AccountList";
 import AddUser from "@/components/AddUser";
 import bookService from "@/services/BookService.js";
 import PrizeTable from "@/components/PrizeTable";
-import PersonalBook from "@/components/PersonalBook"
+//import PersonalBook from "@/components/PersonalBook"
 
 export default {
   components: {
     AccountList,
     AddUser,
     PrizeTable,
-    PersonalBook
+   // PersonalBook
   },
   data() {
     return {
@@ -154,7 +154,7 @@ export default {
 #row-2 {
   display: flex;
   flex-direction: row;
-  margin-top: 19px;
+  margin-top: 80px;
   margin-left:auto;
   margin-right:auto;
   justify-content: space-between;
