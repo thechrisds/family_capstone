@@ -37,7 +37,7 @@
       </div>
       </div>
       <div id="add-activities">
-
+      
         <add-activity />
       </div>
     </div>
@@ -66,7 +66,7 @@ export default {
 
   components: {
     AddActivity,
-    
+   
   },
   created() {
     setTimeout(() => {

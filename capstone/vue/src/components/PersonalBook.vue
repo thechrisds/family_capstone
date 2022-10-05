@@ -130,11 +130,6 @@ export default{
           },
           setbook(item, book){
             this.book = item;
-<<<<<<< HEAD
-            console.log("item: ", item)
-            console.log("book: ",book)
-            console.log(book.bookAuthor)
-=======
             console.log(item, book)
             this.oldBook.bookAuthor = item.bookAuthor;
             this.oldBook.bookID = item.bookID;
@@ -147,7 +142,6 @@ export default{
             this.oldBook.isbn = item.isbn;
             console.log(this.oldBook);
             console.log(item.bookAuthor)
->>>>>>> main
                      
           },
           saveBook(){

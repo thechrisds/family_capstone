@@ -99,13 +99,8 @@ export default {
 
 #delete{
     display:flex;
-<<<<<<< HEAD
-    justify-content: space-between;
-    max-width: 350px;
-=======
     justify-content: space-around;
     max-width: 100%;
->>>>>>> main
     margin-top:20px;
 }
 </style>
