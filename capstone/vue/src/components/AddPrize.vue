@@ -14,7 +14,10 @@
         <b-form-datepicker v-model="prize.start_date" placeholder="Select Start Date"/>
         <b-form-datepicker v-model="prize.end_date" placeholder="Select End Date"/>
         <br/>
+        <div class="addprize-buttons">
+        <b-button v-on:click="$router.go(-1)"> Go Back </b-button>
         <b-button v-on:click="addPrize()"> Submit</b-button>
+        </div>
         </b-form>
     </div>
 </template>
@@ -73,6 +76,10 @@ export default {
     padding: 15px;
 }
 
+.addprize-buttons{
+    display:flex;
+    justify-content:space-between;
+}
 .sizing {
     
 }

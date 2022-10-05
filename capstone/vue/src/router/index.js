@@ -15,6 +15,7 @@ import PersonalLibrary from '../views/PersonalLibrary.vue'
 import Prizes from '../views/Prizes.vue'
 import AddPrize from '../views/AddPrize.vue'
 import EditPrize from '../views/EditPrize.vue'
+import TestSearch from '../views/TestSearch.vue'
 Vue.use(Router)
 
 /**
@@ -127,6 +128,11 @@ const router = new Router({
       path: "/prizes/edit/:id",
       name: "edit-prize",
       component: EditPrize
+    },
+    {
+    path: "/search",
+    name: "search",
+    component: TestSearch
     },
     {
       path: "/:catchAll(.*)",

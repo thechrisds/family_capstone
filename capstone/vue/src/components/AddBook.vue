@@ -1,5 +1,6 @@
 <template>
      <div class="booklist-container">
+         <div class="background-container">
          <h2>Add a Book</h2>
          <br/>
          <b-form class="new-book-form" @submit.prevent="saveBook">
@@ -21,8 +22,12 @@
         <br/>
          <b-textarea rows="5" max-rows="10" class="description-input" type="text" placeholder="Description..." v-model="book.description"/>
          <br/>
+         <div class="addbook-buttons">
+         <b-button v-on:click="$router.go(-1)"> Go Back </b-button>
          <b-button type="submit" v-on:click="addBooks()">Save</b-button>
+         </div>
    </b-form>
+         </div>
          </div>
 </template>
 
@@ -116,15 +121,27 @@ export default{
 </script>
 
 <style>
+
+.addbook-buttons{
+    display:flex;
+    justify-content: space-between;
+}
+
 .booklist-container{
     margin: auto;
     width: 50%;
-    height: 550px;
-    background-color: #f2f2f2;
-    margin-top: 200px;
+    height: 800px;
+    
+    margin-top: 150px;
     justify-content:center;
     padding: 15px;
     
+}
+
+.background-container{
+    height: 550px;
+    padding: 10px;
+    background-color: #f2f2f2;
 }
 .new-book-form{
     

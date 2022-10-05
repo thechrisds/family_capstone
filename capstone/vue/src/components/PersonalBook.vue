@@ -1,7 +1,7 @@
 <template>
     <div class="tb-container" v-b-modal.modal-1>
         <div class="tb-bookList" v-for="book in books" v-bind:key="book.bookID" v-bind:book="book" @click="()=>{setbook(book)}" @mouseover="hover = true">
-            <div class="wrapper" >
+            <div class="wrapper">
 <div class="book">
   <div class="inner-book">
     <div class="img" style="padding-top: calc(1.07 * 100%)">
@@ -33,13 +33,6 @@
         </div>
 
         <b-modal id="modal-1" hide-footer title="Book Info">
-          <img id="cover"
-        v-if="book.isbn"
-        v-bind:src="
-          'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-L.jpg'"
-          />
-          <br/>
-          <br/>
           Title:
           <b-form-input v-model="oldBook.bookTitle" placeholder="Title"/>
           <br/>
@@ -173,7 +166,7 @@ export default{
     };
 </script>
 
-<style>
+<style scoped>
 
 #modal-1{
   

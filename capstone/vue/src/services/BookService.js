@@ -17,7 +17,7 @@ export default {
     },
     
     googleBook(isbn){
-      return axios.get('https://www.googleapis.com/books/v1/volumes?q=' + isbn);
+      return axios.get('https://openlibrary.org/search.json?q=' + isbn);
     },
     
     editBook(book){
