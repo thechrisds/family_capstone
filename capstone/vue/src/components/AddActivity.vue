@@ -105,6 +105,7 @@ export default {
     submitForm() {
       const activity = {
         readerId: this.activity.readerId,
+        isbn: this.activity.isbn,
         timeInMinutes: this.activity.timeInMinutes,
         formatId: this.activity.formatId,
         activityNotes: this.activity.activityNotes,
