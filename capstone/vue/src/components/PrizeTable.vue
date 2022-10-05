@@ -12,6 +12,17 @@
           @row-clicked="clickDeleteID"
           class="prizes-table"
         >
+        <template #cell(status)="data">
+        <div class="active-activity">
+          <div class="danger" v-if="!checkActive(data.item.end_date)">
+           <b-icon icon="circle-fill" scale="2" variant="danger"/>
+          </div>
+          <div class="active-p" v-else>
+            <b-icon icon="circle-fill" scale="2" variant="success"/>
+          </div>
+          
+        </div>
+      </template>
         </b-table>
       </div>
     </div>
@@ -26,16 +37,13 @@ export default {
   name: "prize-table",
   data() {
     return {
+      date: "",
       prize: [],
+      active: "",
       prizes: [],
       fields: [
         {
-          key: "family_id",
-          sortable: false,
-        },
-        {
           key: "prize_id",
-          sortable: true,
           label: "Prize #",
         },
         {
@@ -53,7 +61,7 @@ export default {
         {
           key: "stock",
           sortable: true,
-          label: "# Remaining",
+          label: "Prizes Remaining",
         },
         {
           key: "start_date",
@@ -63,13 +71,21 @@ export default {
           key: "end_date",
           sortable: true,
         },
+        {
+          Status: 1
+        }
+        
       ],
     };
   },
   created() {
     prizeService.getPrizes().then((response) => {
       this.prizes = response.data;
-    });
+      console.log(response.data)
+    },
+    
+    
+    );
   },
   methods: {
     clickDeleteID(item) {
@@ -82,12 +98,26 @@ export default {
       //     "end_date": ""
       this.$store.commit("SET_PRIZE", item);
     },
+    checkActive(date){
+      this.date = new Date().getDate;
+      return (Date.now() < new Date(date))
+    },
+    checkInactive(date){
+      return (new Date().getDate() >= date)
+    }
   },
+  
 };
 </script>
 
 
 <style>
+
+.active-activity{
+  display:flex;
+  justify-content: center;
+}
+
 .prize-table-container {
   margin-left: auto;
   margin-right: auto;
