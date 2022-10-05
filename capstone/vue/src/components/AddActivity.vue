@@ -124,7 +124,7 @@ export default {
 }
 
 .add-activity-title {
-  background-color: rgb(152, 230, 152);
+
   text-shadow: 1px 1px 3px gray;
 }
 
@@ -154,6 +154,7 @@ export default {
 .add-activity-form-container {
   display: flex;
   flex-direction: column;
+  background-color: rgb(166, 255, 158);
   border-top: 10px rgb(44, 179, 78) solid;
   border-right: 10px rgb(22, 119, 46) solid;
   border-bottom: 10px solid rgb(15, 80, 18);
@@ -183,9 +184,9 @@ label {
 }
 
 input[type="submit"] {
-  background-color: #c04c16;
+  background-color: #d837a8;
   color: white;
-  padding: 12px 20px;
+  padding: 10px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
