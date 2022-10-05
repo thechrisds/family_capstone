@@ -116,11 +116,11 @@ export default {
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   width: 95%;
-  height: 280px;
+  height: 620px;
   overflow-x: scroll;
   overflow-y: hidden;
-  
   border-radius: 5px;
+  display: flex;
 }
 
 .family-library-books::-webkit-scrollbar {
