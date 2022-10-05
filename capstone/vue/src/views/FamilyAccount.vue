@@ -7,31 +7,10 @@
       <div class="row-1">
         <div id="family-library">
           <div class="family-library-title">Library.</div>
-          <div class="family-library-books">
-            <div class="show-books">
-              <div
-                class="books"
-                v-for="book in books"
-                v-bind:key="book.bookID"
-                v-bind:book="book"
-              >
-                <h2 class="fa-book-title">{{ book.bookTitle }}</h2>
-                <h3 class="fa-book-author">{{ book.bookAuthor }}</h3>
-                <img
-                  class="fa-book-img"
-                  v-if="book.isbn"
-                  v-bind:src="
-                    'http://covers.openlibrary.org/b/isbn/' +
-                    book.isbn +
-                    '-M.jpg'
-                  "
-                />
-                <p class="fa-book-description">{{ book.description }}</p>
-                <p class="fa-null-description" v-if="!book.description">
-                  No description given
-                </p>
-              </div>
-            </div>
+          <div class="family-library-books-container">
+            <div class=family-library-books>
+          <personal-book />
+          </div>
           </div>
         </div>
         
@@ -44,10 +23,14 @@
           <div class="prizes-title">Prizes.</div>
           <div class="fa-prize-table">
             <prize-table />
+            <div class="prizes-link-div">
+            <router-link class="prizes-link" v-bind:to="{name: 'prizes'}">See all prizes.</router-link>
           </div>
-          <div class="prizes-board"></div>
+          </div>
+          
         </div>
     </div>
+    
   </div>
 </template>
 
@@ -56,12 +39,14 @@ import AccountList from "@/components/AccountList";
 import AddUser from "@/components/AddUser";
 import bookService from "@/services/BookService.js";
 import PrizeTable from "@/components/PrizeTable";
+import PersonalBook from "@/components/PersonalBook"
 
 export default {
   components: {
     AccountList,
     AddUser,
     PrizeTable,
+    PersonalBook
   },
   data() {
     return {
@@ -119,24 +104,22 @@ export default {
 
 .family-library-title {
    margin-top:15px;
-  margin-left:-15px;
+  margin-left:-30px;
   width: 90%;
   align-self: center;
 }
+.family-library-books-container{
+  height:300px;
+}
 
 .family-library-books {
-  display: flex;
-  align-self: center;
-  align-content: center;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   width: 95%;
-  height: auto;
+  height: 280px;
   overflow-x: scroll;
   overflow-y: hidden;
-  margin-top: 20px;
+  
   border-radius: 5px;
 }
 
@@ -168,37 +151,6 @@ export default {
   font-size: .7vw;
 }
 
-.books {
-  display: flex;
-  flex-direction: column;
-  border-top: 10px rgb(207, 193, 0) solid;
-  border-right: 10px goldenrod solid;
-  border-bottom: 10px solid rgb(175, 133, 25);
-  border-left: 10px solid rgb(255, 233, 107);
-  box-shadow: 5px 5px 15px rgb(155, 132, 3);
-  min-width: 150px;
-  max-width: 200px;
-  height: 200px;
-  margin: 25px;
-  text-align: center;
-  background-color: white;
-  word-wrap: break-word;
-  padding: 10px;
-  color:black;
-}
-
-.fa-book-img {
-  width: 60px;
-  align-self: center;
-}
-
-.show-books {
-  display: flex;
-  margin-left: 50px;
-  height: 250x;
-  flex-wrap: nowrap;
-}
-
 #row-2 {
   display: flex;
   flex-direction: row;
@@ -207,10 +159,6 @@ export default {
   margin-right:auto;
   justify-content: space-between;
   width:90%
-}
-
-#account-list-box{
-  height: 30%;
 }
 
 #add-user-box{
@@ -230,7 +178,7 @@ export default {
 }
 
 .prizes-title {
-  color:white;
+  color:#f8e9a1;
   font-weight: 600;
   margin-left:40px;
   padding-top:10px;
@@ -246,6 +194,20 @@ export default {
   overflow-y: scroll;
   margin-top:20px;
 }
+
+.prizes-link{
+  color:#f8e9a1;
+  font-weight: 600;
+  margin-left:40px;
+  padding-top:10px;
+  text-decoration: none;
+  
+}
+
+.prizes-link:hover{
+color:#a8d0e6;
+}
+
 
 .fa-prize-table::-webkit-scrollbar {
   width: 5px;               /* width of the entire scrollbar */

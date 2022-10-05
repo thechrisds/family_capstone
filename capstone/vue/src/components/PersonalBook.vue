@@ -136,8 +136,8 @@ export default{
           },
           setbook(item, book){
             this.book = item;
-            console.log(item)
-            console.log(book)
+            console.log("item: ", item)
+            console.log("book: ",book)
             console.log(book.bookAuthor)
                      
           },
@@ -192,7 +192,7 @@ export default{
 }
 
 .book {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;

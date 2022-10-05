@@ -1,6 +1,6 @@
 <template>
   <div class="add-activity-container">
-    <h2 class="add-activity-title">Record your minutes!</h2>
+    <h2 class="add-activity-title">Record.</h2>
     <div class="add-activity-form-container">
       <form v-on:submit.prevent="submitForm" class="new-activity-form">
         <label for="userName">Reader: </label>
@@ -119,51 +119,63 @@ export default {
   box-shadow: 1px 1px 2px gray;
 }
 
+.new-activity-form{
+padding-bottom:40px;
+}
+
 #add-activity-notes {
   box-shadow: 1px 1px 2px gray;
 }
 
 .add-activity-title {
-  background-color: rgb(152, 230, 152);
-  text-shadow: 1px 1px 3px gray;
+  height: 25px;
+  text-align:left;
+  margin-top: 20px;
+  margin-left:20px;
+  width: 100%;
+  font-size: 18px;
+  color: white;
+  font-weight: 600;
+  padding-bottom:20px;
 }
 
 .add-activity-sub-reset-buttons {
   display: flex;
   align-content: center;
   justify-content: space-evenly;
+  margin-top:10px;
 }
 
-.add-activity-submit {
-  box-shadow: 2px 2px 2px gray;
-}
 
 .add-activity-reset {
-  box-shadow: 2px 2px 2px gray;
+background-color: #f8e9a1;
+border-radius: 4px;
+border: none;
+height:50px;
+width:100px;
+color:#24305e;
 }
 
 .add-activity-container {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 50%;
   height: auto;
   margin-left: auto;
   margin-right: auto;
+  background-color:#a8d0e6;
+  border-radius: 10px;
 }
 
 .add-activity-form-container {
   display: flex;
   flex-direction: column;
-  border-top: 10px rgb(44, 179, 78) solid;
-  border-right: 10px rgb(22, 119, 46) solid;
-  border-bottom: 10px solid rgb(15, 80, 18);
-  border-left: 10px solid rgb(141, 228, 148);
-  box-shadow: 5px 5px 15px rgb(155, 132, 3);
   text-align: center;
-  max-width: 85%;
+  width: 85%;
   padding: 15px;
   margin: auto;
   margin-top: 10px;
+  color:white;
 }
 
 input[type="text"],
@@ -171,9 +183,9 @@ select,
 textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+  
+  border-radius: 10px;
+
   resize: vertical;
 }
 
@@ -183,8 +195,8 @@ label {
 }
 
 input[type="submit"] {
-  background-color: #c04c16;
-  color: white;
+  background-color: #f76c6c;
+  color: #24305e;;
   padding: 12px 20px;
   border: none;
   border-radius: 4px;
