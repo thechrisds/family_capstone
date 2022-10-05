@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="edit-div">
         <edit-prize/>
     </div>
 </template>
@@ -15,5 +15,7 @@ export default {
 </script>
 
 <style>
-
+.edit-div{
+    margin-top:200px;
+}
 </style>

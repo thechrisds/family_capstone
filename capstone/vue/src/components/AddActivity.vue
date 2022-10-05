@@ -168,6 +168,7 @@ padding-bottom:40px;
 }
 
 .add-activity-title {
+<<<<<<< HEAD
   height: 25px;
   text-align:left;
   margin-top: 20px;
@@ -177,6 +178,10 @@ padding-bottom:40px;
   color: white;
   font-weight: 600;
   padding-bottom:20px;
+=======
+
+  text-shadow: 1px 1px 3px gray;
+>>>>>>> main
 }
 
 .add-activity-sub-reset-buttons {
@@ -210,6 +215,15 @@ color:#24305e;
 .add-activity-form-container {
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
+=======
+  background-color: rgb(166, 255, 158);
+  border-top: 10px rgb(44, 179, 78) solid;
+  border-right: 10px rgb(22, 119, 46) solid;
+  border-bottom: 10px solid rgb(15, 80, 18);
+  border-left: 10px solid rgb(141, 228, 148);
+  box-shadow: 5px 5px 15px rgb(155, 132, 3);
+>>>>>>> main
   text-align: center;
   width: 85%;
   padding: 15px;
@@ -233,9 +247,15 @@ label {
 }
 
 input[type="submit"] {
+<<<<<<< HEAD
   background-color: #f76c6c;
   color: #24305e;;
   padding: 12px 20px;
+=======
+  background-color: #d837a8;
+  color: white;
+  padding: 10px 20px;
+>>>>>>> main
   border: none;
   border-radius: 4px;
   cursor: pointer;
