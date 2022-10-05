@@ -1,7 +1,5 @@
 <template>
     <div class="edit-container">
-        <b-button> Add Prize</b-button>
-        <h2> Edit a Prize </h2>
         <br/>
         <b-form>
         <b-form-input v-model="prize.name" placeholder="Prize Name"/>

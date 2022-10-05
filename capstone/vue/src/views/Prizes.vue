@@ -88,27 +88,19 @@ export default {
 };
 </script>
 
-<style scoped>
-
-.modal-buttons{
-display:flex;
-justify-content: space-between;
+<style>
+.prizes-main-container{
+    margin-top:100px;
+    display:flex;
+  flex-direction: column;
 }
 
-.edit-container{
-    width: 100%;
-    margin-top: -2px;
-}
 
-.test{
-    margin-top:200px;
-}
 
 #delete{
     display:flex;
-    justify-content: space-evenly;
-    align-content:flex-end;
+    justify-content: space-around;
     max-width: 100%;
-    margin-left: 100px;
+    margin-top:20px;
 }
 </style>

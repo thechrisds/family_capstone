@@ -4,35 +4,43 @@
       <img class="book-turner" src="../assets/bookturner-small.gif" />
     </div>
     <div v-else class="activity-main-loaded">
-      <div class="activity-sub">
-        <h2 class="la-title">Logged Family Reading Activities</h2>
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">Reader</th>
-              <th scope="col">Book</th>
-              <th scope="col">Date Read</th>
-              <th scope="col">Minutes Read</th>
-              <th scope="col">Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="displayActivity in displayActivities" :key="displayActivity.id">
-              <td>{{ displayActivity.userName }}</td>
-              <td>{{ displayActivity.bookTitle }}</td>
-              <td>{{ displayActivity.dateRead }}</td>
-              <td>{{ displayActivity.timeInMinutes }}</td>
-              <td>{{ displayActivity.activityNotes }}</td>
-            </tr>
-          </tbody>
-        </table>
-      <nav>
-        <ul class="pagination">
-          <li class="page-item" v-for="page in pages" :key="page">
-            <a class="page-link" href="#" @click="changePage(page)">{{ page }}</a>
-          </li>
-        </ul>
-      </nav>
+      <div class="outer-reading-log">
+        <h2 class="la-title">Activity.</h2>
+        <div class="activity-reading-log">
+          
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Reader</th>
+                <th scope="col">Book</th>
+                <th scope="col">Date Read</th>
+                <th scope="col">Minutes Read</th>
+                <th scope="col">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="displayActivity in displayActivities"
+                :key="displayActivity.id"
+              >
+                <td>{{ displayActivity.userName }}</td>
+                <td>{{ displayActivity.bookTitle }}</td>
+                <td>{{ displayActivity.dateRead }}</td>
+                <td>{{ displayActivity.timeInMinutes }}</td>
+                <td>{{ displayActivity.activityNotes }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <nav class="activity-pages">
+            <ul class="pagination">
+              <li class="page-item" v-for="page in pages" :key="page">
+                <a class="page-link" href="#" @click="changePage(page)">{{
+                  page
+                }}</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
       <div id="add-activities">
         <add-activity />
@@ -51,7 +59,7 @@ export default {
       isLoading: true,
       activities: [],
       activitiesCount: 0,
-      activitiesPerPage: 2,
+      activitiesPerPage: 5,
       displayActivities: [],
       currentPageNumber: 1,
       totalPages: 0,
@@ -70,10 +78,12 @@ export default {
       console.log("response: ", response.data);
       this.activities = response.data;
       this.activitiesCount = this.activities.length;
-      this.totalPages = Math.ceil(this.activitiesCount / this.activitiesPerPage);
-      this.displayActivities = this.activities.slice(0, 2);
-      this.pages = [...Array(this.totalPages+1).keys()]
-      this.pages.shift()
+      this.totalPages = Math.ceil(
+        this.activitiesCount / this.activitiesPerPage
+      );
+      this.displayActivities = this.activities.slice(0, 5);
+      this.pages = [...Array(this.totalPages + 1).keys()];
+      this.pages.shift();
       // for(let i = 1; i <= this.totalPages.length; i++) {
       //   console.log('i: ', i)
       //   this.pages.push(i);
@@ -83,34 +93,49 @@ export default {
   },
   methods: {
     changePage: function (page) {
-      this.displayActivities = 
-      this.activities.slice((page*this.activitiesPerPage - this.activitiesPerPage), page*this.activitiesPerPage)
+      this.displayActivities = this.activities.slice(
+        page * this.activitiesPerPage - this.activitiesPerPage,
+        page * this.activitiesPerPage
+      );
       console.log("page: ", page);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style>
 #activity-main {
-  margin-top: 70px;
+  margin-top: 100px;
 }
 
 .la-title {
-  background-color: plum;
-  width: 90%;
-  align-self: center;
-  margin: auto;
+  display: flex;
+  color:white;
+  font-weight: 600;
+  font-size: 18px;
+  padding-bottom:10px;
+  margin-left:25px;
 }
 
-.activity-sub {
-  background-color: hsl(0, 0%, 100%);
-  width: 85%;
+.activity-reading-log {
+  background-color: white;
+  width: 80%;
+  align-self: center;
+  margin:auto;
+  border-radius: 10px;
+  height:300px;
+}
+.outer-reading-log {
+background-color: #F76c6c;
+width:50%;
+height:50%;
+border-radius: 10px;
+padding-top:20px;
+padding-bottom:50px;
 }
 
 .activity-main-loaded {
   display: flex;
-  flex-direction: column;
 }
 
 #add-activities {

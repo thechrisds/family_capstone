@@ -151,12 +151,14 @@
       <div class="box4-title-box">
         <h1 class="home-title">
           <br />
-          <a href="#box-1" class="link-style" id="team-members">Team R.O.T.R</a>
+          <a href="#box-1" class="link-style" id="team-members">The Team</a>
         </h1>
-        <p class="team-name" align="center">Readers of the Roundtable</p>
+        <p class="team-name" align="center">ROTR</p>
+          <p class="team-name" align="center">Readers of the Roundtable</p>
         <div class="members">
           <img src="@/assets/team.jpg" class="team-pic" />
-          <h2>James Cagle | Chris Shriver | Daniel Song</h2>
+          <br>
+          <h5>James Cagle | Chris Shriver | Daniel Song</h5>
         </div>
       </div>
     </div>
@@ -236,6 +238,21 @@ export default {
 
 }
 
+.home-title {
+  font-weight: bolder;
+  color: rgb(28, 95, 196);
+  font-size: 50px;
+  text-shadow: 3px 3px 5px rgb(170, 160, 145);
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.home-title-box {
+  width: 500px;
+  margin-right: 600px;
+  padding-top: 200px;
+}
+
 .box-1 {
   background-image: url("../assets/bookcolumn2.png");
   width: 100%;
@@ -285,25 +302,32 @@ export default {
 }
 
 .box4-title-box {
-  display: flex;
-  flex-direction: column;
   margin-right: 600px;
   margin-top: -70px;
-}
-
-.home-title {
-  font-weight: bolder;
-  color: rgb(28, 95, 196);
-  font-size: 50px;
-  text-shadow: 3px 3px 5px rgb(170, 160, 145);
   text-align: center;
-  font-family: 'Montserrat', sans-serif;
 }
 
-.home-title-box {
-  width: 500px;
-  margin-right: 600px;
-  padding-top: 200px;
+.team-pic {
+  width: 250px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.members {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.team-name {
+  font-weight: 800;
+  font-size: 20px;
+  color: rgb(67, 89, 185);
+}
+
+#team-members {
+  font-size: 30px;
 }
 
 .link-style {
@@ -471,31 +495,12 @@ export default {
   width: 300px;
 }
 
-#team-members {
-  font-size: 50px;
-}
+
 .box3-content {
   display: flex;
   justify-content: space-between;
   align-content: center;
 }
 
-.team-pic {
-  width: 400px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
 
-.members {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-.team-name {
-  font-weight: 800;
-  font-size: 20px;
-  color: rgb(67, 89, 185);
- 
-}
 </style>

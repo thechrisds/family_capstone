@@ -1,8 +1,8 @@
 <template>
   <div id="account-list">
-    <div class="top-account-bar">Family.</div>
+    <div class="account-list-title">Family.</div>
     <div class="fm-cards">
-      <div class="family-members" v-for="user in users" v-bind:key="user.id">
+      <div class="family-member-card" v-for="user in users" v-bind:key="user.id">
         <h5>Username: {{ user.username }}</h5>
 
         Name: {{ user.firstname }} {{ user.lastname }}
@@ -83,20 +83,28 @@ body {
   font-weight: 700;
   font-size: 12px;
 }
-
-.top-account-bar {
-  overflow: hidden;
+#account-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  
+  border-radius: 10px;
+  padding-bottom: 25px;
+  background-color: #F76c6c;
+  height:300px;
+}
+.account-list-title {
   height: 25px;
-  margin-top:15px;
-  margin-left:-15px;
+  margin-left:30px;
+  padding-bottom:20px;
   width: 100%;
   font-size: 16px;
   color:white;
   font-weight:600;
 }
 
-.family-members {
-  width: 250px;
+.family-member-card {
+  width: 200px;
   background-color: white;
   border-radius: 10px;
   padding-bottom: 10px;
@@ -109,28 +117,30 @@ body {
 
 .fm-cards{
   display: flex;
-  flex-direction: column;
+  width:90%;
+  flex-wrap: wrap;
   font-size:1vw;
-  justify-content: space-evenly;
   margin: 10px;
-  padding-right:5px;
-  padding-top:10px;
+  margin-left:10px;
+  padding-bottom:30px;
   overflow-x: hidden;
   overflow-y: scroll;
-  height: 500px;
+  height: 70%;
 }
 
+
+
 .fm-cards::-webkit-scrollbar {
-  width: 8px;               /* width of the entire scrollbar */
+  width: 5px;               /* width of the entire scrollbar */
 }
 
 .fm-cards::-webkit-scrollbar-thumb {
-  background-color: rgb(159, 159, 173);    /* color of the scroll thumb */
-  border-radius: 20px;       /* roundness of the scroll thumb */
+  background-color: rgb(216, 181, 181);    /* color of the scroll thumb */
+  border-radius: 5px;       /* roundness of the scroll thumb */
 }
 .fm-cards::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgb(211, 178, 178);
+  border-radius: 5px;
 }
 
 .delete-user {
