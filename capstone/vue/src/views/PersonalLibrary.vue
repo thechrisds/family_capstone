@@ -20,6 +20,7 @@ export default ({
 <style>
 .booklist{
     text-align:center;
+    margin-top:30px;
 }
 
 .book-container{

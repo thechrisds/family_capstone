@@ -100,7 +100,7 @@ export default {
 }
 
 .add-user-title {
-  color: white;
+  color: #f76c6c;
   font-weight: 600;
   font-size: 16px;
   margin-top: 15px;

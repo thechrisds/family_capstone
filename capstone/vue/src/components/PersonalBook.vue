@@ -196,7 +196,7 @@ export default{
 }
 
 .book {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;

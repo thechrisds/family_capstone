@@ -302,6 +302,7 @@ export default {
 }
 
 .box4-title-box {
+  margin-left:-30%;
   margin-right: 600px;
   margin-top: -70px;
   text-align: center;
