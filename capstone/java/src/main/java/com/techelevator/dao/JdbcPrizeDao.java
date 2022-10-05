@@ -26,7 +26,7 @@ public class JdbcPrizeDao implements PrizeDao{
     @Override
     public List<Prize> findPrizesByFamilyId(int familyId) {
         List<Prize> prizeList = new ArrayList<>();
-        String sql = "SELECT * FROM prizes WHERE family_id = ?";
+        String sql = "SELECT * FROM prizes WHERE family_id = ? ORDER BY prize_id";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, familyId);
         while(results.next()){
