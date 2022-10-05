@@ -84,7 +84,7 @@
                   <h3 class="card-title" align="center">Win Prizes!</h3>
                 </div>
                 <div class="prizesimg-div">
-                  <img src="@/assets/prizefinal1.png" class="prizes-img" />
+                  <img src="@/assets/prizebox.png" class="prizes-img" />
                 </div>
               </div>
             </div>
@@ -471,10 +471,11 @@ export default {
 .prizes-info {
   width: 100px;
   height: auto;
+  margin-top:50px;
 }
 
 .prizes-img {
-  width: 250px;
+  width: 200px;
 }
 
 .dash-card {
@@ -493,7 +494,8 @@ export default {
 }
 
 .dash-img {
-  width: 300px;
+  width: 250px;
+  margin:auto;
 }
 
 

@@ -112,4 +112,22 @@ export default {
   padding:20px;
 }
 
+.pt-table{
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.pt-table::-webkit-scrollbar {
+  width: 5px;               /* width of the entire scrollbar */
+}
+
+.pt-table::-webkit-scrollbar-thumb {
+  background-color: rgb(221, 221, 233);    /* color of the scroll thumb */
+  border-radius: 3px;       /* roundness of the scroll thumb */
+}
+.pt-table::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px rgb(202, 182, 182);
+  border-radius: 3px;
+}
+
 </style>

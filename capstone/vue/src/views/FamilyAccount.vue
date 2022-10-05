@@ -70,6 +70,7 @@ export default {
 #main-family {
   display: flex;
   flex-direction: column;
+  background-color:#f4f7f6;
 }
 
 .row-1{
@@ -187,19 +188,16 @@ export default {
 .fa-prize-table {
   width: 650px;
   align-self: center;
-  scroll-behavior: smooth;
   width: 90%;
   height: 350px;
-  overflow-x: hidden;
-  overflow-y: scroll;
   margin-top:20px;
+  margin-left:50px;
 }
 
 .prizes-link{
   color:#f8e9a1;
   font-weight: 600;
-  margin-left:40px;
-  padding-top:10px;
+  margin-left:-20px;
   text-decoration: none;
   
 }
@@ -209,17 +207,6 @@ color:#a8d0e6;
 }
 
 
-.fa-prize-table::-webkit-scrollbar {
-  width: 5px;               /* width of the entire scrollbar */
-}
 
-.fa-prize-table::-webkit-scrollbar-thumb {
-  background-color: rgb(221, 221, 233);    /* color of the scroll thumb */
-  border-radius: 3px;       /* roundness of the scroll thumb */
-}
-.fa-prize-table::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 3px rgb(202, 182, 182);
-  border-radius: 3px;
-}
 
 </style>
