@@ -114,5 +114,7 @@ export default {
  width:70%;
  padding-bottom:20px;
  border-radius: 10px;
+ width:250px;
+ 
 }
 </style>

@@ -93,9 +93,8 @@ export default {
     margin-top:100px;
     display:flex;
   flex-direction: column;
+  height:80%;
 }
-
-
 
 #delete{
     display:flex;

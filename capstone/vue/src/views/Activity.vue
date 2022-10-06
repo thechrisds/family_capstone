@@ -9,7 +9,7 @@
         <div class="activity-sub">
         <table class="table table-hover">
           <thead>
-            <tr>
+            <tr class="activity-tr-head">
               <th scope="col">Reader</th>
               <th scope="col">Book</th>
               <th scope="col">Date Read</th>
@@ -108,6 +108,17 @@ export default {
 
 }
 
+.activity-tr-head{
+  background-color: #24305e;
+  border-radius: 10px;
+  color:#f76c6c;
+}
+
+.pagination{
+  display:flex;
+  justify-content: center;
+}
+
 .toggle-record-activity {
   width: 50%;
   margin-left:auto;
@@ -134,7 +145,7 @@ export default {
 }
 
 .activity-sub{
-  background-color:#A8d0e6;
+  background-color:#f1f1f1;
   width:85%;
   margin-left:auto;
   margin-right:auto;

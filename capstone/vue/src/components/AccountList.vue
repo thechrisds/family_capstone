@@ -51,9 +51,17 @@
       :sort-by.sync="sortBy"
       :sort-desc="true"
       :tbody-tr-class="rowClass"
-      :sticky-header="true"
+      :sticky-header='stickyHeader'
       class="family-members-table">
+      <template #cell(deleteUser)="data">
+        <div class="delete-user">
+          <b-button  class='delete-button' size="sm" variant="danger" @click="deleteMember(data.item.id)">
+            Delete Member
+          </b-button>
+        </div>
+        </template>
       </b-table>
+
     </div>
 <!-- 
 
@@ -87,6 +95,7 @@ export default {
       id: this.$store.state.user.id,
       sortBy:'totalMinutes',
       sortDesc:'false',
+      stickyHeader:'200px',
       
       fields:[
         {
@@ -221,20 +230,27 @@ body {
   font-size: 18px;
   color: #24305e;
   font-weight: 600;
+  margin-top:10px;
 }
 
 .family-members-chart{
-  width:80%;
+  width:90%;
+  
   margin:auto;
   background-color: #a8d0e6;
   border-radius: 10px;
+
 }
 
 .member-name {
   font-size: 15px;
 }
 
-.family-member-card {
+.family-members-table{
+  
+}
+
+/* .family-member-card {
   width: 200px;
   background-color: white;
   border-radius: 10px;
@@ -258,17 +274,17 @@ body {
   overflow-y: scroll;
   scroll-behavior: smooth;
   height: 70%;
+} */
+
+.family-members-table::-webkit-scrollbar {
+  width: 8px; /* width of the entire scrollbar */
 }
 
-.fm-cards::-webkit-scrollbar {
-  width: 5px; /* width of the entire scrollbar */
-}
-
-.fm-cards::-webkit-scrollbar-thumb {
-  background-color: rgb(216, 181, 181); /* color of the scroll thumb */
+.family-members-table::-webkit-scrollbar-thumb {
+  background-color: #24305e; /* color of the scroll thumb */
   border-radius: 5px; /* roundness of the scroll thumb */
 }
-.fm-cards::-webkit-scrollbar-track {
+.family-members-table::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px rgb(211, 178, 178);
   border-radius: 5px;
 }
@@ -280,18 +296,12 @@ body {
   width: 100%;
 }
 .delete-user {
-  background-color: white;
-  border-radius: 5px;
-  border: lightgray 2px solid;
-  box-shadow: 2px 2px 2px grey;
-  font-size: 10px;
-  height: 80%;
-  margin-left:-10px;
+  font-size: 2px;
+  width:100%;
+  height:auto;
 }
 
-.delete-user:hover {
-  background-color: rgb(226, 37, 37);
-}
+
 
 .modal-button{
   background-color: white;

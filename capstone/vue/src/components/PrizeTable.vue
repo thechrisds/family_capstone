@@ -122,22 +122,21 @@ export default {
   margin-left: auto;
   margin-right: auto;
   width:90%;
-  
+  height:100%;
 }
 
 .prizes-table {
   font-size: 1vw;
   background-color: #a8d0e6;
   border-radius: 10px;
-  width:500px;
 }
 
 .pt-table::-webkit-scrollbar {
-  width: 5px; /* width of the entire scrollbar */
+  width: 8px; /* width of the entire scrollbar */
 }
 
 .pt-table::-webkit-scrollbar-thumb {
-  background-color: rgb(216, 181, 181); /* color of the scroll thumb */
+  background-color: #f8e9a1; /* color of the scroll thumb */
   border-radius: 5px; /* roundness of the scroll thumb */
 }
 .pt-table::-webkit-scrollbar-track {
@@ -152,11 +151,13 @@ export default {
   color: white;
   border-radius: 10px;
   padding:20px;
+  height:100%;
 }
 
 .pt-table{
- max-height: 250px;
+ max-height:300px;
  overflow-y: scroll;
+ margin:auto;
 }
 
 
