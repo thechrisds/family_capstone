@@ -191,6 +191,12 @@ body {
   font-size: 18px;
   color: #24305e;
   font-weight: 600;
+   text-decoration: underline solid transparent;
+  transition: text-decoration 1s ease;
+}
+
+.add-activity-modal-btn:hover{
+    text-decoration: underline solid #24305e;
 }
 
 #account-list-box {

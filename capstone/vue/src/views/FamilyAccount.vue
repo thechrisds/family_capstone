@@ -150,13 +150,14 @@ export default {
 
 .prizes-link {
   color: #f8e9a1;
+  text-decoration: underline solid transparent;
+  transition: text-decoration 1s ease;
   font-weight: 600;
   margin-left: 40px;
-  text-decoration: none;
 }
 
 .prizes-link:hover {
-  color: #a8d0e6;
+    text-decoration: underline solid #f8e9a1;
 }
 
 .family-members-table>.table>tbody>tr:first-child{

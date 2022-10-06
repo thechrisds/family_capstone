@@ -224,7 +224,6 @@ export default {
 .body-link {
   text-decoration: underline solid transparent;
   transition: text-decoration 1s ease;
-
   font-weight: 700;
   color: rgb(28, 95, 196);
   font-family: 'Montserrat', sans-serif;
