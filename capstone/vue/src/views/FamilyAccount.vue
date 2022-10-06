@@ -138,7 +138,7 @@ export default {
   font-weight: 600;
   margin-left: 40px;
  margin-top:35px;
-  margin-bottom:10px;
+  margin-bottom:0px;
 }
 .prizes-link-div{
   padding-top:10px;
@@ -169,7 +169,8 @@ export default {
 }
 
 .family-members-table>.table>tbody>tr:nth-child(3){
-  background-color:#a03921;
+  background-color:#FF5733
+;
 }
 
 

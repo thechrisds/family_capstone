@@ -71,10 +71,6 @@ export default {
       
       fields:[
         {
-          key: "id",
-          label: "ID #"
-        },
-        {
           key: "username",
           label: "Username",
           sortable: false,

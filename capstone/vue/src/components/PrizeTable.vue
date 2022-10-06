@@ -191,7 +191,6 @@ export default {
 <style>
 .active-inactive-all{
   display:flex;
-  padding: 10px;
 }
 
 .active-inactive-all>:nth-child(1){
@@ -210,12 +209,8 @@ export default {
   margin-left: auto;
   margin-right: auto;
   width:90%;
-<<<<<<< HEAD
-  height:100%;
-=======
   resize: both;
   
->>>>>>> Chris
 }
 
 .prizes-table {
