@@ -191,7 +191,6 @@ export default {
 <style>
 .active-inactive-all{
   display:flex;
-  padding: 10px;
 }
 
 .active-inactive-all>:nth-child(1){
