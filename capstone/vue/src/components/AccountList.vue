@@ -113,7 +113,7 @@ export default {
     rowClass(user, type) {
        console.log("user: ", user)
       if (!user || type !== 'row') return
-      if(user[0]) return 'table-warning'
+      if(user[1]) return 'table-warning'
     },
 
     // rowClass(item, type) {
@@ -229,7 +229,7 @@ body {
   margin-top:20px;
   margin-left:auto;
   margin-right:auto;
-  background-color: #a8d0e6;
+  background-color: white;
   border-radius: 10px;
 
 }

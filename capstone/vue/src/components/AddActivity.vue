@@ -162,6 +162,7 @@ export default {
 
 .new-activity-form{
 padding-bottom:40px;
+width:100%;
 }
 
 #add-activity-notes {
@@ -199,7 +200,7 @@ color:#24305e;
 .add-activity-container {
   display: flex;
   flex-direction: column;
-  width: 450px;
+  width: 100%;
   height: auto;
   margin-left: auto;
   margin-right: auto;

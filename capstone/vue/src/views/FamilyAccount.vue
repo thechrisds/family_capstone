@@ -158,4 +158,20 @@ export default {
 .prizes-link:hover {
   color: #a8d0e6;
 }
+
+.family-members-table>.table>tbody>tr:first-child{
+  background-color:gold;
+  font-weight: 600;
+}
+
+.family-members-table>.table>tbody>tr:nth-child(2){
+  background-color:silver;
+}
+
+.family-members-table>.table>tbody>tr:nth-child(3){
+  background-color:#a03921;
+}
+
+
+
 </style>
