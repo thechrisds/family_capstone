@@ -126,6 +126,7 @@ export default {
           key:"deleteUser",
           label: "Delete User?",
           sortable:false,
+          
         },
         {
           key:"addActivity",
