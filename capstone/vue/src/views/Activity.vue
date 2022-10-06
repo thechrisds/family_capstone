@@ -9,7 +9,7 @@
         <div class="activity-sub">
         <table class="table table-hover">
           <thead>
-            <tr>
+            <tr class="activity-tr-head">
               <th scope="col">Reader</th>
               <th scope="col">Book</th>
               <th scope="col">Date Read</th>
@@ -35,15 +35,16 @@
         </ul>
       </nav>
       </div>
-      </div>
+      <div class="record-btn-table">
      <b-button v-b-toggle.collapse-1 variant="primary" 
      class="toggle-record-activity">Record a reading.</b-button>
-      <b-collapse id="collapse-1">
+      <b-collapse id="collapse-1" collapse-horizontal="true">
         <div class="content">
         <add-activity />
         </div>
       </b-collapse>
-      
+      </div>
+      </div>
       
     </div>
   </div>
@@ -105,21 +106,40 @@ export default {
 <style>
 #activity-main {
  background-color: #f1f1f1;
+}
 
+.activity-tr-head{
+  background-color: #24305e;
+  border-radius: 10px;
+  color:#f76c6c;
+}
+
+.pagination{
+  display:flex;
+  justify-content: center;
+}
+
+.content{
+  width:350px;
 }
 
 .toggle-record-activity {
-  width: 50%;
+  width: 350px;
   margin-left:auto;
   margin-right:auto;
-  background-color: #f76c6c;
+  
 }
 
 .btn .toggle-record-activity{
   background-color: #374785;
 }
 
-
+.record-btn-table {
+  width:30%;
+  background-color:#f8e9a1;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .la-title {
   height: 25px;
@@ -134,7 +154,7 @@ export default {
 }
 
 .activity-sub{
-  background-color:#A8d0e6;
+  background-color:#f1f1f1;
   width:85%;
   margin-left:auto;
   margin-right:auto;
@@ -154,8 +174,8 @@ export default {
 
 .activity-main-loaded {
   display: flex;
-  flex-direction: column;
-
+ flex-direction: row;
+ background-color: #f4f7f6;
 }
 
 #add-activities {
@@ -170,7 +190,6 @@ export default {
 
 .activity-account-list{
   width:50%;
-
 }
 
 </style>

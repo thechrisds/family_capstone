@@ -46,6 +46,9 @@
 </template>
 
 <style>
+html{
+  background-color: #f4f7f6;
+}
 body {
   font-family:'Montserrat', sans-serif;
   font-size: 12px;

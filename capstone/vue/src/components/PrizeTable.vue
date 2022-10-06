@@ -1,9 +1,19 @@
 <template>
   <div class="prize-table-container">
+    <div class="active-inactive-all">
+    <b-form-radio v-model="show" value="all">Show All</b-form-radio>
+    <b-form-radio v-model="show" value="active">Show Active</b-form-radio>
+    <b-form-radio v-model="show" value="inactive">Show Inactive</b-form-radio>
+    </div>
+    <!-- dark blue background below -->
     <div class="pt-table-main">
-      <div class="pt-table">
+    <!-- actual table below-->
+  
+      <!-- SHOW ALL PRIZES -->
+      <div class="pt-table" v-if="show=='all'">
         <b-table
           selectable
+          
           striped
           hover
           :select-mode="'single'"
@@ -11,6 +21,8 @@
           :fields="fields"
           @row-clicked="clickDeleteID"
           class="prizes-table"
+          label-sort-clear=""
+          
         >
         <template #cell(status)="data">
         <div class="active-activity">
@@ -19,6 +31,57 @@
           </div>
           <div class="active-p" v-else>
             <b-icon icon="circle-fill" scale="2" variant="success"/>
+          </div>
+          
+        </div>
+      </template>
+        </b-table>
+      </div>
+
+      <!-- SHOW ACTIVE PRIZES -->
+      <div class="pt-table" v-if="show=='active'">
+        <b-table
+          selectable
+          fixed
+          striped
+          hover
+          :select-mode="'single'"
+          :items="activePrizes"
+          :fields="fields"
+          @row-clicked="clickDeleteID"
+          class="prizes-table"
+          label-sort-clear=""
+          
+        >
+        <template #cell(status)="data">
+        <div class="active-activity">
+          <div class="danger" v-if="checkActive(data.item.end_date)">
+           <b-icon icon="circle-fill" scale="2" variant="success"/>
+          </div>
+        </div>
+      </template>
+        </b-table>
+      </div>
+
+      <!-- SHOW INACTIVE PRIZES -->
+      <div class="pt-table" v-if="show=='inactive'">
+        <b-table
+          selectable
+          striped
+          fixed
+          hover
+          :select-mode="'single'"
+          :items="inactivePrizes"
+          :fields="fields"
+          @row-clicked="clickDeleteID"
+          class="prizes-table"
+          label-sort-clear=""
+          
+        >
+        <template #cell(status)="data">
+        <div class="active-activity">
+          <div class="danger" v-if="!checkActive(data.item.end_date)">
+           <b-icon icon="circle-fill" scale="2" variant="danger"/>
           </div>
           
         </div>
@@ -37,10 +100,13 @@ export default {
   name: "prize-table",
   data() {
     return {
+      show: "",
       date: "",
       prize: [],
       active: "",
       prizes: [],
+      activePrizes: [],
+      inactivePrizes: [],
       fields: [
         {
           key: "prize_id",
@@ -81,8 +147,19 @@ export default {
   created() {
     prizeService.getPrizes().then((response) => {
       this.prizes = response.data;
-      console.log(response.data)
+      console.log(response.data);
+      this.activePrizes = this.prizes.filter( (prize) =>{
+        return (Date.now() < new Date(prize.end_date))
+      })
+      this.inactivePrizes = this.prizes.filter( (prize) =>{
+        console.log(prize.end_date)
+        console.log(new Date(prize.end_date))
+        return (Date.now() > new Date(prize.end_date))
+      })
+      console.log(this.inactivePrizes)
+      console.log(this.activePrizes)
     },
+    this.show = "all",
     
     
     );
@@ -112,16 +189,28 @@ export default {
 
 
 <style>
+.active-inactive-all{
+  display:flex;
+  padding: 10px;
+}
+
+.active-inactive-all>:nth-child(1){
+  padding-right: 10px;
+}
+
+.active-inactive-all>:nth-child(2){
+  padding-right: 10px;
+}
 
 .active-activity{
-  display:flex;
-  justify-content: center;
+  padding-left: 10px;
 }
 
 .prize-table-container {
   margin-left: auto;
   margin-right: auto;
   width:90%;
+  resize: both;
   
 }
 

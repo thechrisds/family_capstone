@@ -336,6 +336,10 @@ export default {
   font-size: 80px;
 }
 
+.link-style:hover{
+    color: #24305e;
+}
+
 .sub-title {
   text-align: center;
   font-size: 20px;

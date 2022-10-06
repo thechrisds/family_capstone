@@ -122,9 +122,10 @@ export default {
   flex-direction: column;
   align-self: center;
   width: 90%;
-  height: auto;
+  height: 400px;
   justify-content: center;
-  padding-top:30px;
+  padding-top:10px;
+  
 }
 
 .fa-prize-table{
@@ -136,12 +137,15 @@ export default {
   color: #f8e9a1;
   font-weight: 600;
   margin-left: 40px;
-
-  padding-bottom: 30px;
+ margin-top:35px;
   margin-bottom:10px;
 }
 .prizes-link-div{
-  margin-top:30px;
+  padding-top:10px;
+  margin-top:0px;
+  margin-bottom:20px;
+  align-self: flex-end;
+  margin-right:-35px;
 }
 
 .prizes-link {
@@ -154,4 +158,20 @@ export default {
 .prizes-link:hover {
   color: #a8d0e6;
 }
+
+.family-members-table>.table>tbody>tr:first-child{
+  background-color:gold;
+  font-weight: 600;
+}
+
+.family-members-table>.table>tbody>tr:nth-child(2){
+  background-color:silver;
+}
+
+.family-members-table>.table>tbody>tr:nth-child(3){
+  background-color:#a03921;
+}
+
+
+
 </style>
