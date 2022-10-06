@@ -306,13 +306,10 @@ export default{
 }
 
 .tb-container {
-    margin-top: 200px;
     display:flex;
     flex-wrap:wrap;
     justify-content: space-evenly;
     align-content:center;
-    
-
 }
 
 .tb-bookList {
@@ -321,7 +318,8 @@ export default{
     justify-content: space-evenly;
     width: 250px;
     height: 350px;
-    margin: 20px;
+    margin: 25px;
+    margin-bottom:50px;
     text-align:center;
     
     

@@ -1,7 +1,7 @@
 <template>
   <div id="account-list">
     <div class="account-list-title">Family.</div>
-    <div class="fm-cards">
+    <!-- <div class="fm-cards">
       <div
         class="family-member-card"
         v-for="user in users"
@@ -42,7 +42,24 @@
         </div>
       </div>
       <b-modal id="add-activity-modal"> <add-activity /> </b-modal>
+    </div> -->
+    <div class="family-members-chart">
+      <b-table 
+      hover
+      :items="users"
+      :fields="fields"
+      :sort-by.sync="sortBy"
+      :sort-desc="true"
+      :tbody-tr-class="rowClass"
+      :sticky-header="true"
+      class="family-members-table">
+      </b-table>
     </div>
+<!-- 
+
+ -->
+
+
   </div>
 </template>
 
@@ -50,7 +67,7 @@
 //modal
 
 //-----
-import AddActivity from "@/components/AddActivity";
+// import AddActivity from "@/components/AddActivity";
 import accountService from "@/services/AccountService.js";
 
 export default {
@@ -58,7 +75,7 @@ export default {
   isLoading: true,
   //props: ['users'],
   components: {
-    AddActivity,
+    // AddActivity,
   },
   data() {
     return {
@@ -68,9 +85,60 @@ export default {
       lastname: this.$store.state.user.lastname,
       totalminutes: this.$store.state.user.totalminutes,
       id: this.$store.state.user.id,
+      sortBy:'totalMinutes',
+      sortDesc:'false',
+      
+      fields:[
+        {
+          key: "id",
+          label: "ID #"
+        },
+        {
+          key: "username",
+          label: "Username",
+          sortable: false,
+        },
+        {
+          key: "firstname",
+          label: "First name",
+          sortable: false,
+        },
+        {
+          key:"lastname",
+          label: "Last name",
+          sortable: false,
+        },
+        {
+          key: "totalMinutes",
+          label: "Total Minutes",
+          sortable:false,
+        },
+        {
+          key:"deleteUser",
+          label: "Delete User?",
+          sortable:false,
+        },
+        {
+          key:"addActivity",
+          label: "Record Reading",
+          sortable: false,
+        },
+      ],
     };
   },
   methods: {
+    // rowClass(item, type) {
+    //   if (!item || type !== 'row') return
+    //   let mostMin = item[0].totalMinutes;
+    //   for(let i = 1; i < item.length; i++ ) {
+    //     console.log("fields.totalMinutes: ", item[i].totalMinutes);
+    //     if(item[i].totalMinutes > mostMin) {
+    //       mostMin = item[i].totalMinutes;
+    //     }
+    //   }
+    //   if(item.totalMinutes === mostMin) return 'table-warning'
+    // },
+
     deleteMember(id) {
       accountService
         .deleteUser(id)
@@ -97,9 +165,11 @@ export default {
   },
   created() {
     console.log(this.username);
-    console.log("firstname: ", this.firstname);
+    
     accountService.getFamilyId(this.username).then((response) => {
       console.log(response);
+      console.log("firstname: ", this.firstname);
+    console.log("totalminutes: ",this.totalMinutes);
       this.id = response.data;
       accountService
         .getAllFamily(this.id)
@@ -126,7 +196,12 @@ body {
   font-size: 12px;
 }
 
+#account-list-box {
+  width: 100%;
+  height:300px;
+  border-radius: 10px;
 
+}
 
 #account-list {
   display: flex;
@@ -135,7 +210,8 @@ body {
   border-radius: 10px;
   padding-bottom: 25px;
   background-color: #f76c6c;
-  height: 300px;
+  height: 100%;
+  width: 100%;
 }
 .account-list-title {
   height: 25px;
@@ -145,6 +221,13 @@ body {
   font-size: 18px;
   color: #24305e;
   font-weight: 600;
+}
+
+.family-members-chart{
+  width:80%;
+  margin:auto;
+  background-color: #a8d0e6;
+  border-radius: 10px;
 }
 
 .member-name {
@@ -173,6 +256,7 @@ body {
   padding-bottom: 30px;
   overflow-x: hidden;
   overflow-y: scroll;
+  scroll-behavior: smooth;
   height: 70%;
 }
 
@@ -188,6 +272,7 @@ body {
   box-shadow: inset 0 0 5px rgb(211, 178, 178);
   border-radius: 5px;
 }
+
 .al-card-buttons {
   display: flex;
   justify-content:space-between;

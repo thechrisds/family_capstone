@@ -199,7 +199,6 @@ export default {
   height: 400px;
   width: 60%;
   margin: auto;
-  margin-top: -100px;
   background-color: #f4f7f6;
 }
 
@@ -218,7 +217,6 @@ export default {
   height: 50px;
   width: 60%;
   margin: auto;
-  margin-top:-80px;
   background-color: #f4f7f6;
 
 }
@@ -263,16 +261,16 @@ export default {
 
 #box-2 {
   background-image: url("../assets/bookcolumn2-2.png");
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
 
   padding-bottom: 3px;
-  height: 700px;
+  height: 550px;
 }
 
 #box-3 {
   background-image: url("../assets/bookcolumn2-3.png");
   background-color: white;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   display: flex;
   flex-direction: column;
   align-content: flex-start;
@@ -296,9 +294,9 @@ export default {
 #box-4 {
   background-image: url("../assets/bookcolumn2-4.png");
   background-color: #f4f7f6;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   padding-top: 5px;
-  height: 500px;
+  height: 400px;
 }
 
 .box4-title-box {

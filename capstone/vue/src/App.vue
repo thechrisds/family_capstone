@@ -49,6 +49,8 @@
 body {
   font-family:'Montserrat', sans-serif;
   font-size: 12px;
+    background-color: #f4f7f6;
+    height:100%;
 }
 #app {
   display: flex;
@@ -183,6 +185,11 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
+}
+
+.container {
+    background-color: #f4f7f6;
+
 }
 
 </style>

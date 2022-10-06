@@ -121,7 +121,7 @@ export default {
 .prize-table-container {
   margin-left: auto;
   margin-right: auto;
-  width:85%;
+  width:90%;
   
 }
 
@@ -129,8 +129,20 @@ export default {
   font-size: 1vw;
   background-color: #a8d0e6;
   border-radius: 10px;
-  
   width:500px;
+}
+
+.pt-table::-webkit-scrollbar {
+  width: 5px; /* width of the entire scrollbar */
+}
+
+.pt-table::-webkit-scrollbar-thumb {
+  background-color: rgb(216, 181, 181); /* color of the scroll thumb */
+  border-radius: 5px; /* roundness of the scroll thumb */
+}
+.pt-table::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(211, 178, 178);
+  border-radius: 5px;
 }
 
 .pt-table-main {
@@ -143,21 +155,10 @@ export default {
 }
 
 .pt-table{
-  overflow-y: scroll;
-  scroll-behavior: smooth;
+ max-height: 250px;
+ overflow-y: scroll;
 }
 
-.pt-table::-webkit-scrollbar {
-  width: 5px;               /* width of the entire scrollbar */
-}
 
-.pt-table::-webkit-scrollbar-thumb {
-  background-color: rgb(221, 221, 233);    /* color of the scroll thumb */
-  border-radius: 3px;       /* roundness of the scroll thumb */
-}
-.pt-table::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 3px rgb(202, 182, 182);
-  border-radius: 3px;
-}
 
 </style>

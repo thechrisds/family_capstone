@@ -1,8 +1,10 @@
 <template>
     <div class="book-container">
+    <div class="pl-body">
     <personal-book />
     <div class="booklist">
     <router-link to="/books/add"> Add A Book To Library </router-link>
+    </div>
     </div>
     </div>
 </template>
@@ -22,9 +24,13 @@ export default ({
     text-align:center;
     margin-top:30px;
 }
-
 .book-container{
-    margin-top: 200px;
-    
+   
 }
+.pl-body{
+padding-bottom:50px;
+padding-top:100px;
+
+}
+
 </style>

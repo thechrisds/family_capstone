@@ -36,10 +36,15 @@
       </nav>
       </div>
       </div>
-      <div id="add-activities">
-      
+     <b-button v-b-toggle.collapse-1 variant="primary" 
+     class="toggle-record-activity">Record a reading.</b-button>
+      <b-collapse id="collapse-1">
+        <div class="content">
         <add-activity />
-      </div>
+        </div>
+      </b-collapse>
+      
+      
     </div>
   </div>
 </template>
@@ -49,10 +54,10 @@ import AddActivity from "@/components/AddActivity";
 import activityService from "@/services/ActivityService.js";
 
 
-
 export default {
   data() {
     return {
+      button: "",
       isLoading: true,
       activities: [],
       activitiesCount: 0,
@@ -93,14 +98,28 @@ export default {
       this.activities.slice((page*this.activitiesPerPage - this.activitiesPerPage), page*this.activitiesPerPage)
       console.log("page: ", page);
     }
-  }
+  },
 };
 </script>
 
 <style>
 #activity-main {
-  margin-top: 70px;
+ background-color: #f1f1f1;
+
 }
+
+.toggle-record-activity {
+  width: 50%;
+  margin-left:auto;
+  margin-right:auto;
+  background-color: #f76c6c;
+}
+
+.btn .toggle-record-activity{
+  background-color: #374785;
+}
+
+
 
 .la-title {
   height: 25px;
@@ -130,11 +149,13 @@ export default {
   margin-left:auto;
   margin-right:auto;
   padding-bottom:30px;
+  margin-top:70px;
 }
 
 .activity-main-loaded {
   display: flex;
   flex-direction: column;
+
 }
 
 #add-activities {
@@ -145,13 +166,11 @@ export default {
   margin-top:20px;
   width:90%;
   display:flex;
-  
 }
 
 .activity-account-list{
   width:50%;
-  
-  
+
 }
 
 </style>

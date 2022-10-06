@@ -16,21 +16,27 @@
         
       </div> -->
       <div id="row-2">
-        <div id="account-list-box"><account-list class="account-list-component"/></div>
+        <div id="account-list-box">
+          <account-list class="account-list-component" />
+        </div>
         <div id="add-user-box"><add-user /></div>
       </div>
       <div class="row-3">
+        <div class="fa-prize-container">
           <div class="prizes-title">Prizes.</div>
           <div class="fa-prize-table">
+            
             <prize-table />
-            <div class="prizes-link-div">
-            <router-link class="prizes-link" v-bind:to="{name: 'prizes'}">See all prizes.</router-link>
+            
           </div>
-          </div>
-          
+          <div class="prizes-link-div">
+              <router-link class="prizes-link" v-bind:to="{ name: 'prizes' }"
+                >See all prizes.</router-link
+              >
+            </div>
         </div>
+      </div>
     </div>
-    
   </div>
 </template>
 
@@ -46,7 +52,7 @@ export default {
     AccountList,
     AddUser,
     PrizeTable,
-   // PersonalBook
+    // PersonalBook
   },
   data() {
     return {
@@ -66,17 +72,11 @@ export default {
 </script>
 
 <style>
-
 #main-family {
   display: flex;
   flex-direction: column;
-  background-color:#f4f7f6;
-}
+  background-color: #f4f7f6;
 
-.row-1{
-  margin-top:60px;
-  display: flex;
-  justify-content: center;
 }
 
 .book-turner {
@@ -90,123 +90,68 @@ export default {
   margin-bottom: 25px;
 }
 
-#family-library {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  height: 350px;
-  margin-top: 20px;
-  border-radius: 10px;
-  font-size: 18px;
-  background-color: #a8d0e6;
-  color:white;
-  font-weight: 600;
-}
-
-.family-library-title {
-   margin-top:15px;
-  margin-left:-30px;
-  width: 90%;
-  align-self: center;
-}
-.family-library-books-container{
-  height:300px;
-}
-
-.family-library-books {
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  width: 95%;
-  height: 620px;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  border-radius: 5px;
-  display: flex;
-}
-
-.family-library-books::-webkit-scrollbar {
-  width: 3px;               /* width of the entire scrollbar */
-}
-
-.family-library-books::-webkit-scrollbar-thumb {
-  background-color: rgb(221, 221, 233);    /* color of the scroll thumb */
-  border-radius: 3px;       /* roundness of the scroll thumb */
-}
-.family-library-books::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 3px rgb(202, 182, 182);
-  border-radius: 3px;
-}
-
-.fa-book-title {
-  font-size: 1vw;
-}
-.fa-book-author {
-  font-size: .8vw;
-}
-
-.fa-book-description {
-  font-size: .7vw;
-}
-
-.fa-null-description {
-  font-size: .7vw;
-}
-
 #row-2 {
   display: flex;
   flex-direction: row;
   margin-top: 80px;
-  margin-left:auto;
-  margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
   justify-content: space-between;
-  width:90%
+  width: 90%;
 }
 
-#add-user-box{
+#add-user-box {
   height: 300px;
 }
 
-.row-3{
+.row-3 {
   width: 90%;
-  height: 400px;
+  height: auto;
   margin-top: 20px;
   border-radius: 10px;
   font-size: 18px;
   background-color: #374785;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  padding-bottom:30px;
+}
+
+.fa-prize-container {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 90%;
+  height: auto;
+  justify-content: center;
+  padding-top:30px;
+}
+
+.fa-prize-table{
   margin-left:auto;
-  margin-right:auto;
-  margin-bottom:30px;
+  margin-right:-100px;
 }
 
 .prizes-title {
-  color:#f8e9a1;
+  color: #f8e9a1;
   font-weight: 600;
-  margin-left:40px;
-  padding-top:10px;
+  margin-left: 40px;
+
+  padding-bottom: 30px;
+  margin-bottom:10px;
+}
+.prizes-link-div{
+  margin-top:30px;
 }
 
-.fa-prize-table {
-  width: 650px;
-  align-self: center;
-  width: 90%;
-  height: 350px;
-  margin-top:20px;
-  margin-left:50px;
-}
-
-.prizes-link{
-  color:#f8e9a1;
+.prizes-link {
+  color: #f8e9a1;
   font-weight: 600;
-  margin-left:-20px;
+  margin-left: 40px;
   text-decoration: none;
-  
 }
 
-.prizes-link:hover{
-color:#a8d0e6;
+.prizes-link:hover {
+  color: #a8d0e6;
 }
-
-
-
-
 </style>

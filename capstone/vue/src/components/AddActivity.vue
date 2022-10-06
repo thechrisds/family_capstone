@@ -177,7 +177,6 @@ padding-bottom:40px;
   font-size: 18px;
   color: white;
   font-weight: 600;
-  padding-bottom:20px;
 }
 
 .add-activity-sub-reset-buttons {
@@ -200,30 +199,32 @@ color:#24305e;
 .add-activity-container {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 450px;
   height: auto;
   margin-left: auto;
   margin-right: auto;
   background-color:#24305e;
   border-radius: 10px;
+  
 }
 
 .add-activity-form-container {
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: 85%;
+  width: 90%;
   padding: 15px;
-  margin: auto;
-  margin-top: 10px;
+  margin-left:auto;
+  margin-right:auto;
   color:white;
+  margin-top:-20px;
 }
 
 input[type="text"],
 select,
 textarea {
   width: 100%;
-  padding: 12px;
+  padding: 5px;
   border-radius: 10px;
   resize: vertical;
 }
