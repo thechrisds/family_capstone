@@ -5,20 +5,12 @@
       <form v-on:submit.prevent="submitForm" class="new-activity-form">
         <label for="userName">Reader: </label>
         
-        <select name="" id="username-dropdown">
-          <option value="" v-for="user in users"
-        v-bind:key="user.id">
-        Username: {{user.username}} | User ID: <p id="user-id">{{user.id}}</p>
+        <select name="" id="username-dropdown" v-model="activity.readerId">
+          <option disabled value="">Select a user</option>
+          <option v-for="user in users" v-bind:key="user.readerId">
+        {{user.username}} | User ID: <p id="user-id">{{user.id}}</p>
         </option>
         </select>
-        <input
-          type="text"
-          placeholder="User Id"
-          name="readerId"
-          id="reader-Id"
-          v-model="activity.readerId"
-        />
-
         <label for="title">What did you read?</label>
 
         <input
@@ -90,6 +82,7 @@ export default {
         timeInMinutes: 0,
         formatId: 0,
         activityNotes: "",
+        readerId: ""
       },
       users: [],
       username: this.$store.state.user.username,
@@ -100,11 +93,15 @@ export default {
     };
   },
   components: {},
-  computed: {},
+  computed: {
+    getReaderId(){
+      return this.activity.readerId.substring(this.activity.readerId.length - 1);
+    }
+  },
   methods: {
     submitForm() {
       const activity = {
-        readerId: this.activity.readerId,
+        readerId: this.getReaderId,
         isbn: this.activity.isbn,
         timeInMinutes: this.activity.timeInMinutes,
         formatId: this.activity.formatId,
