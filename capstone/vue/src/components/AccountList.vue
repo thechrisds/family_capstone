@@ -1,48 +1,7 @@
 <template>
   <div id="account-list">
     <div class="account-list-title">Family.</div>
-    <!-- <div class="fm-cards">
-      <div
-        class="family-member-card"
-        v-for="user in users"
-        v-bind:key="user.id"
-        v-bind:user="user"
-        @click="
-          () => {
-            setUser(user);
-          }
-        "
-        v-b-modal.add-activity-modal
-      >
-        <h5 class="member-name">{{ user.username }}</h5>
 
-        Name: {{ user.firstname }} {{ user.lastname }}
-        <br />
-        <br />
-        Total minutes read: {{ user.totalMinutes }} minutes. <br /><br />
-        <div class="al-card-buttons">
-          <button class="delete-user" v-on:click="deleteMember(user.id)">
-            Delete Member
-          </button>
-          <div>
-            <button
-              class="modal-button"
-              v-bind:user="user"
-              v-bind:key="user.id"
-              @click="
-                () => {
-                  setUser(user);
-                }
-              "
-              v-b-modal.modal-center
-            >
-              Add Reading
-            </button>
-          </div>
-        </div>
-      </div>
-      <b-modal id="add-activity-modal"> <add-activity /> </b-modal>
-    </div> -->
     <div class="family-members-chart">
       <b-table 
       hover
@@ -52,6 +11,9 @@
       :sort-desc="true"
       :tbody-tr-class="rowClass"
       :sticky-header='stickyHeader'
+      :borderless='true'
+      :striped="true"
+      :small="true"
       class="family-members-table">
       <template #cell(deleteUser)="data">
         <div class="delete-user">
@@ -60,22 +22,32 @@
           </b-button>
         </div>
         </template>
+  
       </b-table>
 
     </div>
 <!-- 
 
  -->
-
+<div class="add-activity-modal-div">
+          <button  class='add-activity-modal-btn' v-b-modal.add-activity-modal>
+            Log Reading.
+          </button>
+          <b-modal 
+          id="add-activity-modal" 
+          hide-footer=true
+          > 
+          <add-activity /> 
+          </b-modal>
+        </div>
 
   </div>
+  
 </template>
 
 <script>
-//modal
 
-//-----
-// import AddActivity from "@/components/AddActivity";
+import AddActivity from "@/components/AddActivity";
 import accountService from "@/services/AccountService.js";
 
 export default {
@@ -83,7 +55,7 @@ export default {
   isLoading: true,
   //props: ['users'],
   components: {
-    // AddActivity,
+    AddActivity,
   },
   data() {
     return {
@@ -128,15 +100,22 @@ export default {
           sortable:false,
           
         },
-        {
-          key:"addActivity",
-          label: "Record Reading",
-          sortable: false,
-        },
+        // {
+        //   key:"addActivity",
+        //   label: "Record Reading",
+        //   sortable: false,
+        // },
       ],
     };
   },
   methods: {
+
+    rowClass(user, type) {
+       console.log("user: ", user)
+      if (!user || type !== 'row') return
+      if(user[0]) return 'table-warning'
+    },
+
     // rowClass(item, type) {
     //   if (!item || type !== 'row') return
     //   let mostMin = item[0].totalMinutes;
@@ -175,7 +154,7 @@ export default {
   },
   created() {
     console.log(this.username);
-    
+   
     accountService.getFamilyId(this.username).then((response) => {
       console.log(response);
       console.log("firstname: ", this.firstname);
@@ -206,13 +185,25 @@ body {
   font-size: 12px;
 }
 
+.add-activity-modal-btn{
+  border:none;
+  background:none;
+  font-size: 18px;
+  color: #24305e;
+  font-weight: 600;
+}
+
 #account-list-box {
   width: 100%;
   height:300px;
   border-radius: 10px;
-
+  
 }
-
+.add-activity-modal-div {
+  align-self: flex-end;
+  margin-right:45px;
+  padding-top:10px;
+}
 #account-list {
   display: flex;
   justify-content: center;
@@ -226,18 +217,18 @@ body {
 .account-list-title {
   height: 25px;
   margin-left: 30px;
-  padding-bottom: 18px;
   width: 100%;
   font-size: 18px;
   color: #24305e;
   font-weight: 600;
-  margin-top:10px;
+  padding-top:15px;
 }
 
 .family-members-chart{
   width:90%;
-  
-  margin:auto;
+  margin-top:20px;
+  margin-left:auto;
+  margin-right:auto;
   background-color: #a8d0e6;
   border-radius: 10px;
 

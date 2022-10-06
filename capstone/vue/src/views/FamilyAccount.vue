@@ -122,7 +122,7 @@ export default {
   flex-direction: column;
   align-self: center;
   width: 90%;
-  height: 500px;
+  height: 400px;
   justify-content: center;
   padding-top:10px;
   
@@ -137,13 +137,15 @@ export default {
   color: #f8e9a1;
   font-weight: 600;
   margin-left: 40px;
-  padding-bottom: 20px;
-  margin-bottom:20px;
+ margin-top:35px;
+  margin-bottom:10px;
 }
 .prizes-link-div{
   padding-top:10px;
-  margin-top:40px;
-  margin-bottom:-10px;
+  margin-top:0px;
+  margin-bottom:20px;
+  align-self: flex-end;
+  margin-right:-35px;
 }
 
 .prizes-link {
