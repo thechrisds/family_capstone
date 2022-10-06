@@ -210,12 +210,8 @@ export default {
   margin-left: auto;
   margin-right: auto;
   width:90%;
-<<<<<<< HEAD
-  height:100%;
-=======
   resize: both;
   
->>>>>>> Chris
 }
 
 .prizes-table {
