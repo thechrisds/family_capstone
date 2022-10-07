@@ -13,7 +13,7 @@
       <div class="pt-table" v-if="show=='all'">
         <b-table
           selectable
-          
+          fixed
           striped
           hover
           :select-mode="'single'"
@@ -22,6 +22,7 @@
           @row-clicked="clickDeleteID"
           class="prizes-table"
           label-sort-clear=""
+          label-sort-desc=""
           
         >
         <template #cell(status)="data">
@@ -51,6 +52,8 @@
           @row-clicked="clickDeleteID"
           class="prizes-table"
           label-sort-clear=""
+          label-sort-as=""
+          label-sort-desc=""
           
         >
         <template #cell(status)="data">
