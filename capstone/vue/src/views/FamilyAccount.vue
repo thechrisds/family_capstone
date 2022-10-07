@@ -131,6 +131,7 @@ export default {
 .fa-prize-table{
   margin-left:auto;
   margin-right:-100px;
+  color:#f8e9a1;
 }
 
 .prizes-title {
