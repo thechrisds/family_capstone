@@ -17,7 +17,9 @@ export default {
     },
     
     googleBook(isbn){
-      return axios.get('https://openlibrary.org/search.json?q=' + isbn);
+      var instance = axios.create();
+      delete instance.defaults.headers.common['Authorization'];
+      return instance.get('https://openlibrary.org/search.json?q=isbn:' + isbn);
     },
     
     editBook(book){

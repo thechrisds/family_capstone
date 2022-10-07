@@ -97,13 +97,12 @@ export default {
   components: {},
   computed: {
     getReaderId(){
-      return this.activity.readerId.substring(this.activity.readerId.length - 1);
-    }
+      return this.activity.readerId.substring(this.activity.readerId.length - 1);}
   },
   methods: {
     submitForm() {
       const activity = {
-        readerId: this.activity.readerId,
+        readerId: this.activity.readerId.substring(this.activity.readerId.length - 1),
         isbn: this.activity.isbn,
         timeInMinutes: this.activity.timeInMinutes,
         formatId: this.activity.formatId,
