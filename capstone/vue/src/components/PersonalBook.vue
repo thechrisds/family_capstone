@@ -51,12 +51,40 @@
           <b-form-input v-model="oldBook.isbn" placeholder="ISBN"/>
           <br/>
           <div class="save-delete">
-          <b-button> CANCEL </b-button>
+          <b-button v-b-modal.modal-2> ADD READING </b-button>
           <b-button id="delete" @click="confirmDelete"> DELETE </b-button>
           <b-button id="save" @click="saveBook"> SAVE </b-button>
           </div>
           
         </b-modal>
+
+        <b-modal id="modal-2" title="Add Reading" hide-footer>
+          <p>  How many minutes of this book did you read? </p>
+          <!-- isbn below actually = book_id, just never got changed and now it's 12 hours before presenting so not changing anything -->
+          <b-input placeholder="minutes" type="number" v-model="activity.timeInMinutes"> </b-input>
+          <br/>
+          <label for="read-type">How did you read?</label>
+        <select
+          name="read-type"
+          type="number"
+          id="type"
+          v-model="activity.formatId"
+        >
+          <option value="" disabled selected>Please Select Type</option>
+          <option value="1">Paper</option>
+          <option value="2">Digital</option>
+          <option value="3">Audiobook</option>
+          <option value="4">Read-Aloud(Reader)</option>
+          <option value="5">Read-Aloud(Listener)</option>
+          <option value="0">Other</option>
+        </select>
+        <br/>
+        <br/>
+        <div class="submit-activity-button">
+          <b-form-textarea placeholder="put any notes here" v-model="activity.activityNotes"/>
+        <b-button @click="addActivity"> Submit </b-button>
+        </div>
+        </b-modal> 
         
      
     </div>
@@ -64,11 +92,20 @@
 
 <script>
 import bookService from '@/services/BookService.js';
+import activityService from '@/services/ActivityService.js';
 
 export default{
+  components: {  },
     name: 'view-book',
     data(){
         return {
+          activity: {
+            isbn: "",
+            timeInMinutes: 0,
+            formatId: 0,
+            activityNotes: "",
+            readerId: ""
+          },
           boxOne: '',
             books: [],
             book: {
@@ -161,12 +198,29 @@ export default{
                  })
                }
              })
+          },
+          addActivity(){
+            this.activity.isbn = this.book.bookID;
+            this.activity.readerId = this.$store.state.user.id;
+            activityService.addActivity(this.activity).then(response=>{
+              if (response.status === 200){
+                alert("Reading added to Reading Activity!");
+              } else {
+                alert("Error adding your Reading Activity!");
+              }
+            },
+            this.$router.go({name: "showBooks"}))
           }
         }
     };
 </script>
 
 <style scoped>
+
+.submit-activity-button{
+  display:flex;
+  justify-content:right;
+}
 
 #modal-1{
   

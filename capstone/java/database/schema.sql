@@ -54,8 +54,8 @@ CREATE TABLE library (
     book_title varchar (100) NOT NULL,
     book_author varchar (50) NOT NULL,
     cover_img varchar(200),
-    genre varchar (50) NOT NULL,
-    description varchar (200),
+    genre varchar (50) DEFAULT ('Other'),
+    description varchar (500),
     family_id int,
     deleted boolean DEFAULT (false),
     CONSTRAINT FK_family_account_family_id FOREIGN KEY (family_id) REFERENCES family_account (family_id),
@@ -77,7 +77,6 @@ CREATE TABLE reading_activity (
     format_id int DEFAULT 0,
     completed boolean DEFAULT false,
     CONSTRAINT PK_reading_activity PRIMARY KEY (activity_id),
-    CONSTRAINT FK_family_account_users FOREIGN KEY (user_id) REFERENCES users (user_id),
     CONSTRAINT FK_format FOREIGN KEY (format_id) REFERENCES format (format_id),
 	CONSTRAINT FK_library FOREIGN KEY (book_id) REFERENCES library (book_id)
 );
