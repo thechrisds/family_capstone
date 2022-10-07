@@ -6,13 +6,13 @@ INSERT INTO family_account (family_name) VALUES ('Orange');
 
 INSERT INTO users (username,is_parent,family_id, total_minutes, password_hash,role) VALUES ('admin',true,1001,100,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 INSERT INTO users (username,is_parent,family_id, total_minutes, password_hash,role) VALUES ('user1',false,1001,100,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,firstname,lastname,is_parent,family_id, total_minutes, password_hash,role) VALUES ('Dad','Tom','Apple',true,1002,5,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,firstname,lastname,is_parent,family_id, total_minutes, password_hash,role) VALUES ('kid1','Kid','Apple',false,1002,25,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,firstname,lastname,is_parent,family_id, total_minutes, password_hash,role) VALUES ('kid2','Turkey','Apple',false,1002,100,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,firstname,lastname,is_parent,family_id, total_minutes, password_hash,role) VALUES ('kid3','Ham','Huh',false,1002,300,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,firstname,lastname,is_parent,family_id, total_minutes, password_hash,role) VALUES ('Mom','DaLady','Orange',true,1003,5,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,firstname,lastname,is_parent,family_id, total_minutes, password_hash,role) VALUES ('goodkid','Billy','Orange-Apple',false,1003,15,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,firstname,lastname,is_parent,family_id, total_minutes, password_hash,role) VALUES ('badkid','Young','AngeAp',false,1003,25,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,firstname,lastname,is_parent,family_id, total_minutes, password_hash,role) VALUES ('cooldad67','Tom','Apple',true,1002,5,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,firstname,lastname,is_parent,family_id, total_minutes, password_hash,role) VALUES ('kid1','Tee','Apple',false,1002,25,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,firstname,lastname,is_parent,family_id, total_minutes, password_hash,role) VALUES ('kid2','Jim','Apple',false,1002,100,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,firstname,lastname,is_parent,family_id, total_minutes, password_hash,role) VALUES ('kid3','Kid','Apple',false,1002,300,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,firstname,lastname,is_parent,family_id, total_minutes, password_hash,role) VALUES ('coolmom70','Momma','Orange',true,1002,5,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,firstname,lastname,is_parent,family_id, total_minutes, password_hash,role) VALUES ('goodkid','Billy','Orange-Apple',false,1002,15,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,firstname,lastname,is_parent,family_id, total_minutes, password_hash,role) VALUES ('badkid','Young','AngeAp',false,1002,25,'$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 
 INSERT INTO library (isbn,book_title,book_author,cover_img,genre, family_id) VALUES (9780439708180, 'Harry Potter and the Wizard Stone Thing', 'J.K. Rowling', 'www.picture.com','wizards!', 1001);
 INSERT INTO library (isbn,book_title,book_author,cover_img,genre, family_id) VALUES (9780345538987, 'DinoSaur Park', 'Mike Chrichton', 'www.picture.com','pretty okay, they made a movie', 1001);
@@ -24,11 +24,13 @@ INSERT INTO library (isbn,book_title,book_author,cover_img,genre, family_id) VAL
 INSERT INTO library (isbn,book_title,book_author,cover_img,genre, family_id) VALUES (9780358653035, 'Lord of the Rings', 'Jolken Rolken Rolken Tolkien', 'www.picture.com','dwarves!', 1002);
 INSERT INTO library (isbn,book_title,book_author,cover_img,genre, family_id) VALUES (9781603095020, 'Animal Stories', 'Peter Hoey', 'www.picture.com','not bad', 1002);
 INSERT INTO library (isbn,book_title,book_author,cover_img,genre, family_id) VALUES (9780394800165, 'Green Eggs and Ham', 'Dr. Seuss', 'www.picture.com','not great', 1002);
-INSERT INTO library (isbn,book_title,book_author,cover_img,genre, family_id) VALUES (9780439708180, 'Harry Potter and the Wizard Stone Thing', 'J.K. Rowling', 'www.picture.com','wizards!', 1003);
-INSERT INTO library (isbn,book_title,book_author,cover_img,genre, family_id) VALUES (9780345538987, 'DinoSaur Park', 'Mike Chrichton', 'www.picture.com','pretty okay, they made a movie', 1003);
-INSERT INTO library (isbn,book_title,book_author,cover_img,genre, family_id) VALUES (9780358653035, 'Lord of the Rings', 'Jolken Rolken Rolken Tolkien', 'www.picture.com','dwarves!', 1003);
-INSERT INTO library (isbn,book_title,book_author,cover_img,genre, family_id) VALUES (9781603095020, 'Animal Stories', 'Peter Hoey', 'www.picture.com','not bad', 1003);
-INSERT INTO library (isbn,book_title,book_author,cover_img,genre, family_id) VALUES (9780394800165, 'Green Eggs and Ham', 'Dr. Seuss', 'www.picture.com','not great', 1003);
+
+
+INSERT INTO library (isbn,book_title,book_author,cover_img,description, family_id) VALUES (9780694003617, 'Goodnight Moon', 'Margaret Wise Brown', 'www.picture.com','Sleepy moon', 1002);
+INSERT INTO library (isbn,book_title,book_author,cover_img,description, family_id) VALUES (9780399226908, 'The Very Hungry Caterpillar', 'Eric Carle', 'www.picture.com','The story about the hungry caterpillar is a great foundation to raise the child curiosity of the world of Nature. It teaches in a simply manner that even the smallest creatures are important part of the ecosystem.', 1002);
+INSERT INTO library (isbn,book_title,book_author,cover_img,description, family_id) VALUES (9780060256654, 'The Giving Tree', 'Shel Silverstein', 'www.picture.com','tree', 1002);
+INSERT INTO library (isbn,book_title,book_author,cover_img,description, family_id) VALUES (9780920668368, 'Love You Forever', 'Robert N Munsch', 'www.picture.com','not bad', 1002);
+INSERT INTO library (isbn,book_title,book_author,cover_img,description, family_id) VALUES (9780394800165, 'Green Eggs and Ham', 'Dr. Seuss', 'www.picture.com','not great', 1003);
 
 INSERT INTO format (format_id, format_type) VALUES (0, 'other');
 INSERT INTO format (format_id, format_type) VALUES (1, 'paper');

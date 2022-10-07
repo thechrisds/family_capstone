@@ -54,11 +54,13 @@
           v-model="activity.activityNotes"
         />
         <div class="add-activity-sub-reset-buttons">
-          <input class="add-activity-submit" type="submit" />
           <input class="add-activity-reset" type="reset" />
+          <input class="add-activity-submit" type="submit" />
+          
         </div>
       </form>
     </div>
+    
   </div>
 </template>
 
@@ -101,7 +103,7 @@ export default {
   methods: {
     submitForm() {
       const activity = {
-        readerId: this.getReaderId,
+        readerId: this.activity.readerId,
         isbn: this.activity.isbn,
         timeInMinutes: this.activity.timeInMinutes,
         formatId: this.activity.formatId,
@@ -159,6 +161,7 @@ export default {
 
 .new-activity-form{
 padding-bottom:40px;
+width:100%;
 }
 
 #add-activity-notes {
@@ -196,7 +199,7 @@ color:#24305e;
 .add-activity-container {
   display: flex;
   flex-direction: column;
-  width: 450px;
+  width: 100%;
   height: auto;
   margin-left: auto;
   margin-right: auto;
