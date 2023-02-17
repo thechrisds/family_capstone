@@ -18,8 +18,10 @@ export default {
     
     googleBook(isbn){
       var instance = axios.create();
-      delete instance.defaults.headers.common['Authorization'];
       return instance.get('https://openlibrary.org/search.json?q=isbn:' + isbn);
+        
+        
+        //delete instance.defaults.headers.common['Authorization'];
     },
     
     editBook(book){
